@@ -1,2 +1,2 @@
 # e-learning-app
-E-Learning Web App Ptoject
+E-Learning Web App Project
