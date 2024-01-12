@@ -1,7 +1,5 @@
 # E-Learning Web App
 
-RapidCats - Your purrcel is our purriority!
-
 This is my E-Learning Portal Portfolio Project
 
 ## About the project
@@ -21,13 +19,13 @@ a
 
 ## Technologies used
 
-React.js, Node.js, Express.js, MongoDB Atlas, Mongoose.js, Render.com
-
+React.js, Tailwind, 
 vite, react router dom, axios, uuidv4, dotenv, bcrypt, jwt
 
-Tailwind css, Framer motion
- 
-Socket.io
+Node.js, Express.js, MongoDB Atlas, Mongoose.js, Render.com
+
+
+
 
 ## Installation
 
