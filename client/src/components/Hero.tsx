@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/Auth';
 import { useNavigate } from 'react-router-dom';
+import hero from '../assets/images/hero.png'
+
 // import image01 from '../assets/image01.jpg';
 // import image02 from '../assets/image02.png';
 // import HeroVideo from '../assets/heroVideo.mp4';
@@ -50,8 +52,8 @@ const Hero = () => {
             Your browser does not support the video tag.
           </video> */}
 
-          {/* <img
-            src={image01}
+          <img
+            src={hero}
             alt="Transparent Image"
             style={{
               opacity: 0.5,
@@ -61,7 +63,7 @@ const Hero = () => {
               height: '100%',
               objectFit: 'cover',
             }}
-          /> */}
+          />
 
           <div className="backdrop-blur-lg rounded-2xl place-self-start lg:col-span-6 p-6">
             <h1 className="text-primary-800 max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
