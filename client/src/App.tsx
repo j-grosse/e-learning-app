@@ -1,10 +1,9 @@
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Header from './components/home/Header';
+import Main from './components/routes/Main';
+import Footer from './components/home/Footer';
 import './App.css';
 
 function App() {
-
   return (
     <>
       <Header />

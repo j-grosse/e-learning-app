@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from '../../context/Auth';
 import { useNavigate } from 'react-router-dom';
-import hero from '../assets/images/hero.png'
+import hero from '../../assets/images/hero.png';
 
-// import image01 from '../assets/image01.jpg';
-// import image02 from '../assets/image02.png';
-// import HeroVideo from '../assets/heroVideo.mp4';
+// import image01 from '../../assets/image01.jpg';
+// import image02 from '../../assets/image02.png';
+// import HeroVideo from '../../assets/heroVideo.mp4';
 
 const Hero = () => {
   const navigate = useNavigate();

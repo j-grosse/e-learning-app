@@ -9,8 +9,6 @@ import Userprofile from '../components/Userprofile';
 // import DashboardCom from '../components/DashboardCom';
 // import Contact from './Contact';
 
-// import runningCat from "../assets/runningCat.jpg";
-
 const Dashboard = () => {
   const [displayPage, setDisplayPage] = useState(5);
   return (

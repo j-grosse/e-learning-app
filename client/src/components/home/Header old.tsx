@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
-import { AuthContext } from '../context/Auth';
-import Login from './Login';
-import Register from './Register';
-// import Logo from '../assets/logo.png';
-// import elearnlogo from '../assets/elearnlogo.png';
+import { AuthContext } from '../../context/Auth';
+import Login from '../Login';
+import Register from '../Register';
+// import Logo from '../../assets/logo.png';
+// import elearnlogo from '../../assets/elearnlogo.png';
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -33,8 +33,7 @@ const Header = () => {
           {/* Conditional rendering of Login/Logout */}
           {user ? (
             <div className="flex items-center lg:order-2">
-              <button>
-              </button>
+              <button></button>
               <div className="text-primary-800 hover:text-primary-500 dark:text-white focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-gray-800">
                 <NavLink to="/dashboard">
                   <button>
@@ -57,11 +56,8 @@ const Header = () => {
               <div>
                 <Register />
               </div>
-
             </div>
           )}
-
-          
         </div>
       </nav>
     </>
