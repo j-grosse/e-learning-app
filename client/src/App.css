@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Mulish:wght@400;500;600;700&display=swap');
 
-#root {
+/* #root { */
   /* max-width: 1280px; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
   /* padding: 2rem; */
-  text-align: center;
-}
-.white-bg {
+  /* text-align: center; */
+/* } */
+
+/* .white-bg {
   background: #ffffff;
 }
 .gray-bg {
@@ -6140,4 +6141,4 @@ del {
 }
 .switch-wrap {
   margin-bottom: 10px;
-}
+} */

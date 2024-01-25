@@ -2,28 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-.hover-zoom {
-  transition-property: transform;
-  transition-duration: 200ms;
-}
-
-.hover-zoom:hover {
-  transform: scale(1.05);
-}
+/* customize daisyUI button via @apply directive */
+/* .btn {
+  @apply rounded-full bg-white;
+} */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #fff;
+  background-color: #fff; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* .hover-zoom {
+  transition-property: transform;
+  transition-duration: 200ms;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
 }
 
 a {
@@ -66,5 +71,5 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 

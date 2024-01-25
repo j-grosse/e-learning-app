@@ -1,13 +1,14 @@
 import React from 'react';
 import CoursesPlaceholder from '../assets/images/CoursesPlaceholder.png';
 import CourseThumb from '../assets/images/thumb.png';
+import CourseCard from './CourseCard';
 
 const Courses = () => {
   return (
     <>
       {/* <!-- Courses area start --> */}
-      <div className="courses-area section-padding40 fix">
-        <div className="container">
+      <div className="courses-area">
+        <div className="container text-primary">
           <div className="row justify-content-center">
             <div className="col-xl-7 col-lg-8">
               <div className="section-tittle text-center mb-55">
@@ -17,7 +18,11 @@ const Courses = () => {
           </div>
           <div className="courses-actives flex">
             {/* <!-- Single --> */}
-            <div className="properties pb-20">
+            <div className="flex flex-row">
+              <CourseCard />
+              <CourseCard />
+              <CourseCard />
+
               <div className="properties__card">
                 <div className="properties__img overlay1">
                   <a href="#">
