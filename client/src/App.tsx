@@ -6,9 +6,11 @@ import './App.css';
 function App() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Main />
-      {/* <Footer /> */}
+    <button className="btn btn-primary w-64 rounded-full">Daisy UI Button App.tsx</button>
+
+      <Footer />
     </>
   );
 }

@@ -6,6 +6,9 @@ import CourseCard from './CourseCard';
 const Courses = () => {
   return (
     <>
+     <CourseCard image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.learningandthebrain.com%2Fblog%2Fwp-content%2Fuploads%2F2018%2F09%2FAdobeStock_182043612_Credit.jpg&f=1&nofb=1&ipt=e8c071ee63185f8afb6154a5a750f9e70ad7b626bf43dd03e566df8f346c2c2c&ipo=images" title="Bukablo" text="Fundamental of UX for Application design
+
+The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people." size="lg"/>
       {/* <!-- Courses area start --> */}
       <div className="courses-area">
         <div className="container text-primary">
@@ -19,10 +22,6 @@ const Courses = () => {
           <div className="courses-actives flex">
             {/* <!-- Single --> */}
             <div className="flex flex-row">
-              <CourseCard />
-              <CourseCard />
-              <CourseCard />
-
               <div className="properties__card">
                 <div className="properties__img overlay1">
                   <a href="#">
