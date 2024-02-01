@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import AnimatedPage from '../components/AnimatedPage';
+import AnimatedPage from './AnimatedPage';
+import Userprofile from './Userprofile';
+// import NavbarSide from './NavbarSide';
 // import Orders from '../components/Orders';
-import Userprofile from '../components/Userprofile';
-// import NavbarSide from '../components/NavbarSide';
 // import Ordertoclaim from '../components/Ordertoclaim';
 // import NewOrder from './NewOrder';
 // import DashboardCom from '../components/DashboardCom';
@@ -15,10 +15,10 @@ const Dashboard = () => {
     <AnimatedPage>
       <section className="flex max-w-screen-xxl bg-gradient-to-t from-primary-50 to-primary-50">
         <div>
-          <NavbarSide
+          {/* <NavbarSide
           displayPage={displayPage}
           setDisplayPage={setDisplayPage}
-          />
+          /> */}
         </div>
         <div className="flex-col mx-auto pt-[2rem] bg-gradient-to-t from-primary-50 to-primary-50 p-10">
           <AnimatePresence>

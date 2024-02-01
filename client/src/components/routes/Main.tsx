@@ -26,20 +26,22 @@ const Main = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <main>
-      <AnimatedPage>
-        <AnimatePresence mode="sync">
+    <AnimatedPage>
+      <AnimatePresence mode="sync">
+        <main>
           {/* <NavbarSide /> */}
           <Routes key={location.pathname} location={location}>
-            <Route
+
+            {/* <Route
               path="/"
               element={user ? <Dashboard /> : <Home />}
-              // element={user ? <Navigate to="/dashboard" /> : <Home />}
-            />
+            /> */}
+
             {/* <Route path="/" element={<Home />} /> */}
 
             <Route path="/" element={<ProtectedRoute />}>
-              <Route path="/" element={<Navigate to="/dashboard" />} />
+              {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
+              <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               {/* <Route path="/orders/new" element={<NewOrder />} /> */}
               {/* <Route path="/orders/incoming" element={<Ordertoclaim />} />
@@ -63,9 +65,9 @@ const Main = () => {
             {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </AnimatePresence>
-      </AnimatedPage>
-    </main>
+        </main>
+      </AnimatePresence>
+    </AnimatedPage>
   );
 };
 

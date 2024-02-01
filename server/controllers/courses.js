@@ -19,7 +19,8 @@ const createCourse = async (req, res) => {
 };
 const getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find().populate('createdBy', 'username email');
+    // const courses = await Course.find().populate('createdBy', 'username email');
+    const courses = await Course.find();
     console.log('🚀 ~ file: courses.js:15 ~ getAllCourses ~ courses:', courses);
     res.json(courses);
   } catch (error) {

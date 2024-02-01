@@ -1,14 +1,44 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import CoursesPlaceholder from '../assets/images/CoursesPlaceholder.png';
 import CourseThumb from '../assets/images/thumb.png';
 import CourseCard from './CourseCard';
+import axios from 'axios';
 
-const Courses = () => {
+// const data = [
+//   { 'id': '1',
+//     'title': 'Joe'
+//   },
+//   {
+//     'id': '2',
+//     'title': 'Mary'
+//   }
+// ]
+
+
+const CoursesSection = () => {
+  const [Courses, setCourses] = useState(null); // data from backend
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/courses`)
+      .then((res) => {
+        setCourses(res.data);
+        console.log('axios data from db:', '\n\n', res.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <>
-     <CourseCard image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.learningandthebrain.com%2Fblog%2Fwp-content%2Fuploads%2F2018%2F09%2FAdobeStock_182043612_Credit.jpg&f=1&nofb=1&ipt=e8c071ee63185f8afb6154a5a750f9e70ad7b626bf43dd03e566df8f346c2c2c&ipo=images" title="Bukablo" text="Fundamental of UX for Application design
+     {/* {Courses && Courses.map((course) => {
+      return (
+      <div key={course.id}>
+      <CourseCard image="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.learningandthebrain.com%2Fblog%2Fwp-content%2Fuploads%2F2018%2F09%2FAdobeStock_182043612_Credit.jpg&f=1&nofb=1&ipt=e8c071ee63185f8afb6154a5a750f9e70ad7b626bf43dd03e566df8f346c2c2c&ipo=images" title={course.title} text="Fundamental of UX for Application design The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people." size="sm" />
+      </div>
+      );
+   })}; */}
 
-The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people." size="lg"/>
+
       {/* <!-- Courses area start --> */}
       <div className="courses-area">
         <div className="container text-primary">
@@ -196,4 +226,4 @@ The automated process all your website tasks. Discover tools and techniques to e
   );
 };
 
-export default Courses;
+export default CoursesSection;
