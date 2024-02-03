@@ -12,6 +12,8 @@ import Userprofile from './Userprofile';
 const Dashboard = () => {
   const [displayPage, setDisplayPage] = useState(5);
   return (
+
+    {/* 
     <AnimatedPage>
       <section className="flex max-w-screen-xxl bg-gradient-to-t from-primary-50 to-primary-50">
         <div>
@@ -85,7 +87,7 @@ const Dashboard = () => {
           </AnimatePresence>
         </div>
       </section>
-    </AnimatedPage>
+    </AnimatedPage> */}
   );
 };
 
