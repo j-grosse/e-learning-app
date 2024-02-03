@@ -8,7 +8,6 @@ function App() {
     <>
       <Header />
       <Main />
-    <button className="btn btn-primary w-64 rounded-full">Daisy UI Button App.tsx</button>
 
       <Footer />
     </>
