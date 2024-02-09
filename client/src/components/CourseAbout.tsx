@@ -1,43 +1,44 @@
 import React, { useState } from 'react';
+import { FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
 
 const CourseAbout = () => {
   const [isCollapsed, setCollapsed] = useState(true);
 
   const handleAccordion = () => {
     setCollapsed(!isCollapsed);
-    console.log(isCollapsed);
   };
 
   return (
     <div>
-      <div className="col-lg-8">
+      <div className="col-lg-8 ml-16 w-5/12">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">
+            <h4 className="tutor-course-segment__title text-2xl mb-4">
               Course Prerequisites
             </h4>
 
             {/* <!-- Tutor Course Segment Prerequisites Start --> */}
             <div className="tutor-course-segment__prerequisites">
-              <div className="tutor-course-segment__prerequisites-warning">
-                <i className="fas fa-exclamation-triangle"></i>
+              <div className="tutor-course-segment__prerequisites-warning flex bg-yellow-100 border-2 border-neutral-500 text-neutral-500 p-4">
+                <FaExclamationTriangle />
                 Please note that this course has the following prerequisites
                 which must be completed before it can be accessed
               </div>
               <ul className="tutor-course-segment__prerequisites-list">
                 <li>
-                  <a className="prerequisites-item" href="#">
+                  <br/>
+                  <a className="prerequisites-item flex bg-yellow-100 border-2 border-neutral-500 text-neutral-500 p-4" href="#">
                     <div className="prerequisites-item__thumbnail">
                       <img
-                        src="assets/images/courses/courses-36.jpg"
+                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2022%2F11%2FGettyImages-1358149692.jpg&f=1&nofb=1&ipt=7aa48c39383fc21b54e08924da01662d1d72820eec53a5c67d63de13fab76a36&ipo=images"
                         alt="Courses"
                         width="70"
                         height="47"
                       />
                     </div>
-                    <div className="prerequisites-item__title">
+                    <div className="prerequisites-item__title ml-4">
                       Artificial Intelligence &amp; Machine Learning
                     </div>
                   </a>
@@ -47,10 +48,10 @@ const CourseAbout = () => {
             {/* <!-- Tutor Course Segment Prerequisites End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">About This Course</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">About This Course</h4>
 
             {/* <!-- Tutor Course Segment Content Wrapper Start --> */}
             <div className="tutor-course-segment__content-wrap">
@@ -80,13 +81,13 @@ const CourseAbout = () => {
               </p>
             </div>
             {/* <!-- Tutor Course Segment Content Wrapper End --> */}
-            <br/> 
+            <br />
             {/* <!-- Tutor Course Segment Tags Start --> */}
-            <div className="tutor-course-segment__tags">
+            <div className="tutor-course-segment__tags flex">
               <div className="tutor-course-segment__tags-title">
-                <i className="fas  fa-tags"></i>
+                <FaTags />
               </div>
-              <div className="tutor-course-segment__tags-list">
+              <div className="tutor-course-segment__tags-list ml-3">
                 <a href="#"> big data,</a>
                 <a href="#">data,</a>
                 <a href="#">data analysis,</a>
@@ -96,11 +97,11 @@ const CourseAbout = () => {
             {/* <!-- Tutor Course Segment Tags End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment benefits-wrap">
-            <h4 className="tutor-course-segment__title">Learning Objectives</h4>
+          <br />
 
+          {/* <!-- Tutor Course Segment Start --> */}
+          <div className="tutor-course-segment benefits-wrap ">
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Learning Objectives</h4>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
             <div className="tutor-course-segment__benefits-items">
               <div className="tutor-course-segment__benefit-item">
@@ -131,10 +132,10 @@ const CourseAbout = () => {
             {/* <!-- Tutor Course Segment Benefits Items End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-<br/>
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">Requirements</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Requirements</h4>
 
             {/* <!-- Tutor Course Segment Requirements Items Start --> */}
             <div className="tutor-course-segment__requirements-content">
@@ -152,11 +153,11 @@ const CourseAbout = () => {
             {/* <!-- Tutor Course Segment Requirements Items End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/>
-          <br/> 
+          <br />
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment audience-wrap">
-            <h4 className="tutor-course-segment__title">Target Audience</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Target Audience</h4>
 
             {/* <!-- Tutor Course Segment Requirements Items Start --> */}
             <div className="tutor-course-segment__audience-content">
@@ -172,11 +173,11 @@ const CourseAbout = () => {
             {/* <!-- Tutor Course Segment Requirements Items End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-<br/>
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
             <div className="tutor-course-segment__header">
-              <h4 className="tutor-course-segment__title">Curriculum</h4>
+              <h4 className="tutor-course-segment__title text-2xl mb-4">Curriculum</h4>
 
               <div className="tutor-course-segment__lessons-duration">
                 <span className="tutor-course-segment__lessons">4 Lessons</span>
@@ -188,134 +189,138 @@ const CourseAbout = () => {
 
             <div className="course-curriculum accordion">
               <div className="accordion-item">
-                <button className="accordion-collapse btn" onClick={handleAccordion}>
+                <button
+                  className="accordion-collapse btn"
+                  onClick={handleAccordion}
+                >
                   <i className="tutor-icon"></i> IT background
                 </button>
                 {!isCollapsed && (
-                <div
-                  className="accordion-collapse"
-                >
-                  <div className="course-curriculum__lessons">
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-alt"></i> The importance of
-                        data nowadays
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-alt"></i> Why my organization
-                        should know about data
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-edit"></i> Assignments
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-question-circle"></i> First quiz
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
+                  <div className="accordion-collapse">
+                    <div className="course-curriculum__lessons">
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-alt"></i> The importance of
+                          data nowadays
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-alt"></i> Why my
+                          organization should know about data
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-edit"></i> Assignments
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-question-circle"></i> First quiz
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>)}
+                )}
               </div>
 
               {/* second accordion */}
 
               <div className="accordion-item">
                 <button
-                  className="accordion-button btn" onClick={handleAccordion}>
+                  className="accordion-button btn"
+                  onClick={handleAccordion}
+                >
                   <i className="tutor-icon"></i> Key concepts
                 </button>
                 {!isCollapsed && (
-                <div
-                  className="accordion-collapse"
-                >
-                  <div className="course-curriculum__lessons">
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-alt"></i>
-                        Basic understanding of data management concepts
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-edit"></i>
-                        2nd Assignments
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
+                  <div className="accordion-collapse">
+                    <div className="course-curriculum__lessons">
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-alt"></i>
+                          Basic understanding of data management concepts
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-edit"></i>
+                          2nd Assignments
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>)}
+                )}
               </div>
 
               {/* third accordion */}
               <div className="accordion-item">
                 <button
-                  className="accordion-button btn" onClick={handleAccordion}>
+                  className="accordion-button btn"
+                  onClick={handleAccordion}
+                >
                   <i className="tutor-icon"></i> Apply the principles
                 </button>
                 {!isCollapsed && (
-                <div
-                  className="accordion-collapse"
-                >
-                  <div className="course-curriculum__lessons">
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-alt"></i>
-                        Final Lesson
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-file-edit"></i>
-                        Assignments
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
-                    </div>
-                    <div className="course-curriculum__lesson">
-                      <span className="course-curriculum__title">
-                        <i className="fas fa-question-circle"></i>
-                        First quiz
-                      </span>
-                      <span className="course-curriculum__icon">
-                        <i className="fas fa-lock-alt"></i>
-                      </span>
+                  <div className="accordion-collapse">
+                    <div className="course-curriculum__lessons">
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-alt"></i>
+                          Final Lesson
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-file-edit"></i>
+                          Assignments
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
+                      <div className="course-curriculum__lesson">
+                        <span className="course-curriculum__title">
+                          <i className="fas fa-question-circle"></i>
+                          First quiz
+                        </span>
+                        <span className="course-curriculum__icon">
+                          <i className="fas fa-lock-alt"></i>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>)}
+                )}
               </div>
             </div>
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">Your Instructors</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Your Instructors</h4>
 
             <div className="tutor-course-segment__instructor">
               <div className="tutor-instructor">
@@ -361,10 +366,10 @@ const CourseAbout = () => {
             </div>
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">Student Feedback</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Student Feedback</h4>
 
             <div className="tutor-course-segment__feedback">
               <div className="tutor-course-segment__reviews-average">
@@ -483,10 +488,10 @@ const CourseAbout = () => {
             </div>
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">
+            <h4 className="tutor-course-segment__title text-2xl mb-4">
               Reviews <span className="count">(3)</span>
             </h4>
 
@@ -586,10 +591,10 @@ const CourseAbout = () => {
             </div>
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br/> 
+          <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title">Write a review</h4>
+            <h4 className="tutor-course-segment__title text-2xl mb-4">Write a review</h4>
 
             <div className="tutor-course-segment__reviews">
               <button
