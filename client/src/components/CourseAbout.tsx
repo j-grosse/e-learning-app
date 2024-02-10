@@ -15,9 +15,9 @@ const CourseAbout = () => {
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">
+            <h2 className="tutor-course-segment__title">
               Course Prerequisites
-            </h4>
+            </h2>
 
             {/* <!-- Tutor Course Segment Prerequisites Start --> */}
             <div className="tutor-course-segment__prerequisites">
@@ -51,7 +51,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">About This Course</h4>
+            <h2 className="tutor-course-segment__title">About This Course</h2>
 
             {/* <!-- Tutor Course Segment Content Wrapper Start --> */}
             <div className="tutor-course-segment__content-wrap">
@@ -101,7 +101,7 @@ const CourseAbout = () => {
 
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment benefits-wrap ">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Learning Objectives</h4>
+            <h2 className="tutor-course-segment__title">Learning Objectives</h2>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
             <div className="tutor-course-segment__benefits-items">
               <div className="tutor-course-segment__benefit-item">
@@ -135,7 +135,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Requirements</h4>
+            <h2 className="tutor-course-segment__title">Requirements</h2>
 
             {/* <!-- Tutor Course Segment Requirements Items Start --> */}
             <div className="tutor-course-segment__requirements-content">
@@ -157,7 +157,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment audience-wrap">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Target Audience</h4>
+            <h2 className="tutor-course-segment__title">Target Audience</h2>
 
             {/* <!-- Tutor Course Segment Requirements Items Start --> */}
             <div className="tutor-course-segment__audience-content">
@@ -177,7 +177,7 @@ const CourseAbout = () => {
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
             <div className="tutor-course-segment__header">
-              <h4 className="tutor-course-segment__title text-2xl mb-4">Curriculum</h4>
+              <h2 className="tutor-course-segment__title">Curriculum</h2>
 
               <div className="tutor-course-segment__lessons-duration">
                 <span className="tutor-course-segment__lessons">4 Lessons</span>
@@ -320,7 +320,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Your Instructors</h4>
+            <h2 className="tutor-course-segment__title">Your Instructors</h2>
 
             <div className="tutor-course-segment__instructor">
               <div className="tutor-instructor">
@@ -333,7 +333,7 @@ const CourseAbout = () => {
                   />
                 </div>
                 <div className="tutor-instructor__instructor-info">
-                  <h4 className="tutor-instructor__name">Owen Christ</h4>
+                  <h2 className="tutor-instructor__name">Owen Christ</h2>
                   <div className="tutor-instructor__ratings">
                     <div className="rating-star">
                       <div
@@ -369,7 +369,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Student Feedback</h4>
+            <h2 className="tutor-course-segment__title">Student Feedback</h2>
 
             <div className="tutor-course-segment__feedback">
               <div className="tutor-course-segment__reviews-average">
@@ -491,9 +491,9 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">
+            <h2 className="tutor-course-segment__title">
               Reviews <span className="count">(3)</span>
-            </h4>
+            </h2>
 
             <div className="tutor-course-segment__review-commnet">
               <ul className="comment-list-02">
@@ -594,7 +594,7 @@ const CourseAbout = () => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h4 className="tutor-course-segment__title text-2xl mb-4">Write a review</h4>
+            <h2 className="tutor-course-segment__title">Write a review</h2>
 
             <div className="tutor-course-segment__reviews">
               <button
