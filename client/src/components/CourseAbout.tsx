@@ -84,13 +84,13 @@ const CourseAbout = () => {
             <br />
             {/* <!-- Tutor Course Segment Tags Start --> */}
             <div className="tutor-course-segment__tags flex">
-              <div className="tutor-course-segment__tags-title">
+              <div className="tutor-course-segment__tags-title flex items-center">
                 <FaTags />
               </div>
               <div className="tutor-course-segment__tags-list ml-3">
-                <a href="#"> big data,</a>
-                <a href="#">data,</a>
-                <a href="#">data analysis,</a>
+                <a href="#"> big data, </a>
+                <a href="#">data, </a>
+                <a href="#">data analysis, </a>
                 <a href="#">data modeling</a>
               </div>
             </div>
