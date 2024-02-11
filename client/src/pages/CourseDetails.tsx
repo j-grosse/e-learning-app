@@ -1,7 +1,15 @@
 import React from 'react';
-import { FaUserAlt } from 'react-icons/fa';
+import {
+  FaGlobe,
+  FaPlayCircle,
+  FaShoppingBasket,
+  FaTag,
+  FaUserAlt,
+} from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { RxDividerVertical } from 'react-icons/rx';
+import { FaSlidersH } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa';
 import CourseData from '../components/CourseData';
 import CourseAbout from '../components/CourseAbout';
 
@@ -24,15 +32,16 @@ const CourseDetails = () => {
             {/* <!-- Tutor Course Sidebar Start --> */}
             <div className="tutor-course-sidebar">
               {/* <!-- Tutor Course Price Preview Start --> */}
-              <div className="tutor-course-price-preview">
+              <div className="tutor-course-price-preview border-2">
                 <div className="tutor-course-price-preview__thumbnail">
-                  <div className="ratio ratio-16x9">
+                  <div className="ratio ratio-16x9 border-2">
+                    Video Preview Window
                     {/* <iframe
                           width="1280"
                           height="720"
                           src="https://www.youtube.com/embed/qKWnFRnjkA0"
                           title="What Is Data Modeling? 2 Minute erwin Expert Explanation"
-                          frameBorder="0"
+                          frameBorder="1"
                           allow="web-share"
                           allowFullScreen
                         ></iframe> */}
@@ -40,38 +49,39 @@ const CourseDetails = () => {
                 </div>
                 <div className="tutor-course-price-preview__price">
                   <div className="tutor-course-price">
-                    <span className="sale-price">
-                      $46<span className="separator">.00</span>
-                    </span>
-                    <span className="regular-price">
-                      $76<span className="separator">.00</span>
+                    <h2 className="sale-price">€49.00</h2>
+                    <span className="regular-price line-through ml-4">
+                      €79.00
                     </span>
                   </div>
-                  <div className="tutor-course-price-badge">39% off</div>
+                  <div className="tutor-course-price-badge border-2 w-20 text-center">
+                    39% off
+                  </div>
                 </div>
                 <div className="tutor-course-price-preview__meta">
                   <ul className="tutor-course-meta-list">
                     <li>
-                      <div className="label">
-                        <i className="fas fa-sliders-h"></i> Level
+                      <div className="flex gap-4 items-center">
+                        <FaSlidersH />
+                        Level
                       </div>
                       <div className="value">Beginner</div>
                     </li>
                     <li>
-                      <div className="label">
-                        <i className="fas fa-clock"></i> Duration
+                      <div className="label flex items-center">
+                        <FaClock /> Duration
                       </div>
                       <div className="value">15.3 hours</div>
                     </li>
                     <li>
                       <div className="label">
-                        <i className="fas fa-play-circle"></i> Lectures
+                        <FaPlayCircle /> Lectures
                       </div>
                       <div className="value">4 lectures</div>
                     </li>
                     <li>
                       <div className="label">
-                        <i className="fas fa-tag"></i> Subject
+                        <FaTag /> Subject
                       </div>
                       <div className="value">
                         <a href="#">Data Modeling</a>
@@ -79,16 +89,16 @@ const CourseDetails = () => {
                     </li>
                     <li>
                       <div className="label">
-                        <i className="fas fa-globe"></i> Language
+                        <FaGlobe /> Language
                       </div>
                       <div className="value">Russian</div>
                     </li>
                   </ul>
                 </div>
                 <div className="tutor-course-segment">
-                  <h4 className="tutor-course-segment__title">
+                  <h2 className="tutor-course-segment__title">
                     Material Includes
-                  </h4>
+                  </h2>
 
                   <ul className="tutor-course-segment__list-style-01">
                     <li>Videos</li>
@@ -97,8 +107,7 @@ const CourseDetails = () => {
                 </div>
                 <div className="tutor-course-price-preview__btn">
                   <button className="btn btn-primary btn-hover-secondary w-100">
-                    {' '}
-                    <i className="fas fa-shopping-basket"></i> Add to cart
+                    <FaShoppingBasket /> Add to cart
                   </button>
                   <a href="#" className="btn btn-light btn-hover-primary w-100">
                     Add to wishlist
@@ -122,8 +131,8 @@ const CourseDetails = () => {
               {/* <!-- Tutor Course Price Preview End --> */}
 
               {/* <!-- Sidebar Widget Start --> */}
-              <div className="sidebar-widget">
-                <h3 className="sidebar-widget__title">Course categories</h3>
+              <div className="sidebar-widget border-2">
+                <h2 className="sidebar-widget__title">Course categories</h2>
 
                 <ul className="sidebar-widget__link">
                   <li>
@@ -168,7 +177,7 @@ const CourseDetails = () => {
 
               {/* <!-- Sidebar Widget Start --> */}
               <div className="sidebar-widget">
-                <h3 className="sidebar-widget__title">Related Courses</h3>
+                <h2 className="sidebar-widget__title">Related Courses</h2>
 
                 <div className="sidebar-widget__course">
                   <div className="sidebar-widget__course-item">
@@ -183,12 +192,12 @@ const CourseDetails = () => {
                       </a>
                     </div>
                     <div className="sidebar-widget__course-content">
-                      <h4 className="sidebar-widget__course-title">
+                      <h2 className="sidebar-widget__course-title">
                         <a href="course-single-layout-01.html">
                           Artificial Intelligence: Reinforcement Learning in
                           Python
                         </a>
-                      </h4>
+                      </h2>
                       <div className="sidebar-widget__course-price">
                         <span className="sale-price">
                           $46<span className="separator">.00</span>
@@ -212,11 +221,11 @@ const CourseDetails = () => {
                       </a>
                     </div>
                     <div className="sidebar-widget__course-content">
-                      <h4 className="sidebar-widget__course-title">
+                      <h2 className="sidebar-widget__course-title">
                         <a href="course-single-layout-01.html">
                           Statistics for Data Science and Business Analysis
                         </a>
-                      </h4>
+                      </h2>
                       <div className="sidebar-widget__course-price">
                         <span className="sale-price">
                           $25<span className="separator">.00</span>
@@ -240,12 +249,12 @@ const CourseDetails = () => {
                       </div>
                     </div>
                     <div className="sidebar-widget__course-content">
-                      <h4 className="sidebar-widget__course-title">
+                      <h2 className="sidebar-widget__course-title">
                         <a href="course-single-layout-01.html">
                           Artificial Intelligence: Reinforcement Learning in
                           Python
                         </a>
-                      </h4>
+                      </h2>
                       <div className="sidebar-widget__course-price">
                         <span className="sale-price">
                           $28<span className="separator">.00</span>
@@ -263,7 +272,6 @@ const CourseDetails = () => {
             {/* <!-- Tutor Course Sidebar End --> */}
           </div>
         </div>
-        
       </div>
     </>
   );
