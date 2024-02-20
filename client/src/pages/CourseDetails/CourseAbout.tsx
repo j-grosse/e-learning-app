@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
-import data from './courseData';
+import { FaCheck, FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
 
-const CourseAbout = () => {
-  const { id } = useParams();
-  const course = data.find((el) => el.id === id);
-
+const CourseAbout = ({ course }) => {
   const [isCollapsed, setCollapsed] = useState(true);
 
   const handleAccordion = () => {
@@ -15,8 +10,7 @@ const CourseAbout = () => {
 
   return (
     <div>
-      <div>
-      </div>
+      <div></div>
       <div className="col-lg-8 ml-16 w-5/12">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
@@ -41,7 +35,8 @@ const CourseAbout = () => {
                     href="#"
                   >
                     <div className="prerequisites-item__thumbnail">
-                      <img className="rounded-md"
+                      <img
+                        className="rounded-md"
                         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2022%2F11%2FGettyImages-1358149692.jpg&f=1&nofb=1&ipt=7aa48c39383fc21b54e08924da01662d1d72820eec53a5c67d63de13fab76a36&ipo=images"
                         alt="Courses"
                         width="70"
@@ -49,7 +44,7 @@ const CourseAbout = () => {
                       />
                     </div>
                     <div className="prerequisites-item__title ml-4">
-                    {course ? course.title : 'No course with this id found'}
+                      {course ? course.title : 'No course with this id found'}
                     </div>
                   </a>
                 </li>
@@ -110,21 +105,21 @@ const CourseAbout = () => {
           <br />
 
           {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment benefits-wrap ">
+          <div className="tutor-course-segment benefits-wrap">
             <h2 className="tutor-course-segment__title">Learning Objectives</h2>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
             <div className="tutor-course-segment__benefits-items">
               <div className="tutor-course-segment__benefit-item">
-                <div className="tutor-course-segment__benefit-content">
-                  <i className="fas fa-check"></i>
+                <div className="tutor-course-segment__benefit-content flex gap-3">
+                  <FaCheck />
                   <span className="benefit-text">
                     Ready to begin working on real-world data modeling projects,
                   </span>
                 </div>
               </div>
               <div className="tutor-course-segment__benefit-item">
-                <div className="tutor-course-segment__benefit-content">
-                  <i className="fas fa-check"></i>
+                <div className="tutor-course-segment__benefit-content flex gap-3">
+                  <FaCheck />
                   <span className="benefit-text">
                     Expanded responsibilities as part of an existing role
                   </span>

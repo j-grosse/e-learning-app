@@ -3,7 +3,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { RxDividerVertical } from 'react-icons/rx';
 
-const CourseData = ( { course }) => {
+const CourseHeader = ( { course }) => {
 
   return (
     <>
@@ -68,4 +68,4 @@ const CourseData = ( { course }) => {
   );
 };
 
-export default CourseData;
+export default CourseHeader;

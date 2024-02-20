@@ -9,7 +9,7 @@ const DashboardMain = ({ children }: DashboardMainProps) => {
       <p>DashboardMain</p>
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default DashboardMain
+export default DashboardMain;

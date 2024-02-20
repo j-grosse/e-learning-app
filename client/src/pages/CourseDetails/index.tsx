@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import {
   FaGlobe,
   FaPlayCircle,
@@ -10,20 +11,24 @@ import { FaStar } from 'react-icons/fa';
 import { RxDividerVertical } from 'react-icons/rx';
 import { FaSlidersH } from 'react-icons/fa';
 import { FaClock } from 'react-icons/fa';
-import CourseData from '../../components/CourseData';
-import CourseAbout from '../../components/CourseAbout';
+import CourseHeader from './CourseHeader';
+import CourseAbout from './CourseAbout';
+import data from '../../assets/courseData';
 
 const CourseDetails = () => {
+  const { id } = useParams();
+  const course = data.find((el) => el.id === id);
+
   return (
     <>
       Home / courses / Mastering Data Modelling Fundamentals
-      <CourseData />
+      <CourseHeader course={course}/>
       <div
         className="tutor-course-main-content section-padding-01 sticky-parent flex"
         style={{ position: 'relative' }}
       >
         <div className="container custom-container lg:col-span-4">
-          <CourseAbout />
+          <CourseAbout course={course}/>
         </div>
 
         {/* <!-- Tutor Course Sidebar Start --> */}

@@ -3,7 +3,7 @@ import CoursesPlaceholder from '../assets/images/CoursesPlaceholder.png';
 import CourseThumb from '../assets/images/thumb.png';
 import CourseCard from './CourseCard';
 import axios from 'axios';
-import data from './courseData';
+import data from '../../assets/courseData';
 
 const CoursesSection = () => {
   const [Courses, setCourses] = useState(null); // data from backend
