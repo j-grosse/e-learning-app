@@ -7,15 +7,15 @@ import axios from 'axios';
 const CoursesSection = () => {
   const [Courses, setCourses] = useState(null); // data from backend
 
-  // const loadData = () => {
-  //   axios
-  //     .get(`http://localhost:8000/api/courses`)
-  //     .then((res) => {
-  //       setCourses(res.data);
-  //       console.log('axios data from db:', '\n\n', res.data);
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
+  const loadData = () => {
+    axios
+      .get(`/api/courses`)
+      .then((res) => {
+        setCourses(res.data);
+        console.log('axios data from db:', '\n\n', res.data);
+      })
+      .catch((e) => console.log(e));
+  };
 
   const data = [
     {
@@ -50,12 +50,12 @@ const CoursesSection = () => {
 
   useEffect(() => {
     // loadData();
-    setCourses(data);
+    setCourses(data); // use local array data instead of database data
   }, []);
 
   return (
     <>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-6 h-80">
         {Courses &&
           Courses.map((course) => {
             return (
@@ -64,13 +64,11 @@ const CoursesSection = () => {
                   image={course.image}
                   title={course.title}
                   text={course.text}
-                  size="sm"
                 />
               </div>
             );
           })}
       </div>
-      
     </>
   );
 };
