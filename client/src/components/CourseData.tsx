@@ -3,7 +3,8 @@ import { FaUserAlt } from 'react-icons/fa';
 import { FaStar } from 'react-icons/fa';
 import { RxDividerVertical } from 'react-icons/rx';
 
-const CourseData = () => {
+const CourseData = ( { course }) => {
+
   return (
     <>
       <div className='bg-gray-200 w-full'>
@@ -17,7 +18,7 @@ const CourseData = () => {
             </a>
           </div>
           <h1 className="tutor-course-top-info__title text-3xl">
-            Mastering Data Modeling Fundamentals
+          {course ? course.title : 'No course with this id found'}
           </h1>
 
           <div className="tutor-course-top-info__meta flex">

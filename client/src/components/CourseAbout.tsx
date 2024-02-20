@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
+import data from './courseData';
 
 const CourseAbout = () => {
+  const { id } = useParams();
+  const course = data.find((el) => el.id === id);
+
   const [isCollapsed, setCollapsed] = useState(true);
 
   const handleAccordion = () => {
@@ -10,6 +15,8 @@ const CourseAbout = () => {
 
   return (
     <div>
+      <div>
+      </div>
       <div className="col-lg-8 ml-16 w-5/12">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
@@ -21,17 +28,20 @@ const CourseAbout = () => {
 
             {/* <!-- Tutor Course Segment Prerequisites Start --> */}
             <div className="tutor-course-segment__prerequisites">
-              <div className="tutor-course-segment__prerequisites-warning flex bg-yellow-100 border-2 border-neutral-500 text-neutral-500 p-4">
-                <FaExclamationTriangle />
+              <div className="tutor-course-segment__prerequisites-warning flex bg-yellow-50 border-2 border-neutral-500 text-neutral-500 p-4 gap-5">
+                <FaExclamationTriangle size={50} />
                 Please note that this course has the following prerequisites
                 which must be completed before it can be accessed
               </div>
               <ul className="tutor-course-segment__prerequisites-list">
                 <li>
-                  <br/>
-                  <a className="prerequisites-item flex bg-yellow-100 border-2 border-neutral-500 text-neutral-500 p-4" href="#">
+                  <br />
+                  <a
+                    className="prerequisites-item flex border-2 border-neutral-500 text-neutral-500 p-4"
+                    href="#"
+                  >
                     <div className="prerequisites-item__thumbnail">
-                      <img
+                      <img className="rounded-md"
                         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2022%2F11%2FGettyImages-1358149692.jpg&f=1&nofb=1&ipt=7aa48c39383fc21b54e08924da01662d1d72820eec53a5c67d63de13fab76a36&ipo=images"
                         alt="Courses"
                         width="70"
@@ -39,7 +49,7 @@ const CourseAbout = () => {
                       />
                     </div>
                     <div className="prerequisites-item__title ml-4">
-                      Artificial Intelligence &amp; Machine Learning
+                    {course ? course.title : 'No course with this id found'}
                     </div>
                   </a>
                 </li>

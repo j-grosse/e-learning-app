@@ -19,7 +19,7 @@ import NotFound from '../../pages/NotFound';
 // import Ordertoclaim from './Ordertoclaim';
 import Userprofile from '../Userprofile';
 import PrivateRoutes from '../../layouts/dashboard/PrivateRoutes';
-import CourseDetails from '../../pages/CourseDetails';
+import CourseDetails from '../../pages/CourseDetails/CourseDetails';
 // import FormContact from './blocks/FormContact';
 
 // if url is one of the defined routes: load the corresponding component
@@ -40,7 +40,8 @@ const Main = () => {
             /> */}
 
             <Route path="/" element={<Home />} />
-            <Route path="/details" element={<CourseDetails />} />
+            <Route path="/details/:id" element={<CourseDetails />} />
+
             {/* <Route
               path="/dashboard"
               element={

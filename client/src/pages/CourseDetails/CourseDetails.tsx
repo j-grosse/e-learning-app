@@ -10,8 +10,8 @@ import { FaStar } from 'react-icons/fa';
 import { RxDividerVertical } from 'react-icons/rx';
 import { FaSlidersH } from 'react-icons/fa';
 import { FaClock } from 'react-icons/fa';
-import CourseData from '../components/CourseData';
-import CourseAbout from '../components/CourseAbout';
+import CourseData from '../../components/CourseData';
+import CourseAbout from '../../components/CourseAbout';
 
 const CourseDetails = () => {
   return (
