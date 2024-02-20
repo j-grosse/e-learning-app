@@ -32,5 +32,6 @@ if (process.env.NODE_ENV === 'production') {
 
 connectDB().then(() => {
   httpServer.listen(PORT);
-  // app.listen(PORT, () => console.log("🚀 ~ file: index.js:11 ~ PORT:", PORT));
+  console.log('PORT:', PORT);
+  // app.listen(PORT, () => console.log("🚀 PORT:", PORT));
 });
