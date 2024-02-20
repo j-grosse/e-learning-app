@@ -15,7 +15,7 @@ const LoginForm = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { 
     e.preventDefault();
     console.log('CONTEXT', context);
     context.login(user);

@@ -11,15 +11,15 @@ import LoginForm from '../LoginForm';
 import Register from '../Register';
 import ProtectedRoute from './ProtectedRoute';
 import Home from '../../pages/Home';
-import DashboardLayout from '../../layouts/dashboard/DashboardLayout';
+import CourseDetails from '../../pages/CourseDetails';
+import DashboardLayout from '../../pages/Dashboard';
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
 import NotFound from '../../pages/NotFound';
 // import NavbarSide from './NavbarSide';
 // import Ordertoclaim from './Ordertoclaim';
-import Userprofile from '../Userprofile';
-import PrivateRoutes from '../../layouts/dashboard/PrivateRoutes';
-import CourseDetails from '../../pages/CourseDetails';
+import UserProfile from '../UserProfile';
+import PrivateRoutes from '../../pages/Dashboard/PrivateRoutes';
 // import FormContact from './blocks/FormContact';
 
 // if url is one of the defined routes: load the corresponding component
@@ -40,7 +40,8 @@ const Main = () => {
             /> */}
 
             <Route path="/" element={<Home />} />
-            <Route path="/details" element={<CourseDetails />} />
+            <Route path="/details/:id" element={<CourseDetails />} />
+
             {/* <Route
               path="/dashboard"
               element={

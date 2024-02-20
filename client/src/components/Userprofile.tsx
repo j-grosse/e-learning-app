@@ -3,7 +3,7 @@ import { AuthContext } from '../context/Auth';
 import axios from '../axiosInstance';
 // import CatBox from '../assets/cat-box.png';
 
-const Userprofile = () => {
+const UserProfile = () => {
   // Where user could change information in user dashboard
   const { user } = useContext(AuthContext);
   const [userProfile, SetUserProfile] = useState(user);
@@ -11,7 +11,7 @@ const Userprofile = () => {
   const handlerUpdate = (e) => {
     e.preventDefault();
     console.log(
-      '🚀 ~ file: Userprofile.jsx:12 ~ handlerUpdate ~ userProfile:',
+      '🚀 ~ file: UserProfile.jsx:12 ~ handlerUpdate ~ userProfile:',
       userProfile
     );
     axios
@@ -24,7 +24,7 @@ const Userprofile = () => {
     const { name, value } = e.target;
     SetUserProfile({ ...userProfile, [name]: value });
     console.log(
-      '🚀 ~ file: Userprofile.jsx:21 ~ handleChange ~ userProfile:',
+      '🚀 ~ file: UserProfile.jsx:21 ~ handleChange ~ userProfile:',
       userProfile
     );
   };
@@ -221,4 +221,4 @@ const Userprofile = () => {
   );
 };
 
-export default Userprofile;
+export default UserProfile;

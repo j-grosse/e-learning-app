@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimatedPage from './AnimatedPage';
-import Userprofile from './Userprofile';
+import UserProfile from './UserProfile';
 // import NavbarSide from './NavbarSide';
 // import Orders from '../components/Orders';
 // import Ordertoclaim from '../components/Ordertoclaim';
@@ -61,7 +61,7 @@ const Dashboard = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <Userprofile />
+                <UserProfile />
               </motion.div>
             )}
             {displayPage === 2 && (

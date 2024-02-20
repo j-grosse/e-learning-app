@@ -1,10 +1,10 @@
 // from https://medium.com/@amavictor/crafting-stunning-layouts-and-dashboards-in-react-a-comprehensive-guide-f0761c2caefc
 
-import { Loader } from 'lucide-react';
 import React, { Suspense } from 'react';
+import { Loader } from 'lucide-react';
 import { Route } from 'react-router-dom';
-import DashboardLayout from './DashboardLayout';
-import Userprofile from '../../components/Userprofile';
+import DashboardLayout from '.';
+import UserProfile from '../../components/UserProfile';
 import { useLocation } from 'react-router-dom';
 // const Profile = lazy( () =>  import('../pages/Profile'));
 // const MyCourses = lazy( () =>  import('../pages/MyCourses'));
@@ -23,13 +23,13 @@ const PrivateRoutes = () => {
       // element: <MyCourses />
     },
     {
-      path: '/profile',
+      path: '/dashboard/profile',
+      element: <UserProfile />,
       // element: <div>My Profile</div>,
-      element: <Userprofile />,
     },
     // lesson routes
     {
-      path: '/lessons',
+      path: 'dashboard/lessons',
       element: <div>My Lessons</div>,
       // element: <Profile />
     },
@@ -38,18 +38,19 @@ const PrivateRoutes = () => {
   return (
     <>
       {/* <Routes> */}
-        {privateRoutes.map((route: RouteConfig, index: number) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <DashboardLayout>
-                {/* if current = path of a route in privateRoutes array, render the element of that route */}
-                <Suspense fallback={<Loader />}>{route.element}</Suspense>
-              </DashboardLayout>
-            }
-          />
-        ))}
+
+      {privateRoutes.map((route: RouteConfig, index: number) => (
+        <Route
+          key={index}
+          path={route.path}
+          element={
+            <DashboardLayout>
+              {/* if current = path of a route in privateRoutes array, render the element of that route */}
+              <Suspense fallback={<Loader size={32} color="#000000"/>}>{route.element}</Suspense>
+            </DashboardLayout>
+          }
+        />
+      ))}
       {/* </Routes> */}
     </>
   );
