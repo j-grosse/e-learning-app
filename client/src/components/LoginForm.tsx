@@ -106,7 +106,7 @@ const LoginForm = () => {
                     Log in
                   </button>
                   {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Not registered?{' '}
+                    Not registered?
                     <div className="text-blue-700 hover:underline dark:text-blue-500">
                       <NavLink to="/register">Create account</NavLink>
                     </div>

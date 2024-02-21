@@ -56,7 +56,7 @@ const Hero = () => {
             src={hero}
             alt="Transparent Image"
             style={{
-              opacity: 0.5,
+              opacity: 0.6,
               zIndex: -1,
               position: 'absolute',
               width: '100%',
@@ -66,34 +66,21 @@ const Hero = () => {
           />
 
           <div className="rounded-2xl place-self-start lg:col-span-6 p-6">
-            <h1 className="text-primary-800 max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-              You Learn, we earn
-            </h1>
             <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
-              lorem ipsem
-              <br />
-              lorem Upsem
+              Your path to success
             </p>
-
+            <h1 className="text-primary-800 max-w-2xl mb-8 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
+              Access To 4000+ Courses from 500+ Instructors & Institutions
+            </h1>
+            <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
+              Take your career to the next level.
+            </p>
             {/* CTA button 1 */}
             <button
               onClick={handleClick}
-              className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-primary-800 rounded-lg bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 shadow-2xl"
+              className="inline-flex items-center justify-center px-5 py-3 ml-6 mr-3 font-medium text-center text-primary-800 rounded-lg bg-primary-200 hover:bg-secondary-500 focus:ring-4 focus:ring-primary-300 shadow-2xl"
             >
               Search Courses
-              {/* svg arrow right */}
-              <svg
-                className="w-5 h-5 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
             </button>
             {/* <img
               src={image02}

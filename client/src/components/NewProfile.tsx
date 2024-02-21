@@ -150,7 +150,7 @@ function NewProfile({ user, errors, handleChange, handleProfileSubmit }) {
                     htmlFor="terms"
                     className="font-light text-gray-500 dark:text-gray-300"
                   >
-                    I accept the{' '}
+                    I accept the
                     <a
                       className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                       href="#"
@@ -168,7 +168,7 @@ function NewProfile({ user, errors, handleChange, handleProfileSubmit }) {
               </button>
 
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Already have an account?{' '}
+                Already have an account?
               </p>
               <div className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 <NavLink to="/login"></NavLink>

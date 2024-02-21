@@ -1,38 +1,58 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
 
-const CourseCard = ({ id, image, title, text }) => {
+const CourseCard = ({ course }) => {
   return (
-    <div className="flex flex-wrap bg-gray-200 shadow-lg">
-      <div className="w-60">
-        <div className="">
-          className="w-full object-cover h-24 aspect-w-1 aspect-h-1 p-2"
-          <a href={`/details/${id}`}>
-            <img
-              className="w-full object-cover h-24 aspect-w-1 aspect-h-1 p-2"
-              src={image}
-              alt="image"
-            />
-          </a>
+    <div className="flex flex-wrap bg-gray-50 shadow-lg m-3 rounded-lg overflow-hidden">
+      <Link to="/details/${course.id}">
+        <div className="w-60">
+          {/* Card-header */}
+          <div className="relative w-full object-fit h-32 aspect-w-1 aspect-h-1">
+            <a href={`/details/${course.id}`}>
+              <img
+                className="w-full object-cover h-24 aspect-w-1 aspect-h-1 hover:scale-125 transform transition-transform duration-500"
+                src={course.image}
+                alt="image"
+              />
+              <span className="absolute top-0 left-0 bg-green-500 rounded-sm text-white text-sm px-2 py-0.5 m-3">
+                NEW
+              </span>
+            </a>
+          </div>
+          {/* Card body */}
+          <div className="px-6 py-4">
+            <p class="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
+              All Levels
+            </p>
+            <p class="text-blue-400 font-light">Programming</p>
+            <div className="font-bold text-xl mb-2">{course.title}</div>
+            <p className="min-h-40 overflow-hidden text-gray-600 font-light">
+              {course.text}
+            </p>
+            <p className="font-bold text-xl mt-3">Free</p>
+          </div>
+          <div className="tutor-course-rating flex items-center mb-4">
+            <div className="rating-star">
+              <div className="rating-label flex ml-2">
+                <FaStar className="text-yellow-500" />
+                <FaStar className="text-yellow-500" />
+                <FaStar className="text-yellow-500" />
+                <FaStar className="text-yellow-500" />
+              </div>
+            </div>
+            <div className="rating-count ml-1 text-gray-500">(8)</div>
+          </div>
         </div>
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{title}</div>
-          <p className="min-h-40 overflow-hidden text-gray-700 text-base">
-            {text}
-          </p>
-        </div>
-        <div className="flex justify-end  px-6 pt-4 pb-2">
-          <button className="bg-gray-100 rounded-md border-1 px-3 py-1 text-blue-500 hover:text-blue-300">
-            <a href={`/details/${id}`}>details</a>
-          </button>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };
 
 export default CourseCard;
 
-<div class="col-xl-3 col-lg-4 col-sm-6">
+/* {
+  <div class="col-xl-3 col-lg-4 col-sm-6">
 
                                 <!-- Course Start -->
                                 <div class="course-item-02 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
@@ -69,3 +89,4 @@ export default CourseCard;
                                 <!-- Course End -->
 
                             </div>
+} */
