@@ -114,7 +114,7 @@ const CourseDetails = () => {
                   <button className="btn btn-primary btn-hover-secondary w-100">
                     <FaShoppingBasket /> Add to cart
                   </button>
-                  <a href="#" className="btn btn-light btn-hover-primary w-100">
+                  <a href="#" className="btn btn-primary btn-hover-primary w-100">
                     Add to wishlist
                   </a>
                 </div>

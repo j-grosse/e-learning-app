@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
         <div className="px-20 py-6 bg-primary-50 dark:bg-gray-700 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-            © 2024 <a href="">E-Learn</a> - All Rights Reserved.
+            © 2024 E-Learn - All Rights Reserved.
           </span>
 
           <div className="flex mt-4 space-x-5 sm:justify-center md:mt-0">

@@ -25,17 +25,12 @@ const CoursesSection = () => {
 
   return (
     <>
-      <div className="flex flex-wrap w-full h-full">
+      <div className="flex flex-wrap justify-around w-full h-full m-5">
         {Courses &&
           Courses.map((course) => {
             return (
               <div key={course.id}>
-                <CourseCard
-                  id={course.id}
-                  image={course.image}
-                  title={course.title}
-                  text={course.text}
-                />
+                <CourseCard course={course} />
               </div>
             );
           })}
