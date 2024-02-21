@@ -1,25 +1,26 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/Auth';
-// import Comments from '../pages/Comments';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimatedPage from '../AnimatedPage';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+// import Comments from '../pages/Comments';
 // import NewOrder from '../pages/NewOrder';
 // import OrderDetails from '../pages/OrderDetails';
 // import UpdateOrder from '../pages/UpdateOrder';
 import LoginForm from '../LoginForm';
 import Register from '../Register';
-import ProtectedRoute from './ProtectedRoute';
 import Home from '../../pages/Home';
 import CourseDetails from '../../pages/CourseDetails';
+import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../../pages/Dashboard';
+import PrivateRoutes from '../../pages/Dashboard/PrivateRoutes';
+import UserProfile from '../UserProfile';
+import NotFound from '../../pages/NotFound';
+
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
-import NotFound from '../../pages/NotFound';
 // import NavbarSide from './NavbarSide';
 // import Ordertoclaim from './Ordertoclaim';
-import UserProfile from '../UserProfile';
-import PrivateRoutes from '../../pages/Dashboard/PrivateRoutes';
 // import FormContact from './blocks/FormContact';
 
 // if url is one of the defined routes: load the corresponding component
