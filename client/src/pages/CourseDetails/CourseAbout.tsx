@@ -127,7 +127,7 @@ const CourseAbout = ({ course }) => {
               </div>
               <div className="tutor-course-segment__benefit-item">
                 <div className="tutor-course-segment__benefit-content">
-                  <i className="fas fa-check"></i>
+                <FaCheck />
                   <span className="benefit-text">
                     Find a new position involving data modeling.
                   </span>

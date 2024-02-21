@@ -31,3 +31,41 @@ const CourseCard = ({ id, image, title, text }) => {
 };
 
 export default CourseCard;
+
+<div class="col-xl-3 col-lg-4 col-sm-6">
+
+                                <!-- Course Start -->
+                                <div class="course-item-02 aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+                                    <div class="course-header">
+                                        <div class="course-header__thumbnail rounded-0">
+                                            <a href="course-single-layout-01.html"><img src="assets/images/courses/courses-4.jpg" alt="courses" width="330" height="221"></a>
+                                        </div>
+                                        <div class="course-header__badge">
+                                            <span class="free">Free</span>
+                                        </div>
+                                    </div>
+                                    <div class="course-info-02">
+                                        <span class="course-info-02__badge-text badge-all">All Levels</span>
+                                        <div class="course-info-02__category">
+                                            <a href="#">Communications</a>
+                                        </div>
+                                        <h3 class="course-info-02__title"><a href="course-single-layout-01.html">Successful Negotiation: Master Your Negotiating Skills</a></h3>
+                                        <div class="course-info-02__description">
+                                            <p>Negotiation is a skill well worth mastering – by putting …</p>
+                                        </div>
+                                        <div class="course-info-02__price">
+                                            <span class="free">Free</span>
+                                        </div>
+                                        <div class="course-info-02__rating">
+
+                                            <div class="rating-star">
+                                                <div class="rating-label" style="width: 100%;"></div>
+                                            </div>
+
+                                            <span>(2)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Course End -->
+
+                            </div>
