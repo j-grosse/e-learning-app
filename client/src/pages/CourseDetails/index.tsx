@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import {
+  FaCheck,
   FaGlobe,
   FaPlayCircle,
   FaShoppingBasket,
@@ -14,33 +15,37 @@ import { FaClock } from 'react-icons/fa';
 import CourseHeader from './CourseHeader';
 import CourseAbout from './CourseAbout';
 import data from '../../assets/courseData';
+import thumbnail from '../../assets/images/thumb.png';
 
 const CourseDetails = () => {
   const { id } = useParams();
   const course = data.find((el) => el.id === id);
+  const ruler = 'border-gray-300 mx-4 my-4';
 
   return (
     <>
       Home / courses / Mastering Data Modelling Fundamentals
-      <CourseHeader course={course}/>
+      <CourseHeader course={course} />
       <div
-        className="tutor-course-main-content section-padding-01 sticky-parent flex"
+        className="flex tutor-course-main-content section-padding-01 sticky-parent"
         style={{ position: 'relative' }}
       >
         <div className="container custom-container lg:col-span-4">
-          <CourseAbout course={course}/>
+          <CourseAbout course={course} />
         </div>
 
         {/* <!-- Tutor Course Sidebar Start --> */}
         <div className="lg:col-span-4">
-          <div className="sidebar-sticky" style={{}}>
-            {/* <!-- Tutor Course Sidebar Start --> */}
-            <div className="tutor-course-sidebar">
+          <div className="sidebar-sticky sticky top-0 z-50 bg-white">
+            {/* <!-- Tutor Course Sidebar Frames Start --> */}
+            <div className="tutor-course-sidebar mr-10">
+              {/*  */}
               {/* <!-- Tutor Course Price Preview Start --> */}
-              <div className="tutor-course-price-preview border-2">
+              <div className="tutor-course-price-preview border-2 mb-4 p-4 bg-gray-50">
+              {/* Video Preview Window */}
                 <div className="tutor-course-price-preview__thumbnail">
                   <div className="ratio ratio-16x9 border-2">
-                    Video Preview Window
+                    <img src={thumbnail}/>
                     {/* <iframe
                           width="1280"
                           height="720"
@@ -52,71 +57,89 @@ const CourseDetails = () => {
                         ></iframe> */}
                   </div>
                 </div>
-                <div className="tutor-course-price-preview__price">
-                  <div className="tutor-course-price">
-                    <h2 className="sale-price">€49.00</h2>
-                    <span className="regular-price line-through ml-4">
+                <div className="tutor-course-price-preview__price flex justify-between mx-8 my-5 gap-4">
+                  <div className="tutor-course-price flex">
+                    <h2 className="sale-price text-red-600 font-bold">
+                      €49.00
+                    </h2>
+                    <span className="regular-price line-through text-thin self-end ml-4">
                       €79.00
                     </span>
                   </div>
-                  <div className="tutor-course-price-badge border-2 w-20 text-center">
-                    39% off
+                  <div className="tutor-course-price-badge text-blue-600 text-center font-thin text-sm border-2 px-3 rounded-sm self-end">
+                    39% OFF
                   </div>
                 </div>
+
                 <div className="tutor-course-price-preview__meta">
-                  <ul className="tutor-course-meta-list">
-                    <li>
+                  <ul className="tutor-course-meta-list flex flex-col font-thin mx-8 gap-3">
+                    <li className="flex justify-between">
                       <div className="flex gap-4 items-center">
                         <FaSlidersH />
                         Level
                       </div>
                       <div className="value">Beginner</div>
                     </li>
-                    <li>
-                      <div className="label flex items-center">
+                    <hr className="{ruler}" />
+
+                    <li className="flex justify-between">
+                      <div className="flex gap-4 items-center">
                         <FaClock /> Duration
                       </div>
                       <div className="value">15.3 hours</div>
                     </li>
-                    <li>
-                      <div className="label">
+                    <hr className="{ruler}" />
+
+                    <li className="flex justify-between">
+                      <div className="flex gap-4 items-center">
                         <FaPlayCircle /> Lectures
                       </div>
                       <div className="value">4 lectures</div>
                     </li>
-                    <li>
-                      <div className="label">
+                    <hr className="{ruler}" />
+
+                    <li className="flex justify-between">
+                      <div className="flex gap-4 items-center">
                         <FaTag /> Subject
                       </div>
                       <div className="value">
                         <a href="#">Data Modeling</a>
                       </div>
                     </li>
-                    <li>
-                      <div className="label">
+                    <hr className="{ruler}" />
+
+                    <li className="flex justify-between">
+                      <div className="flex gap-4 items-center">
                         <FaGlobe /> Language
                       </div>
                       <div className="value">Russian</div>
                     </li>
+                    <hr className="{ruler}" />
                   </ul>
                 </div>
-                <div className="tutor-course-segment">
-                  <h2 className="tutor-course-segment__title">
+                <div className="tutor-course-segment mx-8 ">
+                  <h2 className="tutor-course-segment__title text-lg my-4">
                     Material Includes
                   </h2>
 
-                  <ul className="tutor-course-segment__list-style-01">
-                    <li>Videos</li>
-                    <li>Booklets</li>
+                  <ul className="tutor-course-segment__list-style-01 font-thin mb-4">
+                    <li className="flex gap-3 items-center">
+                      <FaCheck />
+                      <p>Videos</p>
+                    </li>
+                    <li className="flex gap-3 items-center">
+                      <FaCheck />
+                      <p>Booklets</p>
+                    </li>
                   </ul>
                 </div>
-                <div className="tutor-course-price-preview__btn">
-                  <button className="btn btn-primary btn-hover-secondary w-100">
+                <div className="tutor-course-price-preview__btn mx-8">
+                  <button className="btn btn-primary btn-hover-secondary flex bg-blue-500 text-white items-center justify-center gap-3 p-3 w-full rounded-md">
                     <FaShoppingBasket /> Add to cart
                   </button>
-                  <a href="#" className="btn btn-primary btn-hover-primary w-100">
+                  <button className="btn btn-primary btn-hover-secondary flex bg-gray-100 text-blue-500 items-center justify-center gap-3 p-3 w-full rounded-md">
                     Add to wishlist
-                  </a>
+                  </button>
                 </div>
                 <div className="tutor-course-price-preview__social">
                   <a href="#">
@@ -136,7 +159,7 @@ const CourseDetails = () => {
               {/* <!-- Tutor Course Price Preview End --> */}
 
               {/* <!-- Sidebar Widget Start --> */}
-              <div className="sidebar-widget border-2">
+              <div className="sidebar-widget border-2 p-4 bg-gray-50">
                 <h2 className="sidebar-widget__title">Course categories</h2>
 
                 <ul className="sidebar-widget__link">
@@ -181,7 +204,7 @@ const CourseDetails = () => {
               {/* <!-- Sidebar Widget End --> */}
 
               {/* <!-- Sidebar Widget Start --> */}
-              <div className="sidebar-widget">
+              <div className="sidebar-widget border-2 mt-4  p-4 bg-gray-50">
                 <h2 className="sidebar-widget__title">Related Courses</h2>
 
                 <div className="sidebar-widget__course">
@@ -189,7 +212,7 @@ const CourseDetails = () => {
                     <div className="sidebar-widget__course-thumbnail">
                       <a href="course-single-layout-01.html">
                         <img
-                          src="assets/images/courses/courses-21.jpg"
+                          src={thumbnail}
                           alt="Courses"
                           width="120"
                           height="72"
@@ -218,7 +241,7 @@ const CourseDetails = () => {
                     <div className="sidebar-widget__course-thumbnail">
                       <a href="course-single-layout-01.html">
                         <img
-                          src="assets/images/courses/courses-15.jpg"
+                          src={thumbnail}
                           alt="Courses"
                           width="120"
                           height="72"
@@ -243,7 +266,7 @@ const CourseDetails = () => {
                     <div className="sidebar-widget__course-thumbnail">
                       <a href="course-single-layout-01.html">
                         <img
-                          src="assets/images/courses/courses-33.jpg"
+                          src={thumbnail}
                           alt="Courses"
                           width="120"
                           height="72"
@@ -260,12 +283,12 @@ const CourseDetails = () => {
                           Python
                         </a>
                       </h2>
-                      <div className="sidebar-widget__course-price">
+                      <div className="sidebar-widget__course-price flex">
                         <span className="sale-price">
-                          $28<span className="separator">.00</span>
+                          €20<span className="separator">.00</span>
                         </span>
                         <span className="regular-price">
-                          $45<span className="separator">.00</span>
+                          €35<span className="separator">.00</span>
                         </span>
                       </div>
                     </div>
