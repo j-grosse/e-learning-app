@@ -11,7 +11,7 @@ const CourseAbout = ({ course }) => {
   return (
     <div>
       <div></div>
-      <div className="col-lg-8 ml-16 w-5/12">
+      <div className="col-lg-8 ml-16 w-8/12">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}

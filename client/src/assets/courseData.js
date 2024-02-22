@@ -27,6 +27,13 @@ const data = [
       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.filestackcontent.com%2FG33P8iuoRuinYep5O6dt&f=1&nofb=1&ipt=b8491976fea8b591ced9d25cb2b4cd003adeecda07631028e3013f41276f28a9&ipo=images',
     text: 'Fundamental of UX for Application design The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.',
   },
+  {
+    id: '5',
+    title: 'Next JS basics',
+    image:
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.filestackcontent.com%2FG33P8iuoRuinYep5O6dt&f=1&nofb=1&ipt=b8491976fea8b591ced9d25cb2b4cd003adeecda07631028e3013f41276f28a9&ipo=images',
+    text: 'Fundamental of Next JS for Application design The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.',
+  },
 ];
 
 export default data;

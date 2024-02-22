@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react';
 import DashboardMain from './DashboardMain';
 import DashboardSidebar from './components/DashboardSidebar';
-import Footer from '../../components/common/Footer';
-import NotFound from '../NotFound';
+// import Footer from '../../components/common/Footer';
+// import NotFound from '../NotFound';
 
 interface DashboardLayoutProps {
   children: ReactNode;
