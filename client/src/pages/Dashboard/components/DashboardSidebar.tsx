@@ -5,8 +5,8 @@ const DashboardSidebar = () => {
     <div>
         {/* DashboardSidebar */}
         <ul>
-            <li><button className="btn btn-secondary w-32">My Courses</button></li>
-            <li><button className="btn btn-secondary w-32">Profile</button></li>
+            <li><button className="bg-secondary w-32">My Courses</button></li>
+            <li><button className="bg-secondary w-32">Profile</button></li>
         </ul>
     </div>
   )

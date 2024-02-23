@@ -69,7 +69,7 @@ const Hero = () => {
             <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
               Your path to success
             </p>
-            <h1 className="text-primary-800 max-w-2xl mb-8 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
+            <h1 className="text-primary max-w-2xl mb-8 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl">
               Access To 4000+ Courses from 500+ Instructors & Institutions
             </h1>
             <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
