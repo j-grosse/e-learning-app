@@ -5,8 +5,7 @@ interface DashboardMainProps {
 }
 const DashboardMain = ({ children }: DashboardMainProps) => {
   return (
-    <div className="flex max-h-screen overflow-y-hidden w-full border">
-      <p>DashboardMain</p>
+    <div className="flex w-full max-h-screen p-8 overflow-y-hidden border-2">
       {children}
     </div>
   );

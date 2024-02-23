@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#60A5FA',
+        primary: '#f4f4eb',
         secondary: '#f6d860',
         accent: '#37cdbe',
         neutral: '#ffffff',
@@ -33,8 +33,6 @@ module.exports = {
     './src/pages/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-    'node_modules/daisyui/dist/**/*.js',
-    'node_modules/react-daisyui/dist/**/*.js',
   ],
 
   // plugins: [require('daisyui')],
