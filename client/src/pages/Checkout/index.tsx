@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaPaypal } from 'react-icons/fa';
+import * as countries from 'i18n-iso-countries';
+import * as english from 'i18n-iso-countries/langs/en.json'
 
 const Checkout = () => {
+  // const countryList = cou
+  const countryList = Object.values(countries.getNames("en"))
+
+  useEffect(() => {
+    countries.registerLocale(english)
+  }, [])
+
   return (
+    // {console.log(countryList)}
     <div>
       <div className="checkout-section section-padding-01">
         <div className="container custom-container">
@@ -15,7 +25,7 @@ const Checkout = () => {
                   <p>
                     Returning customer?{' '}
                     <button
-                      className="info-toggle"
+                      className="info-toggle text-white bg-blue-500 inline-flex items-center hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg"
                       data-bs-toggle="modal"
                       data-bs-target="#loginModal"
                     >
@@ -30,24 +40,24 @@ const Checkout = () => {
                   <p>
                     Have a coupon?{' '}
                     <button
-                      className="info-toggle"
+                      className="info-toggle text-blue-500 border border-blue-500 inline-flex items-center hover:text-white hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseExample"
                     >
                       Click here to enter your code
                     </button>
                   </p>
-                  <div className="collapse" id="collapseExample">
+                  {/* <div className="collapse" id="collapseExample"> */}
                     <div className="checkout-form__item">
                       <input
                         type="text"
                         className="form-control"
                         placeholder="Coupon code"
                       />
-                      <button className="coupon-btn">
+                      <button className="coupon-btn text-blue-500 border border-blue-500 inline-flex items-center hover:text-white hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg">
                         <i className="fas fa-gift"></i>
                       </button>
-                    </div>
+                    {/* </div> */}
                   </div>
                 </div>
                 {/* <!-- Checkout Form Info End --> */}
@@ -56,200 +66,164 @@ const Checkout = () => {
                 <div className="checkout-form__details">
                   <h4 className="checkout-form__title">Billing details</h4>
 
+                  {/* Form for billing */}
                   <div className="row gy-4">
-                    <div className="col-md-6">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">First name *</label>
+                    {/* First and Last Name */}
+                    <div className="md:flex gap-4 mb-4">
+                      <div className="checkout-form__input__firstName flex-auto">
+                        <label
+                          htmlFor="Userame"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                        First name *
+                        </label>
                         <input
+                          placeholder="Your First Name"
+                          // value=""
                           type="text"
-                          className="form-control"
-                          placeholder="Your Name"
+                          name="Userame"
+                          id="Userame"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          required
+                          defaultValue=""
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
-                    </div>
-                    <div className="col-md-6">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Last name *</label>
+                      <div className="checkout-form__input__lastName flex-auto">
+                        <label
+                          htmlFor="lastName"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Last name *
+                        </label>
                         <input
+                          placeholder="Your Last Name"
+                          // value=""
                           type="text"
-                          className="form-control"
-                          placeholder="Last name"
+                          name="lastName"
+                          id="lastName"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          required
+                          defaultValue=""
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
                     </div>
-                    <div className="col-md-12">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Company name *</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Company name"
-                        />
-                      </div>
-                      {/* <!-- Checkout Form Input End --> */}
+                    {/* Company Name  */}
+                    <div className="checkout-form__input_company mb-4">
+                      <label
+                        htmlFor="companyName"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Company Name *
+                      </label>
+                      <input
+                        placeholder="Your Company Name"
+                        // value=""
+                        type="text"
+                        name="companyName"
+                        id="companyName"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        required
+                        defaultValue=""
+                      />
                     </div>
-                    <div className="col-md-12">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Country / Region*</label>
+                    {/* Country */}
+                    <div className="checkout-form__input__country mb-4">
+                      <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >Country / Region*
+                      </label>
                         <select
-                          className="select2 select2-hidden-accessible"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           data-select2-id="select2-data-1-cm2g"
-                          tabindex="-1"
+                          // tabindex="-1"
                           aria-hidden="true"
                         >
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option value="01">option 01</option>
-                          <option
-                            value="01"
-                            data-select2-id="select2-data-3-0bbz"
-                          >
-                            option 01
-                          </option>
+                          {countryList && countryList.map((country, index) => (
+                            <option key={index} value={country}>{country}</option>
+                          ))}
                         </select>
-                        <span
-                          className="select2 select2-container select2-container--default"
-                          dir="ltr"
-                          data-select2-id="select2-data-2-gzn0"
-                          style={{width: "84.6px"}}
-                        >
-                          <span className="selection">
-                            <span
-                              className="select2-selection select2-selection--single"
-                              role="combobox"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                              tabindex="0"
-                              aria-disabled="false"
-                              aria-labelledby="select2-bsat-container"
-                              aria-controls="select2-bsat-container"
-                            >
-                              <span
-                                className="select2-selection__rendered"
-                                id="select2-bsat-container"
-                                role="textbox"
-                                aria-readonly="true"
-                                title="option 01"
-                              >
-                                option 01
-                              </span>
-                              <span
-                                className="select2-selection__arrow"
-                                role="presentation"
-                              >
-                                <b role="presentation"></b>
-                              </span>
-                            </span>
-                          </span>
-                          <span
-                            className="dropdown-wrapper"
-                            aria-hidden="true"
-                          ></span>
-                        </span>
-                      </div>
-                      {/* <!-- Checkout Form Input End --> */}
                     </div>
-                    <div className="col-md-8">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Street address *</label>
+                    {/* Street and Suite Number  */}
+                    <div className="md:flex gap-4 mb-4">
+                      <div className="checkout-form__input__street flex-auto">
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >Street address *
+                        </label>
                         <input
                           type="text"
-                          className="form-control"
-                          placeholder="Your Name"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="e.g. Hofer Str."
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
-                    </div>
-                    <div className="col-md-4">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">
+                      <div className="checkout-form__input__apartment">
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                           Apartment, suite, unit, etc. *
                         </label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="Apartment, suite, unit, etc."
                         />
-                      </div>
-                      {/* <!-- Checkout Form Input End --> */}
+                      </div>  
                     </div>
-                    <div className="col-md-4 col-sm-4">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Town / City *</label>
+
+
+                    {/* City, State, Zip */}
+                    <div className="md:flex gap-4 mb-4">
+                      <div className="checkout-form__input__city flex-auto">
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >Town / City *</label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="Town / City"
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
-                    </div>
-                    <div className="col-md-4 col-sm-4">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">State *</label>
+                      <div className="checkout-form__input__state flex-auto">
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >State *</label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="State"
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
-                    </div>
-                    <div className="col-md-4 col-sm-4">
-                      {/* <!-- Checkout Form Input Start --> */}
-                      <div className="checkout-form__input">
-                        <label className="form-label">Zip *</label>
+                      <div className="checkout-form__input__zip flex-auto">
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >Zip *</label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="Zip"
                         />
                       </div>
-                      {/* <!-- Checkout Form Input End --> */}
                     </div>
-                    <div className="col-md-6">
+
+
                       {/* <!-- Checkout Form Input Start --> */}
                       <div className="checkout-form__input">
-                        <label className="form-label">Phone *</label>
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >Phone *</label>
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="Phone"
                         />
                       </div>
                       {/* <!-- Checkout Form Input End --> */}
-                    </div>
-                    <div className="col-md-6">
+
+
                       {/* <!-- Checkout Form Input Start --> */}
                       <div className="checkout-form__input">
-                        <label className="form-label">Email address *</label>
+                        <label className="form-label block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >Email address *</label>
                         <input
                           type="email"
-                          className="form-control"
+                          className="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                           placeholder="Email address"
                         />
                       </div>
                       {/* <!-- Checkout Form Input End --> */}
-                    </div>
+
                   </div>
 
                   {/* <!-- Checkout Form Input Start --> */}
@@ -276,6 +250,9 @@ const Checkout = () => {
                   </div>
                   {/* <!-- Checkout Form Account End --> */}
 
+                {/* SHOW THIS FORM ONLY WHEN SHIP TO DIFFERENT LOCATION */}
+
+                <div className='hidden'>
                   {/* <!-- Checkout Form Input Start --> */}
                   <div className="mt-4 checkout-form__input form-check">
                     <input type="checkbox" id="shipping" />
@@ -495,24 +472,27 @@ const Checkout = () => {
                   </div>
                   {/* <!-- Checkout Form Input End --> */}
                 </div>
+                
                 {/* <!-- Checkout Form End --> */}
+                </div>
 
-                {/* <!-- Checkout Payment Method End --> */}
+
+                {/* <!-- PAYMENT INFORMATION STARTS HERE --> */}
                 <div className="checkout-form__payment">
                   <h4 className="checkout-form__title">Payment information</h4>
 
                   <ul className="checkout-form__payment-methods">
                     <li className="checkout-form__payment-method">
                       <input
-                        className="payment-method"
+                        className="payment-method bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         type="radio"
                         id="cash"
-                        checked=""
+                        checked={true}
                         name="payment-method"
                       />
                       <label
                         className="checkout-form__payment-title"
-                        for="cash"
+                        htmlFor="cash"
                       >
                         <span className="payment-icon">
                           <FaPaypal />
@@ -526,7 +506,7 @@ const Checkout = () => {
                     </li>
                     <li className="checkout-form__payment-method">
                       <input
-                        className="payment-method"
+                        className="payment-method bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         type="radio"
                         id="bank"
                         name="payment-method"
@@ -552,7 +532,7 @@ const Checkout = () => {
                     </li>
                     <li className="checkout-form__payment-method">
                       <input
-                        className="payment-method"
+                        className="payment-method bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         type="radio"
                         id="check"
                         name="payment-method"
@@ -574,7 +554,7 @@ const Checkout = () => {
                     </li>
                     <li className="checkout-form__payment-method">
                       <input
-                        className="payment-method"
+                        className="payment-method bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         type="radio"
                         id="paypal"
                         name="payment-method"
@@ -596,7 +576,7 @@ const Checkout = () => {
                     </li>
                     <li className="checkout-form__payment-method">
                       <input
-                        className="payment-method"
+                        className="payment-method bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         type="radio"
                         id="card"
                         name="payment-method"
@@ -641,7 +621,7 @@ const Checkout = () => {
                                 id="payment2"
                                 name="payment-option"
                               />
-                              <label for="payment2">
+                              <label htmlFor="payment2">
                                 Use a new payment method
                               </label>
                             </div>
