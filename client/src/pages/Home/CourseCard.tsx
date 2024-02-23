@@ -4,13 +4,13 @@ import { FaStar } from 'react-icons/fa';
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="flex flex-wrap bg-gray-50 shadow-lg m-3 rounded-lg overflow-hidden">
+    <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg bg-gray-50">
       <Link to={`/details/${course.id}`}>
         <div className="w-60">
           {/* Card-header */}
-          <div className="relative w-full object-fit h-32 aspect-w-1 aspect-h-1">
+          <div className="relative w-full h-32 object-fit aspect-w-1 aspect-h-1">
               <img
-                className="w-full object-cover h-24 aspect-w-1 aspect-h-1 hover:scale-125 transform transition-transform duration-500"
+                className="object-cover w-full h-24 transition-transform duration-500 transform aspect-w-1 aspect-h-1 hover:scale-125"
                 src={course.image}
                 alt="image"
               />
@@ -20,26 +20,26 @@ const CourseCard = ({ course }) => {
           </div>
           {/* Card body */}
           <div className="px-6 py-4">
-            <p class="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
+            <p className="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
               All Levels
             </p>
-            <p class="text-blue-400 font-light">Programming</p>
-            <div className="font-bold text-xl mb-2">{course.title}</div>
-            <p className="min-h-40 overflow-hidden text-gray-600 font-light">
+            <p className="font-light text-blue-400">Programming</p>
+            <div className="mb-2 text-xl font-bold">{course.title}</div>
+            <p className="overflow-hidden font-light text-gray-600 min-h-40">
               {course.text}
             </p>
-            <p className="font-bold text-xl mt-3">Free</p>
+            <p className="mt-3 text-xl font-bold">Free</p>
           </div>
-          <div className="tutor-course-rating flex items-center mb-4">
+          <div className="flex items-center mb-4 tutor-course-rating">
             <div className="rating-star">
-              <div className="rating-label flex ml-2">
+              <div className="flex ml-2 rating-label">
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
               </div>
             </div>
-            <div className="rating-count ml-1 text-gray-500">(8)</div>
+            <div className="ml-1 text-gray-500 rating-count">(8)</div>
           </div>
         </div>
       </Link>

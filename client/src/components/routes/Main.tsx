@@ -16,6 +16,7 @@ import DashboardLayout from '../../pages/Dashboard';
 import PrivateRoutes from '../../pages/Dashboard/PrivateRoutes';
 import UserProfile from '../UserProfile';
 import NotFound from '../../pages/NotFound';
+import Checkout from '../../pages/Checkout';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -51,16 +52,20 @@ const Main = () => {
                 </ProtectedRoute>
               }
             > */}
+
             <Route
               path="/dashboard"
               element={
                 <DashboardLayout>
-                  <ProtectedRoute>
-                    <PrivateRoutes />
-                  </ProtectedRoute>
+                  <ProtectedRoute />
                 </DashboardLayout>
               }
-            />
+            >
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="profile" element={<UserProfile />} />
+            </Route>
+
+
             {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
 
             {/* <Route path="/" element={<Home />} /> */}
