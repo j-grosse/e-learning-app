@@ -11,7 +11,7 @@ const CourseAbout = ({ course }) => {
   return (
     <div>
       <div></div>
-      <div className="col-lg-8 ml-16 w-8/12">
+      <div className="w-8/12 ml-16 col-lg-8">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}
@@ -22,8 +22,8 @@ const CourseAbout = ({ course }) => {
 
             {/* <!-- Tutor Course Segment Prerequisites Start --> */}
             <div className="tutor-course-segment__prerequisites">
-              <div className="tutor-course-segment__prerequisites-warning flex bg-yellow-50 border-2 border-neutral-500 text-neutral-500 p-4 gap-5">
-                <FaExclamationTriangle size={50} />
+              <div className="flex gap-5 p-4 border-2 text-stone-400 bg-yellow-50 border-neutral-500 text-neutral-500">
+                <FaExclamationTriangle size={20} />
                 Please note that this course has the following prerequisites
                 which must be completed before it can be accessed
               </div>
@@ -31,7 +31,7 @@ const CourseAbout = ({ course }) => {
                 <li>
                   <br />
                   <a
-                    className="prerequisites-item flex border-2 border-neutral-500 text-neutral-500 p-4"
+                    className="flex p-4 border-2 prerequisites-item border-neutral-500 text-neutral-500"
                     href="#"
                   >
                     <div className="prerequisites-item__thumbnail">
@@ -43,7 +43,7 @@ const CourseAbout = ({ course }) => {
                         height="47"
                       />
                     </div>
-                    <div className="prerequisites-item__title ml-4">
+                    <div className="ml-4 prerequisites-item__title">
                       {course ? course.title : 'No course with this id found'}
                     </div>
                   </a>
@@ -88,11 +88,11 @@ const CourseAbout = ({ course }) => {
             {/* <!-- Tutor Course Segment Content Wrapper End --> */}
             <br />
             {/* <!-- Tutor Course Segment Tags Start --> */}
-            <div className="tutor-course-segment__tags flex">
-              <div className="tutor-course-segment__tags-title flex items-center">
+            <div className="flex tutor-course-segment__tags">
+              <div className="flex items-center tutor-course-segment__tags-title">
                 <FaTags />
               </div>
-              <div className="tutor-course-segment__tags-list ml-3">
+              <div className="ml-3 tutor-course-segment__tags-list">
                 <a href="#"> big data, </a>
                 <a href="#">data, </a>
                 <a href="#">data analysis, </a>
@@ -105,29 +105,29 @@ const CourseAbout = ({ course }) => {
           <br />
 
           {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment benefits-wrap">
+          <div className="px-4 py-2 border-2">
             <h2 className="tutor-course-segment__title">Learning Objectives</h2>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
-            <div className="tutor-course-segment__benefits-items">
+            <div className="flex gap-4 mt-3 tutor-course-segment__benefits-items">
               <div className="tutor-course-segment__benefit-item">
-                <div className="tutor-course-segment__benefit-content flex gap-3">
-                  <FaCheck />
+                <div className="flex gap-3 tutor-course-segment__benefit-content">
+                  <FaCheck color="green" />
                   <span className="benefit-text">
                     Ready to begin working on real-world data modeling projects,
                   </span>
                 </div>
               </div>
               <div className="tutor-course-segment__benefit-item">
-                <div className="tutor-course-segment__benefit-content flex gap-3">
-                  <FaCheck />
+                <div className="flex gap-3 tutor-course-segment__benefit-content">
+                  <FaCheck color="green" />
                   <span className="benefit-text">
                     Expanded responsibilities as part of an existing role
                   </span>
                 </div>
               </div>
               <div className="tutor-course-segment__benefit-item">
-                <div className="tutor-course-segment__benefit-content">
-                <FaCheck />
+                <div className="flex gap-3 tutor-course-segment__benefit-content">
+                  <FaCheck color="green" />
                   <span className="benefit-text">
                     Find a new position involving data modeling.
                   </span>
@@ -618,19 +618,19 @@ const CourseAbout = ({ course }) => {
                       <label className="label">Your rating: *</label>
                       <ul id="rating" className="rating">
                         <li className="star" title="Poor" data-value="1">
-                          <i className="fas fa-star"></i>
+                          <FaStar className="text-yellow-500" />
                         </li>
                         <li className="star" title="Poor" data-value="2">
-                          <i className="fas fa-star"></i>
+                          <FaStar className="text-yellow-500" />
                         </li>
                         <li className="star" title="Poor" data-value="3">
-                          <i className="fas fa-star"></i>
+                          <FaStar className="text-yellow-500" />
                         </li>
                         <li className="star" title="Poor" data-value="4">
-                          <i className="fas fa-star"></i>
+                          <FaStar className="text-yellow-500" />
                         </li>
                         <li className="star" title="Poor" data-value="5">
-                          <i className="fas fa-star"></i>
+                          <FaStar className="text-yellow-500" />
                         </li>
                       </ul>
                     </div>
