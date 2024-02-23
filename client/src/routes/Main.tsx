@@ -1,22 +1,22 @@
 import { useContext } from 'react';
-import { AuthContext } from '../../context/Auth';
+import { AuthContext } from '../context/Auth';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import AnimatedPage from '../AnimatedPage';
+import AnimatedPage from '../components/AnimatedPage';
 // import Comments from '../pages/Comments';
 // import NewOrder from '../pages/NewOrder';
 // import OrderDetails from '../pages/OrderDetails';
 // import UpdateOrder from '../pages/UpdateOrder';
-import LoginForm from '../LoginForm';
-import Register from '../Register';
-import Home from '../../pages/Home';
-import CourseDetails from '../../pages/CourseDetails';
+import LoginForm from '../components/LoginForm';
+import Register from '../components/Register';
+import Home from '../pages/Home';
+import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
-import DashboardLayout from '../../pages/Dashboard';
-import PrivateRoutes from '../../pages/Dashboard/PrivateRoutes';
-import UserProfile from '../UserProfile';
-import NotFound from '../../pages/NotFound';
-import Checkout from '../../pages/Checkout';
+import DashboardLayout from '../pages/Dashboard';
+import PrivateRoutes from '../pages/Dashboard/PrivateRoutes';
+import UserProfile from '../components/UserProfile';
+import NotFound from '../pages/NotFound';
+import Checkout from '../pages/Checkout';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -64,7 +64,6 @@ const Main = () => {
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
-
 
             {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
 
