@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import DashboardMain from './DashboardMain';
-import DashboardSidebar from './components/DashboardSidebar';
+import DashboardSidebar from './DashboardSidebar';
 // import Footer from '../../components/common/Footer';
 // import NotFound from '../NotFound';
 
