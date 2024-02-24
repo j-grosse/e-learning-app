@@ -28,7 +28,6 @@ import Checkout from '../pages/Checkout';
 const Main = () => {
   const location = useLocation();
   const { user } = useContext(AuthContext);
-
   return (
     <AnimatedPage>
       <AnimatePresence mode="sync">
