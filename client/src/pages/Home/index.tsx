@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { CourseContext } from '../../context/CourseContext';
+import { CoursesContext } from '../../context/CoursesContext';
 import Hero from '../../components/common/Hero';
 import CoursesSection from './CoursesSection';
 
 const Home = () => {
-  const courses = useContext(CourseContext);
+  const courses = useContext(CoursesContext);
 
   return (
     <>

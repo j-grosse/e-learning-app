@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from '../context/AuthContext';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimatedPage from '../components/AnimatedPage';
