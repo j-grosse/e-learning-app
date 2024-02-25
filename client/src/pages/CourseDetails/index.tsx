@@ -4,12 +4,12 @@ import CourseHeader from './CourseHeader';
 import CourseAbout from './CourseAbout';
 import CourseSidebar from './CourseSidebar';
 // import data from '../../assets/courseData';
-import { CourseContext } from '../../context/CourseContext';
+import { CoursesContext } from '../../context/CoursesContext';
 
 const CourseDetails = () => {
-  const courses = useContext(CourseContext);
+  const courses = useContext(CoursesContext);
   console.log('courses context:', courses);
-  
+
   const { id } = useParams();
   const idNumber = parseInt(id);
   const course = courses && courses.find((el) => el.id === idNumber);

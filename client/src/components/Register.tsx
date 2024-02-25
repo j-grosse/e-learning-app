@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from '../context/AuthContext';
 import { Navigate, NavLink } from 'react-router-dom';
 // import NewProfile from './NewProfile';
 import RegisterForm from './RegisterForm';
@@ -65,8 +65,7 @@ const Register = () => {
     await context.register(updatedUser);
     setFormStage('registered');
     setLoading(false);
-    <Navigate to="/dashboard" />
-
+    <Navigate to="/dashboard" />;
   };
 
   if (loading) return <p>Loading...</p>;
@@ -124,29 +123,29 @@ const Register = () => {
               <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                 Register
               </h3> */}
-              {/* form start */}
-              {formStage === 'register' && (
-                <RegisterForm
-                  user={user}
-                  errors={errors}
-                  handleChange={handleChange}
-                  handleSubmit={handleRegister}
-                />
-              )}
+            {/* form start */}
+            {formStage === 'register' && (
+              <RegisterForm
+                user={user}
+                errors={errors}
+                handleChange={handleChange}
+                handleSubmit={handleRegister}
+              />
+            )}
 
-              {formStage === 'profile' && (
-                <NewProfile
-                  user={user}
-                  errors={errors}
-                  handleChange={handleChange}
-                  handleProfileSubmit={handleProfileSubmit}
-                />
-              )}
+            {formStage === 'profile' && (
+              <NewProfile
+                user={user}
+                errors={errors}
+                handleChange={handleChange}
+                handleProfileSubmit={handleProfileSubmit}
+              />
+            )}
 
-              {/* form end */}
-            </div>
+            {/* form end */}
           </div>
         </div>
+      </div>
       {/* </div> */}
     </>
   );

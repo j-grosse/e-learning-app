@@ -1,10 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../axiosInstanceMockaroo'; // use this for Mockaroo API with loadMockarooData()
 // import axios from '../axiosInstance'; // use this for mongoDB with loadMongoData()
 
-export const CourseContext = createContext();
+export const CoursesContext = createContext();
 
-const CourseProvider = ({ children }) => {
+const CoursesProvider = ({ children }) => {
   const [courses, setCourses] = useState(null);
 
   useEffect(() => {
@@ -19,23 +19,29 @@ const CourseProvider = ({ children }) => {
     };
 
     const loadMongoData = () => {
-        axios
-          .get(`/api/courses`)
-          .then((res) => {
-            setCourses(res.data);
-            console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
-          })
-          .catch((e) => console.log(e));
-      };
-      
-      loadMockarooData();
+      axios
+        .get(`/api/courses`)
+        .then((res) => {
+          setCourses(res.data);
+          console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
+        })
+        .catch((e) => console.log(e));
+    };
+
+    loadMockarooData();
     // loadMongoData();
     // setCourses(data); // use local array data instead of database data
   }, []);
 
   return (
-    <CourseContext.Provider value={courses}>{children}</CourseContext.Provider>
+    <>
+      {console.log('content of courses context:', { courses })}
+
+      <CoursesContext.Provider value={courses}>
+        {children}
+      </CoursesContext.Provider>
+    </>
   );
 };
 
-export default CourseProvider;
+export default CoursesProvider;

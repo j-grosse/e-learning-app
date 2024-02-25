@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { AuthContext } from '../../context/Auth';
+import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import hero from '../../assets/images/hero.png';
 

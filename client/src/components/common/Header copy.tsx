@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
-import { AuthContext } from '../../context/Auth';
+import { AuthContext } from '../../context/AuthContext';
 // import Login from '../Login';
 // import Register from '../Register';
 

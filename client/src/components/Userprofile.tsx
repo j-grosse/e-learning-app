@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from '../context/AuthContext';
 import axios from '../axiosInstance';
 // import CatBox from '../assets/cat-box.png';
 
