@@ -9,13 +9,18 @@ Started in January 2024 by Jakob Grosse.
 ## Main Features
 
 
-### A:
+### 1. View and buy courses from the database
 
-a
+Courses are loaded from the MongoDB Atlas database and schown to the user. The user can click on a card to see the course details, buy the course and enroll.
 
-### B:
+### 2. Add Courses via CMS
 
-a
+Tutors can login and create courses by adding course material (e.g. Rich text, Videos, Images, PDFs) via the Contentful headless CMS.
+
+### 3. Work on courses and see learning progress
+
+Students can see the course material of courses they are enrolled in. The student's lerning progress is measured.
+
 
 ## Technologies used
 
