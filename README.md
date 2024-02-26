@@ -4,7 +4,7 @@ This is my E-Learning Portal Portfolio Project
 
 ## About the project
 
-Created in January 2024 by Jakob Grosse.
+Started in January 2024 by Jakob Grosse.
 
 ## Main Features
 
