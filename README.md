@@ -46,7 +46,9 @@ cp .env.example .env
 
 -> add your environment variables to the files /server/.env and /client/.env
 
-# Start commands
+## Running the app
+
+To run the app in terminal
 
 cd server  
 npm run dev  
@@ -54,9 +56,9 @@ cd ..
 cd client  
 npm run dev
 
-# Deployment
+## Deployment
 
-for deployment on render.com
+To deploy the app on render.com
 
 - choose "create Web Service"
 - add environment variables in "Environment"
