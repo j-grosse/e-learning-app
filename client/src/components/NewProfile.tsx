@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../context/Auth';
+import { AuthContext } from '../context/AuthContext';
 import { NavLink } from 'react-router-dom';
 
 function NewProfile({ user, errors, handleChange, handleProfileSubmit }) {
@@ -18,7 +18,10 @@ function NewProfile({ user, errors, handleChange, handleProfileSubmit }) {
             {errors?.username && (
               <p className="text-danger">{errors?.username.message}</p>
             )}
-            <form className="space-y-4 md:space-y-6 text-right" onSubmit={handleProfileSubmit}>
+            <form
+              className="space-y-4 md:space-y-6 text-right"
+              onSubmit={handleProfileSubmit}
+            >
               <div>
                 {/*  <form className="form" onSubmit={handleProfileSubmit}> */}
                 {/* <label htmlFor="">userType</label>

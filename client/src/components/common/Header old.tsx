@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
-import { AuthContext } from '../../context/Auth';
+import { AuthContext } from '../../context/AuthContext';
 import Login from '../Login';
 import Register from '../Register';
 // import Logo from '../../assets/logo.png';
@@ -13,11 +13,11 @@ const Header = () => {
   return (
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
-      <nav className="relative bg-gradient-to-r from-primary-100 to-primary-100 border-gray-200 dark:bg-gray-800 shadow-lg">
-        <div className="px-4 py-1 lg:px-6 flex flex-wrap justify-between items-center mx-auto max-w-screen-xxl">
+      <nav className="relative border-gray-200 shadow-lg">
+        <div className="flex flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-primary-800 self-center text-xl font-bold whitespace-nowrap dark:text-white hover-zoom">
+            <div className="self-center text-xl font-bold text-black whitespace-nowrap hover-zoom">
               <NavLink to="/">
                 {/* <img
                   src={elearnLogo}
@@ -25,7 +25,7 @@ const Header = () => {
                   alt="Cat Logo"
                   style={{ filter: 'invert(0.3)' }}
                 /> */}
-                <span className="ml-1 text-1xl">E-Learn</span>
+                <span className="ml-1text-1xl">E-Learn</span>
               </NavLink>
             </div>
           </div>
@@ -48,7 +48,7 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center  items-center lg:order-2">
+            <div className="flex items-center justify-center lg:order-2">
               <div>
                 <Login />
               </div>

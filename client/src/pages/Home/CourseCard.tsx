@@ -26,7 +26,7 @@ const CourseCard = ({ course }) => {
             <p className="font-light text-blue-400">Programming</p>
             <div className="mb-2 text-xl font-bold">{course.title}</div>
             <p className="overflow-hidden font-light text-gray-600 min-h-40">
-              {course.text}
+              {course.description}
             </p>
             <p className="mt-3 text-xl font-bold">Free</p>
           </div>

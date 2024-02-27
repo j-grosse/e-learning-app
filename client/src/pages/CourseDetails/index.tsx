@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import CourseHeader from './CourseHeader';
 import CourseAbout from './CourseAbout';
 import CourseSidebar from './CourseSidebar';
-import data from '../../assets/courseData';
+// import data from '../../assets/courseData';
+import { CoursesContext } from '../../context/CoursesContext';
 
 const CourseDetails = () => {
+  const courses = useContext(CoursesContext);
+  console.log('courses context:', courses);
+
   const { id } = useParams();
-  const course = data.find((el) => el.id === id);
+  const idNumber = parseInt(id);
+  const course = courses && courses.find((el) => el.id === idNumber);
+  console.log('course:', course);
   const ruler = 'border-gray-300 mx-4 my-4';
 
   return (

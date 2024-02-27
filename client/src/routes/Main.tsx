@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { AuthContext } from '../context/Auth';
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { Navigate, Route, Routes, Switch, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import AnimatedPage from '../components/AnimatedPage';
 // import Comments from '../pages/Comments';
@@ -27,8 +27,7 @@ import Checkout from '../pages/Checkout';
 // if url is one of the defined routes: load the corresponding component
 const Main = () => {
   const location = useLocation();
-  const { user } = useContext(AuthContext);
-
+  // const { user } = useContext(AuthContext);
   return (
     <AnimatedPage>
       <AnimatePresence mode="sync">
@@ -36,6 +35,8 @@ const Main = () => {
           {/* <NavbarSide /> */}
 
           <Routes key={location.pathname} location={location}>
+          {/* <Switch> */}
+            
             {/* <Route
               path="/"
               element={user ? <Dashboard /> : <Home />}
@@ -88,6 +89,7 @@ const Main = () => {
             <Route path="/register" element={<Register />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />
+            {/* </Switch> */}
           </Routes>
         </main>
       </AnimatePresence>

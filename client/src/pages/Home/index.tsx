@@ -1,15 +1,17 @@
+import React, { useContext } from 'react';
+import { CoursesContext } from '../../context/CoursesContext';
 import Hero from '../../components/common/Hero';
 import CoursesSection from './CoursesSection';
-import UserProfile from '../../components/UserProfile';
-import Header from '../../components/common/Header';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const courses = useContext(CoursesContext);
+
   return (
     <>
       {/* {user && <UserProfile />} */}
       <Hero />
-      <CoursesSection />
+      <CoursesSection courses={courses} />
+      {/* <TestimonialsSection /> */}
     </>
   );
 };

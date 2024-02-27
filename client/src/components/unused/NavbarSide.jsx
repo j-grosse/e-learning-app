@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthContext } from '../../context/Auth';
+import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 import { BiPackage } from 'react-icons/bi';
 import { CiClock2 } from 'react-icons/ci';
