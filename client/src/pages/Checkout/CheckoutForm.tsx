@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CheckoutForm = ({countryList}) => {
+const CheckoutForm = ({countryList, formName}) => {
   return (
-    <div className="checkout-form__details">
-    <h4 className="checkout-form__title">Billing details</h4>
+    <div className="checkout-form__details my-4">
+    <h4 className="checkout-form__title text-lg font-semibold">{formName}</h4>
 
     {/* Form for billing */}
     <div className="row gy-4">
@@ -157,7 +157,7 @@ const CheckoutForm = ({countryList}) => {
     <div className='hidden'>
         <div className="mt-4 checkout-form__input form-check">
         <input type="checkbox" id="shipping" />
-        <label for="shipping"> Ship to a different address?</label>
+        <label htmlFor="shipping"> Ship to a different address?</label>
         </div>
 
         <div className="mt-4 checkout-form__input_orderNotes">
