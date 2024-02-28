@@ -15,8 +15,13 @@ const CoursesProvider = ({ children }) => {
           setCourses(res.data);
           console.log('axios data from Mockaroo.com:', '\n\n', res.data);
         })
-        .catch((e) => console.log(e));
-    };
+        .catch((error) => {
+          if (error.response && error.response.status === 500) {
+            console.log("500 Internal Server Error: Probably no more requests to Mockaroo.com allowed today.");
+          } else {
+            console.log(error.message);
+          }
+        });    };
 
     const loadMongoData = () => {
       axios
