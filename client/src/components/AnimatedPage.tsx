@@ -1,12 +1,19 @@
+import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
-const animations = {
-  initial: { opacity: 0, y: -100 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 100 },
-};
 
-const AnimatedPage = ({ children }) => {
+// const animations = {
+//   initial: { opacity: 0, y: -100 },
+//   animate: { opacity: 1, y: 0 },
+//   exit: { opacity: 0, y: 100 },
+// };
+
+interface AnimatedPageProps {
+  children: ReactNode;
+}
+
+const AnimatedPage: React.FC<AnimatedPageProps> = ({ children }) => {
+  
   return (
     // different page transition animations
 
