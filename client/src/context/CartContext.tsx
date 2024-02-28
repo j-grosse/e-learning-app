@@ -20,11 +20,10 @@ const CartProvider = ({ children }) => {
   const [selectedCourses, setSelectedCourses] = useState([])
   const addToCart = (course) => {
     setSelectedCourses([...selectedCourses, course])
-    console.log('Cart Context: ', selectedCourses)
   }
+
   const removeFromCart = (id) => {
     setSelectedCourses(selectedCourses.filter((course) => course.id !== id))
-    console.log('Cart Context: ', selectedCourses)
   }
   return (
     <CartContext.Provider value={selectedCourses}>
