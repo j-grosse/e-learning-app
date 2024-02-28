@@ -17,6 +17,7 @@ import PrivateRoutes from '../pages/Dashboard/PrivateRoutes';
 import UserProfile from '../components/UserProfile';
 import NotFound from '../pages/NotFound';
 import Checkout from '../pages/Checkout';
+import Cart from '../pages/Cart';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -62,6 +63,7 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
+              <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
