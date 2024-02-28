@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from '../axiosInstance';
 // import CatBox from '../assets/cat-box.png';
@@ -32,10 +32,10 @@ const UserProfile = () => {
   return (
     <>
       <section className="bg-primary-50/00 dark:bg-gray-900">
-        <h2 className="text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-extrabold tracking-tight text-center text-gray-900 dark:text-white">
           Profile
         </h2>
-        <div className="max-w-2xl  py-8 mx-auto lg:py-16">
+        <div className="max-w-2xl py-8 mx-auto lg:py-16">
           <form action="#">
             <div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
               <div className="sm:col-span-2">

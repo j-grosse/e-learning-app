@@ -1,5 +1,5 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import AnimatedPage from '../components/AnimatedPage';
 // import Comments from '../pages/Comments';
 // import NewOrder from '../pages/NewOrder';

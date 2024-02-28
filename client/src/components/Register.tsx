@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Navigate, NavLink } from 'react-router-dom';
-// import NewProfile from './NewProfile';
+import { Navigate } from 'react-router-dom';
+import NewProfile from './NewProfile';
 import RegisterForm from './RegisterForm';
 
 const Register = () => {

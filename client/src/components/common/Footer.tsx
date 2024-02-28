@@ -1,15 +1,13 @@
-import React from 'react';
-
 const Footer = () => {
   return (
     <footer className="bg-primary-50 dark:bg-gray-500">
-      <div className="mx-auto w-full max-w-screen-xxl">
-        <div className="grid grid-cols-3 gap-8 px-4 py-6 sm:mx-20 sm:py-8 md:grid-cols-3 text-center">
+      <div className="w-full mx-auto max-w-screen-xxl">
+        <div className="grid grid-cols-3 gap-8 px-4 py-6 text-center sm:mx-20 sm:py-8 md:grid-cols-3">
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Company
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className="font-medium text-gray-500 dark:text-gray-400">
               <li className="mb-4">
                 <a href="#" className=" hover:underline">
                   About
@@ -26,7 +24,7 @@ const Footer = () => {
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Help center
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className="font-medium text-gray-500 dark:text-gray-400">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   FAQs
@@ -43,7 +41,7 @@ const Footer = () => {
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Legal
             </h2>
-            <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            <ul className="font-medium text-gray-500 dark:text-gray-400">
               <li className="mb-4">
                 <a href="#" className="hover:underline">
                   Privacy Policy
