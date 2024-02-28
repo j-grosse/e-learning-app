@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import axios from '../axiosInstanceMockaroo'; // use this for Mockaroo API with loadMockarooData()
 // import axios from '../axiosInstance'; // use this for mongoDB with loadMongoData()
 
-export const CoursesContext = createContext();
+export const CoursesContext = createContext([]);
 
 const CoursesProvider = ({ children }) => {
   const [courses, setCourses] = useState(null);

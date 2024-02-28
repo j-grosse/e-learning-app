@@ -18,6 +18,7 @@ import { FaClock } from 'react-icons/fa';
 import thumbnail from '../../assets/images/thumb.png';
 import { Link } from 'react-router-dom';
 
+
 const CourseSidebar = ( {course} ) => {
   return (
     <div className="flex sticky-parent">
