@@ -46,7 +46,9 @@ const PrivateRoutes = () => {
           element={
             <DashboardLayout>
               {/* if current = path of a route in privateRoutes array, render the element of that route */}
-              <Suspense fallback={<Loader size={32} color="#000000"/>}>{route.element}</Suspense>
+              <Suspense fallback={<Loader size={32} color="#000000" />}>
+                {route.element}
+              </Suspense>
             </DashboardLayout>
           }
         />

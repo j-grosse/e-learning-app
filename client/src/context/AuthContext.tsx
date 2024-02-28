@@ -18,8 +18,9 @@ const AuthProvider = ({ children }) => {
     axios
       .get('auth/currentUser')
       .then((res) => setState(res.data.user, false, null))
-      .catch((error) => {
+      .catch((e) => {
         setState(null, false, null);
+        console.log(e.message);
       });
   }, []);
 

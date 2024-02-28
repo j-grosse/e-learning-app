@@ -11,8 +11,7 @@ import Home from '../pages/Home';
 import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
 import DashboardLayout from '../pages/Dashboard';
-// import PrivateRoutes from '../pages/Dashboard/PrivateRoutes';
-import UserProfile from '../components/UserProfile';
+// import UserProfile from '../components/UserProfile';
 import NotFound from '../pages/NotFound';
 import Checkout from '../pages/Checkout';
 
@@ -33,8 +32,8 @@ const Main = () => {
           {/* <NavbarSide /> */}
 
           <Routes key={location.pathname} location={location}>
-          {/* <Switch> */}
-            
+            {/* <Switch> */}
+
             {/* <Route
               path="/"
               element={user ? <Dashboard /> : <Home />}
@@ -61,7 +60,7 @@ const Main = () => {
               }
             >
               <Route path="checkout" element={<Checkout />} />
-              <Route path="profile" element={<UserProfile />} />
+              {/* <Route path="profile" element={<UserProfile />} /> */}
             </Route>
 
             {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
