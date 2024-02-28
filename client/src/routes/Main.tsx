@@ -10,10 +10,10 @@ import Register from '../components/Register';
 import Home from '../pages/Home';
 import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
-import DashboardLayout from '../pages/Dashboard';
-import UserProfile from '../components/UserProfile.tsx';
-import NotFound from '../pages/NotFound';
+import UserProfile from '../components/UserProfile';
 import Checkout from '../pages/Checkout';
+import DashboardLayout from '../pages/Dashboard';
+import NotFound from '../pages/NotFound';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
