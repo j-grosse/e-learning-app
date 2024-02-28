@@ -57,7 +57,7 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('auth/logout', {});
+      // const res = await axios.post('auth/logout', {});
       setState(null, false, null);
       <Navigate to="/"/>;
       // navigate("/");

@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import { Loader } from 'lucide-react';
 import { Route } from 'react-router-dom';
 import DashboardLayout from '.';
-import UserProfile from '../../components/UserProfile';
+import UserProfile from './UserProfile';
 import { useLocation } from 'react-router-dom';
 // const Profile = lazy( () =>  import('../pages/Profile'));
 // const MyCourses = lazy( () =>  import('../pages/MyCourses'));

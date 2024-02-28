@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import axios from '../axiosInstanceMockaroo'; // use this for Mockaroo API with loadMockarooData()
 // import axios from '../axiosInstance'; // use this for mongoDB with loadMongoData()
 
@@ -23,15 +23,15 @@ const CoursesProvider = ({ children }) => {
           }
         });    };
 
-    const loadMongoData = () => {
-      axios
-        .get(`/api/courses`)
-        .then((res) => {
-          setCourses(res.data);
-          console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
-        })
-        .catch((e) => console.log(e));
-    };
+    // const loadMongoData = () => {
+    //   axios
+    //     .get(`/api/courses`)
+    //     .then((res) => {
+    //       setCourses(res.data);
+    //       console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
+    //     })
+    //     .catch((e) => console.log(e));
+    // };
 
     loadMockarooData();
     // loadMongoData();

@@ -10,7 +10,7 @@ import Register from '../components/Register';
 import Home from '../pages/Home';
 import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
-import UserProfile from '../components/UserProfile';
+import UserProfile from '../pages/Dashboard/UserProfile';
 import Checkout from '../pages/Checkout';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
