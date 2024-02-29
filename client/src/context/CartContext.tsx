@@ -17,7 +17,7 @@ export const useRemoveFromCart = () => {
 }
 
 const CartProvider = ({ children }) => {
-  const [selectedCourses, setSelectedCourses] = useState([])
+  const [selectedCourses, setSelectedCourses] = useState([]) //change array to set to set unique courses
   const addToCart = (course) => {
     setSelectedCourses([...selectedCourses, course])
   }
