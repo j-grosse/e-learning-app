@@ -6,8 +6,8 @@ import { Navigate, NavLink } from 'react-router-dom';
 const LoginForm = () => {
   const context = useContext(AuthContext);
   const [user, setUser] = useState({
-    email: '',
-    password: '',
+    email: 'c@paw.com',
+    password: '12345678',
   });
 
   const handleChange = (e) => {
