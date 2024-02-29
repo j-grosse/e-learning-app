@@ -2,7 +2,7 @@ import { createContext, useState, useEffect } from 'react';
 import axios from '../axiosInstance';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,8 +18,9 @@ const AuthProvider = ({ children }) => {
     axios
       .get('auth/currentUser')
       .then((res) => setState(res.data.user, false, null))
-      .catch((error) => {
+      .catch((e) => {
         setState(null, false, null);
+        console.log(e.message);
       });
   }, []);
 
@@ -56,7 +57,7 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('auth/logout', {});
+      // const res = await axios.post('auth/logout', {});
       setState(null, false, null);
       <Navigate to="/"/>;
       // navigate("/");

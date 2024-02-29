@@ -1,7 +1,5 @@
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { Navigate, Route, Routes, Switch, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import AnimatedPage from '../components/AnimatedPage';
 // import Comments from '../pages/Comments';
 // import NewOrder from '../pages/NewOrder';
@@ -12,12 +10,11 @@ import Register from '../components/Register';
 import Home from '../pages/Home';
 import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
-import DashboardLayout from '../pages/Dashboard';
-import PrivateRoutes from '../pages/Dashboard/PrivateRoutes';
-import UserProfile from '../components/UserProfile';
-import NotFound from '../pages/NotFound';
+import UserProfile from '../pages/Dashboard/UserProfile';
 import Checkout from '../pages/Checkout';
 import Cart from '../pages/Cart';
+import DashboardLayout from '../pages/Dashboard';
+import NotFound from '../pages/NotFound';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -36,8 +33,8 @@ const Main = () => {
           {/* <NavbarSide /> */}
 
           <Routes key={location.pathname} location={location}>
-          {/* <Switch> */}
-            
+            {/* <Switch> */}
+
             {/* <Route
               path="/"
               element={user ? <Dashboard /> : <Home />}

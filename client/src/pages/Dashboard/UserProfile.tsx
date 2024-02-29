@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import axios from '../axiosInstance';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import axios from '../../axiosInstance';
 // import CatBox from '../assets/cat-box.png';
 
 const UserProfile = () => {
@@ -31,28 +31,28 @@ const UserProfile = () => {
 
   return (
     <>
-      <section className="bg-primary-50/00 dark:bg-gray-900">
-        <h2 className="text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+      <section className="p-8 bg-primary-50/00 dark:bg-gray-900">
+        <h2 className="text-4xl font-extrabold tracking-tight text-center text-gray-900 dark:text-white">
           Profile
         </h2>
-        <div className="max-w-2xl  py-8 mx-auto lg:py-16">
+        <div className="max-w-2xl py-8 mx-auto lg:py-16">
           <form action="#">
             <div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="Userame"
+                  htmlFor="Username"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Userame
+                  Username
                 </label>
                 <input
-                  value={user.username}
+                  defaultValue={userProfile.username}
+                  onChange={handleChange}
                   type="text"
-                  name="Userame"
-                  id="Userame"
+                  name="Username"
+                  id="Username"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   required
-                  defaultValue=""
                 />
               </div>
               <div className="sm:col-span-2">
@@ -63,13 +63,13 @@ const UserProfile = () => {
                   Email
                 </label>
                 <input
-                  value={user.email}
+                  defaultValue={userProfile.email}
+                  onChange={handleChange}
                   type="text"
                   name="email"
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   required
-                  defaultValue=""
                 />
               </div>
               <div className="w-full">
@@ -80,6 +80,7 @@ const UserProfile = () => {
                   Firstname
                 </label>
                 <input
+                  defaultValue={userProfile.firstname}
                   onChange={handleChange}
                   type="text"
                   name="firstName"
@@ -87,7 +88,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.firstName}
                   required
-                  defaultValue=""
                 />
               </div>
               <div className="w-full">
@@ -98,6 +98,7 @@ const UserProfile = () => {
                   Lastname
                 </label>
                 <input
+                  defaultValue={userProfile.lastname}
                   onChange={handleChange}
                   type="text"
                   name="lastName"
@@ -105,7 +106,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.lastName}
                   required
-                  defaultValue=""
                 />
               </div>
               <div>
@@ -116,6 +116,7 @@ const UserProfile = () => {
                   Address
                 </label>
                 <input
+                  defaultValue={userProfile.address}
                   onChange={handleChange}
                   type="text"
                   name="address"
@@ -123,7 +124,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.address}
                   required
-                  defaultValue=""
                 />
               </div>
               <div>
@@ -134,6 +134,7 @@ const UserProfile = () => {
                   City
                 </label>
                 <input
+                  defaultValue={userProfile.city}
                   onChange={handleChange}
                   type="text"
                   name="city"
@@ -141,7 +142,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.city}
                   required
-                  defaultValue=""
                 />
               </div>
               <div>
@@ -152,6 +152,7 @@ const UserProfile = () => {
                   Phone
                 </label>
                 <input
+                  defaultValue={userProfile.phone}
                   onChange={handleChange}
                   type="text"
                   name="phone"
@@ -159,7 +160,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.phone}
                   required
-                  defaultValue=""
                 />
               </div>
               <div>
@@ -170,6 +170,7 @@ const UserProfile = () => {
                   Zipcode
                 </label>
                 <input
+                  defaultValue={userProfile.zipcode}
                   onChange={handleChange}
                   type="number"
                   name="zipcode"
@@ -177,7 +178,6 @@ const UserProfile = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder={user.zipcode}
                   required
-                  defaultValue=""
                 />
               </div>
             </div>
