@@ -12,6 +12,7 @@ import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
 import UserProfile from '../pages/Dashboard/UserProfile';
 import Checkout from '../pages/Checkout';
+import Cart from '../pages/Cart';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 
@@ -59,6 +60,7 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
+              <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
