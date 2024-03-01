@@ -60,7 +60,9 @@ npm run dev
 To deploy the app on render.com
 
 - choose "create Web Service"
-- add environment variables in "Environment"
+
+- add environment variables in "Environment" (but for VITE_SERVER_BASE_URL use the url where the app is deployed e.g. VITE_SERVER_BASE_URL=https://e-learn-68it.onrender.com)
+
 - add deployment settings:  
   Branch: main  
   Root Directory: server  

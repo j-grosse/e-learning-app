@@ -1,7 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SECRET = process.env.JWT_SECRET;
+const SECRET = process.env.JWT_SECRET || 'your-secret-key';
 const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
 
 const register = async (req, res) => {
