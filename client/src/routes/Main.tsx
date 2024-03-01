@@ -12,8 +12,10 @@ import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
 import UserProfile from '../pages/Dashboard/UserProfile';
 import Checkout from '../pages/Checkout';
+import Cart from '../pages/CartExample';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
+import UIComponents from '@/pages/Dashboard/UIComponents';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -59,6 +61,8 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
+              <Route path="uicomponents" element={<UIComponents />} />
+              <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
@@ -81,7 +85,6 @@ const Main = () => {
             {/* <Route path="/payment" element={<Payment />} /> */}
             {/* <Route path="/comments" element={<Comments />} /> */}
             {/* </Route> */}
-
             <Route path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
