@@ -1,6 +1,4 @@
-// import { create } from 'zustand';
-// import { persist, createJSONStorage } from 'zustand/middleware';
-
+import { useState, useEffect } from 'react';
 import { IProduct } from '@/common/type';
 import { toast } from '@/components/ui/use-toast';
 
@@ -11,32 +9,45 @@ interface CartStore {
   removeAll: () => void;
 }
 
-const useCart = create(
-  persist<CartStore>(
-    (set, get) => ({
-      items: [],
-      addItem: (data: IProduct) => {
-        const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === data.id);
+const useCart = (): CartStore => {
+  const [items, setItems] = useState<IProduct[]>([]);
 
-        if (existingItem) {
-          return toast({ title: 'Item already in cart.' });
-        }
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem('cart-items') || '[]');
+    setItems(storedItems);
+  }, []);
 
-        set({ items: [...get().items, data] });
-        toast({ title: 'Item added to cart.' });
-      },
-      removeItem: (id: string) => {
-        set({ items: [...get().items.filter((item) => item.id !== id)] });
-        toast({ title: 'IItem removed from cart.' });
-      },
-      removeAll: () => set({ items: [] }),
-    }),
-    {
-      name: 'cart-storage',
-      storage: createJSONStorage(() => localStorage),
+  useEffect(() => {
+    localStorage.setItem('cart-items', JSON.stringify(items));
+  }, [items]);
+
+  const addItem = (data: IProduct) => {
+    const existingItem = items.find((item) => item.id === data.id);
+
+    if (existingItem) {
+      toast({ title: 'Item already in cart.' });
+      return;
     }
-  )
-);
+
+    setItems((prevItems) => [...prevItems, data]);
+    toast({ title: 'Item added to cart.' });
+  };
+
+  const removeItem = (id: string) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    toast({ title: 'Item removed from cart.' });
+  };
+
+  const removeAll = () => {
+    setItems([]);
+  };
+
+  return {
+    items,
+    addItem,
+    removeItem,
+    removeAll,
+  };
+};
 
 export default useCart;
