@@ -10,7 +10,11 @@ const CoursesSection = ({ courses }) => {
   };
   return (
     <div className="flex justify-center m-6">
-      <Button onClick={loadCourses}>Load Courses</Button>
+      {!showCourses && (
+        <Button className="hover:animate-beat" onClick={loadCourses}>
+          Load Courses
+        </Button>
+      )}
 
       {showCourses && <CourseCardList courses={courses} />}
     </div>
