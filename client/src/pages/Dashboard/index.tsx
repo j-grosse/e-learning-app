@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import DashboardMain from './DashboardMain';
 import DashboardSidebar from './DashboardSidebar';
 // import Footer from '../../components/common/Footer';
