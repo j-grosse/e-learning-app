@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaCheck, FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const CourseAbout = ({ course }) => {
-  const [isCollapsed, setCollapsed] = useState(true);
-
-  const handleAccordion = () => {
-    setCollapsed(!isCollapsed);
-  };
 
   return (
     <div>
@@ -190,18 +191,13 @@ const CourseAbout = ({ course }) => {
               </div>
             </div>
 
-            {/* first accordion */}
-
             <div className="course-curriculum accordion">
-              <div className="accordion-item">
-                <button
-                  className="accordion-collapse btn"
-                  onClick={handleAccordion}
-                >
-                  <i className="tutor-icon"></i> IT background
-                </button>
-                {!isCollapsed && (
-                  <div className="accordion-collapse">
+              <Accordion type="single" collapsible>
+                {/* first accordion */}
+
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>IT background</AccordionTrigger>
+                  <AccordionContent>
                     <div className="course-curriculum__lessons">
                       <div className="course-curriculum__lesson">
                         <span className="course-curriculum__title">
@@ -238,21 +234,16 @@ const CourseAbout = ({ course }) => {
                         </span>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  </AccordionContent>
+                </AccordionItem>
 
-              {/* second accordion */}
+                {/* second accordion */}
 
-              <div className="accordion-item">
-                <button
-                  className="accordion-button btn"
-                  onClick={handleAccordion}
-                >
-                  <i className="tutor-icon"></i> Key concepts
-                </button>
-                {!isCollapsed && (
-                  <div className="accordion-collapse">
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>
+                      Key concepts
+                  </AccordionTrigger>
+                  <AccordionContent>
                     <div className="course-curriculum__lessons">
                       <div className="course-curriculum__lesson">
                         <span className="course-curriculum__title">
@@ -273,54 +264,12 @@ const CourseAbout = ({ course }) => {
                         </span>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* third accordion */}
-              <div className="accordion-item">
-                <button
-                  className="accordion-button btn"
-                  onClick={handleAccordion}
-                >
-                  <i className="tutor-icon"></i> Apply the principles
-                </button>
-                {!isCollapsed && (
-                  <div className="accordion-collapse">
-                    <div className="course-curriculum__lessons">
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-alt"></i>
-                          Final Lesson
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-edit"></i>
-                          Assignments
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-question-circle"></i>
-                          First quiz
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
+
           {/* <!-- Tutor Course Segment End --> */}
           <br />
           {/* <!-- Tutor Course Segment Start --> */}

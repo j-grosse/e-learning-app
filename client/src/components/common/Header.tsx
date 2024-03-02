@@ -6,6 +6,7 @@ import Login from '../Login';
 import Register from '../Register';
 
 import Logo from '../../assets/images/brain-logo.png';
+import { ModeToggle } from '../mode-toggle';
 // import elearnlogo from '../../assets/elearnlogo.png';
 
 const Header = () => {
@@ -65,6 +66,9 @@ const Header = () => {
               <div className="text-gray-800 dark:text-white bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
                 <button onClick={logout}>Logout</button>
               </div>
+              <div>
+                <ModeToggle />
+              </div>
             </div>
           ) : (
             <div className="flex items-center justify-center lg:order-2">
@@ -74,6 +78,10 @@ const Header = () => {
 
               <div>
                 <Register />
+              </div>
+
+              <div>
+                <ModeToggle />
               </div>
 
               {/* hamburger menu */}
