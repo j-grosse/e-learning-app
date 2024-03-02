@@ -1,3 +1,4 @@
+/* index.css a.k.a. globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +8,6 @@ h2 {
 }
 
 /* shadcn */
-/*
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -71,4 +71,4 @@ h2 {
     --ring: 212.7 26.8% 83.9%;
   }
 }
- */
+

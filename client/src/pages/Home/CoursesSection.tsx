@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CourseCardList from './CourseCardList';
+import { Button } from '@/components/ui/button';
 
 const CoursesSection = ({ courses }) => {
+  const [showCourses, setShowCourses] = useState(false);
 
+  const loadCourses = () => {
+    setShowCourses(true);
+  };
   return (
-    <>
-      <CourseCardList courses={courses} />
-    </>
+    <div className="flex justify-center m-6">
+      <Button onClick={loadCourses}>Load Courses</Button>
+
+      {showCourses && <CourseCardList courses={courses} />}
+    </div>
   );
 };
 
