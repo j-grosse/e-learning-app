@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from '../axiosInstance';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext(null);
 
@@ -59,9 +59,8 @@ const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post('auth/logout', {}); // res is in deed used. line is needed for successful logout
       setState(null, false, null);
-      <Navigate to="/"/>;
-      // navigate("/");
-      window.location.reload();
+      navigate("/");
+      // window.location.reload();  //optional reload at logout
     } catch (error) {
       console.log(error.response);
       setState(null, false, error.response.errors);

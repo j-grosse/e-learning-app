@@ -65,8 +65,8 @@ const Hero = () => {
             }}
           />
 
-          <div className="p-6 rounded-2xl place-self-start lg:col-span-6">
-            <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
+          <div className="p-6 rounded-2xl place-self-start lg:col-span-6 animate-in  zoom-in duration-500">
+            <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-primary">
               Your path to success
             </p>
             <h1 className="max-w-2xl mb-8 text-4xl font-extrabold leading-none tracking-tight text-primary md:text-5xl xl:text-6xl">

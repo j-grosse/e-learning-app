@@ -16,6 +16,7 @@ import Cart from '../pages/CartExample';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import UIComponents from '@/pages/Dashboard/UIComponents';
+import Course from '@/pages/Dashboard/Course';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -61,7 +62,8 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
-              <Route path="uicomponents" element={<UIComponents />} />
+              <Route path="course" element={<Course />} />
+              <Route path="components" element={<UIComponents />} />
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
