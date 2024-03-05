@@ -25,6 +25,7 @@ const CartProvider = ({ children }) => {
   const removeFromCart = (id) => {
     setSelectedCourses(selectedCourses.filter((course) => course.id !== id))
   }
+  
   return (
     <CartContext.Provider value={selectedCourses}>
         <AddToCartContext.Provider value={addToCart}>
