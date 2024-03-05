@@ -23,13 +23,16 @@ Students can see the course material of courses they are enrolled in. The studen
 
 ## Technologies used
 
-React.js, Tailwind, 
-vite, react router dom, axios, uuidv4, dotenv, bcrypt, jwt
+### Front end
+React.js, shadcn/ui react components (using Tailwind CSS & Radix UI)
+vite, react router dom, axios
 
-Node.js, Express.js, MongoDB Atlas, Mongoose.js, Render.com
+### Back end
+Node.js, Express.js, MongoDB Atlas, Mongoose.js, dotenv, bcrypt, jwt
 
+## Theming
 
-
+Theming is using shadcn/ui (index.css) and Tailwind (tailwind.config.js).
 
 ## Installation
 
@@ -68,3 +71,5 @@ To deploy the app on render.com
   Root Directory: server  
   Build Command: npm i && cd ../client && npm i && npm run build  
   Start Command: npm start
+
+
