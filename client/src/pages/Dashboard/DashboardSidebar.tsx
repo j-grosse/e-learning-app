@@ -1,16 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const DashboardSidebar = () => {
   return (
     <div>
-        {/* DashboardSidebar */}
-        <ul>
-            <li><button className="w-32 bg-secondary"><Link to="/dashboard/checkout">Checkout</Link></button></li>
-            <li><button className="w-32 bg-secondary"><Link to="/dashboard/profile">Profile</Link></button></li>
-        </ul>
+      {/* DashboardSidebar */}
+      <ul className="w-32 py-4 px-8 space-y-4 bg-secondary">
+        <li>
+          <Link to="/dashboard/course">Course</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/components">Components</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/cart">Cart</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/checkout">Checkout</Link>
+        </li>
+        <li>
+          <Link to="/dashboard/profile">Profile</Link>
+        </li>
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardSidebar
+export default DashboardSidebar;

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import DashboardMain from './DashboardMain';
 import DashboardSidebar from './DashboardSidebar';
 // import Footer from '../../components/common/Footer';
@@ -11,7 +11,7 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     // dashboard sidebar remains fixed on the side
-    <div className="flex w-full h-auto min-h-screen bg-secondary-500">
+    <div className="flex w-full h-auto min-h-screen">
       <DashboardSidebar />
       <DashboardMain>
         {/* DashboardNavbar  <DashboardNavbar /> */}

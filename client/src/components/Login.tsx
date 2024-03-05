@@ -5,10 +5,10 @@ import { useNavigate, Navigate, NavLink } from 'react-router-dom';
 const Login = () => {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
+  // const [user, setUser] = useState({
+  //   email: '',
+  //   password: '',
+  // });
 
   const handleClick = () => {
     navigate('/login');
