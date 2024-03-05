@@ -12,11 +12,8 @@ import CourseDetails from '../pages/CourseDetails';
 import ProtectedRoute from './ProtectedRoute';
 import UserProfile from '../pages/Dashboard/UserProfile';
 import Checkout from '../pages/Checkout';
-<<<<<<< HEAD
 import Cart from '../pages/Cart';
-=======
-import Cart from '../pages/CartExample';
->>>>>>> main
+// import Cart from '../pages/CartExample';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import UIComponents from '@/pages/Dashboard/UIComponents';
