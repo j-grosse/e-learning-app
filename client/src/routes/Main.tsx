@@ -17,7 +17,7 @@ import Cart from '../pages/Cart';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import UIComponents from '@/pages/Dashboard/UIComponents';
-import Course from '@/pages/Dashboard/Course';
+import CourseLayout from '@/pages/Dashboard/CourseView';
 
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -56,14 +56,14 @@ const Main = () => {
             > */}
 
             <Route
-              path="/dashboard"
+              path="/dashboard/:item?"
               element={
                 <DashboardLayout>
                   <ProtectedRoute />
                 </DashboardLayout>
               }
             >
-              <Route path="course" element={<Course />} />
+              <Route path="course/:id" element={<CourseLayout />} />
               <Route path="components" element={<UIComponents />} />
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />

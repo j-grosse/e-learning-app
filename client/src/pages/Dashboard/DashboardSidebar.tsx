@@ -1,28 +1,41 @@
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-const DashboardSidebar = () => {
+const MyComponent = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  // const { item } = useParams();
+  // console.log(item);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const navLinkStyle = ({ isActive }) => {
+    return { fontWeight: isActive ? 'bold' : 'normal' };
+  };
+  const menuItems = [
+    { id: 'item1', label: 'Course', path: '/dashboard/course/1' },
+    { id: 'item2', label: 'Components', path: '/dashboard/components' },
+    { id: 'item3', label: 'Cart', path: '/dashboard/cart' },
+    { id: 'item4', label: 'Checkout', path: '/dashboard/checkout' },
+    { id: 'item5', label: 'Profile', path: '/dashboard/profile' },
+  ];
+
   return (
-    <div>
-      {/* DashboardSidebar */}
-      <ul className="w-32 py-4 px-8 space-y-4 bg-secondary">
-        <li>
-          <Link to="/dashboard/course">Course</Link>
+    <ul className="text-lg space-y-2 pointer">
+      {menuItems.map((item) => (
+        <li
+          key={item.id}
+          onClick={() => handleItemClick(item.id)}
+          className="hover:bg-secondary px-4 py-2"
+        >
+          <NavLink to={item.path} style={navLinkStyle}>
+            {item.label}
+          </NavLink>
         </li>
-        <li>
-          <Link to="/dashboard/components">Components</Link>
-        </li>
-        <li>
-          <Link to="/dashboard/cart">Cart</Link>
-        </li>
-        <li>
-          <Link to="/dashboard/checkout">Checkout</Link>
-        </li>
-        <li>
-          <Link to="/dashboard/profile">Profile</Link>
-        </li>
-      </ul>
-    </div>
+      ))}
+    </ul>
   );
 };
 
-export default DashboardSidebar;
+export default MyComponent;

@@ -14,7 +14,6 @@ const CourseDetails = () => {
   const idNumber = parseInt(id);
   const course = courses && courses.find((el) => el.id === idNumber);
   console.log('course:', course);
-  const ruler = 'border-gray-300 mx-4 my-4';
 
   return (
     <div className="bg-gray-50">

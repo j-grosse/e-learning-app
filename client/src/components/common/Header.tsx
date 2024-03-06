@@ -17,7 +17,7 @@ const Header = () => {
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
       <nav className="relative shadow-lg bg-primary">
-        <div className="flex flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl">
+        <div className="flex text-foreground dark:text-backgound text-xl flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl">
           {/* Logo */}
           <div className="flex items-center">
             <div className="self-center text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover-zoom">
@@ -54,7 +54,7 @@ const Header = () => {
           {/* Conditional rendering of Login/Logout */}
           {user ? (
             <div className="flex items-center lg:order-2">
-              <div className="text-primary-800 hover:text-primary-500 dark:text-white focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-gray-800">
+              <div className="hover:text-primary-500 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-gray-800">
                 <button className="rounded-md px-2 py-0.5">
                   <NavLink to="/dashboard">
                     {user.username}'s <br />
@@ -63,8 +63,9 @@ const Header = () => {
                 </button>
               </div>
 
-              <div className="text-gray-800 dark:text-white bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
+              <div className="bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
                 <button onClick={logout}>Logout</button>
+              
               </div>
               <div>
                 <ModeToggle />

@@ -66,19 +66,19 @@ const Hero = () => {
           />
 
           <div className="p-6 rounded-2xl place-self-start lg:col-span-6 animate-in  zoom-in duration-500">
-            <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-primary">
+            <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
               Your path to success
             </p>
             <h1 className="max-w-2xl mb-8 text-4xl font-extrabold leading-none tracking-tight text-primary md:text-5xl xl:text-6xl">
               Access To 4000+ Courses from 500+ Instructors & Institutions
             </h1>
-            <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-gray-400">
+            <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
               Take your career to the next level.
             </p>
             {/* CTA button 1 */}
             <button
               onClick={handleClick}
-              className="inline-flex items-center justify-center px-5 py-3 ml-6 mr-3 font-medium text-center rounded-lg shadow-2xl text-primary-800 bg-primary-200 hover:bg-secondary-500 focus:ring-4 focus:ring-primary-300"
+              className="inline-flex items-center justify-center px-5 py-3 ml-6 mr-3 font-medium text-center rounded-lg shadow-2xl text-primary-800 dark:text-foreground bg-primary-200 hover:bg-secondary-500 focus:ring-4 focus:ring-primary-300"
             >
               Search Courses
             </button>

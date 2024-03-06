@@ -7,12 +7,12 @@ const Home = () => {
   const courses = useContext(CoursesContext);
 
   return (
-    <>
+    <div className='w-full h-auto min-h-screen'>
       {/* {user && <UserProfile />} */}
       <Hero />
       <CoursesSection courses={courses} />
       {/* <TestimonialsSection /> */}
-    </>
+    </div>
   );
 };
 
