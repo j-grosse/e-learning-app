@@ -14,7 +14,7 @@ const MyComponent = () => {
     return { fontWeight: isActive ? 'bold' : 'normal' };
   };
   const menuItems = [
-    { id: 'item1', label: 'Course', path: '/dashboard/course' },
+    { id: 'item1', label: 'Course', path: '/dashboard/course/1' },
     { id: 'item2', label: 'Components', path: '/dashboard/components' },
     { id: 'item3', label: 'Cart', path: '/dashboard/cart' },
     { id: 'item4', label: 'Checkout', path: '/dashboard/checkout' },
