@@ -8,7 +8,6 @@ h2 {
 }
 
 /* shadcn theme - theme generator: https://ui.shadcn.com/themes */
-
 @layer base {
   :root {
     --background: 0 0% 100%;
