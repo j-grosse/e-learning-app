@@ -1,6 +1,7 @@
+import { Course } from '@/components/ui/columns';
 import React, { useContext, useState } from 'react'
 
-const CartContext = React.createContext([]);
+const CartContext = React.createContext(new Set<Course>());
 const AddToCartContext = React.createContext((obj) => {});
 const RemoveFromCartContext = React.createContext((id:any) => {});
 
@@ -17,13 +18,14 @@ export const useRemoveFromCart = () => {
 }
 
 const CartProvider = ({ children }) => {
-  const [selectedCourses, setSelectedCourses] = useState([]) //change array to set to set unique courses
+  const [selectedCourses, setSelectedCourses] = useState(new Set<Course>()) //change array to set to set unique courses
   const addToCart = (course) => {
-    setSelectedCourses([...selectedCourses, course])
+    setSelectedCourses(selectedCourses.add(course))
   }
 
-  const removeFromCart = (id) => {
-    setSelectedCourses(selectedCourses.filter((course) => course.id !== id))
+  const removeFromCart = (course) => {
+    const newCourses = selectedCourses;
+    newCourses.delete(course) && setSelectedCourses(newCourses)
   }
   
   return (
