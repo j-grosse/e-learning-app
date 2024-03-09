@@ -16,9 +16,20 @@ import { RxDividerVertical } from 'react-icons/rx';
 import { FaSlidersH } from 'react-icons/fa';
 import { FaClock } from 'react-icons/fa';
 import thumbnail from '../../assets/images/thumb.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAddToCart } from '../../context/CartContext';
+
 
 const CourseSidebar = ( {course} ) => {
+  const addToCart = useAddToCart();
+  const navigate = useNavigate();
+  const handleAddToCart = () => {
+    // console.log('add to cart called')
+    // console.log(course)
+    addToCart(course);
+    navigate("/dashboard/cart")
+    
+  }
   return (
     <div className="flex sticky-parent">
       {/* <!-- Tutor Course Sidebar Start --> */}
@@ -116,7 +127,7 @@ const CourseSidebar = ( {course} ) => {
                 </ul>
               </div>
               <div className="mx-8">
-                <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black ">
+                <button onClick={handleAddToCart} className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black ">
                   <FaShoppingBasket /> Add to cart
                 </button>
                 <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-blue-500 transition duration-300 bg-gray-200 rounded-md hover:bg-blue-500 hover:text-white">
