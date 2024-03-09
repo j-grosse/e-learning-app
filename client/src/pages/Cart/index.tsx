@@ -1,13 +1,11 @@
-import React from 'react'
-import { useCart, useRemoveFromCart } from '../../context/CartContext'
-import { useNavigate } from 'react-router-dom';
-import { FaCross, FaWindowClose } from 'react-icons/fa';
-import { Course, columns } from '@/components/ui/columns';
+import { Button } from '@/components/ui/button';
+import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
 
 const index = () => {
   const selectedCourses = useCart();
-  const removeFromCart = useRemoveFromCart();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,11 +14,11 @@ const index = () => {
 
 
   return (
-    <div>
-      <div>
+    <div className='w-full'>
+      <div className='mb-4'>
         { selectedCourses && <DataTable columns={columns} data={Array.from(selectedCourses)} />}
       </div>
-        <button onClick={handleClick} className="flex items-center justify-center gap-3 p-3 my-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black">Checkout</button>
+      <Button onClick={handleClick}>Checkout</Button>
     </div>
   )
 }
