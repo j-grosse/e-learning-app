@@ -18,7 +18,7 @@ import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import UIComponents from '@/pages/Dashboard/UIComponents';
 import CourseLayout from '@/pages/Dashboard/CourseView';
-
+import { Toaster } from '@/components/ui/toaster'
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
 // import NavbarSide from './NavbarSide';
@@ -95,6 +95,7 @@ const Main = () => {
             {/* </Switch> */}
           </Routes>
         </main>
+        <Toaster />
       </AnimatePresence>
     </AnimatedPage>
   );
