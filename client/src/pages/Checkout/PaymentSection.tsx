@@ -6,7 +6,7 @@ const PaymentSection = () => {
     // When a link is clicked, the if the forms a filled then, pass the action to the parent to make the call to the relevant page.
   return (
     <div className='my-4 flex flex-wrap gap-x-4'>
-        <div className="basis-full  mb-2">Choose a payment option</div>
+        <h4 className="basis-full font-semibold  mb-2">Choose a payment option</h4>
         <Button variant='secondary'>
             <FaPaypal className='mr-2' /> Paypal
         </Button>

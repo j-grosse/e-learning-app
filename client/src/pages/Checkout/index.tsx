@@ -5,6 +5,7 @@ import * as english from 'i18n-iso-countries/langs/en.json'
 import CheckoutForm from './CheckoutForm';
 import PaymentSection from './PaymentSection';
 import CartDetails from './CartDetails';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const Checkout = () => {
   // const countryList = cou
@@ -12,7 +13,6 @@ const Checkout = () => {
   const countryList = Object.values(countries.getNames("en"))
 
   const handleCheckboxChange = () => {
-    console.log('handlecheckboxchange called!')
     setSecondAddress(!secondAddress);
   }
 
@@ -37,7 +37,8 @@ const Checkout = () => {
       {countryList && <CheckoutForm countryList={countryList} formName={"Billing Details"}/>}
       <div className='my-4 flex items-center'>
         <label htmlFor="shipping-address" className="mr-4 text-sm">Ship to a different address?</label>
-        <input onChange={handleCheckboxChange} type="checkbox" name="shipping-address" id="shipping-address" checked={secondAddress} />
+        <Checkbox onCheckedChange={handleCheckboxChange} id='shipping-address'/>
+        {/* <input onChange={handleCheckboxChange} type="checkbox" name="shipping-address" id="shipping-address" checked={secondAddress} /> */}
       </div>
 
       {(countryList && secondAddress) && <CheckoutForm countryList={countryList} formName={"Shipping Details"}/>}
