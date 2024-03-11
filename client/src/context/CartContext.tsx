@@ -14,18 +14,23 @@ export const useAddToCart = () => {
 }
 
 export const useRemoveFromCart = () => {
-    return useContext(RemoveFromCartContext);
+  return useContext(RemoveFromCartContext);
 }
 
 const CartProvider = ({ children }) => {
-  const [selectedCourses, setSelectedCourses] = useState(new Set<Course>()) //change array to set to set unique courses
+  const [selectedCourses, setSelectedCourses] = useState(new Set<Course>()) 
   const addToCart = (course) => {
-    setSelectedCourses(selectedCourses.add(course))
+    const updatedSet = new Set(selectedCourses)
+    updatedSet.add(course)
+    setSelectedCourses(updatedSet)
+
   }
 
   const removeFromCart = (course) => {
-    const newCourses = selectedCourses;
-    newCourses.delete(course) && setSelectedCourses(newCourses)
+    const updatedSet = new Set(selectedCourses)
+    if(updatedSet.delete(course)){
+      setSelectedCourses(updatedSet)
+    }
   }
   
   return (

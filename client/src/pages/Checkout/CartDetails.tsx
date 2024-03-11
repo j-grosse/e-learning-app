@@ -1,8 +1,6 @@
-import React from 'react'
-import { useCart, useRemoveFromCart } from '../../context/CartContext';
-import { FaCross, FaWindowClose } from 'react-icons/fa';
 import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
+import { useCart } from '../../context/CartContext';
 
 const CartDetails = () => {
   const selectedCourses = useCart();
