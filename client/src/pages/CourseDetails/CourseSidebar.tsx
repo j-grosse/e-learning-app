@@ -1,35 +1,37 @@
-import React from 'react';
 import {
   FaCheck,
+  FaClock,
   FaFacebookF,
   FaGlobe,
   FaLinkedinIn,
   FaPlayCircle,
   FaShoppingBasket,
+  FaSlidersH,
   FaTag,
   FaTumblr,
-  FaTwitter,
-  FaUserAlt,
+  FaTwitter
 } from 'react-icons/fa';
-import { FaStar } from 'react-icons/fa';
-import { RxDividerVertical } from 'react-icons/rx';
-import { FaSlidersH } from 'react-icons/fa';
-import { FaClock } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import thumbnail from '../../assets/images/thumb.png';
-import { Link, useNavigate } from 'react-router-dom';
 import { useAddToCart } from '../../context/CartContext';
+import { useToast } from '@/components/ui/use-toast';
+import { Button } from '@/components/ui/button';
 
 
 const CourseSidebar = ( {course} ) => {
   const addToCart = useAddToCart();
-  const navigate = useNavigate();
+  const { toast } = useToast()
+
   const handleAddToCart = () => {
-    // console.log('add to cart called')
-    // console.log(course)
     addToCart(course);
-    navigate("/dashboard/cart")
-    
+    toast({
+      title: "Course Added",
+      description: `You added ${course.title} by ${course.tutor} to your cart!`,
+      action: <Link to={'/dashboard/cart'} ><Button>View Cart</Button></Link> 
+    })
+
   }
+
   return (
     <div className="flex sticky-parent">
       {/* <!-- Tutor Course Sidebar Start --> */}
