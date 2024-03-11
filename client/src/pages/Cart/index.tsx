@@ -4,6 +4,7 @@ import { DataTable } from '@/components/ui/data-table';
 import { useToast } from '@/components/ui/use-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import CartDetails from '../Checkout/CartDetails';
 
 const index = () => {
   const selectedCourses = useCart()
@@ -24,10 +25,8 @@ const index = () => {
 
 
   return (
-    <div className='w-full'>
-      <div className='mb-4'>
-        { selectedCourses && <DataTable columns={columns} data={Array.from(selectedCourses)} />}
-      </div>
+    <div className='row w-full max-w-2xl'>
+      <CartDetails />
       <Button onClick={handleClick}>Checkout</Button>
     </div>
   )

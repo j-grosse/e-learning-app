@@ -8,7 +8,6 @@ import CartDetails from './CartDetails';
 import { Checkbox } from '@/components/ui/checkbox';
 
 const Checkout = () => {
-  // const countryList = cou
   const [secondAddress, setSecondAddress] = useState(false); 
   const countryList = Object.values(countries.getNames("en"))
 
@@ -35,10 +34,10 @@ const Checkout = () => {
       <CartDetails />
 
       {countryList && <CheckoutForm countryList={countryList} formName={"Billing Details"}/>}
+
       <div className='my-4 flex items-center'>
         <label htmlFor="shipping-address" className="mr-4 text-sm">Ship to a different address?</label>
         <Checkbox onCheckedChange={handleCheckboxChange} id='shipping-address'/>
-        {/* <input onChange={handleCheckboxChange} type="checkbox" name="shipping-address" id="shipping-address" checked={secondAddress} /> */}
       </div>
 
       {(countryList && secondAddress) && <CheckoutForm countryList={countryList} formName={"Shipping Details"}/>}

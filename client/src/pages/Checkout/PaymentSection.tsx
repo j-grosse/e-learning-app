@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
-import React from 'react'
-import { FaPaypal, FaStripe, FaMoneyBill, FaCreditCard  } from 'react-icons/fa'
+import { FaCreditCard, FaMoneyBill, FaPaypal, FaStripe } from 'react-icons/fa'
 
 const PaymentSection = () => {
     // When a link is clicked, the if the forms a filled then, pass the action to the parent to make the call to the relevant page.
