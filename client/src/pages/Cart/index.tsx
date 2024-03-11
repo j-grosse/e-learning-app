@@ -18,7 +18,7 @@ const index = () => {
       toast({
         title:"Empty Cart!",
         description: "Add some courses to your cart and then checkout",
-        action: <Link to={'/'} ><Button>To Courses</Button></Link> 
+        action: <Link to={'/'} ><Button>To Courses</Button></Link>,
       })
     }
   }
