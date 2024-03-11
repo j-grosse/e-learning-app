@@ -1,10 +1,9 @@
 import { Button } from '@/components/ui/button';
 import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
+import { useToast } from '@/components/ui/use-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { useToast } from '@/components/ui/use-toast';
-import { ToastAction } from '@radix-ui/react-toast';
 
 const index = () => {
   const selectedCourses = useCart()
@@ -17,7 +16,8 @@ const index = () => {
     } else {
       toast({
         title:"Empty Cart!",
-        description: "Add some courses to your cart and then checkout"
+        description: "Add some courses to your cart and then checkout",
+        action: <Link to={'/'} ><Button>To Courses</Button></Link> 
       })
     }
   }

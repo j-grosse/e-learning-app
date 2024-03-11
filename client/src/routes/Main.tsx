@@ -1,5 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
 // import Comments from '../pages/Comments';
 // import NewOrder from '../pages/NewOrder';
@@ -7,18 +7,17 @@ import AnimatedPage from '../components/AnimatedPage';
 // import UpdateOrder from '../pages/UpdateOrder';
 import LoginForm from '../components/LoginForm';
 import Register from '../components/Register';
-import Home from '../pages/Home';
-import CourseDetails from '../pages/CourseDetails';
-import ProtectedRoute from './ProtectedRoute';
-import UserProfile from '../pages/Dashboard/UserProfile';
-import Checkout from '../pages/Checkout';
 import Cart from '../pages/Cart';
+import Checkout from '../pages/Checkout';
+import CourseDetails from '../pages/CourseDetails';
+import UserProfile from '../pages/Dashboard/UserProfile';
+import Home from '../pages/Home';
+import ProtectedRoute from './ProtectedRoute';
 // import Cart from '../pages/CartExample';
+import CourseLayout from '@/pages/Dashboard/CourseView';
+import UIComponents from '@/pages/Dashboard/UIComponents';
 import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
-import UIComponents from '@/pages/Dashboard/UIComponents';
-import CourseLayout from '@/pages/Dashboard/CourseView';
-import { Toaster } from '@/components/ui/toaster'
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
 // import NavbarSide from './NavbarSide';
@@ -95,7 +94,6 @@ const Main = () => {
             {/* </Switch> */}
           </Routes>
         </main>
-        <Toaster />
       </AnimatePresence>
     </AnimatedPage>
   );
