@@ -32,6 +32,7 @@ export function DataTable<TData, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+
   const removeFromCart = useRemoveFromCart();
 
   return (
@@ -64,7 +65,9 @@ export function DataTable<TData, TValue>({
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id} onClick={(e) => {
-                    if (e.nativeEvent.target.innerHTML.toLowerCase() === "remove") removeFromCart(cell.row.original.id)
+                    if (e.nativeEvent.target.innerHTML.toLowerCase() === "remove") {
+                      removeFromCart(cell.row.original)
+                    }
                   }}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
