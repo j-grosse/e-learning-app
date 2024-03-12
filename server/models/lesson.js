@@ -2,18 +2,15 @@ const mongoose = require('mongoose');
 
 const lessonSchema = new mongoose.Schema(
   {
-    courseId: { type: Number, required: [true, 'Course id is Required!'] },
-    title: { type: String, required: [true, 'Lesson Title is Required!'] },
-    content: {
+    courseId: { type: Number, required: [true, 'Course id is required!'] },
+    title: { type: String, required: [true, 'Title is required!'] },
+    text: {
       type: String,
-      required: [true, 'Content is Required!'],
     },
-    videoUrl: {
+    videoUrls: [{
       type: String,
-      required: [false, 'not required!'],
-    },
-    attachments: { type: Number, required: [false, 'not required!'] },
-    // createdBy: { type: mongoose.Types.ObjectId, ref: 'User' },
+    }],
+    attachmentUrls: [{ type: String }],
   },
   {
     timestamps: true,

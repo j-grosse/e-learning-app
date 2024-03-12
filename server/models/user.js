@@ -6,46 +6,45 @@ const userSchema = new mongoose.Schema(
     userType: {
       type: String,
       default: 'customer',
-      required: [true, 'userType is required'],
+      required: [true, 'UserType is required'],
     },
-    company: { type: String, default: 'company' },
     firstName: {
       type: String,
       default: 'firstname',
-      required: [true, 'firstname is required'],
+      required: [true, 'Firstname is required'],
     },
     lastName: {
       type: String,
       default: 'lastName',
-      required: [true, 'lastname is required'],
+      required: [true, 'Lastname is required'],
     },
-    username: { type: String, required: [true, 'username is Required!'] },
-    address: { type: String, default: 'address' },
+    username: { type: String, required: [true, 'Username is required!'] },
+    address: { type: String, required: [true, 'Address is required'] },
     zipcode: {
       type: Number,
       default: 0,
-      required: [true, 'zipcode is required'],
+      required: [true, 'Zipcode is required'],
     },
     city: {
       type: String,
       default: 'city',
-      required: [true, 'city is required'],
+      required: [true, 'City is required'],
     },
     phone: {
       type: Number,
       default: 0,
-      required: [true, 'phone is required'],
+      required: [true, 'Phone is required'],
     },
     image: { type: String },
     email: {
       type: String,
-      required: [true, 'email is Required!'],
+      required: [true, 'Email is required!'],
     },
 
     password: {
       type: String,
       minLength: [8, 'Password Must Be 8 characters or more!'],
-      required: [true, 'Password is Required!'],
+      required: [true, 'Password is required!'],
     },
   },
   {
@@ -64,6 +63,7 @@ userSchema.pre('validate', function (next) {
   }
   next();
 });
+
 userSchema.pre('save', async function (next) {
   try {
     const hashedPassword = await bcrypt.hash(this.password, 6);

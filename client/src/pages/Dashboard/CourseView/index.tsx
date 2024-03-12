@@ -22,7 +22,7 @@ const CourseLayout = () => {
         {course && <CourseIndex user={context.user} course={course} />}
       </div>
       <div className="w-9/12">
-        {/* get user's current lesson from db */}
+        {/* list user's current lesson from db */}
         {course ? (
           <CourseContent course={course} />
         ) : (
