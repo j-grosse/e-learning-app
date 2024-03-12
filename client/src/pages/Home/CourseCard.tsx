@@ -9,14 +9,14 @@ const CourseCard = ({ course }) => {
         <div className="w-60">
           {/* Card-header */}
           <div className="relative w-full h-32 object-fit aspect-w-1 aspect-h-1">
-              <img
-                className="object-cover w-full h-24 transition-transform duration-500 transform aspect-w-1 aspect-h-1 hover:scale-125"
-                src={course.image}
-                alt="image"
-              />
-              <span className="absolute top-0 left-0 bg-green-500 rounded-sm text-white text-sm px-2 py-0.5 m-3">
-                NEW
-              </span>
+            <img
+              className="object-cover w-full h-24 transition-transform duration-500 transform aspect-w-1 aspect-h-1 hover:scale-125"
+              src={course.image}
+              alt="image"
+            />
+            <span className="absolute top-0 left-0 bg-green-500 rounded-sm text-white text-sm px-2 py-0.5 m-3">
+              NEW
+            </span>
           </div>
           {/* Card body */}
           <div className="px-6 py-4">
@@ -39,7 +39,7 @@ const CourseCard = ({ course }) => {
                 <FaStar className="text-yellow-500" />
               </div>
             </div>
-            <div className="ml-1 text-gray-500 rating-count">(8)</div>
+            <div className="ml-1 text-gray-500 rating-count">({course.rating})</div>
           </div>
         </div>
       </Link>

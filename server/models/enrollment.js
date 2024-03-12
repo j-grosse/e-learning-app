@@ -19,7 +19,7 @@ const mongoose = require('mongoose');
 const enrollmentSchema = new mongoose.Schema(
   {
     userId: { type: String, required: [true, 'UserId is required!'] },
-    courseId: [{ type: mongoose.Types.ObjectId, ref: 'Course' }],
+    courseId: { type: Number },
     enrollmentDate: {
       type: String,
     },
