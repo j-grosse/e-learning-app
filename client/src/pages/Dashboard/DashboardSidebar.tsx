@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MyComponent = () => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -14,6 +14,7 @@ const MyComponent = () => {
     return { fontWeight: isActive ? 'bold' : 'normal' };
   };
   const menuItems = [
+    { id: 'item0', label: 'Enrollments', path: '/dashboard/enrollments' },
     { id: 'item1', label: 'Course', path: '/dashboard/course/1' },
     { id: 'item2', label: 'Components', path: '/dashboard/components' },
     { id: 'item3', label: 'Cart', path: '/dashboard/cart' },

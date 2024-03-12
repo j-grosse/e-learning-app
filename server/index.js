@@ -7,6 +7,7 @@ const { createServer } = require('http');
 const app = express();
 const connectDB = require('./config/db');
 const coursesRouter = require('./routes/courses');
+const enrollmentsRouter = require('./routes/enrollments');
 const ordersRouter = require('./routes/orders');
 const authRouter = require('./routes/auth');
 const PORT = process.env.PORT || 8000;
@@ -17,6 +18,7 @@ app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/courses', coursesRouter);
+app.use('/api/enrollments', enrollmentsRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/auth', authRouter);
 
