@@ -8,8 +8,9 @@ const {
   deleteCourse,
 } = require('../controllers/courses');
 
-const authenticate = require('../middlewares/auth');
-router.use(authenticate);
+// commented out to allow for api calls without the user being logged in:
+// const authenticate = require('../middlewares/auth');
+// router.use(authenticate);
 
 router.get('/', getAllCourses);
 router.get('/:id', getCourseById);

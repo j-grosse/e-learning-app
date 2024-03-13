@@ -8,8 +8,9 @@ const {
   getLoggedinUser,
   updateUserInfo,
 } = require("../controllers/auth");
+
 router.post("/register", register);
-router.post("/login", login); // POST email, password to http://localhost:8000/auth/login
+router.post("/login", login); // POST email and password to http://localhost:8000/auth/login
 router.post("/logout", logout);
 router.put("/:id", authenticate, updateUserInfo);
 router.get("/currentUser", authenticate, getLoggedinUser);

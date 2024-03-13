@@ -24,7 +24,6 @@ const AuthProvider = ({ children }) => {
       });
   }, []);
 
-
   const login = async (user) => {
     setLoading(true);
     try {
@@ -54,18 +53,20 @@ const AuthProvider = ({ children }) => {
       setState(null, false, error.response.data.errors);
     }
   };
+
   const logout = async () => {
     setLoading(true);
     try {
       const res = await axios.post('auth/logout', {}); // res is in deed used. line is needed for successful logout
       setState(null, false, null);
-      navigate("/");
+      navigate('/');
       // window.location.reload();  //optional reload at logout
     } catch (error) {
       console.log(error.response);
       setState(null, false, error.response.errors);
     }
   };
+
   return (
     <AuthContext.Provider
       value={{ user, loading, errors, login, register, logout }}

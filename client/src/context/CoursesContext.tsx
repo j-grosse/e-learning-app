@@ -41,8 +41,6 @@ const CoursesProvider = ({ children }) => {
     }
   }, [courses]);
 
-  // setCourses(data); // use local array data instead of database data
-
   return (
     <>
       {console.log('content of courses context:', { courses })}
