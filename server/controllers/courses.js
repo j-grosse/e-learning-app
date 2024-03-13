@@ -17,16 +17,21 @@ const createCourse = async (req, res) => {
     res.status(500).json({ message: error.message, errors: error.errors });
   }
 };
+
 const getAllCourses = async (req, res) => {
   try {
     // const courses = await Course.find().populate('createdBy', 'username email');
     const courses = await Course.find();
-    console.log('🚀 ~ file: courses.js:15 ~ getAllCourses ~ courses:', courses);
+    console.log(
+      '🚀 ~ file courses.js ~ loaded courses',
+      courses.map((course) => course.id)
+    );
     res.json(courses);
   } catch (error) {
     res.status(500).json({ message: error.message, errors: error.errors });
   }
 };
+
 const getCourseById = async (req, res) => {
   try {
     const {
@@ -46,6 +51,7 @@ const getCourseById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 const updateCourse = async (req, res) => {
   try {
     const {
@@ -68,6 +74,7 @@ const updateCourse = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 const deleteCourse = async (req, res) => {
   try {
     const {

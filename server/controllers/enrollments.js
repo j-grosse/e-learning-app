@@ -17,11 +17,15 @@ const createEnrollment = async (req, res) => {
     res.status(500).json({ message: error.message, errors: error.errors });
   }
 };
+
 const getAllEnrollments = async (req, res) => {
   try {
     // const enrollments = await Enrollment.find().populate('createdBy', 'username email');
     const enrollments = await Enrollment.find();
-    console.log('🚀 ~ file: enrollments.js:15 ~ getAllEnrollments ~ enrollments:', enrollments);
+    console.log(
+      '🚀 ~ file: controllers/enrollments.js enrolled courses:',
+      enrollments.map((enrollment) => enrollment.courseId)
+    );
     res.json(enrollments);
   } catch (error) {
     res.status(500).json({ message: error.message, errors: error.errors });
@@ -38,7 +42,10 @@ const getEnrollmentById = async (req, res) => {
       'createdBy',
       'username email'
     );
-    console.log('🚀 ~ file: enrollments.js:28 ~ getEnrollmentById ~ enrollments:', enrollments);
+    console.log(
+      '🚀 ~ file: enrollments.js:28 ~ getEnrollmentById ~ enrollments:',
+      enrollments
+    );
     if (enrollments.length === 0) {
       res.status(404).json({ message: 'Enrollment Not Found' });
     }
@@ -55,9 +62,13 @@ const updateEnrollment = async (req, res) => {
       body,
     } = req;
     // const updatedEnrollment = await Enrollment.findByIdAndUpdate()
-    const updatedEnrollment = await Enrollment.findOneAndUpdate({ _id: id }, body, {
-      new: true,
-    });
+    const updatedEnrollment = await Enrollment.findOneAndUpdate(
+      { _id: id },
+      body,
+      {
+        new: true,
+      }
+    );
     console.log(
       '🚀 ~ file: enrollments.js:46 ~ updateEnrollment ~ updatedEnrollment:',
       updatedEnrollment
@@ -70,6 +81,7 @@ const updateEnrollment = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 const deleteEnrollment = async (req, res) => {
   try {
     const {

@@ -7,7 +7,7 @@ const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
 const register = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
-    console.log('🚀 ~ file: users.js:9 ~ register ~ newUser:', newUser);
+    console.log('🚀 ~ file: auth.js:9 ~ register ~ newUser:', newUser);
     // JWT Creation
     const user = {
       _id: newUser._id,
@@ -44,7 +44,7 @@ const login = async (req, res) => {
     } else {
       // WE HAVE A USER!!
       console.log(
-        '🚀 ~ file: users.js:31 ~ login ~ currentUser:',
+        '🚀 ~ file: auth.js: ~ login ~ currentUser password hash:',
         currentUser.password,
         password
       );
@@ -85,16 +85,15 @@ const logout = (req, res) => {
 };
 
 const getLoggedinUser = async (req, res) => {
-  console.log('🚀 ~ file: users.js:67 ~ getLoggedinUser ~ req:', req.user);
-
+  // console.log('🚀 ~ file: controllers/auth.js:88 ~ getLoggedinUser:', req.user.username);
   try {
     const user = await User.findOne({ _id: req.user._id }).select(
       '_id email username userType firstName lastName address zipcode city phone'
     );
-    console.log('🚀 ~ file: users.js:71 ~ getLoggedinUser ~ user:', user);
     res.json({ user });
+    console.log('🚀 ~ file: auth.js:95 ~ getLoggedinUser:', req.user.username);
   } catch (error) {
-    console.log('🚀 ~ file: users.js:74 ~ getLoggedinUser ~ error:', error);
+    console.log('🚀 ~ file: auth.js:97 ~ no user is logged in', error);
 
     res.json({ message: error.message });
   }

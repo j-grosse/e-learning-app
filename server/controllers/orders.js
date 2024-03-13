@@ -13,6 +13,7 @@ const createOrder = async (req, res) => {
     res.status(500).json({ message: error.message, errors: error.errors });
   }
 };
+
 const getAllOrders = async (req, res) => {
   try {
     // find related order based on customer or instructor Id
@@ -35,6 +36,7 @@ const getAllOrders = async (req, res) => {
     res.status(500).json({ message: error.message, errors: error.errors });
   }
 };
+
 const getOrderById = async (req, res) => {
   try {
     const {
@@ -89,6 +91,7 @@ const updateOrder = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 const deleteOrder = async (req, res) => {
   try {
     const {
