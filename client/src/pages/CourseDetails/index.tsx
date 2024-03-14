@@ -16,7 +16,7 @@ const CourseDetails = () => {
   console.log('course:', course);
 
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 dark:bg-black">
       Home / courses / Mastering Data Modelling Fundamentals
       <CourseHeader course={course} />
       <div className="flex">
