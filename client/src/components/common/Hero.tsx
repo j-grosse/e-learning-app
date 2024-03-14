@@ -1,24 +1,16 @@
 import { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import hero from '../../assets/images/hero.png';
+import hero from '../../assets/images/hero.jpg';
+import HeroVideo from '../../assets/images/heroVideo.mp4';
 
 // import image01 from '../../assets/image01.jpg';
 // import image02 from '../../assets/image02.png';
-// import HeroVideo from '../../assets/heroVideo.mp4';
 
 const Hero = () => {
   const navigate = useNavigate();
   const context = useContext(AuthContext);
   const videoRef = useRef(null);
-
-  const handleClick = () => {
-    if (context.user) {
-      navigate('/dashboard');
-    } else {
-      navigate('/login');
-    }
-  };
 
   useEffect(() => {
     if (videoRef.current) {
@@ -28,18 +20,18 @@ const Hero = () => {
 
   return (
     <>
-      <section className="bg-white shadow-lg dark:bg-gray-900">
+      <section className="bg-background shadow-lg dark:bg-gray-900">
         {/* Background image --- parent style: opacity 0.99 relative --- child: img opacity absolute z-index w h cover --- */}
         <div
           className="grid px-0 py-8 mx-auto shadow-lg max-w-screen-xxl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
           style={{ opacity: 0.99, position: 'relative' }}
         >
-          {/* <video
+          <video
             autoPlay
             loop
             muted
             style={{
-              opacity: 0.5,
+              opacity: 0.8,
               zIndex: -1,
               position: 'absolute',
               width: '100%',
@@ -48,11 +40,11 @@ const Hero = () => {
             }}
             ref={videoRef}
           >
-            <source src={HeroVideo} type="video/mp4"/>
+            <source src={HeroVideo} type="video/mp4" />
             Your browser does not support the video tag.
-          </video> */}
+          </video>
 
-          <img
+          {/* <img
             src={hero}
             alt="Transparent Image"
             style={{
@@ -63,25 +55,20 @@ const Hero = () => {
               height: '100%',
               objectFit: 'cover',
             }}
-          />
+          /> */}
 
           <div className="p-6 rounded-2xl place-self-start lg:col-span-6 animate-in  zoom-in duration-500">
             <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
-              Your path to success
+              Take your Electronic Music Artistry to the Next Level.
             </p>
             <h1 className="max-w-2xl mb-8 text-4xl font-extrabold leading-none tracking-tight text-primary md:text-5xl xl:text-6xl">
-              Access To 4000+ Courses from 500+ Instructors & Institutions
+              Electronic Music Creation and Performance
             </h1>
             <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
-              Take your career to the next level.
+              Courses by Cologne's Underground Veterans
             </p>
             {/* CTA button 1 */}
-            <button
-              onClick={handleClick}
-              className="inline-flex items-center justify-center px-5 py-3 ml-6 mr-3 font-medium text-center rounded-lg shadow-2xl text-primary-800 dark:text-foreground bg-primary-200 hover:bg-secondary-500 focus:ring-4 focus:ring-primary-300"
-            >
-              Search Courses
-            </button>
+
             {/* <img
               src={image02}
               alt="image02"

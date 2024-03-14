@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ['class'],
+  darkMode: ['class'], // enables the use of the dark variant utility classes
   content: [
     './src/pages/**/*.{ts,tsx}',
     './src/routes/**/*.{ts,tsx}',
     './src/context/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
-    // './app/**/*.{ts,tsx}',
+    // './app/**/*.{ts,tsx}', // only needed for NextJS
     './src/**/*.{ts,tsx}',
   ],
   theme: {

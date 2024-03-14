@@ -14,11 +14,12 @@ const courseSchema = new mongoose.Schema(
     },
     image: { type: String },
     year: { type: Number, required: [true, 'Year is required!'] },
+    category: { type: String },
     duration: {
       type: Number,
       required: [true, 'Duration is required!'],
     },
-    price: { type: Number, required: [true, 'Price is required!'] },
+    price: { type: String, required: [true, 'Price is required!'] },
     rating: { type: Number },
     lessons: [{ type: mongoose.Types.ObjectId, ref: 'Lesson' }],
     // createdBy: { type: mongoose.Types.ObjectId, ref: 'User' },

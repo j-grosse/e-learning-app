@@ -1,4 +1,4 @@
-/* index.css a.k.a. globals.css */
+/* index.css aka globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,8 +7,16 @@ h2 {
   @apply text-2xl;
 }
 
-/* shadcn theme - theme generator: https://ui.shadcn.com/themes */
 @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* CSS color variables of shadcn theme created with 
+     shadcn theme generator: https://ui.shadcn.com/themes */
   :root {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;

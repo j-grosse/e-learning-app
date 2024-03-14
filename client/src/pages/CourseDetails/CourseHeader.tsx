@@ -6,7 +6,7 @@ import { RxDividerVertical } from 'react-icons/rx';
 const CourseHeader = ({ course }) => {
   return (
     <>
-      <div className="w-full bg-gray-200">
+      <div className="w-full bg-gray-200 dark:bg-gray-800">
         <div className="p-10 m-16 leading-10 tutor-course-top-info__content">
           <div className="tutor-course-top-info__badges">
             <span className="p-1 text-xs font-semibold text-yellow-100 bg-blue-600 onsale">

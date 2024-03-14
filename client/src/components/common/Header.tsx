@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Login from '../Login';
 import Register from '../Register';
 
-import Logo from '../../assets/images/brain-logo.png';
+import Logo from '../../assets/images/jayLogo.jpg';
 import { ModeToggle } from '../mode-toggle';
 // import elearnlogo from '../../assets/elearnlogo.png';
 
@@ -28,7 +28,7 @@ const Header = () => {
                   alt="Logo"
                   // style={{ filter: 'invert(0.3)' }}
                 />
-                <span className="ml-1 text-1xl">E-Learn</span>
+                {/* <span className="ml-1 text-1xl">E-Learn</span> */}
               </NavLink>
             </div>
           </div>

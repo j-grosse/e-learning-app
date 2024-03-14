@@ -38,7 +38,7 @@ const CourseAbout = ({ course }) => {
                     <div className="prerequisites-item__thumbnail">
                       <img
                         className="rounded-md"
-                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapi.time.com%2Fwp-content%2Fuploads%2F2022%2F11%2FGettyImages-1358149692.jpg&f=1&nofb=1&ipt=7aa48c39383fc21b54e08924da01662d1d72820eec53a5c67d63de13fab76a36&ipo=images"
+                        src={course.image}
                         alt="Courses"
                         width="70"
                         height="47"
