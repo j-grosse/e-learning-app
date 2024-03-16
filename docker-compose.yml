@@ -1,0 +1,31 @@
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.reactUI
+    ports:
+      - '5173:5173'
+    depends_on:
+      - db
+    env_file:
+      - server/.env
+    image: pixelpause2000/e-learning-app:e-learning-app-frontend-0.0.1.RELEASE
+
+  nodebackend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.node
+    ports:
+      - '8000:8000' #external:internal
+    depends_on:
+      - db
+    env_file:
+      - server/.env
+    image: pixelpause2000/e-learning-app:e-learning-app-backend-0.0.1.RELEASE
+
+  db:
+    env_file:
+      - server/.env
+    image: mongo:latest
+    ports:
+      - '27017:27017'

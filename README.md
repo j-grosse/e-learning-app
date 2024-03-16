@@ -4,7 +4,7 @@
 
 This is my own E-Learning Portal portfolio project, I started in january 2024.
 
-Thi E-Learning Web App is an Web App that aims to revolutionize the way people learn and acquire knowledge. With a user-friendly interface and a wide range of interactive features, our platform provides an engaging learning experience for students of all ages and backgrounds.
+This E-Learning Web App is an Web App that aims to revolutionize the way people learn and acquire knowledge. With a user-friendly interface and a wide range of interactive features, our platform provides an engaging learning experience for students of all ages and backgrounds.
 
 ## Main Features
 
