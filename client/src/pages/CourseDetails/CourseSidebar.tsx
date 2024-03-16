@@ -59,7 +59,7 @@ const CourseSidebar = ( {course} ) => {
               </div>
               <div className="flex justify-between gap-4 mx-8 my-5">
                 <div className="flex">
-                  <h2 className="font-bold text-red-600 sale-price">€49.00</h2>
+                  <h2 className="font-bold text-red-600 sale-price">{course.price}</h2>
                   <span className="self-end ml-4 line-through text-thin">
                     €79.00
                   </span>
@@ -100,7 +100,7 @@ const CourseSidebar = ( {course} ) => {
                       <FaTag /> Subject
                     </div>
                     <div className="value">
-                      <Link to="#">Data Modeling</Link>
+                      <Link to="#">{course.title}</Link>
                     </div>
                   </li>
                   <hr className="{ruler}" />
