@@ -13,7 +13,7 @@ const CourseHeader = ({ course }) => {
               -39%
             </span>
             <a className="ml-3 text-blue-600 badges-category" href="#">
-              Data Modeling
+              {course.category}
             </a>
           </div>
           <h1 className="text-3xl tutor-course-top-info__title">
@@ -26,23 +26,25 @@ const CourseHeader = ({ course }) => {
                 <img
                   src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsm.askmen.com%2Ft%2Faskmen_in%2Farticle%2Ff%2Ffacebook-p%2Ffacebook-profile-picture-affects-chances-of-gettin_fr3n.1200.jpg&f=1&nofb=1&ipt=3bb4f05da17a654779eaa91aa8a09590bec3c623406137e42bb9194dea51a769&ipo=images"
                   className="object-cover w-full h-full"
-                  alt="Instructor"
+                  alt="tutor"
                   width="16"
                   height="16"
                 />
               </div>
-              <div className="ml-2 font-bold instructor-name">Owen Christ</div>
+              <div className="ml-2 font-bold instructor-name">
+                {course.tutor}
+              </div>
               <RxDividerVertical className="text-2xl text-gray-500" />
             </div>
             <div className="tutor-course-top-info__meta-update">
-              Last Update December 1, 2023
+              Last Update December 1, {course.year}
             </div>
           </div>
 
           <div className="flex items-center tutor-course-top-info__meta">
             <div className="flex items-center tutor-course-top-info__meta-rating">
               <div className="rating-average">
-                <strong>4.38</strong> /5
+                <strong>{course.rating}</strong> /5
               </div>
               <div className="rating-star">
                 <div className="flex ml-2 rating-label">
@@ -58,7 +60,7 @@ const CourseHeader = ({ course }) => {
             <RxDividerVertical className="text-2xl text-gray-500" />
             <FaUserAlt className="ml-1 text-gray-500" />
             <div className="ml-4 text-gray-500 tutor-course-top-info__meta-action">
-              0 already enrolled
+              8 already enrolled
             </div>
           </div>
         </div>

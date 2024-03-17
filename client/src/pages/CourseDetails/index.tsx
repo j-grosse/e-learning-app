@@ -17,7 +17,7 @@ const CourseDetails = () => {
 
   return (
     <div className="bg-gray-50 dark:bg-black">
-      Home / courses / Mastering Data Modelling Fundamentals
+      Home / courses / {course.title}
       <CourseHeader course={course} />
       <div className="flex">
         <div className="container">
