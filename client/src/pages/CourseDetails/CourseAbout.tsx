@@ -6,9 +6,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Link } from 'react-router-dom';
 
 const CourseAbout = ({ course }) => {
-
   return (
     <div>
       <div></div>
@@ -17,22 +17,22 @@ const CourseAbout = ({ course }) => {
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">
+            {/* <h2 className="tutor-course-segment__title">
               Course Prerequisites
-            </h2>
+            </h2> */}
 
             {/* <!-- Tutor Course Segment Prerequisites Start --> */}
             <div className="tutor-course-segment__prerequisites">
-              <div className="flex gap-5 p-4 border-2 text-stone-400 bg-yellow-50 border-neutral-500 text-neutral-500">
+              {/* <div className="flex gap-5 p-4 border-2 text-stone-400 bg-yellow-50 border-neutral-500 text-neutral-500">
                 <FaExclamationTriangle size={20} />
                 Please note that this course has the following prerequisites
                 which must be completed before it can be accessed
-              </div>
-              <ul className="tutor-course-segment__prerequisites-list">
+              </div> */}
+              {/* <ul className="tutor-course-segment__prerequisites-list">
                 <li>
                   <br />
                   <a
-                    className="flex p-4 border-2 prerequisites-item border-neutral-500 text-neutral-500"
+                    className="flex p-4 border-2 rounded-lg prerequisites-item border-neutral-500 text-neutral-500"
                     href="#"
                   >
                     <div className="prerequisites-item__thumbnail">
@@ -49,7 +49,7 @@ const CourseAbout = ({ course }) => {
                     </div>
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
             {/* <!-- Tutor Course Segment Prerequisites End --> */}
           </div>
@@ -61,30 +61,7 @@ const CourseAbout = ({ course }) => {
 
             {/* <!-- Tutor Course Segment Content Wrapper Start --> */}
             <div className="tutor-course-segment__content-wrap">
-              <p>
-                In this course, I take you from the fundamentals and concepts of
-                data modeling all the way through a number of best practices and
-                techniques that you’ll need to build data models in your
-                organization. You’ll find many examples that clearly demonstrate
-                the key concepts and techniques covered throughout the course.
-              </p>
-              <p>
-                By the end of the course, you’ll be all set to not only put
-                these principles to work, but also to make the key data modeling
-                and design decisions required by the “art” of data modeling that
-                transcend the nuts-and-bolts techniques and design patterns.
-              </p>
-              <p>
-                Organisations, or groups of organisations, may establish the
-                need for master data management when they hold more than one
-                copy of data about a business entity. Holding more than one copy
-                of this master data inherently means that there is an
-                inefficiency in maintaining a “single version of the truth”
-                across all copies. Unless people, processes and technology are
-                in place to ensure that the data values are kept aligned across
-                all copies, it is almost inevitable that different versions of
-                information about a business entity will be held.
-              </p>
+              <p>{course.description}</p>
             </div>
             {/* <!-- Tutor Course Segment Content Wrapper End --> */}
             <br />
@@ -94,10 +71,7 @@ const CourseAbout = ({ course }) => {
                 <FaTags />
               </div>
               <div className="ml-3 tutor-course-segment__tags-list">
-                <a href="#"> big data, </a>
-                <a href="#">data, </a>
-                <a href="#">data analysis, </a>
-                <a href="#">data modeling</a>
+                <a href="#"> {course.category} </a>
               </div>
             </div>
             {/* <!-- Tutor Course Segment Tags End --> */}
@@ -106,7 +80,7 @@ const CourseAbout = ({ course }) => {
           <br />
 
           {/* <!-- Tutor Course Segment Start --> */}
-          <div className="px-4 py-2 border-2">
+          <div className="px-4 py-2 border-2 rounded-lg">
             <h2 className="tutor-course-segment__title">Learning Objectives</h2>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
             <div className="flex gap-4 mt-3 tutor-course-segment__benefits-items">
@@ -138,47 +112,7 @@ const CourseAbout = ({ course }) => {
             {/* <!-- Tutor Course Segment Benefits Items End --> */}
           </div>
           {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">Requirements</h2>
 
-            {/* <!-- Tutor Course Segment Requirements Items Start --> */}
-            <div className="tutor-course-segment__requirements-content">
-              <ul className="tutor-course-segment__list-style-01">
-                <li>
-                  Basic understanding of data management concepts and constructs
-                  such as relational database tables
-                </li>
-                <li>
-                  Know how different pieces of data logically relate to one
-                  another.
-                </li>
-              </ul>
-            </div>
-            {/* <!-- Tutor Course Segment Requirements Items End --> */}
-          </div>
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment audience-wrap">
-            <h2 className="tutor-course-segment__title">Target Audience</h2>
-
-            {/* <!-- Tutor Course Segment Requirements Items Start --> */}
-            <div className="tutor-course-segment__audience-content">
-              <ul className="tutor-course-segment__list-style-02">
-                <li>A business analyst</li>
-                <li>Data engineer, or database designer</li>
-                <li>
-                  Who desires to build a personal toolbox of data modeling best
-                  practices and techniques.
-                </li>
-              </ul>
-            </div>
-            {/* <!-- Tutor Course Segment Requirements Items End --> */}
-          </div>
-          {/* <!-- Tutor Course Segment End --> */}
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
@@ -240,9 +174,7 @@ const CourseAbout = ({ course }) => {
                 {/* second accordion */}
 
                 <AccordionItem value="item-2">
-                  <AccordionTrigger>
-                      Key concepts
-                  </AccordionTrigger>
+                  <AccordionTrigger>Key concepts</AccordionTrigger>
                   <AccordionContent>
                     <div className="course-curriculum__lessons">
                       <div className="course-curriculum__lesson">
@@ -274,20 +206,22 @@ const CourseAbout = ({ course }) => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">Your Instructors</h2>
+            <h2 className="tutor-course-segment__title">Your Tutor(s)</h2>
 
             <div className="tutor-course-segment__instructor">
               <div className="tutor-instructor">
-                <div className="tutor-instructor__avatar">
-                  <img
-                    src="assets/images/team/team-member-07.jpg"
-                    alt="instructor"
-                    width="200"
-                    height="246"
-                  />
+                <div className="flex">
+                  <div className="flex items-center tutor-course-top-info__meta-instructor">
+                    <div className="w-8 h-8 overflow-hidden rounded-full instructor-avatar">
+                      <img
+                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsm.askmen.com%2Ft%2Faskmen_in%2Farticle%2Ff%2Ffacebook-p%2Ffacebook-profile-picture-affects-chances-of-gettin_fr3n.1200.jpg&f=1&nofb=1&ipt=3bb4f05da17a654779eaa91aa8a09590bec3c623406137e42bb9194dea51a769&ipo=images"
+                        alt="tutor"
+                      />
+                    </div>
+                  </div>
+                  <p className="tutor-instructor__name">{course.tutor}</p>
                 </div>
                 <div className="tutor-instructor__instructor-info">
-                  <h2 className="tutor-instructor__name">Owen Christ</h2>
                   <div className="tutor-instructor__ratings">
                     <div className="rating-star">
                       <div
@@ -295,25 +229,27 @@ const CourseAbout = ({ course }) => {
                         style={{ width: '90%' }}
                       ></div>
                     </div>
-
+                    <br />
                     <div className="rating-average">
-                      <span className="rating-average__average">4.75</span>
+                      <span className="rating-average__average">
+                        Tutor rating: {course.rating}
+                      </span>
                       <span className="rating-average__total">/5</span>
                     </div>
                   </div>
                   <div className="tutor-instructor__meta">
                     <span>
-                      <i className="fas fa-play-circle"></i> 42 Courses
+                      <i className="fas fa-play-circle"></i> 6 Courses
                     </span>
                     <span>
                       <i className="fas fa-comment-alt"></i> 4 Reviews
                     </span>
                     <span>
-                      <i className="fas fa-user"></i> 73 Students
+                      <i className="fas fa-user"></i> 53 Students
                     </span>
                   </div>
                   <a className="tutor-instructor__link" href="#">
-                    <i className="fas fa-plus"></i> See more
+                    <i className="fas fa-plus"></i> <Link to="/">See more</Link>
                   </a>
                 </div>
               </div>
@@ -327,7 +263,7 @@ const CourseAbout = ({ course }) => {
 
             <div className="tutor-course-segment__feedback">
               <div className="tutor-course-segment__reviews-average">
-                <div className="count">4.4</div>
+                <div className="count">{course.rating}</div>
                 <div className="reviews-rating-star">
                   <div className="rating-star">
                     <div
@@ -398,53 +334,13 @@ const CourseAbout = ({ course }) => {
                   </div>
                   <div className="rating-metar-text">0%</div>
                 </div>
-
-                <div className="course-rating-metar">
-                  <div className="rating-metar-star">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '40%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-col">
-                    <div className="rating-metar-bar">
-                      <div
-                        className="rating-metar-line"
-                        style={{ width: '0%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-text">0%</div>
-                </div>
-
-                <div className="course-rating-metar">
-                  <div className="rating-metar-star">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '20%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-col">
-                    <div className="rating-metar-bar">
-                      <div
-                        className="rating-metar-line"
-                        style={{ width: '13%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-text">13%</div>
-                </div>
               </div>
             </div>
           </div>
           {/* <!-- Tutor Course Segment End --> */}
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
+          {/* <div className="tutor-course-segment">
             <h2 className="tutor-course-segment__title">
               Reviews <span className="count">(3)</span>
             </h2>
@@ -543,7 +439,7 @@ const CourseAbout = ({ course }) => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           {/* <!-- Tutor Course Segment End --> */}
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
