@@ -18,12 +18,7 @@ jobs:
           MONGODB_ATLAS_CONNECTION_STRING: ${{ env.MONGODB_ATLAS_CONNECTION_STRING }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           FRONTEND_URL: ${{ env.FRONTEND_URL }}
-        run: >
-          docker-compose up -d --build \
-            --env VITE_SERVER_BASE_URL="${{ env.VITE_SERVER_BASE_URL }}" \
-            --env MONGODB_ATLAS_CONNECTION_STRING="${{ env.MONGODB_ATLAS_CONNECTION_STRING }}" \
-            --env JWT_SECRET="${{ secrets.JWT_SECRET }}" \
-            --env FRONTEND_URL="${{ env.FRONTEND_URL }}"
+        run: docker-compose up -d --build --env VITE_SERVER_BASE_URL="${{ env.VITE_SERVER_BASE_URL }}" --env MONGODB_ATLAS_CONNECTION_STRING="${{ env.MONGODB_ATLAS_CONNECTION_STRING }}" --env JWT_SECRET="${{ secrets.JWT_SECRET }}" --env FRONTEND_URL="${{ env.FRONTEND_URL }}"
 
         # docker-compose up -d --build --env VITE_SERVER_BASE_URL=${{ env.VITE_SERVER_BASE_URL }} --env MONGODB_ATLAS_CONNECTION_STRING=${{ env.MONGODB_ATLAS_CONNECTION_STRING }} --env JWT_SECRET=${{ secrets.JWT_SECRET }} --env FRONTEND_URL=${{ env.FRONTEND_URL }}
 
