@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/AuthContext';
 import Login from '../Login';
 import Register from '../Register';
 
-import Logo from '../../assets/images/jayLogo.jpg';
+import Logo from '../../assets/images/jayLogo.png';
 import { ModeToggle } from '../mode-toggle';
 // import elearnlogo from '../../assets/elearnlogo.png';
 

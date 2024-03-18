@@ -9,7 +9,7 @@ import {
   FaSlidersH,
   FaTag,
   FaTumblr,
-  FaTwitter
+  FaTwitter,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import thumbnail from '../../assets/images/thumb.png';
@@ -17,20 +17,22 @@ import { useAddToCart } from '../../context/CartContext';
 import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 
-
-const CourseSidebar = ( {course} ) => {
+const CourseSidebar = ({ course }) => {
   const addToCart = useAddToCart();
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const handleAddToCart = () => {
     addToCart(course);
     toast({
-      title: "Course Added",
+      title: 'Course Added',
       description: `You added ${course.title} by ${course.tutor} to your cart!`,
-      action: <Link to={'/dashboard/cart'} ><Button>View Cart</Button></Link> 
-    })
-
-  }
+      action: (
+        <Link to={'/dashboard/cart'}>
+          <Button>View Cart</Button>
+        </Link>
+      ),
+    });
+  };
 
   return (
     <div className="flex sticky-parent">
@@ -41,11 +43,12 @@ const CourseSidebar = ( {course} ) => {
           <div className="">
             {/*  */}
             {/* <!-- Tutor Course Price Preview Start --> */}
-            <div className="mb-4 border-2">
+            <div className="mb-4 border-2 rounded-lg mr-32">
               {/* Video Preview Window */}
-              <div className="x">
+              <div className="">
                 <div className="ratio ratio-16x9">
-                  <img src={thumbnail} />
+                  <img src={course.image} 
+                  width="320px" />
                   {/* <iframe
                           width="1280"
                           height="720"
@@ -59,9 +62,11 @@ const CourseSidebar = ( {course} ) => {
               </div>
               <div className="flex justify-between gap-4 mx-8 my-5">
                 <div className="flex">
-                  <h2 className="font-bold text-red-600 sale-price">€49.00</h2>
+                  <h2 className="font-bold text-red-600 sale-price">
+                    {course.price}
+                  </h2>
                   <span className="self-end ml-4 line-through text-thin">
-                    €79.00
+                    
                   </span>
                 </div>
                 <div className="self-end px-3 text-sm font-thin text-center text-blue-600 border-2 rounded-sm">
@@ -83,7 +88,7 @@ const CourseSidebar = ( {course} ) => {
                     <div className="flex items-center gap-4">
                       <FaClock /> Duration
                     </div>
-                    <div className="value">15.3 hours</div>
+                    <div className="value">{course.duration} hours</div>
                   </li>
                   <hr className="{ruler}" />
 
@@ -91,7 +96,7 @@ const CourseSidebar = ( {course} ) => {
                     <div className="flex items-center gap-4">
                       <FaPlayCircle /> Lectures
                     </div>
-                    <div className="value">4 lectures</div>
+                    <div className="value">{course.id}</div>
                   </li>
                   <hr className="{ruler}" />
 
@@ -100,7 +105,7 @@ const CourseSidebar = ( {course} ) => {
                       <FaTag /> Subject
                     </div>
                     <div className="value">
-                      <Link to="#">Data Modeling</Link>
+                      <Link to="#">{course.category}</Link>
                     </div>
                   </li>
                   <hr className="{ruler}" />
@@ -109,7 +114,7 @@ const CourseSidebar = ( {course} ) => {
                     <div className="flex items-center gap-4">
                       <FaGlobe /> Language
                     </div>
-                    <div className="value">Russian</div>
+                    <div className="value">English</div>
                   </li>
                   <hr className="{ruler}" />
                 </ul>
@@ -129,7 +134,10 @@ const CourseSidebar = ( {course} ) => {
                 </ul>
               </div>
               <div className="mx-8">
-                <button onClick={handleAddToCart} className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black ">
+                <button
+                  onClick={handleAddToCart}
+                  className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black "
+                >
                   <FaShoppingBasket /> Add to cart
                 </button>
                 <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-blue-500 transition duration-300 bg-gray-200 rounded-md hover:bg-blue-500 hover:text-white">
@@ -154,7 +162,7 @@ const CourseSidebar = ( {course} ) => {
             {/* <!-- Tutor Course Price Preview End --> */}
 
             {/* <!-- Sidebar Widget Start --> */}
-            <div className="p-4 border-2">
+            {/* <div className="p-4 border-2">
               <h2 className="">Course categories</h2>
 
               <ul className="">
@@ -195,11 +203,11 @@ const CourseSidebar = ( {course} ) => {
                   <Link to="#">Teaching &amp; Academics</Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
             {/* <!-- Sidebar Widget End --> */}
 
             {/* <!-- Sidebar Widget Start --> */}
-            <div className="p-4 mt-4 border-2">
+            {/* <div className="p-4 mt-4 border-2">
               <h2 className="">Related Courses</h2>
 
               <div className="">
@@ -289,7 +297,7 @@ const CourseSidebar = ( {course} ) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <!-- Sidebar Widget End --> */}
           </div>
           {/* <!-- Tutor Course Sidebar End --> */}

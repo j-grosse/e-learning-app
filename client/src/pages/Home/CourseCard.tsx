@@ -4,7 +4,6 @@ import { FaStar } from 'react-icons/fa';
 
 const CourseCard = ({ course }) => {
   console.log('lessons:', course.lessons)
-
   return (
     <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg bg-card">
       <Link to={`/details/${course.id}`}>
