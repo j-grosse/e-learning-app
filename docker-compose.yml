@@ -24,8 +24,8 @@ services:
     image: pixelpause2000/e-learning-app:e-learning-app-backend-0.0.1.RELEASE
 
   db:
-    env_file:
-      - server/.env
+    # env_file:
+    #   - server/.env
     image: mongo:latest
     ports:
       - '27017:27017'
