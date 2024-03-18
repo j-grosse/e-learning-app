@@ -23,7 +23,7 @@ const CourseCard = ({ course }) => {
             )}
           </div>
           {/* Card body */}
-          <div className="dark:text-foreground px-6 py-4">
+          <div className="px-6 py-4">
             {/* <p className="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
               All Levels
             </p> */}
