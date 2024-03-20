@@ -69,7 +69,7 @@ jobs:
 
     push_backend_to_registry:
     needs: push_to_registry
-    name: Push Docker image to Docker Hub
+    name: Push Docker server image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
