@@ -2,7 +2,7 @@ services:
   frontend:
     build:
       context: ./client
-      dockerfile: Dockerfile.reactUI
+      # dockerfile: Dockerfile
     ports:
       - '5173:5173'
     depends_on:
@@ -14,7 +14,7 @@ services:
   nodebackend:
     build:
       context: ./server
-      dockerfile: Dockerfile.node
+      # dockerfile: Dockerfile
     ports:
       - '8000:8000' #external:internal
     depends_on:

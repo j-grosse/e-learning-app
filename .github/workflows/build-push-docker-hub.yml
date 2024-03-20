@@ -58,8 +58,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "./client"
-          file: "Dockerfile.reactUI"
-
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -68,8 +66,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: "./server"
-          file: "Dockerfile.node"
-
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
