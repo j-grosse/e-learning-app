@@ -68,6 +68,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
     push_backend_to_registry:
+    needs: push_to_registry
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
