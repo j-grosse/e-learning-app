@@ -57,7 +57,7 @@ jobs:
       - name: Build and push Docker image for the client
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/client"
+          context: "./client"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -65,7 +65,7 @@ jobs:
       - name: Build and push Docker image for the server
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/server"
+          context: "./server"
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
