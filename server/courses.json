@@ -9,7 +9,7 @@
     "year": 2022,
     "category": "Graphics",
     "duration": "7:00",
-    "price": "$19.99",
+    "price": "19.99",
     "rating": 4.7,
     "lessons": 12
   },
@@ -23,9 +23,9 @@
     "year": 2017,
     "category": "Graphics",
     "duration": "14:00",
-    "price": "$16.99",
+    "price": "16.99",
     "rating": 4,
-    "lessons": 16
+    "lessons": [{ "$oid": "65f075d84c6ccdf6f54d124f" },  {"$oid": "65fc4dfd453ab8919dae002b"}]
   },
   {
     "_id": { "$oid": "65f083a2e2b10f63cdf2f98c" },
@@ -37,7 +37,7 @@
     "year": 2019,
     "category": "Music Production",
     "duration": "08:00",
-    "price": "$27.99",
+    "price": "27.99",
     "rating": 5,
     "lessons": 14
   },
@@ -51,7 +51,7 @@
     "year": 2024,
     "category": "Performance",
     "duration": "12:00",
-    "price": "$25.99",
+    "price": "25.99",
     "rating": 5,
     "lessons": 14
   },
@@ -65,7 +65,7 @@
     "year": 2018,
     "category": "Performance",
     "duration": "11:00",
-    "price": "$24.99",
+    "price": "24.99",
     "rating": 5,
     "lessons": 14
   },
@@ -79,7 +79,7 @@
     "year": 2021,
     "category": "Video",
     "duration": "10:00",
-    "price": "$24.99",
+    "price": "24.99",
     "rating": 4.9,
     "lessons": 16
   },
@@ -93,7 +93,7 @@
     "year": 2023,
     "category": "Studio",
     "duration": "13:00",
-    "price": "$19.99",
+    "price": "19.99",
     "rating": 5.0,
     "lessons": 15
   },
@@ -107,7 +107,7 @@
     "year": 2015,
     "category": "Performance",
     "duration": "7:00",
-    "price": "$19.99",
+    "price": "19.99",
     "rating": 5.0,
     "lessons": 9
   }
