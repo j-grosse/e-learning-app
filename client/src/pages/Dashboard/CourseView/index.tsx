@@ -13,7 +13,7 @@ const CourseLayout = () => {
   const { id } = useParams();
   const idNumber = parseInt(id);
   const course = courses && courses.find((el) => el.id === idNumber);
-  console.log('course:', course);
+  // console.log('course:', course);
   console.log('user:', context.user);
 
   return (

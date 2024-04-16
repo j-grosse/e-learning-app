@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   Accordion,
   AccordionContent,
@@ -9,30 +10,43 @@ import ProgressDemo from '@/components/ProgressDemo';
 import { Link } from 'react-router-dom';
 
 const CourseIndex = ({ user, course }) => {
-  const { lessons } = course; // Assuming the lessons array is present in the 'course' object
-  console.log(course.lessons);
+  const [lessons, setLessons] = useState(null);
+
+  useEffect(() => {
+      const fetchData = () => {
+      axios
+        .get(`/api/lessons/65f075d84c6ccdf6f54d124f`)
+        .then((res) => console.log('lessons data:',res.data))
+        // .then((res) => setLessons(res.data))
+        .catch((e) => console.log(e.message));
+      }
+      fetchData();
+  }, []);
+
+  lessons && console.log('cours lessons:',course.lessons);
   return (
     <div>
       <h2>{course.title}</h2>
       <Accordion type="single" collapsible>
-        {lessons.map((lesson, index) => (
-          <React.Fragment key={lesson._id}>
-            <br />
-            <ProgressDemo value={33} />
-            <AccordionItem value={index + 1}>
-              <AccordionTrigger>
-                <Link to={`/lessons/${lesson._id}`}>{lesson.title}</Link>
-              </AccordionTrigger>
-              {lesson.sections.map((section) => (
-                <AccordionContent key={section._id}>
-                  <Link to={`/lessons/${lesson._id}/${section._id}`}>
-                    {section.title}
-                  </Link>
+        {lessons &&
+          lessons.map((lesson, index) => (
+            <React.Fragment key={lesson._id}>
+              <br />
+              <ProgressDemo value={33} />
+              <AccordionItem value={`item-${index + 1}`}>
+                <AccordionTrigger>
+                  <Link to={`/lessons/${lesson._id}`}>{lesson.title}</Link>
+                </AccordionTrigger>
+                <AccordionContent key={lesson._id}>
+                  {/* <Link to={`/lessons/${lesson._id}`}> */}
+                  {/* <Link to={`/lessons/${lesson._id}/${section._id}`}> */}
+                  {lesson.title}
+                  {/* </Link> */}
+                  {lesson.text}
                 </AccordionContent>
-              ))}
-            </AccordionItem>
-          </React.Fragment>
-        ))}
+              </AccordionItem>
+            </React.Fragment>
+          ))}
       </Accordion>
       {/* <Accordion type="single" collapsible>
         <br />

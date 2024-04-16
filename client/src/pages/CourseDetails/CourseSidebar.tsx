@@ -37,18 +37,17 @@ const CourseSidebar = ({ course }) => {
   return (
     <div className="flex sticky-parent">
       {/* <!-- Tutor Course Sidebar Start --> */}
-      <div className="lg:col-span-4">
+      <div className="">
         <div className="sticky top-0 z-50 sidebar-sticky">
           {/* <!-- Tutor Course Sidebar Frames Start --> */}
           <div className="">
             {/*  */}
             {/* <!-- Tutor Course Price Preview Start --> */}
-            <div className="mb-4 border-2 rounded-lg mr-32">
+            <div className="mb-4 border-2 rounded-lg mr-28">
               {/* Video Preview Window */}
               <div className="">
                 <div className="ratio ratio-16x9">
-                  <img src={course.image} 
-                  width="320px" />
+                  <img src={course.image} width="320px" />
                   {/* <iframe
                           width="1280"
                           height="720"
@@ -62,14 +61,12 @@ const CourseSidebar = ({ course }) => {
               </div>
               <div className="flex justify-between gap-4 mx-8 my-5">
                 <div className="flex">
-                  <h2 className="font-bold text-red-600 sale-price">
+                  <h2 className="font-bold text-primary sale-price">
                     {course.price}
                   </h2>
-                  <span className="self-end ml-4 line-through text-thin">
-                    
-                  </span>
+                  <span className=" ml-4 line-through text-thin"></span>
                 </div>
-                <div className="self-end px-3 text-sm font-thin text-center text-blue-600 border-2 rounded-sm">
+                <div className="px-4 py-1 text-sm font-thin text-center text-primary border-2 rounded-sm">
                   39% OFF
                 </div>
               </div>
@@ -136,11 +133,11 @@ const CourseSidebar = ({ course }) => {
               <div className="mx-8">
                 <button
                   onClick={handleAddToCart}
-                  className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-blue-500 rounded-md hover:bg-orange-400 hover:text-black "
+                  className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-primary rounded-md hover:bg-primary hover:text-black "
                 >
                   <FaShoppingBasket /> Add to cart
                 </button>
-                <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-blue-500 transition duration-300 bg-gray-200 rounded-md hover:bg-blue-500 hover:text-white">
+                <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-foreground dark:text-background transition duration-300 bg-gray-200 rounded-md hover:bg-green-500 hover:text-white">
                   Add to wishlist
                 </button>
               </div>

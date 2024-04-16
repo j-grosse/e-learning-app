@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "@tanstack/react-table": "^8.13.2"
-  }
+    "@tanstack/react-table": "^8.13.2",
+    "playwright": "1.25"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.11.30"
+  },
+  "scripts": {}
 }

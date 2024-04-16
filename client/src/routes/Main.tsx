@@ -6,7 +6,7 @@ import AnimatedPage from '../components/AnimatedPage';
 // import OrderDetails from '../pages/OrderDetails';
 // import UpdateOrder from '../pages/UpdateOrder';
 import LoginForm from '../components/LoginForm';
-import Register from '../components/Register';
+import RegisterForm from '../components/RegisterForm';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import CourseDetails from '../pages/CourseDetails';
@@ -90,7 +90,7 @@ const Main = () => {
             {/* <Route path="/comments" element={<Comments />} /> */}
             {/* </Route> */}
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<RegisterForm />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />
             {/* </Switch> */}

@@ -29,7 +29,7 @@ const CoursesProvider = ({ children }) => {
       .get(`/api/courses`)
       .then((res) => {
         setCourses(res.data);
-        console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
+        // console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
       })
       .catch((e) => console.log(e));
   };
@@ -43,7 +43,7 @@ const CoursesProvider = ({ children }) => {
 
   return (
     <>
-      {console.log('content of courses context:', { courses })}
+      {/* {console.log('content of courses context:', { courses })} */}
 
       <CoursesContext.Provider value={courses}>
         {children}

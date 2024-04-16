@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 const CourseCard = ({ course }) => {
-  console.log('lessons:', course.lessons)
   return (
     <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg bg-card">
       <Link to={`/details/${course.id}`}>
@@ -37,6 +36,7 @@ const CourseCard = ({ course }) => {
           <div className="flex items-center mb-4 tutor-course-rating">
             <div className="rating-star">
               <div className="flex ml-2 rating-label">
+                <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />

@@ -37,7 +37,7 @@ const Login = () => {
         data-modal-show="authentication-modal"
         data-modal-target="authentication-modal" // id of target element
         data-modal-toggle="authentication-modal"
-        className="block mx-3 text-primary-800 bg-primary-200 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        className="px-5 hover:text-foreground dark:hover:text-background"
         type="button"
         onClick={handleClick}
       >
@@ -53,10 +53,9 @@ const Login = () => {
       >
         <div className="relative w-full max-w-md max-h-full">
           {/* <!-- Modal content --> */}
-          
 
-              {/* form start */}
-{/* 
+      {/* form start */}
+      {/* 
               <form
                 className="space-y-6"
                 action="/dashboard"
