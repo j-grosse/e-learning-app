@@ -11,7 +11,7 @@ const EnrollmentsProvider = ({ children }) => {
       .get(`/api/enrollments`)
       .then((res) => {
         setEnrollments(res.data);
-        console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
+        // console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
       })
       .catch((e) => console.log(e));
   };
@@ -25,7 +25,7 @@ const EnrollmentsProvider = ({ children }) => {
 
   return (
     <>
-      {console.log('content of enrollments context:', { enrollments })}
+      {/* {console.log('content of enrollments context:', { enrollments })} */}
 
       <EnrollmentsContext.Provider value={enrollments}>
         {children}

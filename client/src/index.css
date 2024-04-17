@@ -13,6 +13,11 @@ h2 {
   }
   body {
     @apply bg-background text-foreground dark:text-foreground;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased; /* For Chrome, Safari, and newer versions of Edge */
+    -moz-osx-font-smoothing: grayscale; /* For Firefox on macOS */
+    font-smooth: antialiased; /* For other browsers */
   }
 
   /* CSS color variables of shadcn theme created with 

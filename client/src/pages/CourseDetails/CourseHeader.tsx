@@ -9,10 +9,10 @@ const CourseHeader = ({ course }) => {
       <div className="w-full bg-gray-200 dark:bg-gray-800">
         <div className="p-10 m-16 leading-10 tutor-course-top-info__content">
           <div className="tutor-course-top-info__badges">
-            <span className="p-1 text-xs font-semibold text-yellow-100 bg-blue-600 onsale">
+            <span className="p-1 text-xs font-semibold text-yellow-100 bg-primary onsale">
               -39%
             </span>
-            <a className="ml-3 text-blue-600 badges-category" href="#">
+            <a className="ml-3 text-primary badges-category" href="#">
               {course.category}
             </a>
           </div>
@@ -48,6 +48,7 @@ const CourseHeader = ({ course }) => {
               </div>
               <div className="rating-star">
                 <div className="flex ml-2 rating-label">
+                  <FaStar className="text-yellow-500" />
                   <FaStar className="text-yellow-500" />
                   <FaStar className="text-yellow-500" />
                   <FaStar className="text-yellow-500" />

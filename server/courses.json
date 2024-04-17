@@ -39,7 +39,7 @@
     "duration": "08:00",
     "price": "27.99",
     "rating": 5,
-    "lessons": 14
+    "lessons": [{ "$oid": "65f075d84c6ccdf6f54d124f" },  {"$oid": "65fc4dfd453ab8919dae002b"}]
   },
   {
     "_id": { "$oid": "65f083a2e2b10f63cdf2f98b" },

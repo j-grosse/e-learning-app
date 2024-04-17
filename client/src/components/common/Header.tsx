@@ -13,20 +13,22 @@ const Header = () => {
   const { user, logout } = useContext(AuthContext);
   // const [showLogin, setShowLogin] = useState(false);
 
+  const navLinkStyle = "hover:text-foreground dark:hover:text-background";
+
   return (
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
       <nav className="relative shadow-lg bg-primary">
-        <div className="flex text-foreground dark:text-backgound text-xl flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl">
+        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl shadow-lg">
           {/* Logo */}
           <div className="flex items-center">
             <div className="self-center text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover-zoom">
-              <NavLink to="/">
+              <NavLink className={navLinkStyle} to="/">
                 <img
                   src={Logo}
                   className="h-6 sm:h-9"
                   alt="Logo"
-                  // style={{ filter: 'invert(0.3)' }}
+                  // className={{ filter: 'invert(0.3)' }}
                 />
                 {/* <span className="ml-1 text-1xl">E-Learn</span> */}
               </NavLink>
@@ -35,17 +37,17 @@ const Header = () => {
 
           <ul className="flex items-center">
             <li className="px-4 py-2">
-              <NavLink to="/dashboard">
+              <NavLink className={navLinkStyle} to="/dashboard">
                 <div>About</div>
               </NavLink>
             </li>
             <li className="px-4 py-2">
-              <NavLink to="/dashboard">
+              <NavLink className={navLinkStyle} to="/dashboard">
                 <div>Courses</div>
               </NavLink>
             </li>
             <li className="px-4 py-2">
-              <NavLink to="/dashboard">
+              <NavLink className={navLinkStyle} to="/dashboard">
                 <div>Contact</div>
               </NavLink>
             </li>
@@ -54,25 +56,24 @@ const Header = () => {
           {/* Conditional rendering of Login/Logout */}
           {user ? (
             <div className="flex items-center lg:order-2">
-              <div className="hover:text-primary-500 focus:ring-4 focus:ring-gray-300 font-medium text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none dark:focus:ring-gray-800">
+              <div className="">
                 <button className="rounded-md px-2 py-0.5">
-                  <NavLink to="/dashboard">
-                    {user.username}'s <br />
-                    dashboard
+                  <NavLink className={navLinkStyle} to="/dashboard">
+                    {/* {user.username}'s <br /> */}
+                    Dashboard
                   </NavLink>
                 </button>
               </div>
 
-              <div className="bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
+              <div className="hover:text-foreground dark:hover:text-background bg-primary-200 hover:bg-primary-300 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
                 <button onClick={logout}>Logout</button>
-              
               </div>
               <div>
                 <ModeToggle />
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-center lg:order-2">
+            <div className="flex items-center lg:order-2">
               <div>
                 <Login />
               </div>
@@ -81,7 +82,7 @@ const Header = () => {
                 <Register />
               </div>
 
-              <div>
+              <div className="pl-3">
                 <ModeToggle />
               </div>
 
@@ -128,22 +129,22 @@ const Header = () => {
           <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li key="1">
               <div className="block py-2 pl-3 pr-4 text-gray-700 transform border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:scale-105">
-                <NavLink to="/orders/checkout">Checkout</NavLink>
+                <NavLink className={navLinkStyle} to="/orders/checkout">Checkout</NavLink>
               </div>
             </li>
             <li key="2">
               <div className="block py-2 pl-3 pr-4 text-gray-700 transform border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:scale-105">
-                <NavLink to="/orders/new">New Order</NavLink>
+                <NavLink className={navLinkStyle} to="/orders/new">New Order</NavLink>
               </div>
             </li>
             <li key="3">
               <div className="block py-2 pl-3 pr-4 text-gray-700 transform border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:scale-105">
-                <NavLink to="/dashboard">My Profile</NavLink>
+                <NavLink className={navLinkStyle} to="/dashboard">My Profile</NavLink>
               </div>
             </li>
             <li key="4">
               <div className="block py-2 pl-3 pr-4 text-gray-700 transform border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 hover:scale-105">
-                <NavLink to="/contact">Contact</NavLink>
+                <NavLink className={navLinkStyle} to="/contact">Contact</NavLink>
               </div>
             </li>
           </ul>
