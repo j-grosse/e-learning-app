@@ -1,12 +1,12 @@
 import React from 'react';
 // import VideoPlaceholder from '../../../assets/images/VideoPlaceholder.png';
 
-const CourseContent = ({ course }) => {
+const CourseContent = ({ selectedLesson }) => {
   return (
     <div>
-      <h2>Introduction</h2>
+      <h2>{selectedLesson}</h2>
       <br />
-      <img src={course.image} />
+      {/* <img src={course.image} /> */}
       {/* <br /> */}
       {/* <img src={VideoPlaceholder} /> */}
     </div>

@@ -21,7 +21,7 @@ const createCourse = async (req, res) => {
 const getAllCourses = async (req, res) => {
   try {
     // const courses = await Course.find().populate('createdBy', 'username email');
-    const courses = await Course.find();
+    const courses = await Course.find().populate('lessons');
     console.log(
       '🚀 ~ file courses.js ~ loaded courses',
       courses.map((course) => course.id)
@@ -38,15 +38,17 @@ const getCourseById = async (req, res) => {
       params: { id },
     } = req;
     // await Course.findById(id)
-    const courses = await Course.find({ _id: id }).populate(
-      'createdBy',
-      'username email'
-    );
-    console.log('🚀 ~ file: courses.js:28 ~ getCourseById ~ courses:', courses);
-    if (courses.length === 0) {
+    const course = await Course.find({ _id: id }).populate('lessons');
+    // const courses = await Course.find({ _id: id }).populate(
+    //   'createdBy',
+    //   'username email'
+    // );
+    
+    console.log('🚀 ~ file: courses.js:28 ~ getCourseById ~ courses:', course);
+    if (course.length === 0) {
       res.status(404).json({ message: 'Course Not Found' });
     }
-    res.json(courses[0]);
+    res.json(course);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

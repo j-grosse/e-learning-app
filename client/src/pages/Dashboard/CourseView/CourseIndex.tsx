@@ -9,24 +9,29 @@ import {
 import ProgressDemo from '@/components/ProgressDemo';
 import { Link } from 'react-router-dom';
 
-const CourseIndex = ({ user, course }) => {
-  const [lessons, setLessons] = useState(null);
+const CourseIndex = ({ user, course, setSelectedLesson }) => {
+  const [lessons, setLessons] = useState(course.lessons);
 
   useEffect(() => {
-      const fetchData = () => {
+    const fetchData = () => {
       axios
         .get(`/api/lessons/65f075d84c6ccdf6f54d124f`)
-        .then((res) => console.log('lessons data:',res.data))
+        .then((res) => console.log('lessons data:', res.data))
         // .then((res) => setLessons(res.data))
         .catch((e) => console.log(e.message));
-      }
-      fetchData();
+    };
+    fetchData();
+    // console.log(lessons);
   }, []);
-
-  lessons && console.log('cours lessons:',course.lessons);
+  console.log(course);
+  lessons && console.log('course lessons:', lessons);
   return (
     <div>
       <h2>{course.title}</h2>
+      <br />
+      <h3>Units</h3>
+      {/* each unit should contain lessons that are not collabsible */}
+
       <Accordion type="single" collapsible>
         {lessons &&
           lessons.map((lesson, index) => (
@@ -36,11 +41,11 @@ const CourseIndex = ({ user, course }) => {
               <AccordionItem value={`item-${index + 1}`}>
                 <AccordionTrigger>
                   <Link to={`/lessons/${lesson._id}`}>{lesson.title}</Link>
+                  {/* <p onClick={setSelectedLesson(lesson._id)}>{lesson.title}</p> */}
                 </AccordionTrigger>
                 <AccordionContent key={lesson._id}>
                   {/* <Link to={`/lessons/${lesson._id}`}> */}
                   {/* <Link to={`/lessons/${lesson._id}/${section._id}`}> */}
-                  {lesson.title}
                   {/* </Link> */}
                   {lesson.text}
                 </AccordionContent>

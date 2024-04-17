@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// the populated enrollment document for each of the user's enroled courses looks something like this:
+// the populated enrollment document for each of the user's enrolled courses looks something like this:
 // enrollment = {
 //   _id: 'enrollmentId',
 //   userId: 'userId',

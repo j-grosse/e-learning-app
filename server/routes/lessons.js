@@ -16,6 +16,5 @@ router.get('/', getAllLessons);
 router.get('/:id', getLessonById);
 router.post('/', createLesson);
 router.put('/:id', updateLesson);
-router.delete('/:id', deleteLesson);
-
+router.delete('/:id', deleteLesson); 
 module.exports = router;
