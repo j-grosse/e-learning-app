@@ -17,14 +17,13 @@ import { test, expect } from '@playwright/test';
 //   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 // });
 
-const baseUrl = 'http://localhost:5173/';
+// const baseUrl = 'http://localhost:5173/';
+const baseUrl = 'https://e-learn-68it.onrender.com/';
 
 test('check pages', async ({ page }) => {
   await page.goto(baseUrl);
   await page.click('text=Login');
   await page.getByText('Log in').click();
-  await page.screenshot({ path: 'test_screenshot1_playwright.png' });
-  // await page.goto(`${baseUrl}dashboard/course/1`);
+  await page.goto(`${baseUrl}dashboard/course/1`);
   await page.click('text=Cart');
-  await page.screenshot({ path: 'test_screenshot2_playwright.png' });
 });

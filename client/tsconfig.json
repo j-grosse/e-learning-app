@@ -20,6 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    /* vitest */
+    "types": ["vitest/globals"],
+
+
     /* shadcn */
     "baseUrl": ".",
     "paths": {
@@ -28,6 +32,6 @@
       ]
     }
   },
-  "include": ["src", "src/@"],
+  "include": ["src", "src/@", "src/test/setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
