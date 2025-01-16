@@ -20,7 +20,7 @@ const CoursesSection = ({ courses }) => {
   }, [searchQuery, courses]);
 
   return (
-    <div className="flex flex-col items-center p-6">
+    <div className="flex flex-col items-center p-6 bg-secondary">
       <form className="my-6">
         <input
           type="text"
