@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 
 const authRouter = require('./routes/auth');
 const coursesRouter = require('./routes/courses');
+const courseModulesRouter = require('./routes/courseModules');
 const lessonsRouter = require('./routes/lessons');
 const enrollmentsRouter = require('./routes/enrollments');
 const ordersRouter = require('./routes/orders');
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/auth', authRouter);
 app.use('/api/courses', coursesRouter);
+app.use('/api/courseModules', courseModulesRouter);
 app.use('/api/lessons', lessonsRouter);
 app.use('/api/enrollments', enrollmentsRouter);
 app.use('/api/orders', ordersRouter);

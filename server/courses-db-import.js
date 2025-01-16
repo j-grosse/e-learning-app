@@ -2,11 +2,12 @@ const readline = require('readline');
 const { exec } = require('child_process');
 
 require('dotenv').config(); // Load environment variables from .env file
-const MONGODB_ATLAS_CONNECTION_STRING =
-  process.env.MONGODB_ATLAS_CONNECTION_STRING.replace(
-    '/?retryWrites=true&w=majority',
-    ''
-  );
+const MONGODB_ATLAS_CONNECTION_STRING = process.env.MONGODB_ATLAS_CONNECTION_STRING
+  ? process.env.MONGODB_ATLAS_CONNECTION_STRING.replace(
+      '/?retryWrites=true&w=majority',
+      ''
+    )
+  : '';
 
 const rl = readline.createInterface({
   input: process.stdin,

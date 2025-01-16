@@ -21,7 +21,8 @@ const courseSchema = new mongoose.Schema(
     },
     price: { type: String, required: [true, 'Price is required!'] },
     rating: { type: Number },
-    lessons: [{ type: mongoose.Types.ObjectId, ref: 'Lesson' }],
+    courseModules: [{ type: mongoose.Types.ObjectId, ref: 'CourseModule' }],
+    // lessons: [{ type: mongoose.Types.ObjectId, ref: 'Lesson' }],
     // createdBy: { type: mongoose.Types.ObjectId, ref: 'User' },
   },
   {

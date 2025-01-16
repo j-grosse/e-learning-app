@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg bg-card">
+    <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg border-2 bg-card">
       <Link to={`/details/${course.id}`}>
         <div className="w-60">
           {/* Card-header */}
@@ -35,7 +35,7 @@ const CourseCard = ({ course }) => {
           </div>
           <div className="flex items-center mb-4 tutor-course-rating">
             <div className="rating-star">
-              <div className="flex ml-2 rating-label">
+              <div className="flex ml-5 rating-label">
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
