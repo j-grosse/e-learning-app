@@ -16,24 +16,23 @@ const MyComponent = () => {
   const menuItems = [
     { id: 'item0', label: 'Enrollments', path: '/dashboard/enrollments' },
     { id: 'item1', label: 'Course', path: '/dashboard/course/1' },
-    { id: 'item2', label: 'Components', path: '/dashboard/components' },
-    { id: 'item3', label: 'Cart', path: '/dashboard/cart' },
-    { id: 'item4', label: 'Checkout', path: '/dashboard/checkout' },
-    { id: 'item5', label: 'Profile', path: '/dashboard/profile' },
+    { id: 'item2', label: 'Cart', path: '/dashboard/cart' },
+    { id: 'item3', label: 'Checkout', path: '/dashboard/checkout' },
+    { id: 'item4', label: 'Profile', path: '/dashboard/profile' },
   ];
 
   return (
-    <ul className="text-lg space-y-2 pointer">
+    <ul className="text-lg space-y-2 pointer mt-14 border-b-2">
       {menuItems.map((item) => (
+        <NavLink to={item.path} style={navLinkStyle}>
         <li
           key={item.id}
           onClick={() => handleItemClick(item.id)}
           className="hover:bg-secondary px-4 py-2"
         >
-          <NavLink to={item.path} style={navLinkStyle}>
             {item.label}
-          </NavLink>
         </li>
+          </NavLink>
       ))}
     </ul>
   );

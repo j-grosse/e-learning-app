@@ -1,5 +1,3 @@
-import { NavLink } from 'react-router-dom';
-
 const RegisterForm = ({ user, errors, handleChange, handleSubmit }) => {
   return (
     <section className="bg-gray-50 dark:bg-gray-900 rounded-lg">

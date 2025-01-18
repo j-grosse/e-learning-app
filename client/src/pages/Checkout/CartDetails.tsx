@@ -6,8 +6,8 @@ const CartDetails = () => {
   const selectedCourses = useCart();
   
   return (
-    <div className='mb-4'>
-        <h3 className='font-semibold text-xl'>Cart Items</h3>
+    <div className='mb-6'>
+        <h2 className='mb-6'>Cart Items</h2>
         { selectedCourses && <DataTable columns={columns} data={Array.from(selectedCourses)} />}
     </div>
   )

@@ -22,26 +22,41 @@ const Header = () => {
 
   const navLinkStyle = 'hover:text-foreground dark:hover:text-background';
 
-  const authActions = (
+  const authMenuItems = (
     <>
       {/* Conditional rendering of Login/Logout */}
-
       {user ? (
-        <div className="flex items-center lg:order-2 space-x-4">
-          <NavLink className={navLinkStyle} to="/dashboard/enrollments">
+        <>
+          <NavLink
+            className={navLinkStyle}
+            to="/dashboard/enrollments"
+            onClick={toggleMenu}
+          >
             Dashboard
           </NavLink>
-          <NavLink className={navLinkStyle} to="/" onClick={logout}>
+          <NavLink
+            className={navLinkStyle}
+            to="/"
+            onClick={() => {
+              logout();
+              toggleMenu();
+            }}
+          >
             Logout
           </NavLink>
           <ModeToggle />
-        </div>
+        </>
       ) : (
-        <div className="flex items-center lg:order-2">
-          <Login />
+        <>
+          <NavLink className={navLinkStyle} to="/login" onClick={toggleMenu}>
+            Login
+          </NavLink>
+          <NavLink className={navLinkStyle} to="/register" onClick={toggleMenu}>
+            Register
+          </NavLink>
           <Register />
           <ModeToggle />
-        </div>
+        </>
       )}
     </>
   );
@@ -50,19 +65,20 @@ const Header = () => {
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
       <nav className="relative shadow-lg bg-primary">
-        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 py-1 mx-auto lg:px-6 max-w-screen-xxl shadow-lg">
+        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:px-6 max-w-screen-xxl shadow-lg">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="self-center text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover:scale-105">
+            <div className="text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover:scale-105">
               <NavLink className={navLinkStyle} to="/">
                 E-Learn
               </NavLink>
             </div>
           </div>
 
-          <div className="hidden items-center lg:flex space-x-4 py-3">
+          {/* Menu */}
+          <div className="hidden items-center md:flex space-x-4">
             <NavLink className={navLinkStyle} to="/dashboard/enrollments">
-              Courses
+              Home
             </NavLink>
             <NavLink className={navLinkStyle} to="/dashboard/enrollments">
               About
@@ -70,19 +86,18 @@ const Header = () => {
             <NavLink className={navLinkStyle} to="/dashboard/enrollments">
               Contact
             </NavLink>
-            {authActions}
+            <div></div>
+            <div className="flex items-center md:order-2 space-x-4">
+              {authMenuItems}
+            </div>
           </div>
 
           {/* hamburger menu */}
           {isMenuOpen && (
-            <div className="lg:hidden">
-              <div className="flex flex-col space-y-2 p-4">
-                <NavLink
-                  className={navLinkStyle}
-                  to="/dashboard/enrollments"
-                  onClick={toggleMenu}
-                >
-                  Courses
+            <div className="md:hidden">
+              <div className="flex flex-col ">
+                <NavLink className={navLinkStyle} to="/" onClick={toggleMenu}>
+                  Home
                 </NavLink>
                 <NavLink
                   className={navLinkStyle}
@@ -99,21 +114,21 @@ const Header = () => {
                   Contact
                 </NavLink>
               </div>
-              {authActions}
+              <div className={`flex flex-col`}>{authMenuItems}</div>
             </div>
           )}
 
-          {/* hamburger menu button */}
-          <div className="lg:hidden">
+          {/* Hamburger menu icon */}
+          <div className="md:hidden my-1">
             <button
               type="button"
-              className="text-white dark:text-white focus:outline-none"
+              className="text-white dark:text-white focus:outline-none pt-1"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
-                <FaTimes className="w-6 h-6" />
+                <FaTimes className="w-4 h-5" />
               ) : (
-                <FaBars className="w-6 h-6" />
+                <FaBars className="w-4 h-5" />
               )}
             </button>
           </div>
