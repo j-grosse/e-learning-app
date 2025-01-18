@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { useNavigate, Navigate, NavLink } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import NewProfile from './NewProfile';
 import RegisterForm from './RegisterForm';
 
@@ -30,7 +30,6 @@ const Register = () => {
 
   const [formStage, setFormStage] = useState('register');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleClick = () => {
     setFormStage('register')

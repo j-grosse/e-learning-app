@@ -41,7 +41,14 @@ const CourseLayout = () => {
         {selectedLesson ? (
           <CourseContent course={course} selectedLesson={selectedLesson} />
         ) : (
-          <p>Select a lesson to view its content.</p>
+          <>
+            <p>{course && course.description}</p>
+            <img
+              className="w-[80%]  my-6 m-auto"
+              src={course && course.image}
+              alt={course.title}
+            ></img>
+          </>
         )}
       </div>
     </div>

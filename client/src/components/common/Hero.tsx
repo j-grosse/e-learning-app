@@ -57,14 +57,14 @@ const Hero = () => {
             }}
           /> */}
 
-          <div className="p-6 rounded-2xl place-self-start lg:col-span-6 animate-in  zoom-in duration-500">
-            <p className="max-w-2xl mb-6 font-bold text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
+          <div className="p-6 rounded-2xl place-self-start lg:col-span-6 animate-in zoom-in duration-500">
+            <p className="max-w-2xl mb-6 font-bold text-background lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
               Take your Electronic Music Artistry to the Next Level.
             </p>
             <h1 className="max-w-2xl mb-8 text-4xl font-extrabold leading-none tracking-tight text-primary md:text-5xl xl:text-6xl">
               Electronic Music Creation and Performance
             </h1>
-            <p className="max-w-2xl mb-6 text-primary-700 lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
+            <p className="max-w-2xl mb-6 text-background lg:mb-8 md:text-lg lg:text-2xl dark:text-foreground">
               Courses by Cologne's Underground Veterans
             </p>
             {/* CTA button 1 */}

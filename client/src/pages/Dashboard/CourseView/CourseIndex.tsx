@@ -37,13 +37,9 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
   return (
     <>
       <h2>{course.title}</h2>
-      <ProgressDemo value={33} />
-
-      {course._id}
-      <img src={course.image} alt={course.title} />
-      <p>{course.description}</p>
-      <br />
-
+      <div className="my-6">
+        <ProgressDemo value={33} />
+      </div>
       {course.courseModules.map((module) => (
         <div key={module._id}>
           <h3>{module.title}</h3>
