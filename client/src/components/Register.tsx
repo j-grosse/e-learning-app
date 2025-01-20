@@ -78,82 +78,27 @@ const Register = () => {
   // if (!context.loading && !context.user) {
   return (
     <>
-      {/* <!-- Modal toggle --> */}
-      <button
-        data-modal-show="register-modal"
-        data-modal-target="register-modal" // id of target element
-        data-modal-toggle="register-modal"
-        className="px-5 hover:text-foreground dark:hover:text-background"
-        type="button"
-        onClick={handleClick}
-      >
-        Register
-      </button>
-
-      {/* <!-- Main modal --> */}
-      <div
-        id="register-modal"
-        tab-index="-1"
-        aria-hidden="false"
-        className="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-      >
-        <div className="relative w-full max-w-md max-h-full">
-          {/* <!-- Modal content --> */}
-          <div className="relative rounded-lg shadow dark:bg-gray-700 bg-gradient-to-t from-primary-50 to-primary-100">
-            {/* close X button */}
-
-            <button
-              type="button"
-              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="register-modal"
-            >
-              <svg
-                className="w-3 h-3"
-                aria-hidden="false"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                />
-              </svg>
-              <span className="sr-only">Close modal</span>
-            </button>
-
-            {/* <div className="px-6 py-6 lg:px-8">
+      {/* <div className="px-6 py-6 lg:px-8">
               <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                 Register
               </h3> */}
-            {/* form start */}
-            {formStage === 'register' && (
-              <RegisterForm
-                user={user}
-                errors={errors}
-                handleChange={handleChange}
-                handleSubmit={handleRegister}
-              />
+      {formStage === 'register' && (
+        <RegisterForm
+          user={user}
+          errors={errors}
+          handleChange={handleChange}
+          handleSubmit={handleRegister}
+        />
+      )}
 
-            )}
-
-            {formStage === 'profile' && (
-              <NewProfile
-                user={user}
-                errors={errors}
-                handleChange={handleChange}
-                handleProfileSubmit={handleProfileSubmit}
-              />
-            )}
-
-            {/* form end */}
-          </div>
-        </div>
-      </div>
-      {/* </div> */}
+      {formStage === 'profile' && (
+        <NewProfile
+          user={user}
+          errors={errors}
+          handleChange={handleChange}
+          handleProfileSubmit={handleProfileSubmit}
+        />
+      )}
     </>
   );
   // }
