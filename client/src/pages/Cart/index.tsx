@@ -30,11 +30,7 @@ const index = () => {
   return (
     <div className="row w-full max-w-2xl">
       <CartDetails />
-      <Button
-        variant="secondary"
-        onClick={handleClick}
-        className="text-primary hover:text-white hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-primary dark:bg-secondary dark:hover:bg-primary dark:focus:ring-primary-800 shadow-lg"
-      >
+      <Button variant="submitFull" className="w-1/4" onClick={handleClick}>
         Checkout
       </Button>
     </div>

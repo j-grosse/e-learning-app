@@ -10,12 +10,13 @@ const UserProfile = () => {
   const { user } = useContext(AuthContext);
   const [userProfile, SetUserProfile] = useState(user);
 
-  const inputStyle = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500";
+  const inputStyle =
+    'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
 
-  const handlerUpdate = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     console.log(
-      '🚀 ~ file: UserProfile.jsx:12 ~ handlerUpdate ~ userProfile:',
+      '🚀 ~ file: UserProfile.jsx:12 ~ handleUpdate ~ userProfile:',
       userProfile
     );
     axios
@@ -184,18 +185,11 @@ const UserProfile = () => {
               </div>
             </div>
             <div className="flex justify-center mt-12 space-x-6">
-              <Button
-                variant="secondary"
-                onClick={handlerUpdate}
-                type="submit"
-                className="text-primary hover:text-white hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-primary dark:bg-secondary dark:hover:bg-primary-700 dark:focus:ring-primary-800 shadow-lg"
-              >
+              <Button type="submit" variant="submitFull" onClick={handleUpdate}>
                 Update Profile
               </Button>
-              <Button
-                variant="secondary"
-                className="text-red-500 inline-flex items-center hover:text-white border border-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-secondary dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 shadow-lg"
-              >
+
+              <Button type="submit" variant="submitFull" className="border-red-500 dark:border-red-500 text-red-500 dark:text-red-500 dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-900 shadow-lg" onClick={handleUpdate}>             
                 <svg
                   className="w-5 h-5 mr-1 -ml-1"
                   fill="currentColor"
