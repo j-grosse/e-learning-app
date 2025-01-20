@@ -7,14 +7,14 @@ import { Toaster } from './components/ui/toaster';
 
 function App() {
   return (
-    <>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <div className="w-full">
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme" >
         <Header />
         <Main />
         <Footer />
         <Toaster />
       </ThemeProvider>
-    </>
+    </div>
   );
 }
 

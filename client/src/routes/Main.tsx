@@ -6,7 +6,7 @@ import AnimatedPage from '../components/AnimatedPage';
 // import OrderDetails from '../pages/OrderDetails';
 // import UpdateOrder from '../pages/UpdateOrder';
 import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
+import Register from '../components/Register';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import CourseDetails from '../pages/CourseDetails';
@@ -21,7 +21,6 @@ import DashboardLayout from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
-// import NavbarSide from './NavbarSide';
 // import Ordertoclaim from './Ordertoclaim';
 // import FormContact from './blocks/FormContact';
 
@@ -33,8 +32,6 @@ const Main = () => {
     <AnimatedPage>
       <AnimatePresence mode="sync">
         <main>
-          {/* <NavbarSide /> */}
-
           <Routes key={location.pathname} location={location}>
             {/* <Switch> */}
 
@@ -45,15 +42,6 @@ const Main = () => {
 
             <Route path="/" element={<Home />} />
             <Route path="/details/:id" element={<CourseDetails />} />
-
-            {/* <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <PrivateRoutes />
-                </ProtectedRoute>
-              }
-            > */}
 
             <Route
               path="/dashboard/:item?"
@@ -71,26 +59,8 @@ const Main = () => {
               <Route path="profile" element={<UserProfile />} />
             </Route>
 
-            {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
-
-            {/* <Route path="/" element={<Home />} /> */}
-
-            {/* <Route path="/orders/new" element={<NewOrder />} /> */}
-            {/* <Route path="/orders/incoming" element={<Ordertoclaim />} />
-
-              <Route path="/orders/:id" element={<OrderDetails />} />
-              <Route path="/orders/:id/update" element={<UpdateOrder />} />
-
-              <Route path="/support" element={<FormContact />} /> */}
-
-            {/* <Route path="/orders/:id/comments" element={<Comments />} /> */}
-
-            {/* <Route path="/checkout" element={<Checkout />} /> */}
-            {/* <Route path="/payment" element={<Payment />} /> */}
-            {/* <Route path="/comments" element={<Comments />} /> */}
-            {/* </Route> */}
             <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegisterForm />} />
+            <Route path="/register" element={<Register />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />
             {/* </Switch> */}

@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Navigate, NavLink } from 'react-router-dom';
+import { Button } from './ui/button';
 
 // const LoginForm = ({ user, handleChange, handleSubmit }) => {
 const LoginForm = () => {
@@ -25,9 +26,11 @@ const LoginForm = () => {
   }
 
   return (
+    <section className="bg-gray-50 dark:bg-gray-900 rounded-lg">
+
     <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div className="p-6 space-y-4 rounded-lg md:space-y-6 sm:p-8 bg-background">
+      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  bg-gray-800 dark:border-gray-700">
+        <div className="p-6 space-y-4 rounded-lg md:space-y-6 sm:p-8 bg-gray-800">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
             Login
           </h1>
@@ -98,12 +101,7 @@ const LoginForm = () => {
                 <NavLink to="/">Lost Password?</NavLink>
               </div>
             </div>
-            <button
-              type="submit"
-              className="w-full text-primary hover:text-white bg-white dark:bg-secondary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border-primary border-2 shadow-lg"
-            >
-              Log in
-            </button>
+            <Button type="submit" variant="submitFull">Log in</Button>
             {/* <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Not registered?
                     <div className="text-blue-700 hover:underline dark:text-blue-500">
@@ -114,6 +112,7 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

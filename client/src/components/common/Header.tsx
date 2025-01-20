@@ -54,7 +54,6 @@ const Header = () => {
           <NavLink className={navLinkStyle} to="/register" onClick={toggleMenu}>
             Register
           </NavLink>
-          <Register />
           <ModeToggle />
         </>
       )}
