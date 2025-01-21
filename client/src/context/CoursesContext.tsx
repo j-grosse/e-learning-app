@@ -6,6 +6,7 @@ export const CoursesContext = createContext(null);
 
 const CoursesProvider = ({ children }) => {
   const [courses, setCourses] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // const loadMockarooData = () => {
   //   axios
@@ -24,14 +25,16 @@ const CoursesProvider = ({ children }) => {
   //       }
   //     });
   // };
-  const loadMongoData = () => {
-    axios
-      .get(`/api/courses`)
-      .then((res) => {
-        setCourses(res.data);
-        // console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
-      })
-      .catch((e) => console.log(e));
+  const loadMongoData = async () => {
+    try {
+    const res = await axios.get(`/api/courses`)
+      setCourses(res.data);
+      setLoading(false);
+      // console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
+      } catch(e) {
+      console.log(e);
+      setLoading(false);
+      }
   };
 
   useEffect(() => {
@@ -45,7 +48,7 @@ const CoursesProvider = ({ children }) => {
     <>
       {/* {console.log('content of courses context:', { courses })} */}
 
-      <CoursesContext.Provider value={courses}>
+      <CoursesContext.Provider value={{courses, loading}}>
         {children}
       </CoursesContext.Provider>
     </>

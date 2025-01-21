@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
 
       setState(res.data.user, false, null);
       console.log(
-        '🚀 ~ file: Auth.jsx:40 ~ login ~ res.data.user:',
+        '🚀 ~ file: AuthContext.jsx:40 ~ login ~ res.data.user:',
         res.data.user
       );
       navigate('/dashboard');
@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const res = await axios.post('auth/register', user);
-      console.log('🚀 ~ file: Auth.jsx:40 ~ register ~ user:', user);
+      console.log('🚀 ~ file: Auth.tsx:48 ~ register ~ user:', user);
       setState(res.data.user, false, null);
       navigate('/');
     } catch (error) {

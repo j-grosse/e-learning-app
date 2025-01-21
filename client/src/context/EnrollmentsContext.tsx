@@ -5,15 +5,18 @@ export const EnrollmentsContext = createContext(null);
 
 const EnrollmentsProvider = ({ children }) => {
   const [enrollments, setEnrollments] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const loadMongoData = () => {
-    axios
-      .get(`/api/enrollments`)
-      .then((res) => {
-        setEnrollments(res.data);
-        // console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
-      })
-      .catch((e) => console.log(e));
+  const loadMongoData = async () => {
+    try {
+      const res = await axios.get(`/api/enrollments`)
+      setEnrollments(res.data);
+      setLoading(false);
+      // console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const EnrollmentsProvider = ({ children }) => {
     <>
       {/* {console.log('content of enrollments context:', { enrollments })} */}
 
-      <EnrollmentsContext.Provider value={enrollments}>
+      <EnrollmentsContext.Provider value={{enrollments, loading}}>
         {children}
       </EnrollmentsContext.Provider>
     </>

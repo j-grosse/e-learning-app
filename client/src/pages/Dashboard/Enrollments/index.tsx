@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext.tsx';
 import { CoursesContext } from '@/context/CoursesContext.tsx';
@@ -7,23 +7,38 @@ import CourseCardList from '@/pages/Home/CourseCardList.tsx';
 // import CourseIndex from './CourseIndex.tsx';
 // import CourseContent from './CourseContent.tsx';
 
-const EnrollmentsLayout = () => {
-  const context = useContext(AuthContext);
-  const courses = useContext(CoursesContext);
-  const enrollments = useContext(EnrollmentsContext);
-  // console.log('enrollments context:', enrollments);
+const EnrollmentsLayout: React.FC = () => {
+  const { user, loading: authLoading } = useContext(AuthContext);
+  const { courses, loading: coursesLoading } = useContext(CoursesContext);
+  const { enrollments, loading: enrollmentsLoading } =
+    useContext(EnrollmentsContext);
 
-  // const { id } = useParams();
-  // const userIdNumber = parseInt(id);
-  const userId = context.user._id;
+  console.log("User: ", user, "Courses: ", courses, "Enrollments: ", enrollments);
+  const [myCourses, setMyCourses] = useState<typeof courses>([]);
 
-  const myEnrollments =
-    enrollments && enrollments.filter((el) => el.userId === userId);
+  useEffect(() => {
+    if (!authLoading && !coursesLoading && !enrollmentsLoading && user && courses && enrollments) {
+      const userId = user._id;
 
-  const myCourses = myEnrollments.map((enrollment) => {
-    const courseId = enrollment.courseId;
-    return courses.find((course) => course.id === courseId);
-  });
+      const myEnrollments = enrollments?.filter((el) => el.userId === userId);
+      console.log(myCourses, myEnrollments, user, courses, enrollments);
+
+      const enrolledCourses = myEnrollments
+        .map((enrollment) => {
+          const courseId = enrollment.courseId;
+          return courses.find((course) => course.id === courseId);
+        })
+        .filter(
+          (course): course is (typeof courses)[0] => course !== undefined
+        );
+
+      setMyCourses(enrolledCourses);
+    }
+  }, [authLoading, coursesLoading, enrollmentsLoading, user, courses, enrollments]);
+
+  if (authLoading || coursesLoading || enrollmentsLoading) {
+    return <p>Loading...</p>;
+  }
   // console.log('myEnrollments:', myEnrollments);
   // console.log('myCourses:', myCourses);
   // console.log('user:', context.user);
@@ -32,10 +47,9 @@ const EnrollmentsLayout = () => {
 
   return (
     <div className="flex w-full gap-8">
-      <div className="">
+      <div>
         <CourseCardList courses={myCourses} />
-
-        </div>
+      </div>
     </div>
   );
 };
