@@ -1,30 +1,32 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { useNavigate, Navigate, NavLink } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
 const Login = () => {
   const context = useContext(AuthContext);
-  const navigate = useNavigate();
-  // const [user, setUser] = useState({
-  //   email: '',
-  //   password: '',
-  // });
+  const errors = context.errors;
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({
+    email: 'c@paw.com',
+    password: '12345678',
+  });
 
-  const handleClick = () => {
-    navigate('/login');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
   };
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUser({ ...user, [name]: value });
-  // };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('CONTEXT', context);
-  //   context.login(user);
-  //   <Navigate to="/dashboard" />;
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('CONTEXT', context);
+    context.login(user);
+    setLoading(false);
+    // <Navigate to="/dashboard" />;
+  };
 
+  if (loading) return <p>Loading...</p>;
+  
   if (!context.loading && context.user) {
     return <Navigate to="/dashboard" />;
   }
@@ -32,17 +34,12 @@ const Login = () => {
   // if (!context.loading && !context.user) {
   return (
     <>
-      {/* <!-- Modal toggle --> */}
-      <button
-        data-modal-show="authentication-modal"
-        data-modal-target="authentication-modal" // id of target element
-        data-modal-toggle="authentication-modal"
-        className="px-5 hover:text-foreground dark:hover:text-background"
-        type="button"
-        onClick={handleClick}
-      >
-        Login
-      </button>
+      <LoginForm
+        user={user}
+        errors={errors}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
   // }

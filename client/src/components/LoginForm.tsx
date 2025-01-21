@@ -1,32 +1,10 @@
-import { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { Navigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Button } from './ui/button';
 
 // const LoginForm = ({ user, handleChange, handleSubmit }) => {
-const LoginForm = () => {
-  const context = useContext(AuthContext);
-  const [user, setUser] = useState({
-    email: 'c@paw.com',
-    password: '12345678',
-  });
-
+const LoginForm = ({ user, errors, handleChange, handleSubmit }) => {
   const inputStyle =
     'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('CONTEXT', context);
-    context.login(user);
-  };
-  if (!context.loading && context.user) {
-    return <Navigate to="/dashboard" />;
-  }
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 rounded-lg">
@@ -36,6 +14,10 @@ const LoginForm = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Login
             </h1>
+
+            {errors?.username && (
+              <p className="text-danger">{errors?.username.message}</p>
+            )}
 
             <form
               className="space-y-6"
@@ -99,6 +81,7 @@ const LoginForm = () => {
                     Remember me
                   </label>
                 </div>
+
                 <div className="text-sm text-primary-500 hover:underline dark:text-foreground">
                   <NavLink to="/">Lost Password?</NavLink>
                 </div>
