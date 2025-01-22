@@ -7,13 +7,15 @@ import CourseSidebar from './CourseSidebar';
 import { CoursesContext } from '../../context/CoursesContext';
 
 const CourseDetails = () => {
-  const courses = useContext(CoursesContext);
+  const {courses, loading} = useContext(CoursesContext);
   console.log('courses context:', courses);
 
   const { id } = useParams();
   const idNumber = parseInt(id);
   const course = courses && courses.find((el) => el.id === idNumber);
   // console.log('course:', course);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="bg-gray-50 dark:bg-black">
