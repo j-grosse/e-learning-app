@@ -1,15 +1,12 @@
 import { useState, useContext } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
-import Login from '../Login';
-import Register from '../Register';
-
-import Logo from '../../assets/images/jayLogo.png';
+// import Logo from '../../assets/images/jayLogo.png';
+// import Logo from '../../assets/elearnlogo.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 import { ModeToggle } from '../mode-toggle';
-// import elearnlogo from '../../assets/elearnlogo.png';
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
@@ -38,7 +35,7 @@ const Header = () => {
             className={navLinkStyle}
             to="/"
             onClick={() => {
-              logout();
+              logout(user);
               toggleMenu();
             }}
           >
@@ -69,6 +66,7 @@ const Header = () => {
           <div className="flex items-center">
             <div className="text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover:scale-105">
               <NavLink className={navLinkStyle} to="/">
+                {/* <img src={Logo} width="40" alt="Logo"/> */}
                 E-Learn
               </NavLink>
             </div>
