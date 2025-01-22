@@ -13,15 +13,17 @@ const EnrollmentsLayout: React.FC = () => {
   const { enrollments, loading: enrollmentsLoading } =
     useContext(EnrollmentsContext);
 
-  console.log("User: ", user, "Courses: ", courses, "Enrollments: ", enrollments);
   const [myCourses, setMyCourses] = useState<typeof courses>([]);
 
   useEffect(() => {
-    if (!authLoading && !coursesLoading && !enrollmentsLoading && user && courses && enrollments) {
+    if (
+      !authLoading &&
+      !coursesLoading &&
+      !enrollmentsLoading
+    ) {
       const userId = user._id;
 
-      const myEnrollments = enrollments?.filter((el) => el.userId === userId);
-      console.log(myCourses, myEnrollments, user, courses, enrollments);
+      const myEnrollments = enrollments.filter((el) => el.userId === userId);
 
       const enrolledCourses = myEnrollments
         .map((enrollment) => {
@@ -34,7 +36,22 @@ const EnrollmentsLayout: React.FC = () => {
 
       setMyCourses(enrolledCourses);
     }
-  }, [authLoading, coursesLoading, enrollmentsLoading, user, courses, enrollments]);
+    console.log(
+      'User: ',
+      user,
+      'Courses: ',
+      courses,
+      'Enrollments: ',
+      enrollments
+    );
+  }, [
+    authLoading,
+    coursesLoading,
+    enrollmentsLoading,
+    user,
+    courses,
+    enrollments,
+  ]);
 
   if (authLoading || coursesLoading || enrollmentsLoading) {
     return <p>Loading...</p>;
@@ -47,9 +64,11 @@ const EnrollmentsLayout: React.FC = () => {
 
   return (
     <div className="flex w-full gap-8">
-      <div>
+      {myCourses.length > 0 ? (
         <CourseCardList courses={myCourses} />
-      </div>
+      ) : (
+        <p>No courses found</p>
+      )}
     </div>
   );
 };
