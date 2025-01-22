@@ -1,22 +1,26 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from '../../axiosInstance';
 import { Button } from '@/components/ui/button';
 
-// import CatBox from '../assets/cat-box.png';
-
 const UserProfile = () => {
   // Where user could change information in user dashboard
   const { user } = useContext(AuthContext);
-  const [userProfile, SetUserProfile] = useState(user);
+  const [userProfile, setUserProfile] = useState(user);
 
   const inputStyle =
     'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
 
+    useEffect(() => {
+      if (user) {
+        setUserProfile(user);
+      }
+    }, [userProfile]);
+    
   const handleUpdate = (e) => {
     e.preventDefault();
     console.log(
-      '🚀 ~ file: UserProfile.jsx:12 ~ handleUpdate ~ userProfile:',
+      '🚀 ~ file: UserProfile.tsx:19 ~ handleUpdate ~ userProfile:',
       userProfile
     );
     axios
@@ -27,9 +31,9 @@ const UserProfile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    SetUserProfile({ ...userProfile, [name]: value });
+    setUserProfile({ ...userProfile, [name]: value });
     console.log(
-      '🚀 ~ file: UserProfile.jsx:21 ~ handleChange ~ userProfile:',
+      '🚀 ~ file: UserProfile.tsx:32 ~ handleChange ~ userProfile:',
       userProfile
     );
   };
@@ -83,7 +87,7 @@ const UserProfile = () => {
                   Firstname
                 </label>
                 <input
-                  defaultValue={userProfile.firstname}
+                  defaultValue={userProfile.firstName}
                   onChange={handleChange}
                   type="text"
                   name="firstName"
@@ -101,7 +105,7 @@ const UserProfile = () => {
                   Lastname
                 </label>
                 <input
-                  defaultValue={userProfile.lastname}
+                  defaultValue={userProfile.lastName}
                   onChange={handleChange}
                   type="text"
                   name="lastName"

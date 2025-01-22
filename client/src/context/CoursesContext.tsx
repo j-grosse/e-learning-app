@@ -25,12 +25,13 @@ const CoursesProvider = ({ children }) => {
   //       }
   //     });
   // };
+
   const loadMongoData = async () => {
     try {
     const res = await axios.get(`/api/courses`)
       setCourses(res.data);
       setLoading(false);
-      // console.log('axios data from MongoDB Atlas:', '\n\n', res.data);
+      console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
       } catch(e) {
       console.log(e);
       setLoading(false);
