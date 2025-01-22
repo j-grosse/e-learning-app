@@ -1,20 +1,53 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
 import axios from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-export const AuthContext = createContext(null);
+interface User {
+  _id: string;
+  username: string;
+  email: string;
+  userType: string;
+  firstName?: string;
+  lastName?: string;
+  address?: string;
+  city?: string;
+  phone?: string;
+  zipcode?: string;
+}
 
-const AuthProvider = ({ children }) => {
+export interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+  errors: any;
+  login: (user: any) => Promise<void>;
+  register: (user: any) => Promise<void>;
+  logout: (user: any) => Promise<void>;
+}
+
+const defaultAuthContext: AuthContextType = {
+  user: null,
+  loading: true,
+  errors: null,
+  login: async () => {},
+  register: async () => {},
+  logout: async () => {},
+};
+
+export const AuthContext = createContext<AuthContextType>(defaultAuthContext);
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(null);
   const navigate = useNavigate();
-  const setState = (user, loading, errors) => {
+
+  const setState = (user: User | null, loading: boolean, errors: any) => {
     setUser(user);
     setLoading(loading);
     setErrors(errors);
   };
-  useEffect(() => {
+
+  const loadUserData = () => {
     axios
       .get('auth/currentUser')
       .then((res) => setState(res.data.user, false, null))
@@ -22,6 +55,10 @@ const AuthProvider = ({ children }) => {
         setState(null, false, null);
         console.log(e.message);
       });
+    }
+
+  useEffect(() => {
+    loadUserData();
   }, []);
 
   const login = async (user) => {
@@ -31,7 +68,7 @@ const AuthProvider = ({ children }) => {
 
       setState(res.data.user, false, null);
       console.log(
-        '🚀 ~ file: Auth.jsx:40 ~ login ~ res.data.user:',
+        '🚀 ~ file: AuthContext.jsx:40 ~ login ~ res.data.user:',
         res.data.user
       );
       navigate('/dashboard');
@@ -45,7 +82,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const res = await axios.post('auth/register', user);
-      console.log('🚀 ~ file: Auth.jsx:40 ~ register ~ user:', user);
+      console.log('🚀 ~ file: Auth.tsx:48 ~ register ~ user:', user);
       setState(res.data.user, false, null);
       navigate('/');
     } catch (error) {
@@ -60,6 +97,7 @@ const AuthProvider = ({ children }) => {
       const res = await axios.post('auth/logout', {}); // res is in deed used. line is needed for successful logout
       setState(null, false, null);
       navigate('/');
+      console.log(res.data.message);
       // window.location.reload();  //optional reload at logout
     } catch (error) {
       console.log(error.response);

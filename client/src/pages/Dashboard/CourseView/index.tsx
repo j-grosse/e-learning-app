@@ -12,7 +12,7 @@ import CourseContent from './CourseContent.tsx';
  */
 
 const CourseLayout = () => {
-  const courses = useContext(CoursesContext);
+  const {courses, loading} = useContext(CoursesContext);
   const context = useContext(AuthContext);
   // console.log('courses context:', courses);
   const [selectedLesson, setSelectedLesson] = useState('');
@@ -21,8 +21,9 @@ const CourseLayout = () => {
   const idNumber = parseInt(id);
   const course = courses && courses.find((el) => el.id === idNumber);
   // console.log('course:', course);
-  console.log('user:', context.user);
-  console.log('selected lesson:', selectedLesson);
+  // console.log('user:', context.user);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="flex w-full gap-8">

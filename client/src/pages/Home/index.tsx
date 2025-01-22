@@ -4,7 +4,7 @@ import Hero from '../../components/common/Hero';
 import CoursesSection from './CoursesSection';
 
 const Home = () => {
-  const courses = useContext(CoursesContext);
+  const {courses, loading} = useContext(CoursesContext);
 
   return (
     <div className='w-full h-auto min-h-screen'>

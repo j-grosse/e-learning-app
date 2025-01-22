@@ -2,14 +2,6 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const MyComponent = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
-  // const { item } = useParams();
-  // console.log(item);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
   const navLinkStyle = ({ isActive }) => {
     return { fontWeight: isActive ? 'bold' : 'normal' };
   };
@@ -24,15 +16,11 @@ const MyComponent = () => {
   return (
     <ul className="text-lg space-y-2 pointer mt-14 border-b-2">
       {menuItems.map((item) => (
-        <NavLink to={item.path} style={navLinkStyle}>
-        <li
-          key={item.id}
-          onClick={() => handleItemClick(item.id)}
-          className="hover:bg-secondary px-4 py-2"
-        >
+        <NavLink to={item.path} style={navLinkStyle} key={item.id}>
+          <li key={item.id} className="hover:bg-secondary px-4 py-2">
             {item.label}
-        </li>
-          </NavLink>
+          </li>
+        </NavLink>
       ))}
     </ul>
   );

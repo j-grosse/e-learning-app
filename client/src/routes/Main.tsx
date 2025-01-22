@@ -5,7 +5,7 @@ import AnimatedPage from '../components/AnimatedPage';
 // import NewOrder from '../pages/NewOrder';
 // import OrderDetails from '../pages/OrderDetails';
 // import UpdateOrder from '../pages/UpdateOrder';
-import LoginForm from '../components/LoginForm';
+import Login from '../components/Login';
 import Register from '../components/Register';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
@@ -59,7 +59,7 @@ const Main = () => {
               <Route path="profile" element={<UserProfile />} />
             </Route>
 
-            <Route path="/login" element={<LoginForm />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />

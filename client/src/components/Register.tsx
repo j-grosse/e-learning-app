@@ -31,11 +31,6 @@ const Register = () => {
   const [formStage, setFormStage] = useState('register');
   const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    setFormStage('register')
-    // navigate('/register');
-  };
-
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -78,10 +73,6 @@ const Register = () => {
   // if (!context.loading && !context.user) {
   return (
     <>
-      {/* <div className="px-6 py-6 lg:px-8">
-              <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                Register
-              </h3> */}
       {formStage === 'register' && (
         <RegisterForm
           user={user}

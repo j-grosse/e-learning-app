@@ -29,7 +29,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
   //   // console.log(lessons);
   // }, []);
 
-  console.log(course);
+  // console.log(course);
   // lessons && console.log('course lessons:', lessons);
 
   if (!course) return <div>Loading...</div>;
