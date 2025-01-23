@@ -14,7 +14,7 @@ const MyComponent = () => {
   ];
 
   return (
-    <ul className="text-lg space-y-2 pointer mt-14 border-b-2">
+    <ul className="text-lg space-y-2 pointer mt-4 border-b-2 dark:border-gray-400">
       {menuItems.map((item) => (
         <NavLink to={item.path} style={navLinkStyle} key={item.id}>
           <li key={item.id} className="hover:bg-secondary px-4 py-2">

@@ -4,13 +4,13 @@ import { FaStar } from 'react-icons/fa';
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="flex flex-wrap m-3 overflow-hidden rounded-lg shadow-lg border-2 bg-card">
+    <div className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg bg-background transition-transform duration-300 transform hover:scale-105">
       <Link to={`/details/${course.id}`}>
         <div className="w-60">
           {/* Card-header */}
-          <div className="relative w-full h-32 object-fit aspect-w-1 aspect-h-1">
+          <div className="relative w-full h-32">
             <img
-              className="object-cover w-full h-24 transition-transform duration-500 transform aspect-w-1 aspect-h-1 hover:scale-125"
+              className="object-cover w-full h-full"
               src={course.image}
               alt="image"
             />

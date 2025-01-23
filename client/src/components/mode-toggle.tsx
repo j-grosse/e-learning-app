@@ -1,5 +1,4 @@
 import { Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/theme-provider';
 
 export function ModeToggle() {
@@ -15,7 +14,7 @@ export function ModeToggle() {
   };
 
   return (
-    <Button size="icon" onClick={toggleTheme} className="hover:text-foreground dark:hover:text-background">
+    <div onClick={toggleTheme} className="cursor-pointer hover:text-foreground dark:hover:text-background pl-2">
       {isLightTheme ? (
         <>
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-100" />
@@ -26,6 +25,6 @@ export function ModeToggle() {
         </>
       )}
       <span className="sr-only">Toggle theme</span>
-    </Button>
+    </div>
   );
 }

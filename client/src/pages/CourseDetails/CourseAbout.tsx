@@ -12,7 +12,7 @@ const CourseAbout = ({ course }) => {
   return (
     <div>
       <div></div>
-      <div className="w-8/12 ml-16 col-lg-8">
+      <div className="w-8/12 mx-auto col-lg-8">
         {/* <!-- Tutor Course Main Segment Start --> */}
         <div className="tutor-course-main-segment">
           {/* <!-- Tutor Course Segment Start --> */}
@@ -83,7 +83,7 @@ const CourseAbout = ({ course }) => {
           <div className="px-4 py-2 border-2 rounded-lg">
             <h2 className="tutor-course-segment__title">Learning Objectives</h2>
             {/* <!-- Tutor Course Segment Benefits Items Start --> */}
-            <div className="flex gap-4 mt-3 tutor-course-segment__benefits-items">
+            <div className="flex flex-wrap gap-4 mt-3 tutor-course-segment__benefits-items">
               <div className="tutor-course-segment__benefit-item">
                 <div className="flex gap-3 tutor-course-segment__benefit-content">
                   <FaCheck color="green" />
@@ -444,20 +444,20 @@ const CourseAbout = ({ course }) => {
           <br />
           {/* <!-- Tutor Course Segment Start --> */}
           <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">Write a review</h2>
+            {/* <h2 className="tutor-course-segment__title">Write a review</h2> */}
 
-            <div className="tutor-course-segment__reviews">
-              <button
+            <div className="tutor-course-segment__reviews mb-6">
+              {/* <button
                 className="tutor-course-segment__btn btn btn-primary btn-hover-secondary"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseForm"
               >
-                Write a review
-              </button>
+                Open review form
+              </button> */}
 
               <div className="collapse" id="collapseForm">
                 {/* <!-- Comment Form Start --> */}
-                <div className="comment-form">
+                {/* <div className="comment-form">
                   <form action="#">
                     <div className="comment-form__rating">
                       <label className="label">Your rating: *</label>
@@ -524,7 +524,8 @@ const CourseAbout = ({ course }) => {
                       </div>
                     </div>
                   </form>
-                </div>
+
+                </div> */}
                 {/* <!-- Comment Form End --> */}
               </div>
             </div>

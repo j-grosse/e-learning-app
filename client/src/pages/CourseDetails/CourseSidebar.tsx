@@ -1,18 +1,14 @@
 import {
   FaCheck,
   FaClock,
-  FaFacebookF,
   FaGlobe,
-  FaLinkedinIn,
   FaPlayCircle,
   FaShoppingBasket,
   FaSlidersH,
   FaTag,
-  FaTumblr,
-  FaTwitter,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import thumbnail from '../../assets/images/thumb.png';
+// import thumbnail from '../../assets/images/thumb.png';
 import { useAddToCart } from '../../context/CartContext';
 import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
@@ -28,35 +24,37 @@ const CourseSidebar = ({ course }) => {
       description: `You added ${course.title} by ${course.tutor} to your cart!`,
       action: (
         <Link to={'/dashboard/cart'}>
-          <Button>View Cart</Button>
+          <Button onClick={() => window.scrollTo(0, 0)}>View Cart</Button>
         </Link>
       ),
     });
   };
 
   return (
-    <div className="flex sticky-parent">
+    <div className="flex sticky-parent mt-8">
       {/* <!-- Tutor Course Sidebar Start --> */}
-      <div className="">
-        <div className="sticky top-0 z-50 sidebar-sticky">
+      <div className="mx-auto">
+        <div className="mb-5 sticky top-0 z-50 sidebar-sticky">
           {/* <!-- Tutor Course Sidebar Frames Start --> */}
           <div className="">
             {/*  */}
             {/* <!-- Tutor Course Price Preview Start --> */}
-            <div className="mb-4 border-2 rounded-lg mr-28">
+            <div className="mb-4 border-2 rounded-lg">
               {/* Video Preview Window */}
               <div className="">
-                <div className="ratio ratio-16x9">
-                  <img src={course.image} width="320px" />
+                <div className="">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="h-48 w-full object-cover rounded-t-lg"
+                  />
                   {/* <iframe
-                          width="1280"
-                          height="720"
-                          src="https://www.youtube.com/embed/qKWnFRnjkA0"
-                          title="What Is Data Modeling? 2 Minute erwin Expert Explanation"
-                          frameBorder="1"
-                          allow="web-share"
-                          allowFullScreen
-                        ></iframe> */}
+                    className="mx-auto w-full"
+                    src="https://www.youtube.com/embed/qKWnFRnjkA0"
+                    title="What Is Data Modeling?"
+                    allow="web-share"
+                    allowFullScreen
+                  ></iframe> */}
                 </div>
               </div>
               <div className="flex justify-between gap-4 mx-8 my-5">
@@ -85,7 +83,7 @@ const CourseSidebar = ({ course }) => {
                     <div className="flex items-center gap-4">
                       <FaClock /> Duration
                     </div>
-                    <div className="value">{course.duration} hours</div>
+                    <div className="value">{course.duration || 2} hours</div>
                   </li>
                   <hr className="{ruler}" />
 
@@ -93,7 +91,7 @@ const CourseSidebar = ({ course }) => {
                     <div className="flex items-center gap-4">
                       <FaPlayCircle /> Lectures
                     </div>
-                    <div className="value">{course.id}</div>
+                    <div className="value">{course.courseModules.length}</div>
                   </li>
                   <hr className="{ruler}" />
 
@@ -130,172 +128,19 @@ const CourseSidebar = ({ course }) => {
                   </li>
                 </ul>
               </div>
-              <div className="mx-8">
-                <button
+              <div className="m-8">
+                <Button
+                  variant="submitFull"
+                  className=""
                   onClick={handleAddToCart}
-                  className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-white bg-primary rounded-md hover:bg-primary hover:text-black "
                 >
                   <FaShoppingBasket /> Add to cart
-                </button>
-                <button className="flex items-center justify-center w-full gap-3 p-3 mb-4 text-foreground dark:text-background transition duration-300 bg-gray-200 rounded-md hover:bg-green-500 hover:text-white">
-                  Add to wishlist
-                </button>
-              </div>
-              <div className="flex justify-center gap-4 m-8">
-                <Link to="#">
-                  <FaFacebookF color="gray" />
-                </Link>
-                <Link to="#">
-                  <FaTwitter color="gray" />
-                </Link>
-                <Link to="#">
-                  <FaLinkedinIn color="gray" />
-                </Link>
-                <Link to="#">
-                  <FaTumblr color="gray" />
-                </Link>
+                </Button>
+                {/* <Button variant="submitFull" className="bg-gray-100">Add to wishlist</Button> */}
               </div>
             </div>
             {/* <!-- Tutor Course Price Preview End --> */}
 
-            {/* <!-- Sidebar Widget Start --> */}
-            {/* <div className="p-4 border-2">
-              <h2 className="">Course categories</h2>
-
-              <ul className="">
-                <li>
-                  <Link to="#">Art &amp; Design</Link>
-                </li>
-                <li>
-                  <Link to="#">Business</Link>
-                </li>
-                <li>
-                  <Link to="#">Data Science</Link>
-                </li>
-                <li>
-                  <Link to="#">Development</Link>
-                </li>
-                <li>
-                  <Link to="#">Finance</Link>
-                </li>
-                <li>
-                  <Link to="#">Health &amp; Fitness</Link>
-                </li>
-                <li>
-                  <Link to="#">Lifestyle</Link>
-                </li>
-                <li>
-                  <Link to="#">Marketing</Link>
-                </li>
-                <li>
-                  <Link to="#">Music</Link>
-                </li>
-                <li>
-                  <Link to="#">Personal Development</Link>
-                </li>
-                <li>
-                  <Link to="#">Photography</Link>
-                </li>
-                <li>
-                  <Link to="#">Teaching &amp; Academics</Link>
-                </li>
-              </ul>
-            </div> */}
-            {/* <!-- Sidebar Widget End --> */}
-
-            {/* <!-- Sidebar Widget Start --> */}
-            {/* <div className="p-4 mt-4 border-2">
-              <h2 className="">Related Courses</h2>
-
-              <div className="">
-                <div className="">
-                  <div className="">
-                    <Link to="#">
-                      <img
-                        src={thumbnail}
-                        alt="Courses"
-                        width="120"
-                        height="72"
-                      />
-                    </Link>
-                  </div>
-                  <div className="">
-                    <h2 className="">
-                      <Link to="#">
-                        Artificial Intelligence: Reinforcement Learning in
-                        Python
-                      </Link>
-                    </h2>
-                    <div>
-                      <span className="">
-                        $46<span className="">.00</span>
-                      </span>
-                      <span className="">
-                        $76<span className="">.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="">
-                  <div className="">
-                    <Link to="#">
-                      <img
-                        src={thumbnail}
-                        alt="Courses"
-                        width="120"
-                        height="72"
-                      />
-                    </Link>
-                  </div>
-                  <div className="">
-                    <h2 className="">
-                      <Link to="#">
-                        Statistics for Data Science and Business Analysis
-                      </Link>
-                    </h2>
-                    <div className="">
-                      <span className="">
-                        $25<span className="">.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="">
-                  <div className="">
-                    <Link to="#">
-                      <img
-                        src={thumbnail}
-                        alt="Courses"
-                        width="120"
-                        height="72"
-                      />
-                    </Link>
-                    <div className="">
-                      <span className="">-38%</span>
-                    </div>
-                  </div>
-                  <div className="">
-                    <h2 className="">
-                      <Link to="#">
-                        Artificial Intelligence: Reinforcement Learning in
-                        Python
-                      </Link>
-                    </h2>
-                    <div className="flex">
-                      <span className="">
-                        €20<span className="">.00</span>
-                      </span>
-                      <span className="">
-                        €35<span className="">.00</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-            {/* <!-- Sidebar Widget End --> */}
           </div>
           {/* <!-- Tutor Course Sidebar End --> */}
         </div>

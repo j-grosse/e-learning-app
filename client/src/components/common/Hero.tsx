@@ -1,15 +1,8 @@
-import { useContext, useEffect, useRef } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import hero from '../../assets/images/hero.jpg';
+import { useEffect, useRef } from 'react';
+// import hero from '../../assets/images/hero.jpg';
 import HeroVideo from '../../assets/images/heroVideo.mp4';
 
-// import image01 from '../../assets/image01.jpg';
-// import image02 from '../../assets/image02.png';
-
 const Hero = () => {
-  const navigate = useNavigate();
-  const context = useContext(AuthContext);
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +13,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="bg-background shadow-lg dark:bg-gray-900">
+      <section className="bg-foreground shadow-lg dark:bg-gray-900">
         {/* Background image --- parent style: opacity 0.99 relative --- child: img opacity absolute z-index w h cover --- */}
         <div
           className="grid px-0 py-8 mx-auto shadow-lg max-w-screen-xxl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"

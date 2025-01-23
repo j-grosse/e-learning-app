@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import CartDetails from '../Checkout/CartDetails';
 
-const index = () => {
+const Cart = () => {
   const selectedCourses = useCart();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -37,4 +37,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Cart;

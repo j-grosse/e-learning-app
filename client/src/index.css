@@ -12,6 +12,7 @@ h2 {
     @apply border-border;
   }
   body {
+    overflow-x: hidden;
     @apply bg-background text-foreground dark:text-foreground;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;

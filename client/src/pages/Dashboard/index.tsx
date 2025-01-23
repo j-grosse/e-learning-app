@@ -11,7 +11,7 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   return (
     // dashboard sidebar remains fixed on the side
-    <div className="flex w-full h-auto min-h-screen">
+    <div className="flex w-full h-auto min-h-screen bg-secondary dark:bg-secondary">
       <DashboardSidebar />
       <DashboardMain>
         {/* DashboardNavbar  <DashboardNavbar /> */}

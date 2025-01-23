@@ -1,13 +1,9 @@
-import React from 'react';
-import CoursesPlaceholder from '../assets/images/CoursesPlaceholder.png';
-import CourseThumb from '../assets/images/thumb.png';
 import CourseCard from './CourseCard';
 
 const CourseCardList = ({ courses }) => {
   return (
     <div>
-      <div className="flex flex-wrap justify-around w-full h-full m-5">
-        {/* {console.log('content of courses state:', { courses })} */}
+      <div className="flex flex-wrap justify-around w-full h-full py-10 gap-4">
         {courses &&
           courses.map((course) => {
             return (
