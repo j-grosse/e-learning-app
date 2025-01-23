@@ -17,7 +17,7 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const navLinkStyle = 'hover:text-foreground dark:hover:text-background';
+  const navLinkStyle = 'hover:text-foreground dark:hover:text-background transition-transform duration-100 transform hover:scale-105';
 
   const authMenuItems = (
     <>
@@ -60,12 +60,12 @@ const Header = () => {
   return (
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
-      <nav className="relative shadow-lg bg-primary">
-        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:px-6 max-w-screen-xxl shadow-lg">
+      <nav className="relative shadow-sm bg-gradient-to-r from-black to-primary hover:from-black-400 hover:to-orange-500">
+        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:px-6 py-2 max-w-screen-xxl shadow-lg">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white hover:scale-105">
-              <NavLink className={navLinkStyle} to="/">
+            <div className="text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white transition-transform duration-300 transform hover:scale-105">
+              <NavLink className="hover:text-primary dark:hover:text-primary" to="/">
                 {/* <img src={Logo} width="40" alt="Logo"/> */}
                 E-Learn
               </NavLink>
@@ -74,13 +74,13 @@ const Header = () => {
 
           {/* Menu */}
           <div className="hidden items-center md:flex space-x-4">
-            <NavLink className={navLinkStyle} to="/dashboard/enrollments">
+            <NavLink className={navLinkStyle} to="/">
               Home
             </NavLink>
-            <NavLink className={navLinkStyle} to="/dashboard/enrollments">
+            <NavLink className={navLinkStyle} to="/">
               About
             </NavLink>
-            <NavLink className={navLinkStyle} to="/dashboard/enrollments">
+            <NavLink className={navLinkStyle} to="/">
               Contact
             </NavLink>
             <div></div>

@@ -63,11 +63,11 @@ const EnrollmentsLayout: React.FC = () => {
   // console.log('current enrollment progress:', myEnrollments.progress);
 
   return (
-    <div className="flex w-full gap-8">
+    <div className="flex w-full">
       {myCourses.length > 0 ? (
         <CourseCardList courses={myCourses} />
       ) : (
-        <p>No courses found</p>
+        <h2>You are not enrolled in any courses.</h2>
       )}
     </div>
   );

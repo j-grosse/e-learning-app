@@ -20,14 +20,14 @@ const CoursesSection = ({ courses }) => {
   }, [searchQuery, courses]);
 
   return (
-    <div className="flex flex-col items-center p-6 bg-secondary">
-      <form className="my-6">
+    <div className="flex flex-col items-center p-8 bg-secondary">
+      <form>
         <input
           type="text"
           placeholder="Search courses"
           value={searchQuery}
           onChange={handleChange}
-          className="px-4 py-2 text-foreground dark:text-black border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500"
+          className="px-9 py-2 text-foreground dark:text-black border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500"
         />
       </form>
 
