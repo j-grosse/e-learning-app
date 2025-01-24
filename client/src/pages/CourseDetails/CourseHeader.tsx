@@ -7,7 +7,7 @@ const CourseHeader = ({ course }) => {
   return (
     <>
       <div className="w-full bg-gray-200 dark:bg-gray-800">
-       <div className="p-4">     Home / courses / {course.title}</div>
+       <div className="p-2"></div>
       
         <div className="px-8 pb-4 mt-2 leading-10 tutor-course-top-info__content">
           <div className="tutor-course-top-info__badges">
