@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { IProduct } from '@/common/type';
 import { toast } from '@/components/ui/use-toast';
 
+/**
+ * This custom hook manages the state of the cart items.
+ * It reads the cart-items from localStorage, parses it, and sets the items state with the parsed value.
+ */
+
 interface CartStore {
   items: IProduct[];
   addItem: (data: IProduct) => void;

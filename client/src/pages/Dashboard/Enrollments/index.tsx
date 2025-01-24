@@ -63,7 +63,7 @@ const EnrollmentsLayout: React.FC = () => {
   // console.log('current enrollment progress:', myEnrollments.progress);
 
   return (
-    <div className="flex w-full">
+    <div>
       {myCourses.length > 0 ? (
         <CourseCardList courses={myCourses} />
       ) : (

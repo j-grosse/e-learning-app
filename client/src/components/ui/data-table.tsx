@@ -65,7 +65,7 @@ export function DataTable<TData, TValue>({
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id} onClick={(e) => {
-                    if (e.nativeEvent.target.innerHTML.toLowerCase() === "remove") {
+                    if ((e.nativeEvent.target as HTMLElement).innerHTML.toLowerCase() === "remove") {
                       removeFromCart(cell.row.original)
                     }
                   }}>

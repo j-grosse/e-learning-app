@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MyComponent = () => {
+const DashboardSidebar = () => {
   const navLinkStyle = ({ isActive }) => {
     return { fontWeight: isActive ? 'bold' : 'normal' };
   };
@@ -26,4 +26,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default DashboardSidebar;

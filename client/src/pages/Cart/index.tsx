@@ -19,7 +19,7 @@ const Cart = () => {
         title: 'Empty Cart!',
         description: 'Add some courses to your cart and then checkout',
         action: (
-          <Link to={'/'}>
+          <Link to="/">
             <Button>To Courses</Button>
           </Link>
         ),
@@ -30,9 +30,11 @@ const Cart = () => {
   return (
     <div className="row w-full max-w-2xl">
       <CartDetails />
-      <Button variant="submitFull" className="w-1/4" onClick={handleClick}>
-        Checkout
-      </Button>
+      <div className="w-32">
+        <Button variant="submitFull" onClick={handleClick}>
+          Checkout
+        </Button>
+      </div>
     </div>
   );
 };
