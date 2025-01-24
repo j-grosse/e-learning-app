@@ -1,15 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaGift } from 'react-icons/fa';
 import * as countries from 'i18n-iso-countries';
 import * as english from 'i18n-iso-countries/langs/en.json';
 import CheckoutForm from './CheckoutForm';
 import PaymentSection from './PaymentSection';
 import CartDetails from './CartDetails';
+import { useCart } from '@/context/CartContext';
+import { useRemoveFromCart } from '../../context/CartContext';
 import { Checkbox } from '@/components/ui/checkbox';
+import {
+  EnrollmentsContext,
+  EnrollmentsContextType,
+} from '@/context/EnrollmentsContext';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+  const { user } = useContext(AuthContext);
   const [secondAddress, setSecondAddress] = useState(false);
   const countryList = Object.values(countries.getNames('en'));
+  const { enroll } = useContext<EnrollmentsContextType>(EnrollmentsContext);
+  const cart = useCart();
+  const removeFromCart = useRemoveFromCart();
+  const navigate  = useNavigate();
+
+  const handleEnrollments = async () => {
+    try {
+      for (const course of cart) {
+        const enrollment = {
+          userId: user._id,
+          enrollmentDate: new Date().toISOString().split('T')[0],
+          progress: 0,
+          completedLessons: [],
+          courseId: course.id,
+        };
+        await enroll(enrollment);
+        removeFromCart(course);
+        navigate('/dashboard/enrollments');
+      }
+      console.log('Enrollments created successfully in DB');
+    } catch (error) {
+      console.error('Error creating enrollments:', error);
+    }
+  };
 
   const handleCheckboxChange = () => {
     setSecondAddress(!secondAddress);
@@ -51,7 +84,7 @@ const Checkout = () => {
         <CheckoutForm countryList={countryList} formName={'Shipping Details'} />
       )}
 
-      <PaymentSection />
+      <PaymentSection handleEnrollments={handleEnrollments} />
     </div>
   );
 };
