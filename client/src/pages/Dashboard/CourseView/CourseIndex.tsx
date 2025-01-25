@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 
 const CourseIndex = ({ user, course, setSelectedLesson }) => {
   // const [lessons, setLessons] = useState(course.lessons);
-
   // useEffect(() => {
   //   const fetchData = () => {
   //     axios
@@ -36,62 +35,58 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
 
   return (
     <>
-      <h2>{course.title}</h2>
+      <div className="cursor-pointer" onClick={() => setSelectedLesson('')}>
+        <h2>{course.title}</h2>
+      </div>
       <div className="my-6">
+        <p className="mb-2">Progress: 33/100 </p>
         <ProgressDemo value={33} />
       </div>
+      <p className="text-lg">Modules</p>
+      {/* modules */}
       {course.courseModules.map((module) => (
-        <div key={module._id}>
-          <h3>{module.title}</h3>
-          {module.lessons &&
-            (module.lessons.length > 1 ? (
-              module.lessons.map((lesson) => (
-                <Accordion key={lesson._id} type="single" collapsible>
-                  <p onClick={() => setSelectedLesson(lesson._id)}>
-                    {lesson.text}
-                  </p>
-                  <React.Fragment key={lesson._id}>
-                    <br />
-                    <AccordionItem value={lesson._id}>
-                      <AccordionTrigger>{lesson.title}</AccordionTrigger>
-                      <AccordionContent key={lesson._id}>
-                        <p>{lesson.description}</p>
+          <Accordion key={module._id} type="single" collapsible>
+            <AccordionItem value={module._id}>
+              <AccordionTrigger>
+                <p className="text-left">{module.title}</p>
+              </AccordionTrigger>
+              <AccordionContent>
+                {/* lessons */}
+                {module.lessons &&
+                  (module.lessons.length > 1 ? (
+                    module.lessons.map((lesson) => (
+                      <React.Fragment key={lesson._id}>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => setSelectedLesson(lesson._id)}
+                        >
+                          <p>{lesson.title}</p>
+                        </div>
                         <Link
                           to={`/lessons/${lesson._id}`}
                           onClick={() => setSelectedLesson(lesson._id)}
                         >
-                          {lesson.text}
+                          lesson link
                         </Link>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </React.Fragment>
-                </Accordion>
-              ))
-            ) : (
-              <Accordion type="single" collapsible>
-                <p onClick={() => setSelectedLesson(module.lessons[0]._id)}>
-                  {module.lessons[0].text}
-                </p>
-                <React.Fragment key={module.lessons[0]._id}>
-                  <br />
-                  <AccordionItem value={module.lessons[0]._id}>
-                    <AccordionTrigger>
-                      {module.lessons[0].title}
-                    </AccordionTrigger>
-                    <AccordionContent key={module.lessons[0]._id}>
-                      <p>{module.lessons[0].description}</p>
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    <React.Fragment key={module.lessons[0]._id}>
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => setSelectedLesson(module.lessons[0]._id)}
+                      >
+                        <p>{module.lessons[0].title}</p>
+                      </div>
                       <Link
                         to={`/lessons/${module.lessons[0]._id}`}
                         onClick={() => setSelectedLesson(module.lessons[0]._id)}
-                      >
-                        {module.lessons[0].text}
-                      </Link>
-                    </AccordionContent>
-                  </AccordionItem>
-                </React.Fragment>
-              </Accordion>
-            ))}
-        </div>
+                      ></Link>
+                    </React.Fragment>
+                  ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
       ))}
     </>
   );
