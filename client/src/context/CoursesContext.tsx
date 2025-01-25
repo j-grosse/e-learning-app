@@ -38,6 +38,24 @@ const CoursesProvider = ({ children }) => {
       }
   };
 
+    const createLesson = async (lesson) => {
+      setLoading(true);
+      try {
+        const res = await axios.post('/api/lessons', lesson);
+        console.log('Lesson created:', res.data);
+
+        // setEnrollments((prev) => (prev ? [...prev, res.data] : [res.data]));
+        console.log(
+          '🚀 ~ file: CoursesContext.tsx:47 ~ createLesson ~ lesson:',
+          lesson
+        );
+        setLoading(false);
+      } catch (error) {
+        console.log(error.response);
+        setLoading(false);
+      }
+    };
+
   useEffect(() => {
     if (courses === null) {
       // loadMockarooData();
@@ -49,7 +67,7 @@ const CoursesProvider = ({ children }) => {
     <>
       {/* {console.log('content of courses context:', { courses })} */}
 
-      <CoursesContext.Provider value={{courses, loading}}>
+      <CoursesContext.Provider value={{courses, loading, createLesson}}>
         {children}
       </CoursesContext.Provider>
     </>
