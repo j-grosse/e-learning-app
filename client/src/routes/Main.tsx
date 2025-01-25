@@ -16,8 +16,9 @@ import ProtectedRoute from './ProtectedRoute';
 // import Cart from '../pages/CartExample';
 import CourseLayout from '@/pages/Dashboard/CourseView';
 import EnrollmentsLayout from '@/pages/Dashboard/Enrollments';
-import UIComponents from '@/pages/Dashboard/UIComponents';
+// import UIComponents from '@/pages/Dashboard/UIComponents';
 import DashboardLayout from '../pages/Dashboard';
+import CourseEditor from '../pages/Dashboard/CourseEditor';
 import NotFound from '../pages/NotFound';
 // import DashboardCom from './DashboardCom';
 // import Contact from '../pages/Contact';
@@ -53,7 +54,8 @@ const Main = () => {
             >
               <Route path="enrollments" element={<EnrollmentsLayout />} />
               <Route path="course/:id" element={<CourseLayout />} />
-              <Route path="components" element={<UIComponents />} />
+              <Route path="editor" element={<CourseEditor />} />
+              {/* <Route path="components" element={<UIComponents />} /> */}
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
