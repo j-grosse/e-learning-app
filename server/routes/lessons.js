@@ -9,8 +9,8 @@ const {
 } = require('../controllers/lessons');
 
 // commented out to allow for api calls without the user being logged in:
-// const authenticate = require('../middlewares/auth');
-// router.use(authenticate);
+const authenticate = require('../middlewares/auth');
+router.use(authenticate);
 
 router.get('/', getAllLessons);
 router.get('/:id', getLessonById);

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const DashboardSidebar = () => {
@@ -8,9 +7,10 @@ const DashboardSidebar = () => {
   const menuItems = [
     { id: 'item0', label: 'Enrollments', path: '/dashboard/enrollments' },
     { id: 'item1', label: 'Course', path: '/dashboard/course/1' },
-    { id: 'item2', label: 'Cart', path: '/dashboard/cart' },
-    { id: 'item3', label: 'Checkout', path: '/dashboard/checkout' },
-    { id: 'item4', label: 'Profile', path: '/dashboard/profile' },
+    { id: 'item2', label: 'Editor', path: '/dashboard/editor' },
+    { id: 'item3', label: 'Cart', path: '/dashboard/cart' },
+    { id: 'item4', label: 'Checkout', path: '/dashboard/checkout' },
+    { id: 'item5', label: 'Profile', path: '/dashboard/profile' },
   ];
 
   return (

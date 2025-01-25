@@ -12,7 +12,7 @@ import CourseContent from './CourseContent.tsx';
  */
 
 const CourseLayout = () => {
-  const {courses, loading} = useContext(CoursesContext);
+  const { courses, loading } = useContext(CoursesContext);
   const context = useContext(AuthContext);
   // console.log('courses context:', courses);
   const [selectedLesson, setSelectedLesson] = useState('');
@@ -26,9 +26,9 @@ const CourseLayout = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="flex w-full gap-8">
+    <div className="flex flex-wrap gap-8">
       {/* Course TOC */}
-      <div className="w-3/12">
+      <div className="md:w-3/12 max-w-[200px]">
         {course && (
           <CourseIndex
             user={context.user}
@@ -37,15 +37,16 @@ const CourseLayout = () => {
           />
         )}
       </div>
-      <div className="w-9/12">
-        {/* list user's current lesson from db */}
+      {/* Course Content */}
+      <div className="md:w-9/12 max-w-[500px]">
+        {/* list selected lesson */}
         {selectedLesson ? (
           <CourseContent course={course} selectedLesson={selectedLesson} />
         ) : (
           <>
             <p>{course && course.description}</p>
             <img
-              className="w-[80%]  my-6 m-auto"
+              className="my-6 m-auto"
               src={course && course.image}
               alt={course.title}
             ></img>

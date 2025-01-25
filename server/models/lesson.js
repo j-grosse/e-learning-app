@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const lessonSchema = new mongoose.Schema(
   {
-    courseModuleId: { type: mongoose.Schema.Types.ObjectId, ref: 'CourseModule', required: true },
+    courseModuleId: { type: mongoose.Schema.Types.ObjectId, ref: 'CourseModule', required: false },
     title: { type: String, required: [true, 'Title is required!'] },
     text: {
       type: String,

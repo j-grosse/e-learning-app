@@ -1,0 +1,22 @@
+.rich-editor {
+  border: 2px solid #eee;
+  border-radius: 6px;
+  /* padding: 10px; */
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.rich-editor .rdw-editor-main {
+  background-color: #fff;
+  border-radius: 6px;
+  height: 50vh;
+}
+
+.rich-editor .DraftEditor-editorContainer {
+  padding-left: 1rem;
+}
+
+.rich-editor .public-DraftEditorPlaceholder-root {
+  padding-left: 1rem;
+  color: #ccc;
+}

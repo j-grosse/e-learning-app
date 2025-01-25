@@ -7,11 +7,16 @@ h2 {
   @apply text-2xl;
 }
 
+/* html {
+  margin: 0;
+} */
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
+    margin: 0;
     overflow-x: hidden;
     @apply bg-background text-foreground dark:text-foreground;
     font-family: 'Roboto', sans-serif;
