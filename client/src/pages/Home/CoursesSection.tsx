@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import CourseCardList from './CourseCardList';
-import { Button } from '@/components/ui/button';
 
 const CoursesSection = ({ courses }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,7 +26,7 @@ const CoursesSection = ({ courses }) => {
           placeholder="Search courses"
           value={searchQuery}
           onChange={handleChange}
-          className="px-9 py-2 text-foreground dark:text-black border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500"
+          className="px-3 py-2 text-foreground dark:text-black border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500"
         />
       </form>
 
