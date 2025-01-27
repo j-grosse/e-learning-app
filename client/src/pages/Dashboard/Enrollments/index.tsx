@@ -67,7 +67,7 @@ const EnrollmentsLayout: React.FC = () => {
       {myCourses.length > 0 ? (
         <CourseCardList courses={myCourses} />
       ) : (
-        <h2>You are not enrolled in any courses.</h2>
+        <p className="mt-8 text-center">You are not enrolled in any courses.</p>
       )}
     </div>
   );

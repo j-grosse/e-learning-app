@@ -19,9 +19,9 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         submitFull:
-          'w-full text-primary hover:text-white bg-secondary dark:bg-secondary hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border-primary border-2 shadow-lg',
+          'w-40 text-primary hover:text-white bg-secondary dark:bg-secondary hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border-primary border-2 shadow-lg',
         payment:
-          'text-primary hover:text-white bg-secondary hover:bg-primary border border-primary border-2 shadow-lg',
+          'w-40 text-primary hover:text-white bg-secondary hover:bg-primary border border-primary border-2 shadow-lg',
       },
 
       size: {
