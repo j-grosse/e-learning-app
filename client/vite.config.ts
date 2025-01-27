@@ -22,6 +22,6 @@ export default defineConfig({
   },
   // get rid of build error when importing draft.js
   define: {
-    _global: {},
+    global: 'window',
   },
 });
