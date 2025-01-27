@@ -90,7 +90,7 @@ const Header = () => {
                 className="text-primary hover:text-secondary dark:hover:text-foreground"
               >
                 {/* <img src={Logo} width="40" alt="Logo"/> */}
-                iCreate
+                iCreate Courses
               </NavLink>
             </div>
           </div>
