@@ -1,29 +1,23 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import AnimatedPage from '../components/AnimatedPage';
-// import Comments from '../pages/Comments';
-// import NewOrder from '../pages/NewOrder';
-// import OrderDetails from '../pages/OrderDetails';
-// import UpdateOrder from '../pages/UpdateOrder';
-import Login from '../components/Login';
-import Register from '../components/Register';
+import Home from '../pages/Home';
+import About from '@/pages/About';
+import NotFound from '../pages/NotFound';
+import Login from '../pages/Login/Login';
+import Register from '../pages/Login/Register';
+
+import ProtectedRoute from './ProtectedRoute';
+import DashboardLayout from '../pages/Dashboard';
+import EnrollmentsLayout from '@/pages/Dashboard/Enrollments';
+import CourseLayout from '@/pages/Dashboard/CourseView';
+import CourseDetails from '../pages/CourseDetails';
+import CourseEditor from '../pages/Dashboard/CourseEditor';
 import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
-import CourseDetails from '../pages/CourseDetails';
 import UserProfile from '../pages/Dashboard/UserProfile';
-import Home from '../pages/Home';
-import ProtectedRoute from './ProtectedRoute';
-// import Cart from '../pages/CartExample';
-import CourseLayout from '@/pages/Dashboard/CourseView';
-import EnrollmentsLayout from '@/pages/Dashboard/Enrollments';
-// import UIComponents from '@/pages/Dashboard/UIComponents';
-import DashboardLayout from '../pages/Dashboard';
-import CourseEditor from '../pages/Dashboard/CourseEditor';
-import NotFound from '../pages/NotFound';
-// import DashboardCom from './DashboardCom';
-// import Contact from '../pages/Contact';
-// import Ordertoclaim from './Ordertoclaim';
-// import FormContact from './blocks/FormContact';
+// import { Suspense } from 'react';
+// import { Loader } from 'lucide-react';
 
 // if url is one of the defined routes: load the corresponding component
 const Main = () => {
@@ -42,12 +36,18 @@ const Main = () => {
             /> */}
 
             <Route path="/" element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/details/:id" element={<CourseDetails />} />
 
             <Route
               path="/dashboard/:item?"
               element={
                 <DashboardLayout>
+                  {/* <Suspense
+                    fallback={<Loader size={32} color="#000000" />}
+                  ></Suspense> */}
                   <ProtectedRoute />
                 </DashboardLayout>
               }
@@ -55,15 +55,11 @@ const Main = () => {
               <Route path="enrollments" element={<EnrollmentsLayout />} />
               <Route path="course/:id" element={<CourseLayout />} />
               <Route path="editor" element={<CourseEditor />} />
-              {/* <Route path="components" element={<UIComponents />} /> */}
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="profile" element={<UserProfile />} />
             </Route>
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            {/* <Route path="/contact" element={<Contact />} /> */}
             <Route path="*" element={<NotFound />} />
             {/* </Switch> */}
           </Routes>
