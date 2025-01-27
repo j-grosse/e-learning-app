@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../context/AuthContext';
-import axios from '../../axiosInstance';
+import { AuthContext } from '../../../context/AuthContext';
+import axios from '../../../axiosInstance';
 import { Button } from '@/components/ui/button';
 
 const UserProfile = () => {
@@ -204,7 +204,7 @@ const UserProfile = () => {
                 />
               </div>
             </div>
-            <div className="flex justify-center mt-12 space-x-6">
+            <div className="flex flex-wrap justify-center mt-12 space-6 gap-4">
               <Button type="submit" variant="submitFull" onClick={handleUpdate}>
                 Update Profile
               </Button>

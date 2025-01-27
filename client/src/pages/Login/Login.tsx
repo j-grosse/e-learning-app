@@ -1,10 +1,11 @@
 import { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 const Login = () => {
   const context = useContext(AuthContext);
+  const navigate = useNavigate();
   const errors = context.errors;
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
@@ -22,13 +23,13 @@ const Login = () => {
     console.log('CONTEXT', context);
     context.login(user);
     setLoading(false);
-    // <Navigate to="/dashboard" />;
+    navigate('/dashboard/enrollments');
   };
 
   if (loading) return <p>Loading...</p>;
-  
+
   if (!context.loading && context.user) {
-    return <Navigate to="/dashboard" />;
+    navigate('/dashboard/enrollments');
   }
 
   // if (!context.loading && !context.user) {

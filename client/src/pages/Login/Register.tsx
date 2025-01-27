@@ -1,12 +1,13 @@
 import { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 import NewProfile from './NewProfile';
 import RegisterForm from './RegisterForm';
 
 const Register = () => {
   const context = useContext(AuthContext);
   const errors = context.errors;
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     username: '',
@@ -65,7 +66,7 @@ const Register = () => {
     await context.register(updatedUser);
     setFormStage('registered');
     setLoading(false);
-    <Navigate to="/dashboard" />;
+    navigate('/dashboard');
   };
 
   if (loading) return <p>Loading...</p>;
