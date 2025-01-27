@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -6,18 +6,38 @@ import { AuthContext } from '../../context/AuthContext';
 // import Logo from '../../assets/elearnlogo.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-import { ModeToggle } from '../mode-toggle';
+import { ModeToggle } from '../ui/mode-toggle';
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
   // const [showLogin, setShowLogin] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const navLinkStyle = 'hover:text-foreground dark:hover:text-background transition-transform duration-100 transform hover:scale-105';
+  const handleClickOutside = (event: MouseEvent) => {
+    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  const navLinkStyle =
+    'text-sm hover:text-foreground dark:hover:text-background';
 
   const authMenuItems = (
     <>
@@ -27,7 +47,7 @@ const Header = () => {
           <NavLink
             className={navLinkStyle}
             to="/dashboard/enrollments"
-            onClick={toggleMenu}
+            onClick={isMenuOpen ? toggleMenu : null}
           >
             Dashboard
           </NavLink>
@@ -36,7 +56,7 @@ const Header = () => {
             to="/"
             onClick={() => {
               logout(user);
-              toggleMenu();
+              isMenuOpen ? toggleMenu() : null;
             }}
           >
             Logout
@@ -45,10 +65,10 @@ const Header = () => {
         </>
       ) : (
         <>
-          <NavLink className={navLinkStyle} to="/login" onClick={toggleMenu}>
+          <NavLink className={navLinkStyle} to="/login" onClick={isMenuOpen ? toggleMenu : null}>
             Login
           </NavLink>
-          <NavLink className={navLinkStyle} to="/register" onClick={toggleMenu}>
+          <NavLink className={navLinkStyle} to="/register" onClick={isMenuOpen ? toggleMenu : null}>
             Register
           </NavLink>
           <ModeToggle />
@@ -60,14 +80,17 @@ const Header = () => {
   return (
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
-      <nav className="relative shadow-sm bg-gradient-to-r from-black to-primary hover:from-black-400 hover:to-orange-500">
-        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:px-6 py-2 max-w-screen-xxl shadow-lg">
+      <nav className="relative shadow-sm bg-gradient-to-r from-black to-primary">
+        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:pr-6 py-2 max-w-screen-xxl shadow-lg">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-xl font-bold text-primary-800 whitespace-nowrap dark:text-white transition-transform duration-300 transform hover:scale-105">
-              <NavLink className="hover:text-primary dark:hover:text-primary" to="/">
+          <div>
+            <div className="text-md font-bold text-primary-800 whitespace-nowrap dark:text-white transition-transform duration-200 transform hover:scale-105">
+              <NavLink
+                to="/"
+                className="text-primary hover:text-secondary dark:hover:text-foreground"
+              >
                 {/* <img src={Logo} width="40" alt="Logo"/> */}
-                E-Learn
+                iCreate
               </NavLink>
             </div>
           </div>
@@ -77,12 +100,12 @@ const Header = () => {
             <NavLink className={navLinkStyle} to="/">
               Home
             </NavLink>
-            <NavLink className={navLinkStyle} to="/">
+            <NavLink className={navLinkStyle} to="/about">
               About
             </NavLink>
-            <NavLink className={navLinkStyle} to="/">
+            {/* <NavLink className={navLinkStyle} to="/">
               Contact
-            </NavLink>
+            </NavLink> */}
             <div></div>
             <div className="flex items-center md:order-2 space-x-4">
               {authMenuItems}
@@ -91,45 +114,52 @@ const Header = () => {
 
           {/* hamburger menu */}
           {isMenuOpen && (
-            <div className="md:hidden">
-              <div className="flex flex-col ">
-                <NavLink className={navLinkStyle} to="/" onClick={toggleMenu}>
-                  Home
-                </NavLink>
-                <NavLink
-                  className={navLinkStyle}
-                  to="/dashboard/enrollments"
-                  onClick={toggleMenu}
-                >
-                  About
-                </NavLink>
-                <NavLink
-                  className={navLinkStyle}
-                  to="/dashboard/enrollments"
-                  onClick={toggleMenu}
-                >
-                  Contact
-                </NavLink>
+            <div className="fixed inset-0 z-50 bg-black bg-opacity-30 ">
+            <div className="flex justify-end items-start mt-12">
+              <div
+                ref={menuRef}
+                className="text-background dark:text-foreground bg-primary/85 dark:bg-background/65 p-3 rounded-l-md shadow-lg"
+              >
+                <div className="flex flex-col space-y-1">
+                  <NavLink className={navLinkStyle} to="/" onClick={toggleMenu}>
+                    Home
+                  </NavLink>
+                  <NavLink
+                    className={navLinkStyle}
+                    to="/about"
+                    onClick={toggleMenu}
+                  >
+                    About
+                  </NavLink>
+                  {/*  <NavLink
+                    className={navLinkStyle}
+                    to="/dashboard/enrollments"
+                    onClick={toggleMenu}
+                  >
+                    Contact
+                  </NavLink> */}
+                  <div className="flex flex-col space-y-1">{authMenuItems}</div>
+                </div>
               </div>
-              <div className={`flex flex-col`}>{authMenuItems}</div>
+            </div>
             </div>
           )}
 
           {/* Hamburger menu icon */}
-          <div className="md:hidden my-1">
+          <div className="md:hidden my-0">
             <button
               type="button"
               className="text-white dark:text-white focus:outline-none pt-1"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (
-                <FaTimes className="w-4 h-5" />
+                <FaTimes className="w-3 h-3" />
               ) : (
-                <FaBars className="w-4 h-5" />
+                <FaBars className="w-3 h-3" />
               )}
             </button>
           </div>
-        </div>
+          </div>
       </nav>
     </>
   );
