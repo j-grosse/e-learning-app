@@ -3,10 +3,11 @@
 
 import path from 'path';
 import react from '@vitejs/plugin-react';
+import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), commonjs()],
   test: {
     globals: true,
     environment: 'jsdom',
