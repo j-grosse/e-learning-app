@@ -1,4 +1,4 @@
-import './polyfills.ts'; // Import the polyfill file to allow use of Draft.js richtext editor
+// import './polyfills.ts'; // Import the polyfill file to allow use of Draft.js richtext editor
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
