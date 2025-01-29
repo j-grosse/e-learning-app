@@ -54,7 +54,7 @@ export const EnrollmentsProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
     try {
       const res = await axios.post('/api/enrollments', enrollment);
-      setEnrollments((prev) => (prev ? [...prev, res.data] : [res.data]));
+      setEnrollments((prev) => (prev ? [...prev, res.data] : [res.data])); // update local enrollments
       console.log(
         '🚀 ~ file: EnrollmentsContext.tsx:46 ~ enroll ~ enrollment:',
         enrollment

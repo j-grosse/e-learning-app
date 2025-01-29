@@ -26,40 +26,47 @@ const CoursesProvider = ({ children }) => {
   //     });
   // };
 
-  const loadMongoData = async () => {
+  const fetchCourses = async () => {
     try {
-    const res = await axios.get(`/api/courses`)
+      const res = await axios.get(`/api/courses`);
       setCourses(res.data);
       setLoading(false);
       console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
-      } catch(e) {
+    } catch (e) {
       console.log(e);
       setLoading(false);
-      }
+    }
   };
 
-    const createLesson = async (lesson) => {
-      setLoading(true);
-      try {
-        const res = await axios.post('/api/lessons', lesson);
-        console.log('Lesson created:', res.data);
+  const createLesson = async (lesson) => {
+    setLoading(true);
+    try {
+      const res = await axios.post('/api/lessons', lesson);
+      console.log('Lesson created:', res.data);
+      // TODO: implement add lesson to courseModules controller and route in courseModules backend
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
 
-        // setEnrollments((prev) => (prev ? [...prev, res.data] : [res.data]));
-        console.log(
-          '🚀 ~ file: CoursesContext.tsx:47 ~ createLesson ~ lesson:',
-          lesson
-        );
-        setLoading(false);
-      } catch (error) {
-        console.log(error.response);
-        setLoading(false);
-      }
-    };
+  const updateLesson = async (lesson, lessonId) => {
+    setLoading(true);
+    try {
+      const res = await axios.put(`/api/lessons/${lessonId}`, lesson);
+      console.log('Lesson updated:', res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (courses === null) {
       // loadMockarooData();
-      loadMongoData();
+      fetchCourses();
     }
   }, [courses]);
 
@@ -67,7 +74,9 @@ const CoursesProvider = ({ children }) => {
     <>
       {/* {console.log('content of courses context:', { courses })} */}
 
-      <CoursesContext.Provider value={{courses, loading, createLesson}}>
+      <CoursesContext.Provider
+        value={{ courses, loading, createLesson, updateLesson }}
+      >
         {children}
       </CoursesContext.Provider>
     </>
