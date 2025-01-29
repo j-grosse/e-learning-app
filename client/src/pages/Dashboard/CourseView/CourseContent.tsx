@@ -1,4 +1,4 @@
-import VideoPlaceholder from '../../../assets/images/VideoPlaceholder.png';
+// import VideoPlaceholder from '../../../assets/images/VideoPlaceholder.png';
 
 const CourseContent = ({ course, selectedLesson }) => {
   // Find the selected lesson
@@ -12,7 +12,7 @@ const CourseContent = ({ course, selectedLesson }) => {
         <div key={lesson._id}>
           <h2>{lesson.title}</h2>
           <br />
-          {lesson.videoUrls !== '' ? (
+          {/* {lesson.videoUrls !== '' ? (
             <iframe
             className="w-[100%]"
               width="560"
@@ -23,7 +23,7 @@ const CourseContent = ({ course, selectedLesson }) => {
             ></iframe>
           ) : (
             <img src={VideoPlaceholder} alt="video placeholder" />
-          )}
+          )} */}
           <br />
           <div dangerouslySetInnerHTML={{ __html: lesson.text }} />
         </div>
