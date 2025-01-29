@@ -3,11 +3,10 @@
 
 import path from 'path';
 import react from '@vitejs/plugin-react';
-import commonjs from '@rollup/plugin-commonjs';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react(), commonjs()],
+  plugins: [react()],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -20,9 +19,5 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
-  },
-  // get rid of build error when importing draft.js
-  define: {
-    global: 'window',
   },
 });
