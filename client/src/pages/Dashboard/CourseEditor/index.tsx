@@ -7,9 +7,9 @@ import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
 const CourseEditor = () => {
-  const { courses, createLesson, updateLesson, fetchCourses } =
+  const { courses, createLesson, updateLesson } =
     useContext(CoursesContext);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(''); // current editor title
   const [content, setContent] = useState(''); // current editor content
   //   const [description, setDescription] = useState('');
@@ -17,9 +17,7 @@ const CourseEditor = () => {
   const [selectedModule, setSelectedModule] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
 
-  // useEffect(() => {
-  //   console.log('courses wasupdated, component refreshed');
-  // }, [courses]);
+  // useEffect(() => {}, []);
 
   const handleTitle = (e) => {
     const newTitle = e.target.value;
@@ -50,28 +48,7 @@ const CourseEditor = () => {
     setContent(lesson.text);
   };
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const lesson = {
-      courseModuleId: null,
-      title: title,
-      text: content,
-      videoUrls: [],
-      attachmentUrls: [],
-    };
-
-    try {
-      await createLesson(lesson, selectedModule._id);
-      await fetchCourses(); // Reload courses after updating a lesson
-    } catch (error) {
-      console.error('Error creating lesson:', error);
-    } finally {
-      setLoading(false);
-    }
-    //   <Navigate to="/dashboard" />;
-  };
-
+  // UPDATE LESSON
   const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -82,9 +59,49 @@ const CourseEditor = () => {
       videoUrls: [],
       attachmentUrls: [],
     };
-
     try {
       await updateLesson(lesson, selectedLesson._id);
+      // re-fetch courses afte from database  after updating  databaser update
+      // await fetchCourses();
+
+      // Update selectedCourse immutably
+      const updatedCourse = {
+        ...selectedCourse,
+        courseModules: selectedCourse.courseModules.map((module) =>
+          module._id === selectedModule._id
+            ? {
+                ...module,
+                lessons: module.lessons.map((l) =>
+                  l._id === selectedLesson._id
+                    ? { ...l, title: lesson.title, text: lesson.text }
+                    : l
+                ),
+              }
+            : module
+        ),
+      };
+      setSelectedCourse(updatedCourse);
+    } catch (error) {
+      console.error('Error creating lesson:', error);
+    } finally {
+      setLoading(false);
+    }
+    //   <Navigate to="/dashboard" />;
+  };
+
+  // CREATE LESSON
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const lesson = {
+      courseModuleId: null,
+      title: title,
+      text: content,
+      videoUrls: [],
+      attachmentUrls: [],
+    };
+    try {
+      await createLesson(lesson, selectedModule._id);
     } catch (error) {
       console.error('Error creating lesson:', error);
     } finally {
@@ -97,7 +114,7 @@ const CourseEditor = () => {
     console.log('delete lesson');
   };
 
-  if (loading) return <p>Loading...</p>;
+  // if (loading) return <p>Loading...</p>;
 
   //Custom Tool Bar
   const modules = {
@@ -130,11 +147,15 @@ const CourseEditor = () => {
   return (
     <div>
       {/* list courses */}
-      <h2 className="pb-4">Courses</h2>
-      <div className="flex gap-4">
+      <h2 className="pb-4">My Courses</h2>
+      <div className="flex flex-wrap gap-4">
         {courses
           ? courses.map((course) => (
-              <div key={course._id} onClick={() => handleCourseSelect(course)}>
+              <div
+                key={course._id}
+                className="p-1 w-24 text-sm border b-2 rounded-md shadow-md"
+                onClick={() => handleCourseSelect(course)}
+              >
                 <img
                   className="h-20 object-cover"
                   src={course.image}
@@ -153,8 +174,8 @@ const CourseEditor = () => {
             key={selectedCourse._id}
             className="p-4 mt-8 w-64 border b-2 rounded-md shadow-md"
           >
-            <h2 className="">Modules</h2>
-            <hr/>
+            <h2>Modules</h2>
+            <hr />
             <ul className="ml-3">
               {selectedCourse.courseModules
                 ? selectedCourse.courseModules.map((courseModule) => (
@@ -271,7 +292,7 @@ const CourseEditor = () => {
         </div>
 
         {/* Preview */}
-        <div className="w-full max-w-3xl p-8 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
+        <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
           <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
             Preview
           </h2>

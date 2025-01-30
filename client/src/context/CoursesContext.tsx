@@ -44,6 +44,7 @@ const CoursesProvider = ({ children }) => {
       const res = await axios.post('/api/lessons', lesson);
       console.log('Lesson created:', res.data);
       // TODO: implement add lesson to courseModules controller and route in courseModules backend
+      await fetchCourses(); // Reload courses after updating a lesson
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -56,6 +57,7 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.put(`/api/lessons/${lessonId}`, lesson);
       console.log('Lesson updated:', res.data);
+      await fetchCourses(); // Reload courses after updating a lesson
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -64,11 +66,11 @@ const CoursesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (courses === null) {
-      // loadMockarooData();
-      fetchCourses();
-    }
-  }, [courses]);
+    // if (courses === null) {
+    // loadMockarooData();
+    fetchCourses();
+    // }
+  }, []);
 
   return (
     <>
