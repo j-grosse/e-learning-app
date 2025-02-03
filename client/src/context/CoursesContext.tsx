@@ -31,20 +31,37 @@ const CoursesProvider = ({ children }) => {
       const res = await axios.get(`/api/courses`);
       setCourses(res.data);
       setLoading(false);
-      console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
+      // console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
+      return res.data;
     } catch (e) {
       console.log(e);
       setLoading(false);
     }
   };
 
-  const createLesson = async (lesson) => {
+  const createLesson = async (newLesson, courseModuleId) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/lessons', lesson);
+      const res = await axios.post('/api/lessons', newLesson);
       console.log('Lesson created:', res.data);
       // TODO: implement add lesson to courseModules controller and route in courseModules backend
-      await fetchCourses(); // Reload courses after updating a lesson
+      console.log('ids:', res.data._id, courseModuleId);
+      await addLesson(res.data._id, courseModuleId);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const addLesson = async (newLessonId, courseModuleId) => {
+    try {
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}/addLesson`,
+        {lessonId: newLessonId}
+      );
+      console.log('Lesson added to course module:', res.data);
+      await fetchCourses(); // Reload courses after adding the lesson id
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -77,7 +94,14 @@ const CoursesProvider = ({ children }) => {
       {/* {console.log('content of courses context:', { courses })} */}
 
       <CoursesContext.Provider
-        value={{ courses, loading, createLesson, updateLesson }}
+        value={{
+          courses,
+          loading,
+          createLesson,
+          updateLesson,
+          setCourses,
+          fetchCourses,
+        }}
       >
         {children}
       </CoursesContext.Provider>

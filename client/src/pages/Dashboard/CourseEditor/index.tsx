@@ -7,9 +7,8 @@ import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
 const CourseEditor = () => {
-  const { courses, createLesson, updateLesson } =
-    useContext(CoursesContext);
-  // const [loading, setLoading] = useState(false);
+  const { courses, createLesson, updateLesson } = useContext(CoursesContext);
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(''); // current editor title
   const [content, setContent] = useState(''); // current editor content
   //   const [description, setDescription] = useState('');
@@ -61,53 +60,31 @@ const CourseEditor = () => {
     };
     try {
       await updateLesson(lesson, selectedLesson._id);
-      // re-fetch courses afte from database  after updating  databaser update
-      // await fetchCourses();
-
-      // Update selectedCourse immutably
-      const updatedCourse = {
-        ...selectedCourse,
-        courseModules: selectedCourse.courseModules.map((module) =>
-          module._id === selectedModule._id
-            ? {
-                ...module,
-                lessons: module.lessons.map((l) =>
-                  l._id === selectedLesson._id
-                    ? { ...l, title: lesson.title, text: lesson.text }
-                    : l
-                ),
-              }
-            : module
-        ),
-      };
-      setSelectedCourse(updatedCourse);
     } catch (error) {
       console.error('Error creating lesson:', error);
     } finally {
       setLoading(false);
     }
-    //   <Navigate to="/dashboard" />;
   };
 
   // CREATE LESSON
   const handleCreate = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const lesson = {
-      courseModuleId: null,
+    const newLesson = {
+      courseModuleId: selectedModule._id,
       title: title,
       text: content,
       videoUrls: [],
       attachmentUrls: [],
     };
     try {
-      await createLesson(lesson, selectedModule._id);
+      await createLesson(newLesson, selectedModule._id);
     } catch (error) {
       console.error('Error creating lesson:', error);
     } finally {
       setLoading(false);
     }
-    //   <Navigate to="/dashboard" />;
   };
 
   const handleDelete = () => {
@@ -169,14 +146,11 @@ const CourseEditor = () => {
       </div>
       {/* list course modules and lessons */}
       <div>
-        {selectedCourse ? (
-          <div
-            key={selectedCourse._id}
-            className="p-4 mt-8 w-64 border b-2 rounded-md shadow-md"
-          >
+        {courses && selectedCourse ? (
+          <div className="p-4 mt-8 w-64 border b-2 rounded-md shadow-md">
             <h2>Modules</h2>
             <hr />
-            <ul className="ml-3">
+            <ul key={selectedCourse._id} className="ml-3">
               {selectedCourse.courseModules
                 ? selectedCourse.courseModules.map((courseModule) => (
                     <li
@@ -185,20 +159,23 @@ const CourseEditor = () => {
                       onClick={() => handleModuleSelect(courseModule)}
                     >
                       <h3>{courseModule.title}</h3>
-                      <ol>
-                        {/* list module's lessons if module was selected (clicked) */}
-                        {courseModule === selectedModule
-                          ? selectedModule.lessons.map((lesson) => (
-                              <li
-                                key={lesson._id}
-                                className="ml-3 cursor-pointer hover:text-primary"
-                                onClick={() => handleLessonSelect(lesson)}
-                              >
-                                {lesson.title}
-                              </li>
-                            ))
-                          : ''}
-                      </ol>
+
+                      {/* list module's lessons if module was selected */}
+                      {courseModule === selectedModule ? (
+                        <ol key={courseModule._id + '-lessons'}>
+                          {selectedModule.lessons.map((lesson) => (
+                            <li
+                              key={lesson._id}
+                              className="ml-3 cursor-pointer hover:text-primary"
+                              onClick={() => handleLessonSelect(lesson)}
+                            >
+                              {lesson.title}
+                            </li>
+                          ))}
+                        </ol>
+                      ) : (
+                        ''
+                      )}
                     </li>
                   ))
                 : ''}
@@ -208,8 +185,8 @@ const CourseEditor = () => {
           ''
         )}
       </div>
+      {/* Editor */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Editor */}
         <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
           <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
             Editor
@@ -290,6 +267,8 @@ const CourseEditor = () => {
             </div>
           </form>
         </div>
+
+        {loading ? 'saving' : ''}
 
         {/* Preview */}
         <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
