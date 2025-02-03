@@ -44,7 +44,6 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.post('/api/lessons', newLesson);
       console.log('Lesson created:', res.data);
-      // TODO: implement add lesson to courseModules controller and route in courseModules backend
       console.log('ids:', res.data._id, courseModuleId);
       await addLesson(res.data._id, courseModuleId);
       setLoading(false);
@@ -58,7 +57,7 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.put(
         `/api/courseModules/${courseModuleId}/addLesson`,
-        {lessonId: newLessonId}
+        { lessonId: newLessonId }
       );
       console.log('Lesson added to course module:', res.data);
       await fetchCourses(); // Reload courses after adding the lesson id
@@ -75,6 +74,35 @@ const CoursesProvider = ({ children }) => {
       const res = await axios.put(`/api/lessons/${lessonId}`, lesson);
       console.log('Lesson updated:', res.data);
       await fetchCourses(); // Reload courses after updating a lesson
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const deleteLesson = async (lessonId, courseModuleId) => {
+    setLoading(true);
+    try {
+      const res = await axios.delete(`/api/lessons/${lessonId}`);
+      console.log('Lesson deleted:', res.data);
+      console.log('ids:', res.data._id, courseModuleId);
+      await removeLesson(lessonId, courseModuleId);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeLesson = async (lessonId, courseModuleId) => {
+    try {
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}/removeLesson`,
+        { lessonId: lessonId }
+      );
+      console.log('Lesson removed from course module lessons array:', res.data.lessons);
+      await fetchCourses(); // Reload courses after adding the lesson id
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -99,8 +127,7 @@ const CoursesProvider = ({ children }) => {
           loading,
           createLesson,
           updateLesson,
-          setCourses,
-          fetchCourses,
+          deleteLesson,
         }}
       >
         {children}

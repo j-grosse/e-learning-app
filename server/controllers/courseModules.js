@@ -106,6 +106,30 @@ const addLesson = async (req, res) => {
   }
 };
 
+const removeLesson = async (req, res) => {
+  try {
+    const {
+      params: { id },
+      body: { lessonId },
+    } = req;
+
+    const updatedCourseModule = await CourseModule.findOneAndUpdate(
+      { _id: id },
+      { $pull: { lessons: { _id: lessonId } } }, // Remove lessonId object from lessons array
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    if (!updatedCourseModule) {
+      return res.status(404).json({ message: 'Course module not found' });
+    }
+    res.json(updatedCourseModule);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const deleteCourseModule = async (req, res) => {
   try {
     const {
@@ -134,5 +158,6 @@ module.exports = {
   getCourseModuleById,
   updateCourseModule,
   addLesson,
+  removeLesson,
   deleteCourseModule,
 };

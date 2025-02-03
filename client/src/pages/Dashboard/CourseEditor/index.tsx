@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
 const CourseEditor = () => {
-  const { courses, createLesson, updateLesson } = useContext(CoursesContext);
+  const { courses, createLesson, updateLesson, deleteLesson } = useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(''); // current editor title
   const [content, setContent] = useState(''); // current editor content
@@ -87,9 +87,18 @@ const CourseEditor = () => {
     }
   };
 
-  const handleDelete = () => {
-    console.log('delete lesson');
-  };
+    // DELETE LESSON
+    const handleDelete = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      try {
+        await deleteLesson(selectedLesson._id, selectedModule._id);
+      } catch (error) {
+        console.error('Error creating lesson:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
   // if (loading) return <p>Loading...</p>;
 

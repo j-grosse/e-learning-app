@@ -6,6 +6,7 @@ const {
   getCourseModuleById,
   updateCourseModule,
   addLesson,
+  removeLesson,
   deleteCourseModule,
 } = require('../controllers/courseModules');
 
@@ -18,5 +19,6 @@ router.get('/:id', getCourseModuleById);
 router.post('/', createCourseModule);
 router.put('/:id', updateCourseModule);
 router.put('/:id/addLesson', addLesson);
+router.put('/:id/removeLesson', removeLesson);
 router.delete('/:id', deleteCourseModule);
 module.exports = router;
