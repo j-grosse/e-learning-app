@@ -72,7 +72,6 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.post('/api/lessons', newLesson);
       console.log('Lesson created:', res.data);
-      console.log('ids:', res.data._id, courseModuleId);
       await addLesson(res.data._id, courseModuleId);
       setLoading(false);
     } catch (error) {
@@ -102,6 +101,19 @@ const CoursesProvider = ({ children }) => {
       const res = await axios.put(`/api/lessons/${lessonId}`, lesson);
       console.log('Lesson updated:', res.data);
       await fetchCourses(); // Reload courses after updating a lesson
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const updateModule = async (courseModule, courseModuleId) => {
+    setLoading(true);
+    try {
+      const res = await axios.put(`/api/courseModules/${courseModuleId}`, courseModule);
+      console.log('Module updated:', res.data);
+      await fetchCourses(); // Reload courses after updating a course module
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -156,6 +168,7 @@ const CoursesProvider = ({ children }) => {
           createLesson,
           createModule,
           updateLesson,
+          updateModule,
           deleteLesson,
         }}
       >

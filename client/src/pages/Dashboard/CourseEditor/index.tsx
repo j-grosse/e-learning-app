@@ -7,8 +7,14 @@ import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
 const CourseEditor = () => {
-  const { courses, createLesson, updateLesson, deleteLesson } =
-    useContext(CoursesContext);
+  const {
+    courses,
+    createLesson,
+    createModule,
+    updateLesson,
+    updateModule,
+    deleteLesson,
+  } = useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(''); // current editor title
   const [content, setContent] = useState(''); // current editor content
