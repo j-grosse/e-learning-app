@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CoursesContext } from '../../../context/CoursesContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -16,8 +16,10 @@ const CourseEditor = () => {
     deleteLesson,
   } = useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState(''); // current editor title
-  const [content, setContent] = useState(''); // current editor content
+
+  const [moduleTitle, setModuleTitle] = useState(''); // current module title
+  const [lessonTitle, setLessonTitle] = useState(''); // current lesson title
+  const [lessonContent, setLessonContent] = useState(''); // current lessonContent
   //   const [description, setDescription] = useState('');
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
@@ -25,63 +27,51 @@ const CourseEditor = () => {
 
   // useEffect(() => {}, []);
 
-  const handleTitle = (e) => {
+  const handleModuleTitle = (e) => {
+    const newModuleTitle = e.target.value;
+    setModuleTitle(newModuleTitle);
+  };
+
+  const handleLessonTitle = (e) => {
     const newTitle = e.target.value;
-    setTitle(newTitle);
+    setLessonTitle(newTitle);
   };
 
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
     setSelectedModule(null);
     setSelectedLesson(null);
-    setTitle('');
-    setContent('');
+    setLessonTitle('');
+    setLessonContent('');
   };
 
   const handleModuleSelect = (courseModule) => {
-    // clear editor if selecting other module
+    // clear editor only if selecting a different module
     if (courseModule !== selectedModule) {
       setSelectedModule(courseModule);
+      setModuleTitle(courseModule.title);
       setSelectedLesson(null);
-      setTitle('');
-      setContent('');
+      setLessonTitle('');
+      setLessonContent('');
     }
   };
 
   const handleLessonSelect = (lesson) => {
     setSelectedLesson(lesson);
-    setTitle(lesson.title);
-    setContent(lesson.text);
+    setLessonTitle(lesson.title);
+    setLessonContent(lesson.text);
   };
 
-  // UPDATE LESSON
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    const lesson = {
-      courseModuleId: null,
-      title: title,
-      text: content,
-      videoUrls: [],
-      attachmentUrls: [],
-    };
-    try {
-      await updateLesson(lesson, selectedLesson._id);
-    } catch (error) {
-      console.error('Error creating lesson:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // CRUD OPERATIONS //
 
   // CREATE LESSON
-  const handleCreate = async (e) => {
+  const handleCreateLesson = async (e) => {
     e.preventDefault();
     setLoading(true);
     const newLesson = {
       courseModuleId: selectedModule._id,
-      title: title,
-      text: content,
+      title: lessonTitle,
+      text: lessonContent,
       videoUrls: [],
       attachmentUrls: [],
     };
@@ -148,13 +138,13 @@ const CourseEditor = () => {
   };
 
   // DELETE LESSON
-  const handleDelete = async (e) => {
+  const handleDeleteLesson = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       await deleteLesson(selectedLesson._id, selectedModule._id);
     } catch (error) {
-      console.error('Error creating lesson:', error);
+      console.error('Error deleting lesson:', error);
     } finally {
       setLoading(false);
     }
@@ -199,7 +189,9 @@ const CourseEditor = () => {
           ? courses.map((course) => (
               <div
                 key={course._id}
-                className="p-1 w-24 text-sm border b-2 rounded-md shadow-md"
+                className={course === selectedCourse
+                          ? 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-white bg-primary'
+                          : 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-foreground hover:text-gray-500'}
                 onClick={() => handleCourseSelect(course)}
               >
                 <img
@@ -330,21 +322,21 @@ const CourseEditor = () => {
               {/* Lesson Title */}
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="title"
+                  htmlFor="lessonTitle"
                   className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
                 >
-                  Title
+                  Lesson title
                 </label>
                 <div className="mt-2">
                   <input
-                    onChange={handleTitle}
+                    onChange={handleLessonTitle}
                     type="text"
-                    value={title}
-                    name="title"
-                    id="title"
+                    value={lessonTitle}
+                    name="lessonTitle"
+                    id="lessonTitle"
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
-                    placeholder="Type the Course title"
+                    placeholder="Lesson title"
                   />
                 </div>
               </div>
@@ -363,42 +355,47 @@ const CourseEditor = () => {
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 "
-                  placeholder="Write your thoughts here..."
+                  placeholder="Description"
                 ></textarea>
               </div> */}
-              {/* Content */}
+              {/* Lesson content */}
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="content"
+                  htmlFor="lessonContent"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Content
+                  Lesson lessonContent
                 </label>
                 {/* @ts-ignore */}
                 <ReactQuill
                   theme="snow"
-                  value={content}
-                  onChange={setContent}
+                  value={lessonContent}
+                  onChange={setLessonContent}
                   modules={modules}
                   formats={formats}
                 />
               </div>
             </div>
+
+            {/* Buttons Lessons */}
             <div className="flex gap-4 mt-6">
-              <Button type="submit" variant="submitFull" onClick={handleUpdate}>
-                Update
+              <Button type="submit" variant="submitFull" onClick={handleUpdateLesson}>
+                Update Lesson
               </Button>
-              <Button type="submit" variant="submitFull" onClick={handleCreate}>
-                Create new lesson
+
+              <Button type="submit" variant="submitFull" onClick={handleCreateLesson}>
+                Create Lesson
               </Button>
+
               <Button
                 type="submit"
                 variant="destructive"
-                onClick={handleDelete}
+                onClick={handleDeleteLesson}
               >
-                Delete lesson
+                Delete Lesson
               </Button>
             </div>
+
           </form>
         </div>
 
@@ -410,13 +407,13 @@ const CourseEditor = () => {
             Preview
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            {/* Title */}
+            {/* Lesson title */}
             <div className="sm:col-span-2">
-              <h2 className="block text-sm font-medium leading-6 text-gray-900 mb-2 ">
-                Title
-              </h2>
-              <div className="mt-2">
-                <p className="text-2xl font-bold">{title}</p>
+              {/* <h2 className="block text-sm font-medium leading-6 text-gray-900 mb-2 ">
+                Lesson title
+              </h2> */}
+              <div>
+                <p className="text-2xl font-bold">{lessonTitle}</p>
               </div>
             </div>
 
@@ -428,13 +425,14 @@ const CourseEditor = () => {
               <p>{description}</p>
             </div> */}
             <div className="sm:col-span-full">
-              <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Content
-              </h2>
-              {parse(content)}
+              {/* <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Lesson content
+              </h2> */}
+              {parse(lessonContent)}
             </div>
           </div>
         </div>
+        {/* End Preview */}
       </div>
     </div>
   );
