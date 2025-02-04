@@ -87,6 +87,30 @@ const updateCourse = async (req, res) => {
   }
 };
 
+const addCourseModule = async (req, res) => {
+  try {
+    const {
+      params: { id },
+      body: { moduleId },
+    } = req;
+
+    const updatedCourseModule = await Course.findOneAndUpdate(
+      { _id: id },
+      { $addToSet: { courseModules: { _id: moduleId } } }, // Add moduleId object to courseModules array if it doesn't exist
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    if (!updatedCourseModule) {
+      return res.status(404).json({ message: 'Course module not found' });
+    }
+    res.json(updatedCourseModule);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const deleteCourse = async (req, res) => {
   try {
     const {
@@ -112,5 +136,6 @@ module.exports = {
   getAllCourses,
   getCourseById,
   updateCourse,
+  addCourseModule,
   deleteCourse,
 };

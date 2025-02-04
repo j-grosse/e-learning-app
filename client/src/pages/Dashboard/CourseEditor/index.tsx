@@ -88,6 +88,59 @@ const CourseEditor = () => {
     }
   };
 
+  // CREATE MODULE
+  const handleCreateModule = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const newModule = {
+      courseId: selectedCourse._id,
+      title: moduleTitle,
+      lessons: [],
+    };
+    try {
+      await createModule(newModule, selectedCourse._id);
+    } catch (error) {
+      console.error('Error creating module:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // UPDATE LESSON
+  const handleUpdateLesson = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const lesson = {
+      courseModuleId: null,
+      title: lessonTitle,
+      text: lessonContent,
+      videoUrls: [],
+      attachmentUrls: [],
+    };
+    try {
+      await updateLesson(lesson, selectedLesson._id);
+    } catch (error) {
+      console.error('Error updating lesson:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // UPDATE MODULE
+  const handleUpdateModuleTitle = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const courseModule = { ...selectedModule, title: moduleTitle };
+
+    try {
+      await updateModule(courseModule, selectedModule._id);
+    } catch (error) {
+      console.error('Error updating module:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // DELETE LESSON
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -217,7 +270,58 @@ const CourseEditor = () => {
           </h2>
           <form>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              {/* Title */}
+              {/* Module */}
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="moduleTitle"
+                  className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
+                >
+                  Module title
+                </label>
+                <div className="mt-2">
+                  <input
+                    onChange={handleModuleTitle}
+                    type="text"
+                    value={moduleTitle}
+                    name="moduleTitle"
+                    id="moduleTitle"
+                    autoComplete="given-name"
+                    className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                    placeholder="Module title"
+                  />
+                </div>
+              </div>
+
+
+            {/* Buttons Modules */}
+            <div className="flex gap-4 mt-6">
+              <Button
+                type="submit"
+                variant="submitFull"
+                onClick={handleUpdateModuleTitle}
+              >
+                Update Module
+              </Button>
+
+              <Button
+                type="submit"
+                variant="submitFull"
+                onClick={handleCreateModule}
+              >
+                Create Module
+              </Button>
+
+              {/* <Button
+                type="submit"
+                variant="destructive"
+                onClick={handleModuleDelete}
+              >
+                Delete Module
+              </Button> */}
+            </div>
+
+              {/* Lesson Title */}
               <div className="sm:col-span-2">
                 <label
                   htmlFor="title"
