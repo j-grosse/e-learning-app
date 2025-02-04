@@ -7,7 +7,8 @@ import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
 const CourseEditor = () => {
-  const { courses, createLesson, updateLesson, deleteLesson } = useContext(CoursesContext);
+  const { courses, createLesson, updateLesson, deleteLesson } =
+    useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState(''); // current editor title
   const [content, setContent] = useState(''); // current editor content
@@ -87,18 +88,18 @@ const CourseEditor = () => {
     }
   };
 
-    // DELETE LESSON
-    const handleDelete = async (e) => {
-      e.preventDefault();
-      setLoading(true);
-      try {
-        await deleteLesson(selectedLesson._id, selectedModule._id);
-      } catch (error) {
-        console.error('Error creating lesson:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // DELETE LESSON
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await deleteLesson(selectedLesson._id, selectedModule._id);
+    } catch (error) {
+      console.error('Error creating lesson:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // if (loading) return <p>Loading...</p>;
 
@@ -132,7 +133,7 @@ const CourseEditor = () => {
 
   return (
     <div>
-      {/* list courses */}
+      {/* Courses */}
       <h2 className="pb-4">My Courses</h2>
       <div className="flex flex-wrap gap-4">
         {courses
@@ -153,30 +154,44 @@ const CourseEditor = () => {
             ))
           : ''}
       </div>
-      {/* list course modules and lessons */}
+
+      {/* Modules and Lessons */}
       <div>
         {courses && selectedCourse ? (
           <div className="p-4 mt-8 w-64 border b-2 rounded-md shadow-md">
             <h2>Modules</h2>
             <hr />
-            <ul key={selectedCourse._id} className="ml-3">
+
+            {/* Modules */}
+            <ol key={selectedCourse._id} className="ml-3 list-decimal">
               {selectedCourse.courseModules
                 ? selectedCourse.courseModules.map((courseModule) => (
                     <li
                       key={courseModule._id}
-                      className="mt-2 cursor-pointer"
                       onClick={() => handleModuleSelect(courseModule)}
+                      className={
+                        courseModule === selectedModule
+                          ? 'mt-2 cursor-pointer text-primary'
+                          : 'mt-2 cursor-pointer text-foreground hover:text-gray-500'
+                      }
                     >
                       <h3>{courseModule.title}</h3>
 
-                      {/* list module's lessons if module was selected */}
+                      {/* Lessons */}
                       {courseModule === selectedModule ? (
-                        <ol key={courseModule._id + '-lessons'}>
+                        <ol
+                          key={courseModule._id + '-lessons'}
+                          className="list-decimal"
+                        >
                           {selectedModule.lessons.map((lesson) => (
                             <li
                               key={lesson._id}
-                              className="ml-3 cursor-pointer hover:text-primary"
                               onClick={() => handleLessonSelect(lesson)}
+                              className={
+                                lesson === selectedLesson
+                                  ? 'ml-3 cursor-pointer text-primary'
+                                  : 'ml-3 cursor-pointer text-foreground hover:text-gray-500'
+                              }
                             >
                               {lesson.title}
                             </li>
@@ -188,7 +203,7 @@ const CourseEditor = () => {
                     </li>
                   ))
                 : ''}
-            </ul>
+            </ol>
           </div>
         ) : (
           ''
