@@ -13,6 +13,7 @@ const CourseEditor = () => {
     createModule,
     updateLesson,
     updateModule,
+    deleteModule,
     deleteLesson,
   } = useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
@@ -64,6 +65,24 @@ const CourseEditor = () => {
 
   // CRUD OPERATIONS //
 
+  // CREATE MODULE
+  const handleCreateModule = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const newModule = {
+      courseId: selectedCourse._id,
+      title: moduleTitle,
+      lessons: [],
+    };
+    try {
+      await createModule(newModule, selectedCourse._id);
+    } catch (error) {
+      console.error('Error creating module:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // CREATE LESSON
   const handleCreateLesson = async (e) => {
     e.preventDefault();
@@ -84,19 +103,16 @@ const CourseEditor = () => {
     }
   };
 
-  // CREATE MODULE
-  const handleCreateModule = async (e) => {
+  // UPDATE MODULE
+  const handleUpdateModuleTitle = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const newModule = {
-      courseId: selectedCourse._id,
-      title: moduleTitle,
-      lessons: [],
-    };
+    const courseModule = { ...selectedModule, title: moduleTitle };
+
     try {
-      await createModule(newModule, selectedCourse._id);
+      await updateModule(courseModule, selectedModule._id);
     } catch (error) {
-      console.error('Error creating module:', error);
+      console.error('Error updating module:', error);
     } finally {
       setLoading(false);
     }
@@ -122,16 +138,14 @@ const CourseEditor = () => {
     }
   };
 
-  // UPDATE MODULE
-  const handleUpdateModuleTitle = async (e) => {
+  // DELETE MODULE
+  const handleDeleteModule = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const courseModule = { ...selectedModule, title: moduleTitle };
-
     try {
-      await updateModule(courseModule, selectedModule._id);
+      await deleteModule(selectedModule._id, selectedCourse._id);
     } catch (error) {
-      console.error('Error updating module:', error);
+      console.error("Error deleting module and/or it's lessons:", error);
     } finally {
       setLoading(false);
     }
@@ -189,9 +203,11 @@ const CourseEditor = () => {
           ? courses.map((course) => (
               <div
                 key={course._id}
-                className={course === selectedCourse
-                          ? 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-white bg-primary'
-                          : 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-foreground hover:text-gray-500'}
+                className={
+                  course === selectedCourse
+                    ? 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-white bg-primary'
+                    : 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-foreground hover:text-gray-500'
+                }
                 onClick={() => handleCourseSelect(course)}
               >
                 <img
@@ -291,33 +307,32 @@ const CourseEditor = () => {
                 </div>
               </div>
 
+              {/* Buttons Modules */}
+              <div className="flex gap-4 mt-6">
+                <Button
+                  type="submit"
+                  variant="submitFull"
+                  onClick={handleUpdateModuleTitle}
+                >
+                  Update Module
+                </Button>
 
-            {/* Buttons Modules */}
-            <div className="flex gap-4 mt-6">
-              <Button
-                type="submit"
-                variant="submitFull"
-                onClick={handleUpdateModuleTitle}
-              >
-                Update Module
-              </Button>
+                <Button
+                  type="submit"
+                  variant="submitFull"
+                  onClick={handleCreateModule}
+                >
+                  Create Module
+                </Button>
 
-              <Button
-                type="submit"
-                variant="submitFull"
-                onClick={handleCreateModule}
-              >
-                Create Module
-              </Button>
-
-              {/* <Button
-                type="submit"
-                variant="destructive"
-                onClick={handleModuleDelete}
-              >
-                Delete Module
-              </Button> */}
-            </div>
+                <Button
+                  type="submit"
+                  variant="destructive"
+                  onClick={handleDeleteModule}
+                >
+                  Delete Module
+                </Button>
+              </div>
 
               {/* Lesson Title */}
               <div className="sm:col-span-2">
@@ -379,11 +394,19 @@ const CourseEditor = () => {
 
             {/* Buttons Lessons */}
             <div className="flex gap-4 mt-6">
-              <Button type="submit" variant="submitFull" onClick={handleUpdateLesson}>
+              <Button
+                type="submit"
+                variant="submitFull"
+                onClick={handleUpdateLesson}
+              >
                 Update Lesson
               </Button>
 
-              <Button type="submit" variant="submitFull" onClick={handleCreateLesson}>
+              <Button
+                type="submit"
+                variant="submitFull"
+                onClick={handleCreateLesson}
+              >
                 Create Lesson
               </Button>
 
@@ -395,11 +418,10 @@ const CourseEditor = () => {
                 Delete Lesson
               </Button>
             </div>
-
           </form>
         </div>
 
-        {loading ? 'saving' : ''}
+        {/* {loading ? 'saving' : ''} */}
 
         {/* Preview */}
         <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">

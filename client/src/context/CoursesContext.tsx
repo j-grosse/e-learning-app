@@ -54,10 +54,9 @@ const CoursesProvider = ({ children }) => {
 
   const addModule = async (newModuleId, courseId) => {
     try {
-      const res = await axios.put(
-        `/api/courses/${courseId}/addModule`,
-        { moduleId: newModuleId }
-      );
+      const res = await axios.put(`/api/courses/${courseId}/addModule`, {
+        courseModuleId: newModuleId,
+      });
       console.log('Module added to course:', res.data);
       await fetchCourses(); // Reload courses after adding the module id
       setLoading(false);
@@ -111,7 +110,10 @@ const CoursesProvider = ({ children }) => {
   const updateModule = async (courseModule, courseModuleId) => {
     setLoading(true);
     try {
-      const res = await axios.put(`/api/courseModules/${courseModuleId}`, courseModule);
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}`,
+        courseModule
+      );
       console.log('Module updated:', res.data);
       await fetchCourses(); // Reload courses after updating a course module
       setLoading(false);
@@ -126,7 +128,6 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.delete(`/api/lessons/${lessonId}`);
       console.log('Lesson deleted:', res.data);
-      console.log('ids:', res.data._id, courseModuleId);
       await removeLesson(lessonId, courseModuleId);
       setLoading(false);
     } catch (error) {
@@ -141,7 +142,10 @@ const CoursesProvider = ({ children }) => {
         `/api/courseModules/${courseModuleId}/removeLesson`,
         { lessonId: lessonId }
       );
-      console.log('Lesson removed from course module lessons array:', res.data.lessons);
+      console.log(
+        'Lesson removed from course module lessons array:',
+        res.data.lessons
+      );
       await fetchCourses(); // Reload courses after adding the lesson id
       setLoading(false);
     } catch (error) {
@@ -149,6 +153,58 @@ const CoursesProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  // DELETE MODULE
+
+  const deleteModule = async (courseModuleId, courseId) => {
+    setLoading(true);
+    try {
+      await removeLessonsFromModule(courseModuleId); // remove all
+      await removeModuleFromCourse(courseModuleId, courseId);
+
+      const res = await axios.delete(`/api/courseModules/${courseModuleId}`);
+      console.log('Module deleted:', res.data);
+      await fetchCourses(); // Reload courses after adding the lesson id
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeLessonsFromModule = async (courseModuleId) => {
+    try {
+      const res = await axios.delete(
+        `/api/lessons/deleteLessons/${courseModuleId}`
+      );
+      console.log(
+        'All lessons associated with the course module were deleted:',
+        res.data
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeModuleFromCourse = async (courseModuleId, courseId) => {
+    try {
+      const res = await axios.put(`/api/courses/${courseId}/removeModule`, {
+        courseModuleId: courseModuleId,
+      });
+      console.log(
+        `Module with ${courseModuleId} removed from course's courseModules array:`,
+        res.data
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  // END DELETE MODULE
 
   useEffect(() => {
     // if (courses === null) {
@@ -165,10 +221,11 @@ const CoursesProvider = ({ children }) => {
         value={{
           courses,
           loading,
-          createLesson,
           createModule,
-          updateLesson,
+          createLesson,
           updateModule,
+          updateLesson,
+          deleteModule,
           deleteLesson,
         }}
       >

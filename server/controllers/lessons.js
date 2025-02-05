@@ -39,7 +39,7 @@ const getLessonById = async (req, res) => {
     } = req;
     // await Lesson.findById(id)
     const lessons = await Lesson.find({ _id: id });
-    
+
     console.log('🚀 ~ file: lessons.js:28 ~ getLessonById ~ lessons:', lessons);
     if (lessons.length === 0) {
       res.status(404).json({ message: 'Lesson Not Found' });
@@ -93,10 +93,36 @@ const deleteLesson = async (req, res) => {
   }
 };
 
+const deleteLessons = async (req, res) => {
+  try {
+    const {
+      params: { id: moduleId },
+    } = req;
+    // const deletedLesson = await Lesson.findByIdAndDelete()
+    const deletedLessons = await Lesson.deleteMany({
+      courseModuleId: { _id: moduleId },
+    });
+    console.log('deleted Lessons:', deletedLessons);
+    if (deletedLessons.deletedCount === 0) {
+      return res
+        .status(404)
+        .json({ message: 'No lessons found for the given course module ID' });
+    }
+
+    if (!deletedLessons) {
+      res.status(404).json({ message: 'Lesson Not Found' });
+    }
+    res.json(deletedLessons);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createLesson,
   getAllLessons,
   getLessonById,
   updateLesson,
   deleteLesson,
+  deleteLessons,
 };
