@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 const CourseEditor = () => {
   const {
     courses,
+    createCourse,
     createLesson,
     createModule,
     updateLesson,
@@ -18,15 +19,22 @@ const CourseEditor = () => {
   } = useContext(CoursesContext);
   const [loading, setLoading] = useState(false);
 
-  const [moduleTitle, setModuleTitle] = useState(''); // current module title
-  const [lessonTitle, setLessonTitle] = useState(''); // current lesson title
-  const [lessonContent, setLessonContent] = useState(''); // current lessonContent
+  const [courseTitle, setCourseTitle] = useState('');
+  const [moduleTitle, setModuleTitle] = useState('');
+  const [lessonTitle, setLessonTitle] = useState('');
+  const [lessonContent, setLessonContent] = useState('');
   //   const [description, setDescription] = useState('');
+
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
 
   // useEffect(() => {}, []);
+
+  const handleCourseTitle = (e) => {
+    const newCourseTitle = e.target.value;
+    setCourseTitle(newCourseTitle);
+  };
 
   const handleModuleTitle = (e) => {
     const newModuleTitle = e.target.value;
@@ -40,6 +48,7 @@ const CourseEditor = () => {
 
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
+    setCourseTitle(course.title);
     setSelectedModule(null);
     setSelectedLesson(null);
     setLessonTitle('');
@@ -64,6 +73,32 @@ const CourseEditor = () => {
   };
 
   // CRUD OPERATIONS //
+
+  // CREATE COURSE
+  const handleCreateCourse = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const newCourse = {
+      id: "99",
+      title: courseTitle,
+      description: "a",
+      tutor: "Jay",
+      image: "https://jaydatamusic.com/wp-content/uploads/2016/03/jay-data-674fm-copy.jpg",
+      year: 2025,
+      category: "",
+      duration: "5:30",
+      price: "11.99",
+      rating: 5,
+      courseModules: [],
+    };
+    try {
+      await createCourse(newCourse);
+    } catch (error) {
+      console.error('Error creating course:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // CREATE MODULE
   const handleCreateModule = async (e) => {
@@ -137,6 +172,19 @@ const CourseEditor = () => {
       setLoading(false);
     }
   };
+
+  // DELETE COURSE
+  // const handleDeleteCourse = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     await deleteCourse(selectedCourse._id);
+  //   } catch (error) {
+  //     console.error("Error deleting course:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   // DELETE MODULE
   const handleDeleteModule = async (e) => {
@@ -276,88 +324,141 @@ const CourseEditor = () => {
           ''
         )}
       </div>
-      {/* Editor */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
+        {/* Editor */}
+        <div className="w-full max-w-3xl p-5 my-6 bg-background border border-gray-200 rounded-lg shadow mx-auto">
           <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
             Editor
           </h2>
           <form>
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              {/* Module */}
+            <div className="grid gap-4 sm:grid-cols-1 sm:gap-6">
+              {/* Course */}
+              <div className="p-3 border b-2 rounded-lg">
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="courseTitle"
+                    className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
+                  >
+                    Course title
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      onChange={handleCourseTitle}
+                      type="text"
+                      value={courseTitle}
+                      name="courseTitle"
+                      id="courseTitle"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      placeholder="Course title"
+                    />
+                  </div>
+                </div>
 
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="moduleTitle"
-                  className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
-                >
-                  Module title
-                </label>
-                <div className="mt-2">
-                  <input
-                    onChange={handleModuleTitle}
-                    type="text"
-                    value={moduleTitle}
-                    name="moduleTitle"
-                    id="moduleTitle"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
-                    placeholder="Module title"
-                  />
+                {/* Buttons Courses */}
+                <div className="flex gap-4 mt-6">
+                  {/* <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleUpdateCourseTitle}
+                  >
+                    Update Course
+                  </Button> */}
+
+                  <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleCreateCourse}
+                  >
+                    Create Course
+                  </Button>
+
+                  {/* <Button
+                    type="submit"
+                    variant="destructive"
+                    onClick={handleDeleteCourse}
+                  >
+                    Delete Course
+                  </Button> */}
                 </div>
               </div>
 
-              {/* Buttons Modules */}
-              <div className="flex gap-4 mt-6">
-                <Button
-                  type="submit"
-                  variant="submitFull"
-                  onClick={handleUpdateModuleTitle}
-                >
-                  Update Module
-                </Button>
+              {/* Module */}
+              <div className="p-3 border b-2 rounded-lg">
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="moduleTitle"
+                    className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
+                  >
+                    Module title
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      onChange={handleModuleTitle}
+                      type="text"
+                      value={moduleTitle}
+                      name="moduleTitle"
+                      id="moduleTitle"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      placeholder="Module title"
+                    />
+                  </div>
+                </div>
 
-                <Button
-                  type="submit"
-                  variant="submitFull"
-                  onClick={handleCreateModule}
-                >
-                  Create Module
-                </Button>
+                {/* Buttons Modules */}
+                <div className="flex gap-4 mt-6">
+                  <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleUpdateModuleTitle}
+                  >
+                    Update Module
+                  </Button>
 
-                <Button
-                  type="submit"
-                  variant="destructive"
-                  onClick={handleDeleteModule}
-                >
-                  Delete Module
-                </Button>
+                  <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleCreateModule}
+                  >
+                    Create Module
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    variant="destructive"
+                    onClick={handleDeleteModule}
+                  >
+                    Delete Module
+                  </Button>
+                </div>
               </div>
 
               {/* Lesson Title */}
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="lessonTitle"
-                  className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
-                >
-                  Lesson title
-                </label>
-                <div className="mt-2">
-                  <input
-                    onChange={handleLessonTitle}
-                    type="text"
-                    value={lessonTitle}
-                    name="lessonTitle"
-                    id="lessonTitle"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
-                    placeholder="Lesson title"
-                  />
+              <div className="p-3 border b-2 rounded-lg">
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="lessonTitle"
+                    className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
+                  >
+                    Lesson title
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      onChange={handleLessonTitle}
+                      type="text"
+                      value={lessonTitle}
+                      name="lessonTitle"
+                      id="lessonTitle"
+                      autoComplete="given-name"
+                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      placeholder="title"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Description */}
-              {/* <div className="sm:col-span-2">
+                {/* Description */}
+                {/* <div className="sm:col-span-2">
                 <label
                   htmlFor="description"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -372,51 +473,52 @@ const CourseEditor = () => {
                   className="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-purple-500 focus:border-purple-500 "
                   placeholder="Description"
                 ></textarea>
-              </div> */}
-              {/* Lesson content */}
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="lessonContent"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Lesson lessonContent
-                </label>
-                {/* @ts-ignore */}
-                <ReactQuill
-                  theme="snow"
-                  value={lessonContent}
-                  onChange={setLessonContent}
-                  modules={modules}
-                  formats={formats}
-                />
+                </div> */}
+                {/* Lesson content */}
+                <div className="mt-4 sm:col-span-2">
+                  <label
+                    htmlFor="lessonContent"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Lesson content
+                  </label>
+                  {/* @ts-ignore */}
+                  <ReactQuill
+                    theme="snow"
+                    value={lessonContent}
+                    onChange={setLessonContent}
+                    modules={modules}
+                    formats={formats}
+                  />
+                </div>
+
+                {/* Buttons Lessons */}
+                <div className="flex gap-4 mt-6">
+                  <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleUpdateLesson}
+                  >
+                    Update Lesson
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    variant="submitFull"
+                    onClick={handleCreateLesson}
+                  >
+                    Create Lesson
+                  </Button>
+
+                  <Button
+                    type="submit"
+                    variant="destructive"
+                    onClick={handleDeleteLesson}
+                  >
+                    Delete Lesson
+                  </Button>
+                </div>
               </div>
-            </div>
-
-            {/* Buttons Lessons */}
-            <div className="flex gap-4 mt-6">
-              <Button
-                type="submit"
-                variant="submitFull"
-                onClick={handleUpdateLesson}
-              >
-                Update Lesson
-              </Button>
-
-              <Button
-                type="submit"
-                variant="submitFull"
-                onClick={handleCreateLesson}
-              >
-                Create Lesson
-              </Button>
-
-              <Button
-                type="submit"
-                variant="destructive"
-                onClick={handleDeleteLesson}
-              >
-                Delete Lesson
-              </Button>
             </div>
           </form>
         </div>
@@ -424,7 +526,7 @@ const CourseEditor = () => {
         {/* {loading ? 'saving' : ''} */}
 
         {/* Preview */}
-        <div className="w-full max-w-3xl p-5 my-6 bg-white border border-gray-200 rounded-lg shadow mx-auto">
+        <div className="w-full max-w-3xl p-5 my-6 bg-background border border-gray-200 rounded-lg shadow mx-auto">
           <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
             Preview
           </h2>

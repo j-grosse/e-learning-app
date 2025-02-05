@@ -2,10 +2,10 @@ const Course = require('../models/course');
 
 const createCourse = async (req, res) => {
   try {
-    //req.user._id come from the auth middleware
+    //req.user._id comes from the auth middleware
     const newCourse = await Course.create({
       ...req.body,
-      createdBy: req.user._id,
+      // createdBy: req.user._id,
     });
     console.log(
       '🚀 ~ file: courses.js:6 ~ createCourse ~ newCourse:',
