@@ -1,8 +1,8 @@
 'use client';
 import { useContext, useEffect, useState } from 'react';
 import { CoursesContext } from '../../../context/CoursesContext';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 
@@ -79,15 +79,16 @@ const CourseEditor = () => {
     e.preventDefault();
     setLoading(true);
     const newCourse = {
-      id: "99",
+      id: '99',
       title: courseTitle,
-      description: "a",
-      tutor: "Jay",
-      image: "https://jaydatamusic.com/wp-content/uploads/2016/03/jay-data-674fm-copy.jpg",
+      description: 'a',
+      tutor: 'Jay',
+      image:
+        'https://jaydatamusic.com/wp-content/uploads/2016/03/jay-data-674fm-copy.jpg',
       year: 2025,
-      category: "",
-      duration: "5:30",
-      price: "11.99",
+      category: '',
+      duration: '5:30',
+      price: '11.99',
       rating: 5,
       courseModules: [],
     };
@@ -219,7 +220,7 @@ const CourseEditor = () => {
     toolbar: [
       [{ header: [1, 2, false] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ list: 'ordered' }],
       ['link', 'color', 'image'],
       [{ 'code-block': true }],
       ['clean'],
@@ -234,7 +235,6 @@ const CourseEditor = () => {
     'strike',
     'blockquote',
     'list',
-    'bullet',
     'link',
     'indent',
     'image',
@@ -330,7 +330,7 @@ const CourseEditor = () => {
           <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
             Editor
           </h2>
-          <form>
+          <div>
             <div className="grid gap-4 sm:grid-cols-1 sm:gap-6">
               {/* Course */}
               <div className="p-3 border b-2 rounded-lg">
@@ -482,7 +482,6 @@ const CourseEditor = () => {
                   >
                     Lesson content
                   </label>
-                  {/* @ts-ignore */}
                   <ReactQuill
                     theme="snow"
                     value={lessonContent}
@@ -520,7 +519,7 @@ const CourseEditor = () => {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
 
         {/* {loading ? 'saving' : ''} */}
