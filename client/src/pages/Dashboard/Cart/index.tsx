@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../../context/CartContext';
 import CartDetails from '../Checkout/CartDetails';
 
 const Cart = () => {

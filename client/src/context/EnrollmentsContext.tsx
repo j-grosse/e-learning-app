@@ -43,7 +43,7 @@ export const EnrollmentsProvider = ({ children }: { children: ReactNode }) => {
       const res = await axios.get(`/api/enrollments`);
       setEnrollments(res.data);
       setLoading(false);
-      console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
+      // console.log('Enrollments data from MongoDB Atlas:', '\n\n', res.data);
     } catch (e) {
       console.log(e);
       setLoading(false);
