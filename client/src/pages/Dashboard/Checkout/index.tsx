@@ -6,13 +6,13 @@ import CheckoutForm from './CheckoutForm';
 import PaymentSection from './PaymentSection';
 import CartDetails from './CartDetails';
 import { useCart } from '@/context/CartContext';
-import { useRemoveFromCart } from '../../context/CartContext';
+import { useRemoveFromCart } from '../../../context/CartContext';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   EnrollmentsContext,
   EnrollmentsContextType,
 } from '@/context/EnrollmentsContext';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {

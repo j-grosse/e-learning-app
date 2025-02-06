@@ -31,19 +31,75 @@ const CoursesProvider = ({ children }) => {
       const res = await axios.get(`/api/courses`);
       setCourses(res.data);
       setLoading(false);
-      console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
+      // console.log('Courses data from MongoDB Atlas:', '\n\n', res.data);
+      return res.data;
     } catch (e) {
       console.log(e);
       setLoading(false);
     }
   };
 
-  const createLesson = async (lesson) => {
+  const createCourse = async (newCourse) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/lessons', lesson);
+      const res = await axios.post('/api/courses', newCourse);
+      console.log('Course created:', res.data);
+      await fetchCourses(); // Reload courses after adding the new course
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const createModule = async (newModule, courseId) => {
+    setLoading(true);
+    try {
+      const res = await axios.post('/api/courseModules', newModule);
+      console.log('Module created:', res.data);
+      await addModule(res.data._id, courseId);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const addModule = async (newModuleId, courseId) => {
+    try {
+      const res = await axios.put(`/api/courses/${courseId}/addModule`, {
+        courseModuleId: newModuleId,
+      });
+      console.log('Module added to course:', res.data);
+      await fetchCourses(); // Reload courses after adding the module id
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const createLesson = async (newLesson, courseModuleId) => {
+    setLoading(true);
+    try {
+      const res = await axios.post('/api/lessons', newLesson);
       console.log('Lesson created:', res.data);
-      // TODO: implement add lesson to courseModules controller and route in courseModules backend
+      await addLesson(res.data._id, courseModuleId);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const addLesson = async (newLessonId, courseModuleId) => {
+    try {
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}/addLesson`,
+        { lessonId: newLessonId }
+      );
+      console.log('Lesson added to course module:', res.data);
+      await fetchCourses(); // Reload courses after adding the lesson id
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -56,6 +112,7 @@ const CoursesProvider = ({ children }) => {
     try {
       const res = await axios.put(`/api/lessons/${lessonId}`, lesson);
       console.log('Lesson updated:', res.data);
+      await fetchCourses(); // Reload courses after updating a lesson
       setLoading(false);
     } catch (error) {
       console.log(error.response);
@@ -63,19 +120,128 @@ const CoursesProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (courses === null) {
-      // loadMockarooData();
-      fetchCourses();
+  const updateModule = async (courseModule, courseModuleId) => {
+    setLoading(true);
+    try {
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}`,
+        courseModule
+      );
+      console.log('Module updated:', res.data);
+      await fetchCourses(); // Reload courses after updating a course module
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
     }
-  }, [courses]);
+  };
+
+  const deleteLesson = async (lessonId, courseModuleId) => {
+    setLoading(true);
+    try {
+      const res = await axios.delete(`/api/lessons/${lessonId}`);
+      console.log('Lesson deleted:', res.data);
+      await removeLesson(lessonId, courseModuleId);
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeLesson = async (lessonId, courseModuleId) => {
+    try {
+      const res = await axios.put(
+        `/api/courseModules/${courseModuleId}/removeLesson`,
+        { lessonId: lessonId }
+      );
+      console.log(
+        'Lesson removed from course module lessons array:',
+        res.data.lessons
+      );
+      await fetchCourses(); // Reload courses after adding the lesson id
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  // DELETE MODULE
+
+  const deleteModule = async (courseModuleId, courseId) => {
+    setLoading(true);
+    try {
+      await removeLessonsFromModule(courseModuleId); // remove all
+      await removeModuleFromCourse(courseModuleId, courseId);
+
+      const res = await axios.delete(`/api/courseModules/${courseModuleId}`);
+      console.log('Module deleted:', res.data);
+      await fetchCourses(); // Reload courses after adding the lesson id
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeLessonsFromModule = async (courseModuleId) => {
+    try {
+      const res = await axios.delete(
+        `/api/lessons/deleteLessons/${courseModuleId}`
+      );
+      console.log(
+        'All lessons associated with the course module were deleted:',
+        res.data
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  const removeModuleFromCourse = async (courseModuleId, courseId) => {
+    try {
+      const res = await axios.put(`/api/courses/${courseId}/removeModule`, {
+        courseModuleId: courseModuleId,
+      });
+      console.log(
+        `Module with ${courseModuleId} removed from course's courseModules array:`,
+        res.data
+      );
+      setLoading(false);
+    } catch (error) {
+      console.log(error.response);
+      setLoading(false);
+    }
+  };
+
+  // END DELETE MODULE
+
+  useEffect(() => {
+    // if (courses === null) {
+    // loadMockarooData();
+    fetchCourses();
+    // }
+  }, []);
 
   return (
     <>
       {/* {console.log('content of courses context:', { courses })} */}
 
       <CoursesContext.Provider
-        value={{ courses, loading, createLesson, updateLesson }}
+        value={{
+          courses,
+          loading,
+          createCourse,
+          createModule,
+          createLesson,
+          updateModule,
+          updateLesson,
+          deleteModule,
+          deleteLesson,
+        }}
       >
         {children}
       </CoursesContext.Provider>

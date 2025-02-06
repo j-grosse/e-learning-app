@@ -2,10 +2,10 @@ const Course = require('../models/course');
 
 const createCourse = async (req, res) => {
   try {
-    //req.user._id come from the auth middleware
+    //req.user._id comes from the auth middleware
     const newCourse = await Course.create({
       ...req.body,
-      createdBy: req.user._id,
+      // createdBy: req.user._id,
     });
     console.log(
       '🚀 ~ file: courses.js:6 ~ createCourse ~ newCourse:',
@@ -87,6 +87,54 @@ const updateCourse = async (req, res) => {
   }
 };
 
+const addCourseModule = async (req, res) => {
+  try {
+    const {
+      params: { id },
+      body: { courseModuleId },
+    } = req;
+
+    const updatedCourseModule = await Course.findOneAndUpdate(
+      { _id: id },
+      { $addToSet: { courseModules: { _id: courseModuleId } } }, // Add moduleId object to courseModules array if it doesn't exist
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    if (!updatedCourseModule) {
+      return res.status(404).json({ message: 'Course module not found' });
+    }
+    res.json(updatedCourseModule);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const removeCourseModule = async (req, res) => {
+  try {
+    const {
+      params: { id },
+      body: { courseModuleId },
+    } = req;
+
+    const updatedCourseModule = await Course.findOneAndUpdate(
+      { _id: id },
+      { $pull: { courseModules: { _id: courseModuleId } } }, // Remove moduleId object from courseModules array if it exists
+      {
+        new: true, // Return the updated document
+      }
+    );
+
+    if (!updatedCourseModule) {
+      return res.status(404).json({ message: 'Course module not found in course' });
+    }
+    res.json(updatedCourseModule);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 const deleteCourse = async (req, res) => {
   try {
     const {
@@ -112,5 +160,7 @@ module.exports = {
   getAllCourses,
   getCourseById,
   updateCourse,
+  addCourseModule,
+  removeCourseModule,
   deleteCourse,
 };

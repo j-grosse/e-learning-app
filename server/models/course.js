@@ -16,7 +16,7 @@ const courseSchema = new mongoose.Schema(
     year: { type: Number, required: [true, 'Year is required!'] },
     category: { type: String },
     duration: {
-      type: Number,
+      type: String,
       required: [true, 'Duration is required!'],
     },
     price: { type: String, required: [true, 'Price is required!'] },

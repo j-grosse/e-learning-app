@@ -1,6 +1,6 @@
 import { columns } from '@/components/ui/columns';
 import { DataTable } from '@/components/ui/data-table';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../../context/CartContext';
 
 const CartDetails = () => {
   const selectedCourses = useCart();
