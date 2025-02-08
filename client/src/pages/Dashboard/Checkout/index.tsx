@@ -54,7 +54,7 @@ const Checkout = () => {
 
   return (
     <div>
-      <div className="checkout-form__info__returningCustomer hidden flex gap-4 mb-4 items-center">
+      {/* <div className="checkout-form__info__returningCustomer hidden flex gap-4 mb-4 items-center">
         <p>Returning customer?</p>
         <button
           className="info-toggle text-white bg-blue-500 inline-flex items-center hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg"
@@ -63,7 +63,7 @@ const Checkout = () => {
         >
           Click here to login
         </button>
-      </div>
+      </div> */}
       <CartDetails />
 
       {countryList && (

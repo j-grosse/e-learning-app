@@ -26,9 +26,9 @@ const CourseLayout = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="flex flex-wrap gap-8">
+    <div className="flex flex-wrap gap-12">
       {/* Course TOC */}
-      <div className="md:w-3/12 max-w-[200px]">
+      <div className="md:w-4/12 max-w-[200px]">
         {course && (
           <CourseIndex
             user={context.user}
@@ -38,7 +38,7 @@ const CourseLayout = () => {
         )}
       </div>
       {/* Course Content */}
-      <div className="md:w-9/12 max-w-[500px]">
+      <div className="md:w-8/12 max-w-[500px]">
         {/* list selected lesson */}
         {selectedLesson ? (
           <CourseContent course={course} selectedLesson={selectedLesson} />

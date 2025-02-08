@@ -81,7 +81,7 @@ const Header = () => {
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
       <nav className="relative shadow-sm bg-gradient-to-r from-black to-primary">
-        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:pr-6 py-2 max-w-screen-xxl shadow-lg">
+        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:pr-6 py-2 max-w-screen-2xl shadow-lg">
           {/* Logo */}
           <div>
             <div className="text-md font-bold text-primary-800 whitespace-nowrap dark:text-white transition-transform duration-200 transform hover:scale-105">

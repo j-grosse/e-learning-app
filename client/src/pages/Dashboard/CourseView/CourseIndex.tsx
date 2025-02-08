@@ -34,7 +34,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
   if (!course) return <div>Loading...</div>;
 
   return (
-    <>
+    <div className="min-w-48 border rounded-lg p-3">
       <div className="cursor-pointer" onClick={() => setSelectedLesson('')}>
         <h2>{course.title}</h2>
       </div>
@@ -42,55 +42,67 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
         <p className="mb-2">Progress: 33/100 </p>
         <ProgressDemo value={33} />
       </div>
-      <p className="text-lg">Modules</p>
+      <p className="text-2xl">Modules</p>
       {/* modules */}
       {course.courseModules.map((module) => (
-        <Accordion key={module._id} type="single" collapsible>
-          <AccordionItem value={module._id}>
-            <AccordionTrigger>
-              <p className="text-left">{module.title}</p>
-            </AccordionTrigger>
-            <AccordionContent>
-              {/* lessons */}
-              {module.lessons &&
-                (module.lessons.length > 1 ? (
-                  module.lessons.map((lesson) => (
-                    <React.Fragment key={lesson._id}>
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => setSelectedLesson(lesson._id)}
-                      >
-                        <p>{lesson.title}</p>
-                      </div>
-                      {/* <Link
+        <ol className="ml-6 text-xl list-decimal">
+          <li>
+            <Accordion key={module._id} type="single" collapsible>
+              <AccordionItem value={module._id}>
+                <AccordionTrigger>
+                  <p className="text-left">{module.title}</p>
+                </AccordionTrigger>
+                  {/* lessons */}
+                <AccordionContent>
+                  {module.lessons &&
+                    (module.lessons.length > 1 ? (
+                      module.lessons.map((lesson) => (
+                        <ol className="ml-6 text-lg list-decimal">
+                          <li>
+                            <React.Fragment key={lesson._id}>
+                              <div
+                                className="cursor-pointer hover:text-gray-500"
+                                onClick={() => setSelectedLesson(lesson._id)}
+                              >
+                                <p>{lesson.title}</p>
+                              </div>
+                              {/* <Link
                         to={`/lessons/${lesson._id}`}
                         onClick={() => setSelectedLesson(lesson._id)}
                       >
                         lesson link
                       </Link> */}
-                    </React.Fragment>
-                  ))
-                ) : module.lessons[0] !== undefined ? (
-                  <React.Fragment key={module.lessons[0]._id}>
-                    <div
-                      className="cursor-pointer"
-                      onClick={() => setSelectedLesson(module.lessons[0]._id)}
-                    >
-                      <p>{module.lessons[0].title}</p>
-                    </div>
-                    <Link
-                      to={`/lessons/${module.lessons[0]._id}`}
-                      onClick={() => setSelectedLesson(module.lessons[0]._id)}
-                    ></Link>
-                  </React.Fragment>
-                ) : (
-                  ''
-                ))}
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
+                            </React.Fragment>
+                          </li>
+                        </ol>
+                      ))
+                    ) : module.lessons[0] !== undefined ? (
+                      <React.Fragment key={module.lessons[0]._id}>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() =>
+                            setSelectedLesson(module.lessons[0]._id)
+                          }
+                        >
+                          <p>{module.lessons[0].title}</p>
+                        </div>
+                        <Link
+                          to={`/lessons/${module.lessons[0]._id}`}
+                          onClick={() =>
+                            setSelectedLesson(module.lessons[0]._id)
+                          }
+                        ></Link>
+                      </React.Fragment>
+                    ) : (
+                      ''
+                    ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </li>
+        </ol>
       ))}
-    </>
+    </div>
   );
 };
 
