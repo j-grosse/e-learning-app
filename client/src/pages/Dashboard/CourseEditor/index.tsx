@@ -5,6 +5,7 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
+import CourseCardMiniList from '@/components/common/CourseCardMiniList';
 
 const CourseEditor = () => {
   const {
@@ -245,34 +246,12 @@ const CourseEditor = () => {
   return (
     <div>
       <div className="flex flex-wrap gap-4">
-        {/* Courses */}
-        <div className="max-w-2xl p-6 mb-3 border rounded-lg shadow-lg">
-          <h2 className="pb-3">My Courses</h2>
-          <div className="flex flex-wrap gap-4">
-            {courses
-              ? courses.map((course) => (
-                  <div
-                    key={course._id}
-                    className={`p-1 w-24 text-sm overflow-hidden border rounded-lg mt-2 cursor-pointer shadow-lg transition-transform duration-200 transform hover:scale-105 ${
-                      course === selectedCourse
-                        ? 'bg-primary text-secondary'
-                        : 'hover:bg-secondary'
-                    }`}
-                    onClick={() => handleCourseSelect(course)}
-                  >
-                    <img
-                      className="h-20 object-cover rounded-md mx-auto pt-1"
-                      src={course.image}
-                      width="100"
-                      alt="courseImage"
-                    />
-                    <p className="p-1">{course.title}</p>
-                  </div>
-                ))
-              : ''}
-          </div>
-        </div>
-
+        <CourseCardMiniList
+          courses={courses}
+          handleCourseSelect={handleCourseSelect}
+          selectedCourse={selectedCourse}
+          title="My Courses"
+        />
         {/* Modules */}
         <div>
           {selectedCourse ? (

@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext.tsx';
 import { CoursesContext } from '@/context/CoursesContext.tsx';
 import { EnrollmentsContext } from '../../../context/EnrollmentsContext.tsx';
-import CourseCardList from '@/pages/Home/CourseCardList.tsx';
+// import CourseCardList from '@/pages/Home/CourseCardList.tsx';
+import CourseCardMiniList from '@/components/common/CourseCardMiniList.tsx';
 // import CourseIndex from './CourseIndex.tsx';
 // import CourseContent from './CourseContent.tsx';
 
@@ -12,15 +13,13 @@ const EnrollmentsLayout: React.FC = () => {
   const { courses, loading: coursesLoading } = useContext(CoursesContext);
   const { enrollments, loading: enrollmentsLoading } =
     useContext(EnrollmentsContext);
-
+  const [selectedCourse, setSelectedCourse] = useState(null);
   const [myCourses, setMyCourses] = useState<typeof courses>([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    if (
-      !authLoading &&
-      !coursesLoading &&
-      !enrollmentsLoading
-    ) {
+    if (!authLoading && !coursesLoading && !enrollmentsLoading) {
       const userId = user._id;
 
       const myEnrollments = enrollments.filter((el) => el.userId === userId);
@@ -53,6 +52,11 @@ const EnrollmentsLayout: React.FC = () => {
     enrollments,
   ]);
 
+  const handleCourseSelect = (course) => {
+    setSelectedCourse(course);
+    navigate(`/dashboard/course/${course.id}`);
+  };
+
   if (authLoading || coursesLoading || enrollmentsLoading) {
     return <p>Loading...</p>;
   }
@@ -65,8 +69,14 @@ const EnrollmentsLayout: React.FC = () => {
   return (
     <div>
       {myCourses.length > 0 ? (
-        <CourseCardList courses={myCourses} />
+        <CourseCardMiniList
+          courses={myCourses}
+          handleCourseSelect={handleCourseSelect}
+          selectedCourse={selectedCourse}
+          title="My Enrollments"
+        />
       ) : (
+        // <CourseCardList courses={myCourses} />
         <p className="mt-8 text-center">You are not enrolled in any courses.</p>
       )}
     </div>
