@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AuthContext } from '@/context/AuthContext';
 import {
   FaCheck,
   FaClock,
@@ -14,20 +16,33 @@ import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 
 const CourseSidebar = ({ course }) => {
+  const { user } = useContext(AuthContext);
   const addToCart = useAddToCart();
   const { toast } = useToast();
 
   const handleAddToCart = () => {
-    addToCart(course);
-    toast({
-      title: 'Course Added',
-      description: `You added ${course.title} by ${course.tutor} to your cart!`,
-      action: (
-        <Link to={'/dashboard/cart'}>
-          <Button onClick={() => window.scrollTo(0, 0)}>View Cart</Button>
-        </Link>
-      ),
-    });
+    if (!user) {
+      toast({
+        title: 'Login Required',
+        description: 'Please login to add courses to your cart',
+        action: (
+          <Link to={'/login'}>
+            <Button onClick={() => window.scrollTo(0, 0)}>Login</Button>
+          </Link>
+        ),
+      });
+    } else {
+      addToCart(course);
+      toast({
+        title: 'Course Added',
+        description: `You added ${course.title} by ${course.tutor} to your cart!`,
+        action: (
+          <Link to={'/dashboard/cart'}>
+            <Button onClick={() => window.scrollTo(0, 0)}>View Cart</Button>
+          </Link>
+        ),
+      });
+    }
   };
 
   return (
@@ -140,7 +155,6 @@ const CourseSidebar = ({ course }) => {
               </div>
             </div>
             {/* <!-- Tutor Course Price Preview End --> */}
-
           </div>
           {/* <!-- Tutor Course Sidebar End --> */}
         </div>
