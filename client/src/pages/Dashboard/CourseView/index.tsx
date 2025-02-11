@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext.tsx';
 import { CoursesContext } from '../../../context/CoursesContext.tsx';
 import CourseIndex from './CourseIndex.tsx';
 import CourseContent from './CourseContent.tsx';
+import { Button } from '@/components/ui/button.tsx';
 
 /**
  *
@@ -28,8 +29,12 @@ const CourseLayout = () => {
   return (
     <div className="flex flex-wrap gap-12">
       {/* Course TOC */}
-      <div className="md:w-4/12 max-w-[200px]">
+      <div className="md:w-4/12 max-w-[200px] min-w-48 border rounded-lg p-3">
+        <Link to="/dashboard/enrollments">
+        <p className="pb-3 mx-auto hover:text-gray-500">&lt; back</p>
+        </Link>
         {course && (
+
           <CourseIndex
             user={context.user}
             course={course}
@@ -38,7 +43,7 @@ const CourseLayout = () => {
         )}
       </div>
       {/* Course Content */}
-      <div className="md:w-8/12 max-w-[500px]">
+      <div className="md:w-8/12 max-w-[500px] border rounded-lg p-4">
         {/* list selected lesson */}
         {selectedLesson ? (
           <CourseContent course={course} selectedLesson={selectedLesson} />
