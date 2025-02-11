@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../context/AuthContext.tsx';
+import { AuthContext } from '@/context/AuthContext.tsx';
 import { CoursesContext } from '@/context/CoursesContext.tsx';
-import { EnrollmentsContext } from '../../../context/EnrollmentsContext.tsx';
+import { EnrollmentsContext } from '@/context/EnrollmentsContext.tsx';
 // import CourseCardList from '@/pages/Home/CourseCardList.tsx';
 import CourseCardMiniList from '@/components/common/CourseCardMiniList.tsx';
 // import CourseIndex from './CourseIndex.tsx';
@@ -60,11 +60,6 @@ const EnrollmentsLayout: React.FC = () => {
   if (authLoading || coursesLoading || enrollmentsLoading) {
     return <p>Loading...</p>;
   }
-  // console.log('myEnrollments:', myEnrollments);
-  // console.log('myCourses:', myCourses);
-  // console.log('user:', context.user);
-  // console.log('user _id:', context.user._id);
-  // console.log('current enrollment progress:', myEnrollments.progress);
 
   return (
     <div>
