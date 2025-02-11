@@ -5,6 +5,7 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
+import CourseCardMiniList from '@/components/common/CourseCardMiniList';
 
 const CourseEditor = () => {
   const {
@@ -244,97 +245,79 @@ const CourseEditor = () => {
 
   return (
     <div>
-      {/* Courses */}
-      <h2 className="pb-4">My Courses</h2>
       <div className="flex flex-wrap gap-4">
-        {courses
-          ? courses.map((course) => (
-              <div
-                key={course._id}
-                className={
-                  course === selectedCourse
-                    ? 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-white bg-primary'
-                    : 'p-1 w-24 text-sm border b-2 rounded-md shadow-md mt-2 cursor-pointer text-foreground hover:text-gray-500'
-                }
-                onClick={() => handleCourseSelect(course)}
+        <CourseCardMiniList
+          courses={courses}
+          handleCourseSelect={handleCourseSelect}
+          selectedCourse={selectedCourse}
+          title="My Courses"
+        />
+        {/* Modules */}
+        <div>
+          {selectedCourse ? (
+            <div className="p-4 mb-6 w-screen max-w-2xl border rounded-lg shadow-lg">
+              <h2 className="pb-3">Modules</h2>
+              <ol
+                key={selectedCourse._id}
+                className="ml-8 mb-3 text-xl list-decimal"
               >
-                <img
-                  className="h-20 object-cover"
-                  src={course.image}
-                  width="100"
-                  alt="courseImage"
-                />
-                <p>{course.title}</p>
-              </div>
-            ))
-          : ''}
+                {selectedCourse.courseModules
+                  ? selectedCourse.courseModules.map((courseModule) => (
+                      <li
+                        key={courseModule._id}
+                        onClick={() => handleModuleSelect(courseModule)}
+                        className={`mt-2 cursor-pointer hover:text-gray-500 ${
+                          courseModule === selectedModule
+                            ? 'font-extrabold'
+                            : 'text-foreground'
+                        }`}
+                      >
+                        <h3>{courseModule.title}</h3>
+
+                        {/* Lessons */}
+                        {courseModule === selectedModule ? (
+                          <ol
+                            key={courseModule._id + '-lessons'}
+                            className="ml-4 text-lg list-decimal"
+                          >
+                            {selectedModule.lessons.map((lesson) => (
+                              <li
+                                key={lesson._id}
+                                onClick={() => handleLessonSelect(lesson)}
+                                className={
+                                  lesson === selectedLesson
+                                    ? 'ml-3 cursor-pointer text-primary'
+                                    : 'ml-3 cursor-pointer text-foreground hover:text-gray-500'
+                                }
+                              >
+                                {lesson.title}
+                              </li>
+                            ))}
+                          </ol>
+                        ) : (
+                          ''
+                        )}
+                      </li>
+                    ))
+                  : ''}
+              </ol>
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
 
-      {/* Modules and Lessons */}
-      <div>
-        {courses && selectedCourse ? (
-          <div className="p-4 mt-8 w-64 border b-2 rounded-md shadow-md">
-            <h2>Modules</h2>
-            <hr />
-
-            {/* Modules */}
-            <ol key={selectedCourse._id} className="ml-3 list-decimal">
-              {selectedCourse.courseModules
-                ? selectedCourse.courseModules.map((courseModule) => (
-                    <li
-                      key={courseModule._id}
-                      onClick={() => handleModuleSelect(courseModule)}
-                      className={
-                        courseModule === selectedModule
-                          ? 'mt-2 cursor-pointer text-primary'
-                          : 'mt-2 cursor-pointer text-foreground hover:text-gray-500'
-                      }
-                    >
-                      <h3>{courseModule.title}</h3>
-
-                      {/* Lessons */}
-                      {courseModule === selectedModule ? (
-                        <ol
-                          key={courseModule._id + '-lessons'}
-                          className="list-decimal"
-                        >
-                          {selectedModule.lessons.map((lesson) => (
-                            <li
-                              key={lesson._id}
-                              onClick={() => handleLessonSelect(lesson)}
-                              className={
-                                lesson === selectedLesson
-                                  ? 'ml-3 cursor-pointer text-primary'
-                                  : 'ml-3 cursor-pointer text-foreground hover:text-gray-500'
-                              }
-                            >
-                              {lesson.title}
-                            </li>
-                          ))}
-                        </ol>
-                      ) : (
-                        ''
-                      )}
-                    </li>
-                  ))
-                : ''}
-            </ol>
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* Editor */}
-        <div className="w-full max-w-3xl p-5 my-6 bg-background border border-gray-200 rounded-lg shadow mx-auto">
-          <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
-            Editor
-          </h2>
+      {/* Editor */}
+      <div className="flex flex-wrap gap-4">
+        <div className="w-full max-w-2xl p-6 bg-background border rounded-lg shadow-lg">
+          <h2 className="pb-3">Editor</h2>
           <div>
-            <div className="grid gap-4 sm:grid-cols-1 sm:gap-6">
+            <div>
               {/* Course */}
-              <div className="p-3 border b-2 rounded-lg">
-                <div className="sm:col-span-2">
+
+              <div className="p-3 mb-6 border rounded-lg">
+                <div className="">
                   <label
                     htmlFor="courseTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
@@ -349,14 +332,14 @@ const CourseEditor = () => {
                       name="courseTitle"
                       id="courseTitle"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-lg border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
                       placeholder="Course title"
                     />
                   </div>
                 </div>
 
                 {/* Buttons Courses */}
-                <div className="flex gap-4 mt-6">
+                <div className="flex flew-wrap gap-4 my-6">
                   {/* <Button
                     type="submit"
                     variant="submitFull"
@@ -384,8 +367,9 @@ const CourseEditor = () => {
               </div>
 
               {/* Module */}
-              <div className="p-3 border b-2 rounded-lg">
-                <div className="sm:col-span-2">
+
+              <div className="p-3 border rounded-lg mb-6">
+                <div>
                   <label
                     htmlFor="moduleTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
@@ -400,14 +384,15 @@ const CourseEditor = () => {
                       name="moduleTitle"
                       id="moduleTitle"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-lg border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
                       placeholder="Module title"
                     />
                   </div>
                 </div>
 
                 {/* Buttons Modules */}
-                <div className="flex gap-4 mt-6">
+
+                <div className="flex flew-wrap gap-4 my-6">
                   <Button
                     type="submit"
                     variant="submitFull"
@@ -435,8 +420,9 @@ const CourseEditor = () => {
               </div>
 
               {/* Lesson Title */}
-              <div className="p-3 border b-2 rounded-lg">
-                <div className="sm:col-span-2">
+
+              <div className="p-3 border rounded-lg">
+                <div>
                   <label
                     htmlFor="lessonTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
@@ -451,14 +437,15 @@ const CourseEditor = () => {
                       name="lessonTitle"
                       id="lessonTitle"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-lg border-0 py-2 px-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6"
                       placeholder="title"
                     />
                   </div>
                 </div>
 
                 {/* Description */}
-                {/* <div className="sm:col-span-2">
+
+                {/* <div>
                 <label
                   htmlFor="description"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -474,8 +461,10 @@ const CourseEditor = () => {
                   placeholder="Description"
                 ></textarea>
                 </div> */}
+
                 {/* Lesson content */}
-                <div className="mt-4 sm:col-span-2">
+
+                <div className="mt-4">
                   <label
                     htmlFor="lessonContent"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -492,7 +481,8 @@ const CourseEditor = () => {
                 </div>
 
                 {/* Buttons Lessons */}
-                <div className="flex gap-4 mt-6">
+
+                <div className="flex flew-wrap gap-4 my-6">
                   <Button
                     type="submit"
                     variant="submitFull"
@@ -525,29 +515,30 @@ const CourseEditor = () => {
         {/* {loading ? 'saving' : ''} */}
 
         {/* Preview */}
-        <div className="w-full max-w-3xl p-5 my-6 bg-background border border-gray-200 rounded-lg shadow mx-auto">
-          <h2 className="text-3xl font-bold border-b border-gray-400 pb-2 mb-5 ">
-            Preview
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+
+        <div className="w-full max-w-2xl p-6 border border-gray-200 rounded-lg shadow-lg">
+          <h2 className="pb-3">Preview</h2>
+          <div className="border rounded-lg p-4">
             {/* Lesson title */}
-            <div className="sm:col-span-2">
+
+            <div>
               {/* <h2 className="block text-sm font-medium leading-6 text-gray-900 mb-2 ">
                 Lesson title
               </h2> */}
               <div>
-                <p className="text-2xl font-bold">{lessonTitle}</p>
+                <p className="text-2xl font-bold mb-3">{lessonTitle}</p>
               </div>
             </div>
 
             {/* Description */}
-            {/* <div className="sm:col-span-2">
+
+            {/* <div>
               <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Description
               </h2>
               <p>{description}</p>
             </div> */}
-            <div className="sm:col-span-full">
+            <div>
               {/* <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Lesson content
               </h2> */}

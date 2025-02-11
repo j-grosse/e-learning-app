@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FaGift } from 'react-icons/fa';
+import { useContext, useEffect, useState } from 'react';
 import * as countries from 'i18n-iso-countries';
 import * as english from 'i18n-iso-countries/langs/en.json';
 import CheckoutForm from './CheckoutForm';
@@ -36,7 +35,7 @@ const Checkout = () => {
         };
         await enroll(enrollment);
         removeFromCart(course);
-        navigate('/dashboard/enrollments');
+        navigate('/dashboard/course');
       }
       console.log('Enrollments created successfully in DB');
     } catch (error) {
@@ -54,7 +53,7 @@ const Checkout = () => {
 
   return (
     <div>
-      <div className="checkout-form__info__returningCustomer hidden flex gap-4 mb-4 items-center">
+      {/* <div className="checkout-form__info__returningCustomer hidden flex gap-4 mb-4 items-center">
         <p>Returning customer?</p>
         <button
           className="info-toggle text-white bg-blue-500 inline-flex items-center hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-lg"
@@ -63,7 +62,7 @@ const Checkout = () => {
         >
           Click here to login
         </button>
-      </div>
+      </div> */}
       <CartDetails />
 
       {countryList && (

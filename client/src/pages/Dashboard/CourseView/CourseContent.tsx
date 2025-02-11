@@ -25,7 +25,11 @@ const CourseContent = ({ course, selectedLesson }) => {
             <img src={VideoPlaceholder} alt="video placeholder" />
           )} */}
           <br />
-          <div dangerouslySetInnerHTML={{ __html: lesson.text }} />
+          {/* //TODO: add satitizing for lesson text */}
+          <div
+            dangerouslySetInnerHTML={{ __html: lesson.text }}
+            className="w-32"
+          />
         </div>
       ) : (
         <p>Lesson not found</p>

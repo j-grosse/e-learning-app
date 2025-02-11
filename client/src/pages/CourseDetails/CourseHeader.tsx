@@ -18,7 +18,7 @@ const CourseHeader = ({ course }) => {
               {course.category}
             </a>
           </div>
-          <h1 className="text-3xl tutor-course-top-info__title">
+          <h1 className="tutor-course-top-info__title">
             {course ? course.title : 'No course with this id found'}
           </h1>
 

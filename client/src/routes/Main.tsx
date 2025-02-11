@@ -4,7 +4,7 @@ import AnimatedPage from '../components/AnimatedPage';
 import Home from '../pages/Home';
 import About from '@/pages/About';
 import NotFound from '../pages/NotFound';
-import Login from '../pages/Login/Login';
+import Login from '../pages/Login';
 import Register from '../pages/Login/Register';
 
 import ProtectedRoute from './ProtectedRoute';
@@ -26,7 +26,7 @@ const Main = () => {
   return (
     <AnimatedPage>
       <AnimatePresence mode="sync">
-        <main>
+        <main className="flex-grow">
           <Routes key={location.pathname} location={location}>
             {/* <Switch> */}
 
@@ -52,7 +52,7 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
-              <Route path="enrollments" element={<EnrollmentsLayout />} />
+              <Route path="course" element={<EnrollmentsLayout />} />
               <Route path="course/:id" element={<CourseLayout />} />
               <Route path="editor" element={<CourseEditor />} />
               <Route path="cart" element={<Cart />} />

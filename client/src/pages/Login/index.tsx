@@ -23,13 +23,13 @@ const Login = () => {
     console.log('CONTEXT', context);
     context.login(user);
     setLoading(false);
-    navigate('/dashboard/enrollments');
+    navigate('/dashboard/course');
   };
 
   if (loading) return <p>Loading...</p>;
 
   if (!context.loading && context.user) {
-    navigate('/dashboard/enrollments');
+    navigate('/dashboard/course');
   }
 
   // if (!context.loading && !context.user) {

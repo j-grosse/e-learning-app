@@ -37,7 +37,7 @@ const CourseAbout = ({ course }) => {
                   >
                     <div className="prerequisites-item__thumbnail">
                       <img
-                        className="rounded-md"
+                        className="rounded-lg"
                         src={course.image}
                         alt="Courses"
                         width="70"
