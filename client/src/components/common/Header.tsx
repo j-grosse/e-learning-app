@@ -46,7 +46,7 @@ const Header = () => {
         <>
           <NavLink
             className={navLinkStyle}
-            to="/dashboard/enrollments"
+            to="/dashboard/course"
             onClick={isMenuOpen ? toggleMenu : null}
           >
             Dashboard
@@ -133,7 +133,7 @@ const Header = () => {
                   </NavLink>
                   {/*  <NavLink
                     className={navLinkStyle}
-                    to="/dashboard/enrollments"
+                    to="/dashboard/course"
                     onClick={toggleMenu}
                   >
                     Contact

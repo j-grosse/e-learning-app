@@ -52,7 +52,7 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
-              <Route path="enrollments" element={<EnrollmentsLayout />} />
+              <Route path="course" element={<EnrollmentsLayout />} />
               <Route path="course/:id" element={<CourseLayout />} />
               <Route path="editor" element={<CourseEditor />} />
               <Route path="cart" element={<Cart />} />

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { FaGift } from 'react-icons/fa';
+import { useContext, useEffect, useState } from 'react';
 import * as countries from 'i18n-iso-countries';
 import * as english from 'i18n-iso-countries/langs/en.json';
 import CheckoutForm from './CheckoutForm';
@@ -36,7 +35,7 @@ const Checkout = () => {
         };
         await enroll(enrollment);
         removeFromCart(course);
-        navigate('/dashboard/enrollments');
+        navigate('/dashboard/course');
       }
       console.log('Enrollments created successfully in DB');
     } catch (error) {
