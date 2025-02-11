@@ -52,11 +52,11 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                 <AccordionTrigger>
                   <p className="text-left">{module.title}</p>
                 </AccordionTrigger>
-                  {/* lessons */}
-                <AccordionContent>
-                  {module.lessons &&
-                    (module.lessons.length > 1 ? (
-                      module.lessons.map((lesson) => (
+                {/* lessons */}
+                {module.lessons &&
+                  (module.lessons.length > 1 ? (
+                    module.lessons.map((lesson) => (
+                      <AccordionContent key={lesson._id}>
                         <ol className="ml-6 text-lg list-decimal">
                           <li>
                             <React.Fragment key={lesson._id}>
@@ -75,8 +75,10 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                             </React.Fragment>
                           </li>
                         </ol>
-                      ))
-                    ) : module.lessons[0] !== undefined ? (
+                      </AccordionContent>
+                    ))
+                  ) : module.lessons[0] !== undefined ? (
+                    <AccordionContent key={module.lessons[0]._id}>
                       <React.Fragment key={module.lessons[0]._id}>
                         <div
                           className="cursor-pointer"
@@ -93,10 +95,10 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                           }
                         ></Link>
                       </React.Fragment>
-                    ) : (
-                      ''
-                    ))}
-                </AccordionContent>
+                    </AccordionContent>
+                  ) : (
+                    ''
+                  ))}
               </AccordionItem>
             </Accordion>
           </li>
