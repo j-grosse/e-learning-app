@@ -34,7 +34,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
   if (!course) return <div>Loading...</div>;
 
   return (
-    <div className="min-w-48 border rounded-lg p-3">
+    <div>
       <div className="cursor-pointer" onClick={() => setSelectedLesson('')}>
         <h2>{course.title}</h2>
       </div>

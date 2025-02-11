@@ -26,7 +26,10 @@ const CourseContent = ({ course, selectedLesson }) => {
           )} */}
           <br />
           {/* //TODO: add satitizing for lesson text */}
-          <div dangerouslySetInnerHTML={{ __html: lesson.text }} className="w-32"/>
+          <div
+            dangerouslySetInnerHTML={{ __html: lesson.text }}
+            className="w-32"
+          />
         </div>
       ) : (
         <p>Lesson not found</p>
