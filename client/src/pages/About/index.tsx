@@ -1,7 +1,6 @@
 const About = () => {
   return (
-    <section className="flex flex-col flex-grow  bg-secondary dark:bg-background">
-      <div className="py-2 px-4 mx-auto lg:py-8 lg:px-6">
+      <div className="bg-background dark:bg-background py-2 px-4 mx-auto lg:py-8 lg:px-6">
         <div className="mx-auto">
           <h1 className="text-center mt-6 mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-primary-500">
             iCreate Courses
@@ -51,7 +50,6 @@ const About = () => {
           
         </div>
       </div>
-    </section>
   );
 };
 

@@ -14,15 +14,14 @@ const NotFound = () => {
             Something's missing.
           </h1>
           <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-            Sorry, we can't find that page. You'll find lots to explore on the
-            home page.
+            Sorry, we can't find that page.
           </p>
           <Button variant="submitFull" className="w-1/2 mt-12"
             onClick={() => {
               navigate('/');
             }}
           >
-            Back to Homepage
+            Back to Courses
           </Button>
         </div>
       </div>

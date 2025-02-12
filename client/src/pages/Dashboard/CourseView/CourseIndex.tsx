@@ -15,22 +15,6 @@ import { Link } from 'react-router-dom';
  */
 
 const CourseIndex = ({ user, course, setSelectedLesson }) => {
-  // const [lessons, setLessons] = useState(course.lessons);
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     axios
-  //       .get(`/api/lessons/65f075d84c6ccdf6f54d124f`)
-  //       .then((res) => console.log('lessons data:', res.data))
-  //       // .then((res) => setLessons(res.data))
-  //       .catch((e) => console.log(e.message));
-  //   };
-  //   fetchData();
-  //   // console.log(lessons);
-  // }, []);
-
-  // console.log(course);
-  // lessons && console.log('course lessons:', lessons);
-
   if (!course) return <div>Loading...</div>;
 
   return (
@@ -45,7 +29,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
       <p className="text-2xl">Modules</p>
       {/* modules */}
       {course.courseModules.map((module) => (
-        <ol className="ml-6 text-xl list-decimal">
+        <ol key={module._id} className="ml-6 text-xl list-decimal">
           <li>
             <Accordion key={module._id} type="single" collapsible>
               <AccordionItem value={module._id}>

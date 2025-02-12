@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '@/context/AuthContext.tsx';
 import { CoursesContext } from '@/context/CoursesContext.tsx';
 import { EnrollmentsContext } from '@/context/EnrollmentsContext.tsx';
 // import CourseCardList from '@/pages/Home/CourseCardList.tsx';
 import CourseCardMiniList from '@/components/common/CourseCardMiniList.tsx';
+import { Button } from '@/components/ui/button';
 // import CourseIndex from './CourseIndex.tsx';
 // import CourseContent from './CourseContent.tsx';
 
@@ -72,7 +73,14 @@ const EnrollmentsLayout: React.FC = () => {
         />
       ) : (
         // <CourseCardList courses={myCourses} />
-        <p className="mt-8 text-center">You are not enrolled in any courses.</p>
+        <div>
+          <p className="mt-8 text-center">
+            You are not enrolled in any courses.
+          </p>
+          <NavLink to="/">
+            <Button>Buy a course</Button>
+          </NavLink>
+        </div>
       )}
     </div>
   );

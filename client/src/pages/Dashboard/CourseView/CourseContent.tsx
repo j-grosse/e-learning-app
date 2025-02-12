@@ -9,26 +9,11 @@ const CourseContent = ({ course, selectedLesson }) => {
   return (
     <>
       {lesson ? (
-        <div key={lesson._id}>
+        <div key={lesson._id} className="flex flex-col gap-4">
           <h2>{lesson.title}</h2>
-          <br />
-          {/* {lesson.videoUrls !== '' ? (
-            <iframe
-            className="w-[100%]"
-              width="560"
-              height="315"
-              src={lesson.videoUrls}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <img src={VideoPlaceholder} alt="video placeholder" />
-          )} */}
-          <br />
-          {/* //TODO: add satitizing for lesson text */}
+          {/* //TODO: add sanitizing for lesson text */}
           <div
             dangerouslySetInnerHTML={{ __html: lesson.text }}
-            className="w-32"
           />
         </div>
       ) : (

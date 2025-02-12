@@ -26,7 +26,7 @@ const Main = () => {
   return (
     <AnimatedPage>
       <AnimatePresence mode="sync">
-        <main className="flex-grow">
+        <main className="grow">
           <Routes key={location.pathname} location={location}>
             {/* <Switch> */}
 
@@ -34,7 +34,6 @@ const Main = () => {
               path="/"
               element={user ? <Dashboard /> : <Home />}
             /> */}
-
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="/login" element={<Login />} />
