@@ -1,6 +1,6 @@
 const CourseCardMiniList = ({ courses, handleCourseSelect, selectedCourse, title}) => {
         return (
-        <div className="max-w-2xl p-6 mb-3 border rounded-lg">
+        <div className="max-w-2xl p-6 mb-3 border rounded-lg shadow-md">
           <h2 className="pb-3">{title}</h2>
           <div className="flex flex-wrap gap-4">
             {courses

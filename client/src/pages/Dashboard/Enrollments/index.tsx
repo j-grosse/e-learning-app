@@ -36,14 +36,16 @@ const EnrollmentsLayout: React.FC = () => {
 
       setMyCourses(enrolledCourses);
     }
-    console.log(
-      'User: ',
-      user,
-      'Courses: ',
-      courses,
-      'Enrollments: ',
-      enrollments
-    );
+
+    // console.log(
+    //   'User: ',
+    //   user,
+    //   'Courses: ',
+    //   courses,
+    //   'Enrollments: ',
+    //   enrollments
+    // );
+
   }, [
     authLoading,
     coursesLoading,
