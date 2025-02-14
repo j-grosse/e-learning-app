@@ -118,7 +118,7 @@ const Footer = () => {
             </a>
           </div>
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center flex justify-center mt-6">
-            <p>© 2025 by iCreate Courses</p>.
+            <p>© 2024 - 2025 by Jakob Grosse</p>.
           </span>
         </div>
       </div>
