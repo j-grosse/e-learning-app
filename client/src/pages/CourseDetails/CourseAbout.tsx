@@ -1,5 +1,17 @@
 import React from 'react';
-import { FaCheck, FaExclamationTriangle, FaStar, FaTags } from 'react-icons/fa';
+import {
+  FaCheck,
+  FaExclamationTriangle,
+  FaStar,
+  FaTags,
+  FaPlayCircle,
+  FaCommentAlt,
+  FaUser,
+  FaPlus,
+  FaFileAlt,
+  FaUnlockAlt,
+  FaQuestionCircle,
+} from 'react-icons/fa';
 import {
   Accordion,
   AccordionContent,
@@ -7,35 +19,26 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
+import ProgressDemo from '@/components/ProgressDemo';
 
 const CourseAbout = ({ course }) => {
   return (
-    <div>
-      <div></div>
-      <div className="w-8/12 mx-auto col-lg-8">
-        {/* <!-- Tutor Course Main Segment Start --> */}
-        <div className="tutor-course-main-segment">
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            {/* <h2 className="tutor-course-segment__title">
-              Course Prerequisites
-            </h2> */}
-
-            {/* <!-- Tutor Course Segment Prerequisites Start --> */}
-            <div className="tutor-course-segment__prerequisites">
-              {/* <div className="flex gap-5 p-4 border-2 text-stone-400 bg-yellow-50 border-neutral-500 text-neutral-500">
+    <div className="w-full px-8">
+      <div>
+        {/* <div className="flex gap-5 p-4 border-2 text-stone-400 bg-yellow-50 border-neutral-500 text-neutral-500">
                 <FaExclamationTriangle size={20} />
                 Please note that this course has the following prerequisites
                 which must be completed before it can be accessed
               </div> */}
-              {/* <ul className="tutor-course-segment__prerequisites-list">
+
+        {/* <ul>
                 <li>
                   <br />
-                  <a
+                  <Link
                     className="flex p-4 border-2 rounded-lg prerequisites-item border-neutral-500 text-neutral-500"
-                    href="#"
+                    to="#"
                   >
-                    <div className="prerequisites-item__thumbnail">
+                    <div>
                       <img
                         className="rounded-lg"
                         src={course.image}
@@ -44,303 +47,170 @@ const CourseAbout = ({ course }) => {
                         height="47"
                       />
                     </div>
-                    <div className="ml-4 prerequisites-item__title">
+                    <div className="ml-4">
                       {course ? course.title : 'No course with this id found'}
                     </div>
-                  </a>
+                  </Link>
                 </li>
               </ul> */}
-            </div>
-            {/* <!-- Tutor Course Segment Prerequisites End --> */}
+        <div>
+          <h2 className="my-4">About This Course</h2>
+          <p>{course.description}</p>
+          <div className="flex items-center gap-4 ml-2 my-4">
+            <FaTags />
+            <Link to="#"> {course.category} </Link>
           </div>
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">About This Course</h2>
+        </div>
 
-            {/* <!-- Tutor Course Segment Content Wrapper Start --> */}
-            <div className="tutor-course-segment__content-wrap">
-              <p>{course.description}</p>
+        {/* Learning Objectives */}
+        {/* <div className="px-4 py-2 border-2 rounded-lg">
+          <h2>Learning Objectives</h2>
+          <div className="flex flex-wrap gap-4 mt-3">
+            <div className="flex gap-3 tutor-course-segment__benefit-content">
+              <FaCheck color="green" />
+              <span>
+                Ready to begin working on real-world data modeling projects,
+              </span>
             </div>
-            {/* <!-- Tutor Course Segment Content Wrapper End --> */}
-            <br />
-            {/* <!-- Tutor Course Segment Tags Start --> */}
-            <div className="flex tutor-course-segment__tags">
-              <div className="flex items-center tutor-course-segment__tags-title">
-                <FaTags />
-              </div>
-              <div className="ml-3 tutor-course-segment__tags-list">
-                <a href="#"> {course.category} </a>
+            <div className="tutor-course-segment__benefit-item">
+              <div className="flex gap-3 tutor-course-segment__benefit-content">
+                <FaCheck color="green" />
+                <span className="benefit-text">
+                  Expanded responsibilities as part of an existing role
+                </span>
               </div>
             </div>
-            {/* <!-- Tutor Course Segment Tags End --> */}
+            <div className="tutor-course-segment__benefit-item">
+              <div className="flex gap-3 tutor-course-segment__benefit-content">
+                <FaCheck color="green" />
+                <span className="benefit-text">
+                  Find a new position involving data modeling.
+                </span>
+              </div>
+            </div>
           </div>
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
+        </div> */}
 
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="px-4 py-2 border-2 rounded-lg">
-            <h2 className="tutor-course-segment__title">Learning Objectives</h2>
-            {/* <!-- Tutor Course Segment Benefits Items Start --> */}
-            <div className="flex flex-wrap gap-4 mt-3 tutor-course-segment__benefits-items">
-              <div className="tutor-course-segment__benefit-item">
-                <div className="flex gap-3 tutor-course-segment__benefit-content">
-                  <FaCheck color="green" />
-                  <span className="benefit-text">
-                    Ready to begin working on real-world data modeling projects,
+        <div>
+          <h2>Curriculum</h2>
+          <div className="flex gap-4">
+            <span>4 Lessons</span>
+            <span>{course.duration} h</span>
+          </div>
+
+          <div>
+            {/* modules */}
+            <ol className="ml-6 text-xl list-decimal">
+              {course.courseModules.map((module) => (
+                <li key={module._id}>
+                  <Accordion key={module._id} type="single" collapsible>
+                    <AccordionItem value={module._id}>
+                      <AccordionTrigger>
+                        <p className="text-left">{module.title}</p>
+                      </AccordionTrigger>
+
+                      {/* lessons */}
+                      <AccordionContent data-state="open">
+                        <ol className="ml-6 text-lg list-decimal">
+                          {module.lessons &&
+                            (module.lessons.length > 1 ? (
+                              module.lessons.map((lesson) => (
+                                <li key={lesson._id}>
+                                  <p>{lesson.title}</p>
+                                </li>
+                              ))
+                            ) : module.lessons[0] !== undefined ? (
+                              <li key={module.lessons[0]._id}>
+                                <p>{module.lessons[0].title}</p>
+                              </li>
+                            ) : (
+                              ''
+                            ))}
+                        </ol>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+        <br />
+
+        {/* Tutors */}
+        <div>
+          <h2>Your Tutor(s)</h2>
+          <div>
+            <div>
+              <div className="flex items-center gap-2">
+                <div className=" w-8 h-8 overflow-hidden rounded-full">
+                  <img
+                    src="https://jaydatamusic.com/wp-content/uploads/2016/02/ebf-jay-data-feld-foto-1.jpg"
+                    alt="tutor"
+                  />
+                </div>
+                <p>{course.tutor}</p>
+              </div>
+              <div>
+                <div>
+                  <br />
+                  <div>
+                    <span>Tutor rating: {course.rating}</span>
+                    <span>/5</span>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <span>
+                    <FaPlayCircle className="inline-block" /> 6 Courses
+                  </span>
+                  <span>
+                    <FaCommentAlt className="inline-block" /> 4 Reviews
+                  </span>
+                  <span>
+                    <FaUser className="inline-block" /> 53 Students
                   </span>
                 </div>
               </div>
-              <div className="tutor-course-segment__benefit-item">
-                <div className="flex gap-3 tutor-course-segment__benefit-content">
-                  <FaCheck color="green" />
-                  <span className="benefit-text">
-                    Expanded responsibilities as part of an existing role
-                  </span>
-                </div>
-              </div>
-              <div className="tutor-course-segment__benefit-item">
-                <div className="flex gap-3 tutor-course-segment__benefit-content">
-                  <FaCheck color="green" />
-                  <span className="benefit-text">
-                    Find a new position involving data modeling.
-                  </span>
-                </div>
-              </div>
-            </div>
-            {/* <!-- Tutor Course Segment Benefits Items End --> */}
-          </div>
-          {/* <!-- Tutor Course Segment End --> */}
-
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            <div className="tutor-course-segment__header">
-              <h2 className="tutor-course-segment__title">Curriculum</h2>
-
-              <div className="tutor-course-segment__lessons-duration">
-                <span className="tutor-course-segment__lessons">4 Lessons</span>
-                <span className="tutor-course-segment__duration">15h 15m</span>
-              </div>
-            </div>
-
-            <div className="course-curriculum accordion">
-              <Accordion type="single" collapsible>
-                {/* first accordion */}
-
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>IT background</AccordionTrigger>
-                  <AccordionContent>
-                    <div className="course-curriculum__lessons">
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-alt"></i> The importance of
-                          data nowadays
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-alt"></i> Why my
-                          organization should know about data
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-edit"></i> Assignments
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-question-circle"></i> First quiz
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-
-                {/* second accordion */}
-
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>Key concepts</AccordionTrigger>
-                  <AccordionContent>
-                    <div className="course-curriculum__lessons">
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-alt"></i>
-                          Basic understanding of data management concepts
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                      <div className="course-curriculum__lesson">
-                        <span className="course-curriculum__title">
-                          <i className="fas fa-file-edit"></i>
-                          2nd Assignments
-                        </span>
-                        <span className="course-curriculum__icon">
-                          <i className="fas fa-lock-alt"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
             </div>
           </div>
+        </div>
+        {/* <!-- Tutor Course Segment End --> */}
+        <br />
+        {/* <!-- Tutor Course Segment Start --> */}
+        <div>
+          <h2>Student Feedback</h2>
 
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">Your Tutor(s)</h2>
-
-            <div className="tutor-course-segment__instructor">
-              <div className="tutor-instructor">
-                <div className="flex">
-                  <div className="flex items-center tutor-course-top-info__meta-instructor">
-                    <div className="w-8 h-8 overflow-hidden rounded-full instructor-avatar">
-                      <img
-                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsm.askmen.com%2Ft%2Faskmen_in%2Farticle%2Ff%2Ffacebook-p%2Ffacebook-profile-picture-affects-chances-of-gettin_fr3n.1200.jpg&f=1&nofb=1&ipt=3bb4f05da17a654779eaa91aa8a09590bec3c623406137e42bb9194dea51a769&ipo=images"
-                        alt="tutor"
-                      />
-                    </div>
-                  </div>
-                  <p className="tutor-instructor__name">{course.tutor}</p>
+          <div>
+            <div>
+              <div className="count">{course.rating}/5</div>
+              <div className="mb-4">8 Ratings</div>
+            </div>
+            <div>
+              <div className="flex gap-4 items-center">
+                <div className="w-24">
+                  <ProgressDemo value={75} />
                 </div>
-                <div className="tutor-instructor__instructor-info">
-                  <div className="tutor-instructor__ratings">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '90%' }}
-                      ></div>
-                    </div>
-                    <br />
-                    <div className="rating-average">
-                      <span className="rating-average__average">
-                        Tutor rating: {course.rating}
-                      </span>
-                      <span className="rating-average__total">/5</span>
-                    </div>
-                  </div>
-                  <div className="tutor-instructor__meta">
-                    <span>
-                      <i className="fas fa-play-circle"></i> 6 Courses
-                    </span>
-                    <span>
-                      <i className="fas fa-comment-alt"></i> 4 Reviews
-                    </span>
-                    <span>
-                      <i className="fas fa-user"></i> 53 Students
-                    </span>
-                  </div>
-                  <a className="tutor-instructor__link" href="#">
-                    <i className="fas fa-plus"></i> <Link to="/">See more</Link>
-                  </a>
+                <div className="rating-metar-text">Total 75%</div>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="w-24">
+                  <ProgressDemo value={13} />
                 </div>
+                <div className="rating-metar-text">13%</div>
+              </div>
+              <div className="flex gap-4 items-center">
+                <div className="w-24">
+                  <ProgressDemo value={5} />
+                </div>
+                <div className="rating-metar-text">5%</div>
               </div>
             </div>
           </div>
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            <h2 className="tutor-course-segment__title">Student Feedback</h2>
-
-            <div className="tutor-course-segment__feedback">
-              <div className="tutor-course-segment__reviews-average">
-                <div className="count">{course.rating}</div>
-                <div className="reviews-rating-star">
-                  <div className="rating-star">
-                    <div
-                      className="rating-label"
-                      style={{ width: '90%' }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="rating-total">8 Ratings</div>
-              </div>
-              <div className="tutor-course-segment__reviews-metar">
-                <div className="course-rating-metar">
-                  <div className="rating-metar-star">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '100%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-col">
-                    <div className="rating-metar-bar">
-                      <div
-                        className="rating-metar-line"
-                        style={{ width: '75%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-text">75%</div>
-                </div>
-
-                <div className="course-rating-metar">
-                  <div className="rating-metar-star">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '80%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-col">
-                    <div className="rating-metar-bar">
-                      <div
-                        className="rating-metar-line"
-                        style={{ width: '13%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-text">13%</div>
-                </div>
-
-                <div className="course-rating-metar">
-                  <div className="rating-metar-star">
-                    <div className="rating-star">
-                      <div
-                        className="rating-label"
-                        style={{ width: '60%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-col">
-                    <div className="rating-metar-bar">
-                      <div
-                        className="rating-metar-line"
-                        style={{ width: '0%' }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="rating-metar-text">0%</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          {/* <div className="tutor-course-segment">
+        </div>
+        {/* <!-- Tutor Course Segment End --> */}
+        <br />
+        {/* <!-- Tutor Course Segment Start --> */}
+        {/* <div className="tutor-course-segment">
             <h2 className="tutor-course-segment__title">
               Reviews <span className="count">(3)</span>
             </h2>
@@ -360,7 +230,7 @@ const CourseAbout = ({ course }) => {
                       </div>
                       <div className="comment-item-02__info">
                         <h6 className="comment-item-02__name">
-                          <a href="#">Chérif Akadiry</a>
+                          <Link to="#">Chérif Akadiry</Link>
                         </h6>
                         <p className="comment-item-02__date">2 weeks ago</p>
                       </div>
@@ -390,7 +260,7 @@ const CourseAbout = ({ course }) => {
                       </div>
                       <div className="comment-item-02__info">
                         <h6 className="comment-item-02__name">
-                          <a href="#">Edumall Website</a>
+                          <Link to="#">Edumall Website</Link>
                         </h6>
                         <p className="comment-item-02__date">2 weeks ago</p>
                       </div>
@@ -420,7 +290,7 @@ const CourseAbout = ({ course }) => {
                       </div>
                       <div className="comment-item-02__info">
                         <h6 className="comment-item-02__name">
-                          <a href="#">Adeniyi David</a>
+                          <Link to="#">Adeniyi David</Link>
                         </h6>
                         <p className="comment-item-02__date">2 weeks ago</p>
                       </div>
@@ -440,14 +310,14 @@ const CourseAbout = ({ course }) => {
               </ul>
             </div>
           </div> */}
-          {/* <!-- Tutor Course Segment End --> */}
-          <br />
-          {/* <!-- Tutor Course Segment Start --> */}
-          <div className="tutor-course-segment">
-            {/* <h2 className="tutor-course-segment__title">Write a review</h2> */}
+        {/* <!-- Tutor Course Segment End --> */}
+        <br />
+        {/* <!-- Tutor Course Segment Start --> */}
+        <div className="tutor-course-segment">
+          {/* <h2 className="tutor-course-segment__title">Write a review</h2> */}
 
-            <div className="tutor-course-segment__reviews mb-6">
-              {/* <button
+          <div className="tutor-course-segment__reviews mb-6">
+            {/* <button
                 className="tutor-course-segment__btn btn btn-primary btn-hover-secondary"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseForm"
@@ -455,9 +325,9 @@ const CourseAbout = ({ course }) => {
                 Open review form
               </button> */}
 
-              <div className="collapse" id="collapseForm">
-                {/* <!-- Comment Form Start --> */}
-                {/* <div className="comment-form">
+            <div className="collapse" id="collapseForm">
+              {/* <!-- Comment Form Start --> */}
+              {/* <div className="comment-form">
                   <form action="#">
                     <div className="comment-form__rating">
                       <label className="label">Your rating: *</label>
@@ -526,14 +396,13 @@ const CourseAbout = ({ course }) => {
                   </form>
 
                 </div> */}
-                {/* <!-- Comment Form End --> */}
-              </div>
+              {/* <!-- Comment Form End --> */}
             </div>
           </div>
-          {/* <!-- Tutor Course Segment End --> */}
         </div>
-        {/* <!-- Tutor Course Main Segment End --> */}
+        {/* <!-- Tutor Course Segment End --> */}
       </div>
+      {/* <!-- Tutor Course Main Segment End --> */}
     </div>
   );
 };
