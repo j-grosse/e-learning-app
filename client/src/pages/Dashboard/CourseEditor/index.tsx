@@ -255,7 +255,7 @@ const CourseEditor = () => {
         {/* Modules */}
         <div>
           {selectedCourse ? (
-            <div className="p-4 mb-6 w-screen max-w-2xl border rounded-lg shadow-lg">
+            <div className="p-4 mb-6 w-screen max-w-2xl border rounded-lg shadow-md">
               <h2 className="pb-3">Modules</h2>
               <ol
                 key={selectedCourse._id}
@@ -310,7 +310,7 @@ const CourseEditor = () => {
 
       {/* Editor */}
       <div className="flex flex-wrap gap-4">
-        <div className="w-full max-w-2xl p-6 bg-background border rounded-lg shadow-lg">
+        <div className="w-full max-w-2xl p-6 bg-background border rounded-lg shadow-md">
           <h2 className="pb-3">Editor</h2>
           <div>
             <div>
@@ -516,7 +516,7 @@ const CourseEditor = () => {
 
         {/* Preview */}
 
-        <div className="w-full max-w-2xl p-6 border border-gray-200 rounded-lg shadow-lg">
+        <div className="w-full max-w-2xl p-6 border border-gray-200 rounded-lg shadow-md">
           <h2 className="pb-3">Preview</h2>
           <div className="border rounded-lg p-4">
             {/* Lesson title */}

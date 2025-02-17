@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className="bg-secondary dark:bg-gray-800 mt-auto">
@@ -9,9 +11,9 @@ const Footer = () => {
             </h2>
             <ul className="font-medium text-gray-500 dark:text-gray-400">
               <li className="mb-4">
-                <a href="#" className=" hover:underline">
+                <NavLink  to="/about" className="hover:pointer">
                   About
-                </a>
+                </NavLink>
               </li>
               <li className="mb-4">
                 <a href="#" className="hover:underline">
@@ -22,7 +24,7 @@ const Footer = () => {
           </div>
           <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-              Help center
+              Help
             </h2>
             <ul className="font-medium text-gray-500 dark:text-gray-400">
               <li className="mb-4">
@@ -116,7 +118,7 @@ const Footer = () => {
             </a>
           </div>
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center flex justify-center mt-6">
-            © 2024 - 2025 by iCreate Courses - All Rights Reserved.
+            <p>© 2024 - 2025 by Jakob Grosse</p>.
           </span>
         </div>
       </div>

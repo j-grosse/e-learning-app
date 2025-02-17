@@ -98,7 +98,7 @@ const Header = () => {
           {/* Menu */}
           <div className="hidden items-center md:flex space-x-4">
             <NavLink className={navLinkStyle} to="/">
-              Home
+              Courses
             </NavLink>
             <NavLink className={navLinkStyle} to="/about">
               About
@@ -122,7 +122,7 @@ const Header = () => {
               >
                 <div className="flex flex-col space-y-1">
                   <NavLink className={navLinkStyle} to="/" onClick={toggleMenu}>
-                    Home
+                    Courses
                   </NavLink>
                   <NavLink
                     className={navLinkStyle}
