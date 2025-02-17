@@ -1,0 +1,82 @@
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #000;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100px;
+  height: 100px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+
+  /* Update: Removed the Flex property - IE FIX */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  transition: transform 0.3s ease-in-out;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transform: translateX(10px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+  text-align: center;
+}
+
+:root {
+  --swiper-theme-color: #fff;
+}
+
+.courses-slider {
+  margin-top: 4rem;
+}
+
+.courses-slider first-child {
+  padding: 20px 0;
+}
+
+.courses-slider .swiper-wrapper {
+  padding: 20px 0;
+}
+
+.courses-slider .swiper-slide {
+  -webkit-transition: 250ms all;
+  transition: 250ms all;
+}
+
+.courses-slider .swiper-slide:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.courses-slider .swiper-slide:first-child:hover {
+  margin: 0 40px;
+}
+
+.courses-slider .swiper-slide:last-child:hover {
+  margin: 0 -40px;
+}

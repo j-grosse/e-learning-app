@@ -1,17 +1,21 @@
 import CourseCard from './CourseCard';
+import SwiperCarousel from './SwiperCarousel';
 
 const CourseCardList = ({ courses }) => {
   return (
     <div>
       <div className="flex flex-wrap justify-around w-full h-full gap-4">
-        {courses &&
+
+        <SwiperCarousel courses={courses}></SwiperCarousel>
+        {/* {courses &&
           courses.map((course) => {
             return (
               <div key={course.id}>
                 <CourseCard course={course} />
               </div>
             );
-          })}
+          })} */}
+
       </div>
     </div>
   );

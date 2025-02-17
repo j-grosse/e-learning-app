@@ -1,5 +1,3 @@
-import React from 'react';
-// import axios from 'axios';
 import {
   Accordion,
   AccordionContent,
@@ -9,9 +7,9 @@ import {
 import ProgressDemo from '@/components/ProgressDemo';
 import { Link } from 'react-router-dom';
 
-/* The CourseIndex component displays a table of content / list of lessons for a given course.
- * It fetches lesson data from an API and displays it using an accordion UI.
- * It also displays a progress bar to show the user's progress in the course.
+/* 
+ * The CourseIndex component displays a table of content / list of modules 
+ * and lessons of a course.
  */
 
 const CourseIndex = ({ user, course, setSelectedLesson }) => {
