@@ -30,9 +30,7 @@ const CoursesSection = ({ courses }) => {
         />
       </form>
 
-      <div className="py-10">
         <CourseCardList courses={foundCourses} />
-      </div>
     </div>
   );
 };

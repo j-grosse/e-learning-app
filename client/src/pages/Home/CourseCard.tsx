@@ -5,11 +5,11 @@ const CourseCard = ({ course }) => {
   return (
     <div className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg bg-background hover:bg-gray-50 dark:hover:bg-gray-800 transition-transform duration-300 transform hover:scale-105">
       <Link to={`/details/${course.id}`}>
-        <div className="w-48 border-2 rounded-lg">
+        <div className="w-36 md:w-44 border-2 rounded-lg">
           {/* Card-header */}
           <div className="relative w-full h-24">
             <img
-              className="object-cover w-full h-full rounded-lg"
+              className="object-cover w-full h-full rounded-t-md"
               src={course.image}
               alt="image"
             />
@@ -21,7 +21,7 @@ const CourseCard = ({ course }) => {
             )}
           </div>
           {/* Card body */}
-          <div className="px-6 py-4">
+          <div className="px-4 py-4">
             {/* <p className="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
               All Levels
             </p> */}

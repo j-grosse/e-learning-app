@@ -4,25 +4,40 @@ body {
   height: 100%;
 }
 
-body {
-  background: #000;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #fff;
-  margin: 0;
-  padding: 0;
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
-.swiper-container {
-  width: 100px;
-  height: 100px;
+/* .swiper-wrapper {
+  display: flex;
+  max-height: 100%;
+  height: 100%;
+} */
+
+/* .swiper-container {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100vh;
+  min-height: 0;
+  min-width: 0;
+} */
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-
-  /* Update: Removed the Flex property - IE FIX */
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 0;
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  margin-bottom: 10px;
 }
 
 .swiper-button-next,
@@ -30,29 +45,16 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
-.swiper-button-next:hover,
+.swiper-button-next:hover {
+  transform: translateX(4px);
+}
 .swiper-button-prev:hover {
-  transform: translateX(10px);
+  transform: translateX(-4px);
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: red;
-  text-align: center;
-}
-
-:root {
-  --swiper-theme-color: #fff;
-}
-
-.courses-slider {
+/* .courses-slider {
   margin-top: 4rem;
-}
+} */
 
 .courses-slider first-child {
   padding: 20px 0;
@@ -64,12 +66,12 @@ h1 {
 
 .courses-slider .swiper-slide {
   -webkit-transition: 250ms all;
-  transition: 250ms all;
+  transition: 100ms all;
 }
 
 .courses-slider .swiper-slide:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);
   z-index: 1;
 }
 

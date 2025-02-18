@@ -3,8 +3,7 @@ import SwiperCarousel from './SwiperCarousel';
 
 const CourseCardList = ({ courses }) => {
   return (
-    <div>
-      <div className="flex flex-wrap justify-around w-full h-full gap-4">
+      <div className="w-[100vw] h-[100%]">
 
         <SwiperCarousel courses={courses}></SwiperCarousel>
         {/* {courses &&
@@ -17,7 +16,6 @@ const CourseCardList = ({ courses }) => {
           })} */}
 
       </div>
-    </div>
   );
 };
 
