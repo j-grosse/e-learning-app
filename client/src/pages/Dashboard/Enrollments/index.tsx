@@ -71,7 +71,7 @@ const EnrollmentsLayout: React.FC = () => {
           courses={myCourses}
           handleCourseSelect={handleCourseSelect}
           selectedCourse={selectedCourse}
-          title="My Enrollments"
+          title="My Courses"
         />
       ) : (
         // <CourseCardList courses={myCourses} />
