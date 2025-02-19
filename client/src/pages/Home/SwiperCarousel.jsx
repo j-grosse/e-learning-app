@@ -16,7 +16,7 @@ const SwiperCarousel = ({ courses }) => {
         <div className="swiper-wrapper" key="1">
           <Swiper
             modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-            spaceBetween={10}
+            spaceBetween={20}
             slidesPerView={2}
             breakpoints={{ 640: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 5 } }}
             navigation={{
@@ -25,13 +25,7 @@ const SwiperCarousel = ({ courses }) => {
             }}
             mousewheel={true}
             keyboard={true}
-            observer={true}
-            observeParents={true}
-            parallax={true}
             pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-
-            // scrollbar={{ draggable: true }}
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
           >

@@ -15,7 +15,7 @@ const CourseCard = ({ course }) => {
             />
             {/* badge: NEW */}
             {course.year == new Date().getFullYear() && (
-              <span className="absolute top-0 left-0 bg-green-500 rounded-sm text-sm px-2 py-0.5 m-3">
+              <span className="absolute top-0 left-0 bg-green-500 rounded-sm text-xs sm:text-sm px-2 py-0.5 m-3">
                 NEW
               </span>
             )}
@@ -25,12 +25,12 @@ const CourseCard = ({ course }) => {
             {/* <p className="bg-green-100 text-green-500 px-2 py-0.5 mb-4">
               All Levels
             </p> */}
-            <p className="font-light text-sm text-blue-400">{course.category}</p>
+            <p className="font-light text-xs sm:text-sm text-blue-400">{course.category}</p>
             <div className="mb-2 text-md font-bold">{course.title}</div>
-            <p className="overflow-hidden font-light text-sm min-h-40">
+            <p className="overflow-hidden font-light text-xs sm:text-sm min-h-40">
               {course.description}
             </p>
-            <p className="mt-3 text-sm font-bold">{course.price} </p>
+            <p className="mt-3 text-xs sm:text-sm font-bold">{course.price} </p>
           </div>
           <div className="flex items-center mb-4 tutor-course-rating">
             <div className="rating-star">
