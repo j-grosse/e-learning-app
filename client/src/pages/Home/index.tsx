@@ -4,12 +4,13 @@ import Hero from '../../components/common/Hero';
 import CoursesSection from './CoursesSection';
 
 const Home = () => {
-  const {courses, loading} = useContext(CoursesContext);
+  const { courses, loading } = useContext(CoursesContext);
 
   return (
-    <div className='w-full h-auto min-h-screen max-w-screen'>
+    <div className="w-full h-auto min-h-screen max-w-screen">
       {/* {user && <UserProfile />} */}
       <Hero />
+
       <CoursesSection courses={courses} />
       {/* <TestimonialsSection /> */}
     </div>

@@ -19,7 +19,7 @@ const CoursesSection = ({ courses }) => {
   }, [searchQuery, courses]);
 
   return (
-    <div className="flex flex-col items-center p-8 bg-secondary">
+    <div className="flex flex-col items-center p-8 bg-background">
       <form>
         <input
           type="text"
@@ -30,9 +30,7 @@ const CoursesSection = ({ courses }) => {
         />
       </form>
 
-      <div className="py-10">
         <CourseCardList courses={foundCourses} />
-      </div>
     </div>
   );
 };
