@@ -10,8 +10,7 @@ import ScrollToTop from '@/components/ui/scroll-to-top';
 const CourseDetails = () => {
   const { courses, loading } = useContext(CoursesContext);
   const { id } = useParams();
-  const idNumber = parseInt(id);
-  const course = courses && courses.find((el) => el.id === idNumber);
+  const course = courses && courses.find((el) => el._id === id);
 
   if (loading) return <p>Loading...</p>;
 

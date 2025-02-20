@@ -6,6 +6,7 @@ import { EnrollmentsContext } from '@/context/EnrollmentsContext.tsx';
 // import CourseCardList from '@/pages/Home/CourseCardList.tsx';
 import CourseCardMiniList from '@/components/common/CourseCardMiniList.tsx';
 import { Button } from '@/components/ui/button';
+import CourseCardHorizontal from '@/components/common/CourseCardHorizontal';
 // import CourseIndex from './CourseIndex.tsx';
 // import CourseContent from './CourseContent.tsx';
 
@@ -45,7 +46,6 @@ const EnrollmentsLayout: React.FC = () => {
     //   'Enrollments: ',
     //   enrollments
     // );
-
   }, [
     authLoading,
     coursesLoading,
@@ -57,7 +57,7 @@ const EnrollmentsLayout: React.FC = () => {
 
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
-    navigate(`/dashboard/course/${course.id}`);
+    navigate(`/dashboard/course/${course._id}`);
   };
 
   if (authLoading || coursesLoading || enrollmentsLoading) {
@@ -66,24 +66,35 @@ const EnrollmentsLayout: React.FC = () => {
 
   return (
     <div>
-      {myCourses.length > 0 ? (
-        <CourseCardMiniList
-          courses={myCourses}
-          handleCourseSelect={handleCourseSelect}
-          selectedCourse={selectedCourse}
-          title="My Courses"
-        />
-      ) : (
-        // <CourseCardList courses={myCourses} />
-        <div>
-          <p className="mt-8 text-center">
-            You are not enrolled in any courses.
-          </p>
-          <NavLink to="/">
-            <Button>Buy a course</Button>
-          </NavLink>
+      <div className="max-w-2xl p-3 mb-3">
+        <h2 className="pb-3">Continue</h2>
+        <div className="flex flex-wrap gap-4 mb-8">
+          <CourseCardHorizontal
+            course={courses[0]}
+            selectedCourse={selectedCourse}
+            handleCourseSelect={handleCourseSelect}
+          />
         </div>
-      )}
+
+        <div>
+          <h2 className="pb-3">My Courses</h2>
+          {myCourses.length > 0 ? (
+            <CourseCardMiniList
+              courses={myCourses}
+              handleCourseSelect={handleCourseSelect}
+              selectedCourse={selectedCourse}
+            />
+          ) : (
+            // <CourseCardList courses={myCourses} />
+            <div className="text-center">
+              <p className="my-4">You are not enrolled in any courses.</p>
+              <NavLink to="/">
+                <Button variant="submitFull">Buy a course</Button>
+              </NavLink>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 const CourseCard = ({ course }) => {
   return (
     <div className="flex flex-col h-full overflow-hidden rounded-lg shadow-lg bg-background hover:bg-gray-50 dark:hover:bg-gray-800 transition-transform duration-300 transform hover:scale-105">
-      <Link to={`/details/${course.id}`}>
+      <Link to={`/details/${course._id}`}>
         <div className="w-36 md:w-44 border-2 rounded-lg">
           {/* Card-header */}
           <div className="relative w-full h-24">
