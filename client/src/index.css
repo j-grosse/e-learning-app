@@ -81,3 +81,47 @@ h3 {
     --ring: 20.5 90.2% 48.2%;
   }
 }
+
+/* react-quill styling */
+
+/* .ql-editor {
+  display: block;
+  text-align: center;
+  width: 100%;
+} */
+
+.ql-align-center {
+  text-align: center;
+}
+
+.ql-course-images img {
+  margin: 0 auto;
+  width: 50vw;
+  height: 50vh;
+}
+
+.ql-video {
+  margin: 0 auto;
+  width: 50vw;
+  height: 50vh;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.breadcrumbs li {
+  margin-right: 10px;
+}
+
+.breadcrumbs li::after {
+  content: '>';
+  margin-left: 10px;
+}
+
+.breadcrumbs li:last-child::after {
+  content: '';
+}
