@@ -80,8 +80,8 @@ const Header = () => {
   return (
     <>
       {/* <nav className="relative bg-white border-gray-200 dark:bg-gray-800"> */}
-      <nav className="relative shadow-sm bg-gradient-to-r from-black to-primary">
-        <div className="flex text-background dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:pr-6 py-2 max-w-screen-2xl shadow-lg">
+      <nav className="relative shadow-sm bg-background">
+        <div className="flex dark:text-foreground flex-wrap items-center justify-between px-4 mx-auto lg:pr-6 py-2 max-w-screen-2xl shadow-lg">
           {/* Logo */}
           <div>
             <div className="text-md font-bold text-primary-800 whitespace-nowrap dark:text-white transition-transform duration-200 transform hover:scale-105">
@@ -118,7 +118,7 @@ const Header = () => {
             <div className="flex justify-end items-start mt-12">
               <div
                 ref={menuRef}
-                className="text-background dark:text-foreground bg-primary/85 dark:bg-background/65 p-3 rounded-l-md shadow-lg"
+                className="text-background dark:text-foreground bg-foreground/50 dark:bg-foreground/15 p-3 rounded-l-md shadow-lg"
               >
                 <div className="flex flex-col space-y-1">
                   <NavLink className={navLinkStyle} to="/" onClick={toggleMenu}>
@@ -149,7 +149,7 @@ const Header = () => {
           <div className="md:hidden my-0">
             <button
               type="button"
-              className="text-white dark:text-white focus:outline-none pt-1"
+              className="dark:text-white focus:outline-none pt-1"
               onClick={toggleMenu}
             >
               {isMenuOpen ? (

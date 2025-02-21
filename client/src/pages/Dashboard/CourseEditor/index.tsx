@@ -220,11 +220,11 @@ const CourseEditor = () => {
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      ['bold', 'italic', 'underline', 'blockquote'],
       [{ list: 'ordered' }],
-      ['link', 'color', 'image'],
+      ['link', 'image', 'video'],
+      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
       [{ 'code-block': true }],
-      ['clean'],
     ],
   };
 
@@ -233,14 +233,13 @@ const CourseEditor = () => {
     'bold',
     'italic',
     'underline',
-    'strike',
     'blockquote',
     'list',
     'link',
-    'indent',
     'image',
+    'video',
+    'align',
     'code-block',
-    'color',
   ];
 
   return (
@@ -250,16 +249,15 @@ const CourseEditor = () => {
           courses={courses}
           handleCourseSelect={handleCourseSelect}
           selectedCourse={selectedCourse}
-          title="My Courses"
         />
         {/* Modules */}
-        <div>
+        <div className='mx-auto'>
           {selectedCourse ? (
-            <div className="p-4 mb-6 w-screen max-w-2xl border rounded-lg shadow-md">
+            <div className="p-4 mb-6 w-full w-full bg-background border rounded-lg shadow-md">
               <h2 className="pb-3">Modules</h2>
               <ol
                 key={selectedCourse._id}
-                className="ml-8 mb-3 text-xl list-decimal"
+                className="ml-8 mb-3 text-xl list-decimal"  
               >
                 {selectedCourse.courseModules
                   ? selectedCourse.courseModules.map((courseModule) => (
@@ -310,7 +308,7 @@ const CourseEditor = () => {
 
       {/* Editor */}
       <div className="flex flex-wrap gap-4">
-        <div className="w-full max-w-2xl p-6 bg-background border rounded-lg shadow-md">
+        <div className="w-full w-full p-6 bg-background border rounded-lg shadow-md">
           <h2 className="pb-3">Editor</h2>
           <div>
             <div>
@@ -339,7 +337,7 @@ const CourseEditor = () => {
                 </div>
 
                 {/* Buttons Courses */}
-                <div className="flex flew-wrap gap-4 my-6">
+                <div className="flex flex-wrap gap-4 my-6">
                   {/* <Button
                     type="submit"
                     variant="submitFull"
@@ -392,7 +390,7 @@ const CourseEditor = () => {
 
                 {/* Buttons Modules */}
 
-                <div className="flex flew-wrap gap-4 my-6">
+                <div className="flex flex-wrap gap-4 my-6">
                   <Button
                     type="submit"
                     variant="submitFull"
@@ -482,7 +480,7 @@ const CourseEditor = () => {
 
                 {/* Buttons Lessons */}
 
-                <div className="flex flew-wrap gap-4 my-6">
+                <div className="flex flex-wrap gap-4 my-6">
                   <Button
                     type="submit"
                     variant="submitFull"
@@ -516,7 +514,7 @@ const CourseEditor = () => {
 
         {/* Preview */}
 
-        <div className="w-full max-w-2xl p-6 border border-gray-200 rounded-lg shadow-md">
+        <div className="w-full w-full bg-background p-6 border border-gray-200 rounded-lg shadow-md">
           <h2 className="pb-3">Preview</h2>
           <div className="border rounded-lg p-4">
             {/* Lesson title */}
