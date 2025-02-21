@@ -11,7 +11,7 @@ const DashboardSidebar = () => {
   ];
 
   return (
-    <ul className="min-h-[70vh] text-sm space-y-1 pointer mt-4 border-b-2 dark:border-gray-400">
+    <ul className="min-h-[70vh] text-md space-y-1 pointer mt-2 border-b-2 dark:border-gray-400">
       {menuItems.map((item) => (
         <NavLink
           to={item.path}
@@ -22,7 +22,7 @@ const DashboardSidebar = () => {
           }
           key={item.id}
         >
-          <li key={item.id} className="hover:bg-gray-200 dark:hover:bg-gray-600 rounded-r-md dark:text-foreground px-3 py-2">
+          <li key={item.id} className="hover:bg-gray-200 dark:hover:bg-gray-600 rounded-r-md dark:text-foreground px-2 py-2">
             {item.label}
           </li>
         </NavLink>

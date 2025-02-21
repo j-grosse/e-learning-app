@@ -4,27 +4,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import ProgressDemo from '@/components/ProgressDemo';
 import { Link } from 'react-router-dom';
 
-/* 
- * The CourseIndex component displays a table of content / list of modules 
+/*
+ * The CourseIndex component displays a table of content / list of modules
  * and lessons of a course.
  */
 
-const CourseIndex = ({ user, course, setSelectedLesson }) => {
+const CourseIndex = ({ user, course, handleLessonSelect }) => {
   if (!course) return <div>Loading...</div>;
 
   return (
     <div>
-      <div className="cursor-pointer" onClick={() => setSelectedLesson('')}>
-        <h2>{course.title}</h2>
+      <div className="cursor-pointer" onClick={() => handleLessonSelect('')}>
+        <h2>Content</h2>
       </div>
-      <div className="my-6">
-        <p className="mb-2">Progress: 33/100 </p>
-        <ProgressDemo value={33} />
-      </div>
-      <p className="text-2xl">Modules</p>
+
+      {/* <p className="text-2xl">Modules</p> */}
       {/* modules */}
       <ol className="ml-6 text-xl list-decimal">
         {course.courseModules.map((module) => (
@@ -45,13 +41,13 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                           <li key={lesson._id}>
                             <div
                               className="cursor-pointer hover:text-gray-500"
-                              onClick={() => setSelectedLesson(lesson._id)}
+                              onClick={() => handleLessonSelect(lesson._id)}
                             >
                               <p>{lesson.title}</p>
                             </div>
                             {/* <Link
                         to={`/lessons/${lesson._id}`}
-                        onClick={() => setSelectedLesson(lesson._id)}
+                        onClick={() => handleLessonSelect(lesson._id)}
                       >
                         lesson link
                       </Link> */}
@@ -62,7 +58,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                           <div
                             className="cursor-pointer"
                             onClick={() =>
-                              setSelectedLesson(module.lessons[0]._id)
+                              handleLessonSelect(module.lessons[0]._id)
                             }
                           >
                             <p>{module.lessons[0].title}</p>
@@ -70,7 +66,7 @@ const CourseIndex = ({ user, course, setSelectedLesson }) => {
                           <Link
                             to={`/lessons/${module.lessons[0]._id}`}
                             onClick={() =>
-                              setSelectedLesson(module.lessons[0]._id)
+                              handleLessonSelect(module.lessons[0]._id)
                             }
                           ></Link>
                         </li>
