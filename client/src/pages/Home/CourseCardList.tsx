@@ -3,7 +3,7 @@ import SwiperCarousel from './SwiperCarousel';
 
 const CourseCardList = ({ courses }) => {
   return (
-      <div className="w-[100vw] h-[100%]">
+      <div className="w-full">
 
         <SwiperCarousel courses={courses}></SwiperCarousel>
         {/* {courses &&

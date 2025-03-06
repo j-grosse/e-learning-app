@@ -15,7 +15,7 @@ const SwiperCarousel = ({ courses }) => {
       <div className="swiper">
         <div className="swiper-wrapper" key="1">
           <Swiper
-            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            modules={[Navigation, Pagination, Keyboard]}
             spaceBetween={20}
             slidesPerView={2}
             breakpoints={{ 640: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 5 } }}
@@ -23,7 +23,7 @@ const SwiperCarousel = ({ courses }) => {
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
             }}
-            mousewheel={true}
+            mousewheel={false}
             keyboard={true}
             pagination={{ clickable: true }}
             onSwiper={(swiper) => console.log(swiper)}
