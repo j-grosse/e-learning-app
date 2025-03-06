@@ -19,8 +19,8 @@ export const columns: ColumnDef<Course>[] = [
     header: "Course",
     cell: ({row}) => {
       return <div className="flex items-center gap-4">
-        <img className="w-12 shadow-lg rounded-sm aspect-video object-cover" src={row.original.image} alt="course image" />
-        <h3>{row.getValue("title")}</h3>
+        {/* <img className="w-12 shadow-lg rounded-sm aspect-video object-cover" src={row.original.image} alt="course image" /> */}
+        <p>{row.getValue("title")}</p>
       </div>
     }
   },

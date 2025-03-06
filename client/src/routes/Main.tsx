@@ -16,6 +16,7 @@ import CourseEditor from '../pages/Dashboard/CourseEditor';
 import Cart from '../pages/Dashboard/Cart';
 import Checkout from '../pages/Dashboard/Checkout';
 import UserProfile from '../pages/Dashboard/UserProfile';
+
 // import { Suspense } from 'react';
 // import { Loader } from 'lucide-react';
 
@@ -51,8 +52,17 @@ const Main = () => {
                 </DashboardLayout>
               }
             >
-              <Route path="course" element={<EnrollmentsLayout />} />
+              <Route
+                path="course/:id/:courseModuleId/:lessonId"
+                element={<CourseLayout />}
+              />
+              <Route
+                path="course/:id/:courseModuleId"
+                element={<CourseLayout />}
+              />
               <Route path="course/:id" element={<CourseLayout />} />
+              <Route path="course" element={<EnrollmentsLayout />} />
+
               <Route path="editor" element={<CourseEditor />} />
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />

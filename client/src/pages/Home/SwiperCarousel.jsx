@@ -49,7 +49,7 @@ const SwiperCarousel = ({ courses }) => {
             {/* 
             {courses &&
               courses.map((course, index) => (
-                <div className="swiper-slide" key={course.id}>
+                <div className="swiper-slide" key={course._id}>
                   <CourseCard
                     course={course}
                   />
