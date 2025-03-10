@@ -67,7 +67,7 @@ const EnrollmentsLayout: React.FC = () => {
   return (
     <div>
       <div className="max-w-2xl p-3 mb-3">
-        <h2 className="pb-3">Continue</h2>
+        <h2 className="mb-6">Continue</h2>
         <div className="flex flex-wrap gap-4 mb-8">
           <CourseCardHorizontal
             course={courses[0]}
@@ -77,7 +77,7 @@ const EnrollmentsLayout: React.FC = () => {
         </div>
 
         <div>
-          <h2 className="pb-3">My Courses</h2>
+          <h2 className="mb-6">My Courses</h2>
           {myCourses.length > 0 ? (
             <CourseCardMiniList
               courses={myCourses}

@@ -6,9 +6,9 @@ const CourseCardHorizontal = ({
   return (
     <div
       key={course._id}
-      className={`flex h-20 min-w-[40%] bg-background text-sm overflow-hidden border rounded-lg cursor-pointer shadow-md transition-transform duration-200 transform hover:scale-105 ${
+      className={`flex h-20 min-w-[40%] bg-background text-sm overflow-hidden border rounded-lg cursor-pointer shadow-md transition-transform duration-200 transform hover:scale-105 hover:shadow-xl ${
         course === selectedCourse
-          ? 'bg-primary text-secondary'
+          ? 'bg-primary text-secondary shadow-xl scale-105'
           : 'hover:bg-secondary'
       }`}
       onClick={() => handleCourseSelect(course)}

@@ -35,6 +35,7 @@ const CourseOverview = ({ course }) => {
               to={`/dashboard/course/${course._id}/${courseModule._id}`}
               key={courseModule._id}
               // onClick={() => handleLessonSelect(lesson._id)}
+              className='hover:text-gray-500'
             >
               <li>{courseModule.title}</li>
             </Link>

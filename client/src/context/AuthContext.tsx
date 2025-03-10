@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         '🚀 ~ file: AuthContext.jsx:40 ~ login ~ res.data.user:',
         res.data.user
       );
-      navigate('/dashboard');
+      navigate('/dashboard/course');
     } catch (error) {
       console.log(error.response);
       setState(null, false, error.response.data);

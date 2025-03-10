@@ -10,7 +10,7 @@ const UserProfile = () => {
   const [message, setMessage] = useState('');
 
   const inputStyle =
-    'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
+    'bg-background border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-secondary dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500';
 
   useEffect(() => {
     if (user) {
@@ -52,8 +52,8 @@ const UserProfile = () => {
   return (
     <>
       <section>
-        <h2>Profile</h2>
-        <div className="max-w-2xl py-8 mx-auto py-6">
+        <div className="max-w-2xl p-3 mb-3">
+          <h2>Profile</h2>
           {message ? <p className="text-red-500">{message}</p> : <br />}
           <form action="#">
             <div className="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
@@ -204,7 +204,7 @@ const UserProfile = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-wrap justify-center mt-12 space-6 gap-4">
+            <div className="flex flex-wrap mt-12 space-6 gap-4">
               <Button type="submit" variant="submitFull" onClick={handleUpdate}>
                 Update Profile
               </Button>

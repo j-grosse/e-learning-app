@@ -17,11 +17,11 @@ export function ModeToggle() {
     <div onClick={toggleTheme} className="cursor-pointer hover:text-foreground dark:hover:text-background pl-2">
       {isLightTheme ? (
         <>
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-100" />
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-100 hover:text-primary" />
         </>
       ) : (
         <>
-          <Moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:rotate-0 dark:scale-100" />
+          <Moon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:rotate-0 dark:scale-100 hover:text-primary" />
         </>
       )}
       <span className="sr-only">Toggle theme</span>

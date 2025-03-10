@@ -5,12 +5,14 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
 import CourseCardMiniList from '@/components/common/CourseCardMiniList';
 
 const CourseEditor = () => {
   const {
     courses,
     createCourse,
+    deleteCourse,
     createLesson,
     createModule,
     updateLesson,
@@ -18,6 +20,7 @@ const CourseEditor = () => {
     deleteModule,
     deleteLesson,
   } = useContext(CoursesContext);
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
   const [courseTitle, setCourseTitle] = useState('');
@@ -47,10 +50,18 @@ const CourseEditor = () => {
     setLessonTitle(newTitle);
   };
 
+  const showDeleteToast = () => {
+    toast({
+      title: 'Deleting is disabled',
+      description: 'Deleting is disabled in demo mode',
+    });
+  };
+
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
     setCourseTitle(course.title);
     setSelectedModule(null);
+    setModuleTitle('');
     setSelectedLesson(null);
     setLessonTitle('');
     setLessonContent('');
@@ -140,6 +151,21 @@ const CourseEditor = () => {
     }
   };
 
+  // UPDATE COURSE
+  // const handleUpdateCourseTitle = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   const course = { ...selectedCourse, title: courseTitle };
+
+  //   try {
+  //     await updateCourse(course, selectedCourse._id);
+  //   } catch (error) {
+  //     console.error('Error updating course:', error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   // UPDATE MODULE
   const handleUpdateModuleTitle = async (e) => {
     e.preventDefault();
@@ -176,42 +202,45 @@ const CourseEditor = () => {
   };
 
   // DELETE COURSE
-  // const handleDeleteCourse = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     await deleteCourse(selectedCourse._id);
-  //   } catch (error) {
-  //     console.error("Error deleting course:", error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleDeleteCourse = async (e) => {
+    e.preventDefault();
+    // setLoading(true);
+    showDeleteToast();
+    // try {
+    //   await deleteCourse(selectedCourse._id);
+    // } catch (error) {
+    //   console.error("Error deleting course:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
+  };
 
   // DELETE MODULE
   const handleDeleteModule = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await deleteModule(selectedModule._id, selectedCourse._id);
-    } catch (error) {
-      console.error("Error deleting module and/or it's lessons:", error);
-    } finally {
-      setLoading(false);
-    }
+    showDeleteToast();
+    // setLoading(true);
+    // try {
+    //   await deleteModule(selectedModule._id, selectedCourse._id);
+    // } catch (error) {
+    //   console.error("Error deleting module and/or it's lessons:", error);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   // DELETE LESSON
   const handleDeleteLesson = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    try {
-      await deleteLesson(selectedLesson._id, selectedModule._id);
-    } catch (error) {
-      console.error('Error deleting lesson:', error);
-    } finally {
-      setLoading(false);
-    }
+    showDeleteToast();
+    // setLoading(true);
+    // try {
+    //   await deleteLesson(selectedLesson._id, selectedModule._id);
+    // } catch (error) {
+    //   console.error('Error deleting lesson:', error);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   // if (loading) return <p>Loading...</p>;
@@ -223,7 +252,12 @@ const CourseEditor = () => {
       ['bold', 'italic', 'underline', 'blockquote'],
       [{ list: 'ordered' }],
       ['link', 'image', 'video'],
-      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+      [
+        { align: '' },
+        { align: 'center' },
+        { align: 'right' },
+        { align: 'justify' },
+      ],
       [{ 'code-block': true }],
     ],
   };
@@ -243,7 +277,8 @@ const CourseEditor = () => {
   ];
 
   return (
-    <div>
+    <div className="p-3 mb-3">
+      <h2 className="mb-6">Editor</h2>
       <div className="flex flex-wrap gap-4">
         <CourseCardMiniList
           courses={courses}
@@ -251,13 +286,13 @@ const CourseEditor = () => {
           selectedCourse={selectedCourse}
         />
         {/* Modules */}
-        <div className='mx-auto'>
+        <div className="mx-auto">
           {selectedCourse ? (
             <div className="p-4 mb-6 w-full w-full bg-background border rounded-lg shadow-md">
               <h2 className="pb-3">Modules</h2>
               <ol
                 key={selectedCourse._id}
-                className="ml-8 mb-3 text-xl list-decimal"  
+                className="ml-8 mb-3 text-xl list-decimal"
               >
                 {selectedCourse.courseModules
                   ? selectedCourse.courseModules.map((courseModule) => (
@@ -284,7 +319,7 @@ const CourseEditor = () => {
                                 onClick={() => handleLessonSelect(lesson)}
                                 className={
                                   lesson === selectedLesson
-                                    ? 'ml-3 cursor-pointer text-primary'
+                                    ? 'ml-3 cursor-pointer text-primary animate-pulse'
                                     : 'ml-3 cursor-pointer text-foreground hover:text-gray-500'
                                 }
                               >
@@ -308,8 +343,8 @@ const CourseEditor = () => {
 
       {/* Editor */}
       <div className="flex flex-wrap gap-4">
-        <div className="w-full w-full p-6 bg-background border rounded-lg shadow-md">
-          <h2 className="pb-3">Editor</h2>
+        <div className="w-full w-full">
+          {/* <h2 className="pb-3">Editor</h2> */}
           <div>
             <div>
               {/* Course */}
@@ -320,7 +355,7 @@ const CourseEditor = () => {
                     htmlFor="courseTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
                   >
-                    Course title
+                    <h3>Course title</h3>
                   </label>
                   <div className="mt-2">
                     <input
@@ -338,29 +373,30 @@ const CourseEditor = () => {
 
                 {/* Buttons Courses */}
                 <div className="flex flex-wrap gap-4 my-6">
-                  {/* <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleUpdateCourseTitle}
-                  >
-                    Update Course
-                  </Button> */}
-
+                  {selectedCourse ? (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      // onClick={handleUpdateCourseTitle}
+                    >
+                      Update Course
+                    </Button>
+                  ) : (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      onClick={handleCreateCourse}
+                    >
+                      Create Course
+                    </Button>
+                  )}
                   <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleCreateCourse}
-                  >
-                    Create Course
-                  </Button>
-
-                  {/* <Button
                     type="submit"
                     variant="destructive"
                     onClick={handleDeleteCourse}
                   >
                     Delete Course
-                  </Button> */}
+                  </Button>
                 </div>
               </div>
 
@@ -372,7 +408,7 @@ const CourseEditor = () => {
                     htmlFor="moduleTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
                   >
-                    Module title
+                    <h3>Module title</h3>
                   </label>
                   <div className="mt-2">
                     <input
@@ -391,28 +427,29 @@ const CourseEditor = () => {
                 {/* Buttons Modules */}
 
                 <div className="flex flex-wrap gap-4 my-6">
-                  <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleUpdateModuleTitle}
-                  >
-                    Update Module
-                  </Button>
-
-                  <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleCreateModule}
-                  >
-                    Create Module
-                  </Button>
-
+                  {selectedModule ? (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      onClick={handleUpdateModuleTitle}
+                    >
+                      Update
+                    </Button>
+                  ) : (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      onClick={handleCreateModule}
+                    >
+                      Create Module
+                    </Button>
+                  )}
                   <Button
                     type="submit"
                     variant="destructive"
                     onClick={handleDeleteModule}
                   >
-                    Delete Module
+                    Delete
                   </Button>
                 </div>
               </div>
@@ -425,7 +462,7 @@ const CourseEditor = () => {
                     htmlFor="lessonTitle"
                     className="block text-sm font-medium leading-6 text-gray-900 mb-2 "
                   >
-                    Lesson title
+                    <h3>Lesson title</h3>
                   </label>
                   <div className="mt-2">
                     <input
@@ -462,10 +499,10 @@ const CourseEditor = () => {
 
                 {/* Lesson content */}
 
-                <div className="mt-4">
+                <div className="mt-4 bg-background">
                   <label
                     htmlFor="lessonContent"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block pb-2 text-sm font-medium text-gray-900 bg-secondary dark:text-white"
                   >
                     Lesson content
                   </label>
@@ -481,28 +518,29 @@ const CourseEditor = () => {
                 {/* Buttons Lessons */}
 
                 <div className="flex flex-wrap gap-4 my-6">
-                  <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleUpdateLesson}
-                  >
-                    Update Lesson
-                  </Button>
-
-                  <Button
-                    type="submit"
-                    variant="submitFull"
-                    onClick={handleCreateLesson}
-                  >
-                    Create Lesson
-                  </Button>
-
+                  {selectedLesson ? (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      onClick={handleUpdateLesson}
+                    >
+                      Update
+                    </Button>
+                  ) : (
+                    <Button
+                      type="submit"
+                      variant="submitFull"
+                      onClick={handleCreateLesson}
+                    >
+                      Create Lesson
+                    </Button>
+                  )}
                   <Button
                     type="submit"
                     variant="destructive"
                     onClick={handleDeleteLesson}
                   >
-                    Delete Lesson
+                    Delete
                   </Button>
                 </div>
               </div>
@@ -514,36 +552,15 @@ const CourseEditor = () => {
 
         {/* Preview */}
 
-        <div className="w-full w-full bg-background p-6 border border-gray-200 rounded-lg shadow-md">
+        {/* <div className="w-full w-full bg-background p-6 border border-gray-200 rounded-lg shadow-md">
           <h2 className="pb-3">Preview</h2>
           <div className="border rounded-lg p-4">
-            {/* Lesson title */}
-
             <div>
-              {/* <h2 className="block text-sm font-medium leading-6 text-gray-900 mb-2 ">
-                Lesson title
-              </h2> */}
-              <div>
-                <p className="text-2xl font-bold mb-3">{lessonTitle}</p>
-              </div>
+              <p className="text-2xl font-bold mb-3">{lessonTitle}</p>
             </div>
-
-            {/* Description */}
-
-            {/* <div>
-              <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Description
-              </h2>
-              <p>{description}</p>
-            </div> */}
-            <div>
-              {/* <h2 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Lesson content
-              </h2> */}
-              {parse(lessonContent)}
-            </div>
+            <div>{parse(lessonContent)}</div>
           </div>
-        </div>
+        </div> */}
         {/* End Preview */}
       </div>
     </div>
