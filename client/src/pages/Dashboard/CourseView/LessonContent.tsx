@@ -8,9 +8,9 @@ const LessonContent = ({ course, courseModule, lesson }) => {
     : '';
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap lg:flex-nowrap gap-3">
       {lesson ? (
-        <div className="flex flex-col w-full bg-background border rounded-lg p-6 gap-4 shadow-lg">
+        <div className="flex flex-col  bg-background border rounded-lg p-6 gap-4 shadow-lg">
           <div key={lesson._id} className="flex flex-col gap-4">
             <h2>{lesson.title}</h2>
             {/* //TODO: add sanitizing for lesson text */}

@@ -11,6 +11,7 @@ const LessonsSidebar = ({ course, courseModule }) => {
             to={`/dashboard/course/${course._id}/${courseModule._id}/${lesson._id}`}
             key={lesson._id}
             // onClick={() => handleLessonSelect(lesson._id)}
+            className='hover:text-gray-500'
           >
             <li>{lesson.title}</li>
           </Link>
