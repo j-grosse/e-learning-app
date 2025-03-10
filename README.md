@@ -1,36 +1,32 @@
-# E-Learning Web App
+# iCreate Courses - E-Learning Full-Stack Web App
 
 ## About the project
 
-This is my own E-Learning Portal portfolio project, I started in january 2024.
+This is my E-Learning Website portfolio project.
 
-This E-Learning Web App is an Web App that aims to revolutionize the way people learn and acquire knowledge. With a user-friendly interface and a wide range of interactive features, our platform provides an engaging learning experience for students of all ages and backgrounds.
-
-![](website-screenshot.jpg)
+![](screenshot01.jpg)
+![](screenshot02.jpg)
+![](screenshot03.jpg)
 
 ## Main Features
 
-### 1. View and buy courses from the database
+1. register / login
+1. view course details, add to cart, checkout
+1. view bought courses, modules, lessons
+1. see learning progress
+1. change profile information
+1. tutors can create, updated and delete their courses, modules, lessons (using react-quill WYSIWYG editor)
 
-Courses are loaded from the MongoDB Atlas database and schown to the user. The user can click on a card to see the course details, buy the course and enroll.
-
-### 2. Add Courses via CMS
-
-Tutors can login and create courses by adding course material (e.g. Rich text, Videos, Images, PDFs) via the Contentful headless CMS.
-
-### 3. Work on courses and see learning progress
-
-Students can see the course material of courses they are enrolled in. The student's lerning progress is measured.
-
-
-## Technologies used
+## Technologies
 
 ### Front end
-React.js, shadcn/ui react components (using Tailwind CSS & Radix UI)
+
+React.js, Typescript, Tailwind CSS, shadcn/ui react components (using Tailwind CSS & Radix UI)
 vite, react router dom, axios
 
 ### Back end
-Node.js, Express.js, MongoDB Atlas, Mongoose.js, dotenv, bcrypt, jwt
+
+MongoDB Atlas, Node.js, Express.js, Mongoose.js, bcrypt, jwt, cors, dotenv
 
 ## Theming
 
@@ -48,27 +44,24 @@ cd server
 npm i  
 cp .env.example .env
 
--> add your environment variables to the files /server/.env and /client/.env
+Then add your environment variables to the files /server/.env and /client/.env
 
 ## Running the app
 
-To run the app in terminal
+cd e-learning-app/server  
+npm run dev 
 
-cd server  
-npm run dev  
-cd ..  
-cd client  
-npm run dev
+cd ../client 
+npm run dev 
 
 ## Deployment
-
-To deploy the app on render.com
+To deploy the app on https://render.com
 
 - choose "create Web Service"
 
-- add environment variables in "Environment" (but for VITE_SERVER_BASE_URL use the url where the app is deployed e.g. VITE_SERVER_BASE_URL=https://e-learn-68it.onrender.com)
+- add Render environment variables (as VITE_SERVER_BASE_URL use the final deployment url e.g. https://e-learn-68it.onrender.com)
 
-- add deployment settings:  
+- add Render deployment settings:  
   Branch: main  
   Root Directory: server  
   Build Command: npm i && cd ../client && npm i && npm run build  
