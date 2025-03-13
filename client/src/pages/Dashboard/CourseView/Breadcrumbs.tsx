@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 const Breadcrumbs = ({ course, courseModule, lesson }) => {
   return (
     <nav className='overflow-x-hidden'>
-      <ul className="flex flex-wrap truncate breadcrumbs gap-1 text-xs">
+      <ul className="flex flex-wrap breadcrumbs gap-1 text-xs">
         <li className="flex">
-          <Link to={`/dashboard/course`} key="1">
-            <FaHome className="" />
+          <Link to={`/dashboard/course`}>
+            <FaHome />
           </Link>
         </li>
         {course && (

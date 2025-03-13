@@ -34,7 +34,7 @@ const CourseCard = ({ course }) => {
           </div>
           <div className="flex items-center mb-4 tutor-course-rating">
             <div className="rating-star">
-              <div className="flex ml-5 rating-label">
+              <div className="flex ml-4 rating-label">
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />
                 <FaStar className="text-yellow-500" />

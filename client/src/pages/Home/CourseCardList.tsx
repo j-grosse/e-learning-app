@@ -1,4 +1,3 @@
-import CourseCard from './CourseCard';
 import SwiperCarousel from './SwiperCarousel';
 
 const CourseCardList = ({ courses }) => {

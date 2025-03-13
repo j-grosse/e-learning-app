@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { CoursesContext } from '../../context/CoursesContext';
 import Hero from '../../components/common/Hero';
 import CoursesSection from './CoursesSection';
+import About from '../About';
+import TestimonialSection from './TestimonialSection';
 
 const Home = () => {
-  const { courses, loading } = useContext(CoursesContext);
+  const { courses } = useContext(CoursesContext);
 
   return (
     <div className="w-full h-auto min-h-screen max-w-screen">
@@ -12,7 +14,7 @@ const Home = () => {
       <Hero />
 
       <CoursesSection courses={courses} />
-      {/* <TestimonialsSection /> */}
+      <TestimonialSection />
     </div>
   );
 };

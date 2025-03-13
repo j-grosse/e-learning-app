@@ -1,9 +1,8 @@
 'use client';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { CoursesContext } from '../../../context/CoursesContext';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
-import parse from 'html-react-parser';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import CourseCardMiniList from '@/components/common/CourseCardMiniList';
@@ -12,13 +11,13 @@ const CourseEditor = () => {
   const {
     courses,
     createCourse,
-    deleteCourse,
+    // deleteCourse,
     createLesson,
     createModule,
     updateLesson,
     updateModule,
-    deleteModule,
-    deleteLesson,
+    // deleteModule,
+    // deleteLesson,
   } = useContext(CoursesContext);
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -32,8 +31,6 @@ const CourseEditor = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedModule, setSelectedModule] = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
-
-  // useEffect(() => {}, []);
 
   const handleCourseTitle = (e) => {
     const newCourseTitle = e.target.value;
@@ -276,6 +273,8 @@ const CourseEditor = () => {
     'code-block',
   ];
 
+  if (loading) return <p>Loading...</p>;
+
   return (
     <div className="p-3 mb-3">
       <h2 className="mb-6">Editor</h2>
@@ -286,10 +285,10 @@ const CourseEditor = () => {
           selectedCourse={selectedCourse}
         />
         {/* Modules */}
-        <div className="mx-auto">
+        <div>
           {selectedCourse ? (
             <div className="p-4 mb-6 w-full w-full bg-background border rounded-lg shadow-md">
-              <h2 className="pb-3">Modules</h2>
+              <h2 className="pb-3">Course content</h2>
               <ol
                 key={selectedCourse._id}
                 className="ml-8 mb-3 text-xl list-decimal"
@@ -402,7 +401,8 @@ const CourseEditor = () => {
 
               {/* Module */}
 
-              <div className="p-3 border rounded-lg mb-6">
+              {selectedModule && (
+                <div className="p-3 border rounded-lg mb-6">
                 <div>
                   <label
                     htmlFor="moduleTitle"
@@ -449,14 +449,16 @@ const CourseEditor = () => {
                     variant="destructive"
                     onClick={handleDeleteModule}
                   >
-                    Delete
+                    Delete module
                   </Button>
                 </div>
               </div>
+              )}
 
               {/* Lesson Title */}
 
-              <div className="p-3 border rounded-lg">
+              {selectedLesson &&
+              (<div className="p-3 border rounded-lg">
                 <div>
                   <label
                     htmlFor="lessonTitle"
@@ -540,10 +542,11 @@ const CourseEditor = () => {
                     variant="destructive"
                     onClick={handleDeleteLesson}
                   >
-                    Delete
+                    Delete lesson
                   </Button>
                 </div>
               </div>
+              )}
             </div>
           </div>
         </div>

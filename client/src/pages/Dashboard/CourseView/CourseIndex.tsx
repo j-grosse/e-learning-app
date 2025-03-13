@@ -7,11 +7,12 @@ import {
 import { Link } from 'react-router-dom';
 
 /*
+ * Component is currently not used.
  * The CourseIndex component displays a table of content / list of modules
  * and lessons of a course.
  */
 
-const CourseIndex = ({ user, course, handleLessonSelect }) => {
+const CourseIndex = ({ course, handleLessonSelect }) => {
   if (!course) return <div>Loading...</div>;
 
   return (

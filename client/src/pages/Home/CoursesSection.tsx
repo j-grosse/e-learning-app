@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import CourseCardList from './CourseCardList';
 
 const CoursesSection = ({ courses }) => {
@@ -19,7 +19,7 @@ const CoursesSection = ({ courses }) => {
   }, [searchQuery, courses]);
 
   return (
-    <div className="flex flex-col items-center p-8 bg-background">
+    <div className="flex flex-col items-center p-8 pb-0 bg-background">
       <form>
         <input
           type="text"
