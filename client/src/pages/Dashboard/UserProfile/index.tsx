@@ -211,8 +211,7 @@ const UserProfile = () => {
 
               <Button
                 type="submit"
-                variant="submitFull"
-                className="border-red-500 dark:border-red-500 text-red-500 dark:text-red-500 dark:hover:text-white hover:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-900 shadow-lg"
+                variant="destructive"
                 onClick={handleUpdate}
               >
                 <svg

@@ -22,7 +22,7 @@ const CourseModule = ({ course, courseModule, lesson }) => {
                   </div>
                 </div>
 
-                <p>CourseModule Card</p>
+                <p>CourseModule image</p>
               </div>
               <p>In this Module we dive deep into ...</p>
             </div>

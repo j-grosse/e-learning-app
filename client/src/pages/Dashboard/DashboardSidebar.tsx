@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 const DashboardSidebar = () => {
   const menuItems = [
     // { id: 'item0', label: 'Enrollments', path: '/dashboard/enrollments' },
-    { id: 'item1', label: 'Course', path: '/dashboard/course' },
+    { id: 'item1', label: 'Learn', path: '/dashboard/course' },
     { id: 'item2', label: 'Editor', path: '/dashboard/editor' },
     { id: 'item3', label: 'Cart', path: '/dashboard/cart' },
     // { id: 'item4', label: 'Checkout', path: '/dashboard/checkout' },
@@ -11,13 +11,13 @@ const DashboardSidebar = () => {
   ];
 
   return (
-    <ul className="min-h-[70vh] text-md space-y-1 pointer mt-2 border-b-2 dark:border-gray-400">
+    <ul className="min-h-[70vh] text-md space-y-1 pointer pt-3 border-b-2 pr-2 border-r-2 dark:border-gray-400">
       {menuItems.map((item) => (
         <NavLink
           to={item.path}
           className={({ isActive }) =>
             `block ${
-              isActive ? 'bg-gray-200 dark:bg-gray-600 rounded-r-md font-bold' : ''
+              isActive ? 'text-primary bg-gray-200 dark:bg-gray-600 rounded-r-md font-bold' : ''
             }`
           }
           key={item.id}

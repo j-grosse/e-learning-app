@@ -26,13 +26,13 @@ const CourseLayout = () => {
   return (
     <>
       <div className="flex flex-wrap gap-4">
-          <div className="mt-2">
-            <Breadcrumbs
-              course={course}
-              courseModule={courseModule}
-              lesson={lesson}
-            />
-          </div>
+        <div className="mt-2 overflow-hidden">
+          <Breadcrumbs
+            course={course}
+            courseModule={courseModule}
+            lesson={lesson}
+          />
+        </div>
 
         <div className="w-full">
           {!courseModuleId && !lessonId && <CourseOverview course={course} />}

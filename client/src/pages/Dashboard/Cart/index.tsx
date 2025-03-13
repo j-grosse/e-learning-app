@@ -26,9 +26,9 @@ const Cart = () => {
   };
 
   return (
-    <div className="row w-full max-w-2xl">
+    <div>
       <CartDetails />
-      <div className="w-32">
+      <div className='p-3'>
         <Button variant="submitFull" onClick={handleClick}>
           Checkout
         </Button>
