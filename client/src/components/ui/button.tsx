@@ -11,7 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         destructive:
-          'w-24 texs-xs bg-destructive text-destructive-foreground hover:bg-destructive/90',
+          'w-28 font-medium text-sm bg-destructive/90 text-destructive-foreground hover:bg-destructive hover:translate-y-[-2px] active:translate-y-[-1px]',
         outline:
           'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary:
@@ -19,9 +19,9 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         submitFull:
-          'w-24 text-primary hover:text-white bg-background dark:bg-secondary hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-5 py-2.5 text-center border-primary border-2',
+          'w-28 text-foreground hover:text-white bg-background dark:bg-secondary hover:bg-primary dark:hover:bg-primary focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:translate-y-[-2px] active:translate-y-[-1px]',
         payment:
-          'w-40 text-primary hover:text-white bg-secondary hover:bg-primary border border-primary border-2',
+          'w-40 text-primary hover:text-white bg-secondary hover:bg-primary hover:translate-y-[-2px] active:translate-y-[-1px]',
       },
 
       size: {
